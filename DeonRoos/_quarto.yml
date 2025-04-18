@@ -7,7 +7,7 @@ project:
     - media/rent.png
 
 website:
-  title: "Dr Deon Roos"
+  title: "Deon Roos"
   navbar:
     left:
       - text: "Home"

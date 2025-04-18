@@ -3,7 +3,7 @@ title: "What I do"
 format: html
 ---
 
-I use statistical models to make sense of data, often Bayesian, hierarchical, and multi-level in nature, with a strong visual and computational focus.
+I use statistical models to learn something about the world.
 
 <div style="text-align: center; margin: 2em 0;">
 
@@ -37,14 +37,6 @@ $$
 </div>
 
 ---
-
-## Contact
-
-📧 [Email](mailto:deon.roos4@abdn.ac.uk)  
-📖 [ORCID](https://orcid.org/0000-0003-4866-7472)  
-🐱 [GitHub](https://github.com/Deon88)
-
-
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
