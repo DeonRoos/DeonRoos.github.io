@@ -2,15 +2,169 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "DeonRoos",
+    "title": "What I do",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "I use statistical models to make sense of data, often Bayesian, hierarchical, and multi-level in nature, with a strong visual and computational focus."
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "I am a lecturer in Applied Statistics at the University of Aberdeen where I teach and conduct research in medicine and biology. My academic interests include spatio-temporal modelling, Bayesian heirarchical modelling, hidden Markov models, amongst others.\n\n\n\nBI3010 – 3rd year statistics course covering, R, linear and generalised linear models, ggplot2, basics of causal inference.\nPGR-GLM - A PhD GLM course\n\n\n\n\nHere are a few interactive apps I’ve developed:\n\nDistributions App\nAberdeen House Prices\nAberdeen Rental Prices\n\n\n\n\nYou can reach me at deon[dot]roos4[at]abdn.ac.uk or visit my github page."
+  },
+  {
+    "objectID": "about.html#dr.-deon-roos",
+    "href": "about.html#dr.-deon-roos",
+    "title": "About",
+    "section": "",
+    "text": "I am a lecturer in Applied Statistics at the University of Aberdeen where I teach and conduct research in medicine and biology. My academic interests include spatio-temporal modelling, Bayesian heirarchical modelling, hidden Markov models, amongst others.\n\n\n\nBI3010 – 3rd year statistics course covering, R, linear and generalised linear models, ggplot2, basics of causal inference.\nPGR-GLM - A PhD GLM course\n\n\n\n\nHere are a few interactive apps I’ve developed:\n\nDistributions App\nAberdeen House Prices\nAberdeen Rental Prices\n\n\n\n\nYou can reach me at deon[dot]roos4[at]abdn.ac.uk or visit my github page."
+  },
+  {
+    "objectID": "index.html#underlying-model",
+    "href": "index.html#underlying-model",
+    "title": "Welcome",
+    "section": "Underlying Model",
+    "text": "Underlying Model\nThe animation above visualizes the function:\n\\[\n\\\\mu(x, y, t) = \\\\left[\\\\sin(\\\\rho_0) + \\\\sin(\\\\rho_1) + \\\\sin(\\\\rho_2)\\\\right] \\\\cdot z(x, y)\n\\]\nwhere:\n\\[\n\\\\rho_i = t + \\\\frac{1}{\\\\zeta_i} \\\\cdot \\\\left[-\\\\sqrt{(x_i - x)^2 + (y_i - y)^2}\\\\right]\n\\]\nand \\( z(x, y) \\) is a spatially autocorrelated “habitat” layer simulated via fractal Brownian motion.\n\n\nGet in Touch\nI’m open to collaborations, supervision, and interdisciplinary projects. Feel free to explore or contact me."
+  },
+  {
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Dr Deon Roos",
+    "section": "",
+    "text": "Cristiano Tiberi, Sarah Beatham, Julia Coats, Izzy Rochester, Deon Roos, Riccardo Primi, Andrea Vitali, Giovanna Massei (2025). An assessment of whether age, sex, and reproductive status affect bait uptake by grey squirrels, Journal of Wildlife Management. 📄\n\n\nTiago Crispim-Mendes, Deon Roos, Clara Mendes Ferreira, Joana Paupério, João Paulo Silva, Sérgio Godinho, Paulo Célio Alves, António Mira, Pedro Beja, Xavier Lambin, Ricardo Pita (2024). Patch spatial attributes and time to disturbance affect the emergence of source local populations within ephemeral habitats, Ecological Modelling. 📄\n\n\nJ. Colomer, G. Massei, Deon Roos, C. Rosell, J. D. Rodríguez-Teijeiro (2024). What drives wild boar density and population growth in Mediterranean environments?, Science of the Total Environment. 📄\n\n\nDeon Roos, Constantino Caminero‐Saldaña, David Elston, François Mougeot, María Carmen García‐Ariza, Beatriz Arroyo, Juan José Luque‐Larena, Francisco Javier Rojo Revilla, Xavier Lambin (2022). From pattern to process? Dual travelling waves, with contrasting propagation speeds, best describe a self‐organised spatio‐temporal pattern in population growth of a cyclic rodent, Ecology Letters. 📄\n\n\nJames Slingsby, Beth E. Scott, Louise Kregting, Jason McIlvenny, Jared Wilson, Ana Couto, Deon Roos, Marion Yanez, Benjamin Williamson (2021). Surface Characterisation of Kolk-Boils within Tidal Stream Environments Using UAV Imagery, Journal of Marine Science and Engineering. 📄\n\n\nRoos, D., Caminero Saldaña, C., Arroyo, B., Mougeot, F., Luque-Larena, J.J., Lambin, X. (2019). Unintentional effects of environmentally-friendly farming practices: Arising conflicts between zero-tillage and a crop pest, the common vole (Microtus arvalis), Agriculture, Ecosystems and Environment. 📄"
+  },
+  {
+    "objectID": "publications.html#peer-reviewed-articles",
+    "href": "publications.html#peer-reviewed-articles",
+    "title": "Publications",
+    "section": "",
+    "text": "xxx"
+  },
+  {
+    "objectID": "publications.html#in-preparation-preprint",
+    "href": "publications.html#in-preparation-preprint",
+    "title": "Publications",
+    "section": "",
+    "text": "xxx\n\nPlease contact me for full-text copies or collaboration on related topics."
+  },
+  {
+    "objectID": "courses.html",
+    "href": "courses.html",
+    "title": "Dr Deon Roos",
+    "section": "",
+    "text": "This course introduces students to key statistical concepts and data analysis techniques in biological sciences. It makes strong use of R and ggplot2 but aims to give a strong theoretical understanding of statistical modelling and associated topics.\n\n\n\nWhy do we need statistics?\n\nIntroduction to linear models (LM) and hidden assumptions\n\nThe theory of effective data visualisation\n\nR and ggplot2\n\nLMs with a continuous predictor\n\nInterpreting LMs with a continuous predictor\n\nAssessing assumptions of LMs with a continuous predictor\n\nLMs with a categorical predictor\n\nInterpreting LMs with a categorical predictor\n\nAssessing assumptions of LMs with a categorical predictor\n\nLMs with multiple predictors\n\nConfounding and causality\n\nNull Hypothesis Significance Testing and P-values\n\nAn Information Criterion (AIC)\n\nAn introduction to GLMs\n\nPoisson GLMs"
+  },
+  {
+    "objectID": "courses.html#bi3010-advanced-statistics-3rd-year",
+    "href": "courses.html#bi3010-advanced-statistics-3rd-year",
+    "title": "Courses",
+    "section": "",
+    "text": "Covers linear and generalised linear models\n\nTopics include:\n\nR programming\nData wrangling and visualisation (ggplot2, dplyr)\nBasics of causal inference\nModel diagnostics and interpretation"
+  },
+  {
+    "objectID": "courses.html#pgr-glm-phd-level-glm-course",
+    "href": "courses.html#pgr-glm-phd-level-glm-course",
+    "title": "Courses",
+    "section": "",
+    "text": "Focuses on advanced GLMs for research applications\nEmphasis on:\n\nLink functions and families\nOverdispersion and zero inflation\nInterpretation in a research context\n\n\n\nInterested in guest lectures, interdisciplinary teaching, or collaborative courses? Get in touch."
+  },
+  {
+    "objectID": "publications.html#selected-publications",
+    "href": "publications.html#selected-publications",
+    "title": "Dr Deon Roos",
+    "section": "",
+    "text": "Cristiano Tiberi, Sarah Beatham, Julia Coats, Izzy Rochester, Deon Roos, Riccardo Primi, Andrea Vitali, Giovanna Massei (2025). An assessment of whether age, sex, and reproductive status affect bait uptake by grey squirrels, Journal of Wildlife Management. 📄\n\n\nTiago Crispim-Mendes, Deon Roos, Clara Mendes Ferreira, Joana Paupério, João Paulo Silva, Sérgio Godinho, Paulo Célio Alves, António Mira, Pedro Beja, Xavier Lambin, Ricardo Pita (2024). Patch spatial attributes and time to disturbance affect the emergence of source local populations within ephemeral habitats, Ecological Modelling. 📄\n\n\nJ. Colomer, G. Massei, Deon Roos, C. Rosell, J. D. Rodríguez-Teijeiro (2024). What drives wild boar density and population growth in Mediterranean environments?, Science of the Total Environment. 📄\n\n\nDeon Roos, Constantino Caminero‐Saldaña, David Elston, François Mougeot, María Carmen García‐Ariza, Beatriz Arroyo, Juan José Luque‐Larena, Francisco Javier Rojo Revilla, Xavier Lambin (2022). From pattern to process? Dual travelling waves, with contrasting propagation speeds, best describe a self‐organised spatio‐temporal pattern in population growth of a cyclic rodent, Ecology Letters. 📄\n\n\nJames Slingsby, Beth E. Scott, Louise Kregting, Jason McIlvenny, Jared Wilson, Ana Couto, Deon Roos, Marion Yanez, Benjamin Williamson (2021). Surface Characterisation of Kolk-Boils within Tidal Stream Environments Using UAV Imagery, Journal of Marine Science and Engineering. 📄\n\n\nRoos, D., Caminero Saldaña, C., Arroyo, B., Mougeot, F., Luque-Larena, J.J., Lambin, X. (2019). Unintentional effects of environmentally-friendly farming practices: Arising conflicts between zero-tillage and a crop pest, the common vole (Microtus arvalis), Agriculture, Ecosystems and Environment. 📄"
+  },
+  {
+    "objectID": "publications.html#peer-reviewed-papers",
+    "href": "publications.html#peer-reviewed-papers",
+    "title": "Dr Deon Roos",
+    "section": "",
+    "text": "Cristiano Tiberi, Sarah Beatham, Julia Coats, Izzy Rochester, Deon Roos, Riccardo Primi, Andrea Vitali, Giovanna Massei (2025). An assessment of whether age, sex, and reproductive status affect bait uptake by grey squirrels, Journal of Wildlife Management. 📄\n\n\nTiago Crispim-Mendes, Deon Roos, Clara Mendes Ferreira, Joana Paupério, João Paulo Silva, Sérgio Godinho, Paulo Célio Alves, António Mira, Pedro Beja, Xavier Lambin, Ricardo Pita (2024). Patch spatial attributes and time to disturbance affect the emergence of source local populations within ephemeral habitats, Ecological Modelling. 📄\n\n\nJ. Colomer, G. Massei, Deon Roos, C. Rosell, J. D. Rodríguez-Teijeiro (2024). What drives wild boar density and population growth in Mediterranean environments?, Science of the Total Environment. 📄\n\n\nDeon Roos, Constantino Caminero‐Saldaña, David Elston, François Mougeot, María Carmen García‐Ariza, Beatriz Arroyo, Juan José Luque‐Larena, Francisco Javier Rojo Revilla, Xavier Lambin (2022). From pattern to process? Dual travelling waves, with contrasting propagation speeds, best describe a self‐organised spatio‐temporal pattern in population growth of a cyclic rodent, Ecology Letters. 📄\n\n\nJames Slingsby, Beth E. Scott, Louise Kregting, Jason McIlvenny, Jared Wilson, Ana Couto, Deon Roos, Marion Yanez, Benjamin Williamson (2021). Surface Characterisation of Kolk-Boils within Tidal Stream Environments Using UAV Imagery, Journal of Marine Science and Engineering. 📄\n\n\nRoos, D., Caminero Saldaña, C., Arroyo, B., Mougeot, F., Luque-Larena, J.J., Lambin, X. (2019). Unintentional effects of environmentally-friendly farming practices: Arising conflicts between zero-tillage and a crop pest, the common vole (Microtus arvalis), Agriculture, Ecosystems and Environment. 📄"
+  },
+  {
+    "objectID": "publications.html#textbooks",
+    "href": "publications.html#textbooks",
+    "title": "Dr Deon Roos",
+    "section": "Textbooks",
+    "text": "Textbooks\n\nA Douglas, D Roos, F Mancini, A Couto, D Lusseau. An introduction to R. 📘"
+  },
+  {
+    "objectID": "publications.html#textbooks-1",
+    "href": "publications.html#textbooks-1",
+    "title": "Dr Deon Roos",
+    "section": "Textbooks",
+    "text": "Textbooks\n\nA Douglas, D Roos, F Mancini, A Couto, D Lusseau. An introduction to R. 📘"
+  },
+  {
+    "objectID": "publications.html#web-applications",
+    "href": "publications.html#web-applications",
+    "title": "Dr Deon Roos",
+    "section": "Web Applications",
+    "text": "Web Applications\n\n\n\nStatistical Distributions\n\n \n\nPredicting House Prices\n\n \n\nPredicting Rent Prices"
+  },
+  {
+    "objectID": "courses.html#undergraduate-teaching",
+    "href": "courses.html#undergraduate-teaching",
+    "title": "Dr Deon Roos",
+    "section": "",
+    "text": "This course introduces students to key statistical concepts and data analysis techniques in biological sciences. It makes strong use of R and ggplot2 but aims to give a strong theoretical understanding of statistical modelling and associated topics.\n\n\n\nWhy do we need statistics?\n\nIntroduction to linear models (LM) and hidden assumptions\n\nThe theory of effective data visualisation\n\nR and ggplot2\n\nLMs with a continuous predictor\n\nInterpreting LMs with a continuous predictor\n\nAssessing assumptions of LMs with a continuous predictor\n\nLMs with a categorical predictor\n\nInterpreting LMs with a categorical predictor\n\nAssessing assumptions of LMs with a categorical predictor\n\nLMs with multiple predictors\n\nConfounding and causality\n\nNull Hypothesis Significance Testing and P-values\n\nAn Information Criterion (AIC)\n\nAn introduction to GLMs\n\nPoisson GLMs"
+  },
+  {
+    "objectID": "courses.html#postgraduate-teaching",
+    "href": "courses.html#postgraduate-teaching",
+    "title": "Dr Deon Roos",
+    "section": "Postgraduate Teaching",
+    "text": "Postgraduate Teaching\n\nPGR Course: Generalised Linear Models (GLMs)\nThis advanced course focuses on the theory and application of Generalised Linear Models, tailored for postgraduate researchers. The course is tailored to be non-field specific meaning it can be taken by geologists to marketers and any in between.\nIt emphasises:\n\nUnderstanding the underlying statistical theory\nParameter estimation\nModel fitting\nConnecting models to the underlying equations\n\n\nModules:\n\nIntroduction to statistical modelling and GLMs\n\nPoisson GLMs\n\nBinomial GLMs\n\nBernoulli GLMs\n\n🔗 Visit the course website"
+  },
+  {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "\nDeon Roos\n",
+    "section": "",
+    "text": "Lecturer in Applied Statistics"
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "What I do",
+    "section": "Contact",
+    "text": "Contact\n📧 Email\n📖 ORCID\n🐱 GitHub"
+  },
+  {
+    "objectID": "cv.html#employment",
+    "href": "cv.html#employment",
+    "title": "\nDeon Roos\n",
+    "section": "Employment",
+    "text": "Employment\n\nLecturer in Applied Statistics, University of Aberdeen\nJanuary 2024 – Present\nAberdeen, Scotland\n- Leading and collaborating interdisciplinary research in applied statistics with real-world impact.\n- Teaching statistical theory and methods across undergraduate to PhD levels.\n- Assisting in research projects through the application of collaborator-specified statistical approaches.\n\n\nSenior Statistical Ecologist, Animal & Plant Health Agency\nMay 2022 – January 2024\nSand Hutton, England\n- Led statistics and mentoring, developing bespoke methods for policy-driven projects across multidisciplinary teams.\n\n\nTeaching Fellow, University of Aberdeen\nDec 2021 – May 2022\n- Coordinated and delivered a highly rated, fully online undergraduate statistics course with strong student engagement.\n\n\nResearch Fellow, University of Aberdeen\nJun 2021 – Feb 2022\n- Conducted international ecological research, including study design and simulation modeling for species management.\n\n\nTeaching Fellow, University of Aberdeen\nDec 2020 – May 2021\n- Course coordinator for undergraduate statistical course.\n\n\nOperating Department Support Worker, NHS Grampian\n2008 – 2012\nElgin, Scotland\n- Assisted in surgical procedures (non-sterile support)."
+  },
+  {
+    "objectID": "cv.html#education",
+    "href": "cv.html#education",
+    "title": "\nDeon Roos\n",
+    "section": "Education",
+    "text": "Education\n\nPhD Ecology, University of Aberdeen\n2016 – 2021\n- Rodent pest population dynamics\n- Publications: Roos et al. (2019, 2022)\n\n\nBSc (Hons) Zoology, University of Aberdeen\n2012 – 2016\n- Graduated First Class"
+  },
+  {
+    "objectID": "cv.html#awards-funding",
+    "href": "cv.html#awards-funding",
+    "title": "\nDeon Roos\n",
+    "section": "Awards & Funding",
+    "text": "Awards & Funding\n\nBest Student Presentation, University of Aberdeen\n2019\nTravelling waves as a form of spatio-temporal asynchrony\n\n\nBest Presentation, Iberian Vole Workshop, Porto\n2019\nSpatio-temporal asynchrony in a cyclic vole species\n\n\nSir Maitland Mackie Scholarship, University of Aberdeen\n2017\nFunding for agricultural research\n\n\nOutstanding BSc Zoology Student, University of Aberdeen\n2016\n\n\nPeople’s Trust Internship, PTES\n2016\nFunded research after BSc thesis\n\n\nCarnegie Summer Scholarship\n2015\nSupported BSc data collection"
+  },
+  {
+    "objectID": "cv.html#skills",
+    "href": "cv.html#skills",
+    "title": "\nDeon Roos\n",
+    "section": "Skills",
+    "text": "Skills\n\nProgramming: R, RShiny\n\nMarkup: RMarkdown, LaTeX\n\nVersion Control: Git\n\nLanguages: English (Fluent), Afrikaans (Fluent), Spanish (Basic)"
+  },
+  {
+    "objectID": "cv.html#phd-students",
+    "href": "cv.html#phd-students",
+    "title": "\nDeon Roos\n",
+    "section": "PhD students",
+    "text": "PhD students\n\nSeungyeon Lee, University of Aberdeen\n2024 – Present\n- Integrated population models of tawny owls."
   }
 ]

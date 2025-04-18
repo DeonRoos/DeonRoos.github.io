@@ -2,8 +2,23 @@
 title: "About"
 ---
 
-About this site
+## Dr. Deon Roos
 
-```{r}
-1 + 1
-```
+I am a lecturer in Applied Statistics at the University of Aberdeen where I teach and conduct research in medicine and biology. My academic interests include spatio-temporal modelling, Bayesian heirarchical modelling, hidden Markov models, amongst others.
+
+### Courses I Teach
+
+-   BI3010 -- 3rd year statistics course covering, `R`, linear and generalised linear models, `ggplot2`, basics of causal inference.
+-   PGR-GLM - A PhD GLM course
+
+### Web Applications
+
+Here are a few interactive apps I've developed:
+
+-   [Distributions App](https://deonroos.shinyapps.io/Distributions/)
+-   [Aberdeen House Prices](https://deonroos.shinyapps.io/Aberdeen_House_Prices/)
+-   [Aberdeen Rental Prices](https://deonroos.shinyapps.io/BI3010_Rent/)
+
+### Contact
+
+You can reach me at deon\[dot\]roos4\[at\]abdn.ac.uk or visit my [github](https://github.com/DeonRoos/DeonRoos.github.io) page.

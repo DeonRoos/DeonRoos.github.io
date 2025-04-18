@@ -1,11 +1,65 @@
 ---
-title: "Deon Roos"
+title: "What I do"
+format: html
 ---
 
-This is a Quarto website.
+I use statistical models to make sense of data, often Bayesian, hierarchical, and multi-level in nature, with a strong visual and computational focus.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+<div style="text-align: center; margin: 2em 0;">
 
-```{r}
-1 + 1
-```
+<!-- Styled equations -->
+<div style="text-align: center; color: #00A68A; font-size: 1.2em; margin-bottom: 3em;">
+
+$$
+\mu_i = f(\rho_{0,i}) + f(\rho_{1,i}) + f(\rho_{2,i})
+$$
+
+$$
+\rho_{j,i} = T + \left(\frac{1}{\zeta_{j,i}}\right) \times D_{j,i}
+\quad \text{for } j \in \{0, 1, 2\}
+$$
+
+$$
+D_{j,i} = -\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}
+$$
+
+$$
+\zeta_{j,i} = \beta_0 + \beta_1 \times z_i
+$$
+
+  <video width="600" autoplay loop muted playsinline style="border-radius: 8px; box-shadow: 0 0 20px #00A68A88; background-color: #202123;">
+    <source src="media/mu_wave.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <p style="color: #00A68A;"><em>Spatiotemporal interference on a fractal landscape</em></p>
+</div>
+
+</div>
+
+---
+
+## Contact
+
+📧 [Email](mailto:deon.roos4@abdn.ac.uk)  
+📖 [ORCID](https://orcid.org/0000-0003-4866-7472)  
+🐱 [GitHub](https://github.com/Deon88)
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const observer = new MutationObserver(() => {
+      const svgIcon = document.querySelector(".aa-SubmitButton .aa-SubmitIcon svg");
+      if (svgIcon) {
+        svgIcon.setAttribute("fill", "#00A68A");
+        svgIcon.setAttribute("stroke", "#00A68A");
+        svgIcon.style.color = "#00A68A";
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  });
+</script>

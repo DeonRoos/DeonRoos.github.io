@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Dr Deon Roos - What I do</title>
+<title>Dr Deon Roos -</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,8 +59,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -83,11 +81,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./courses.html" rel="" target="">
+    <a class="nav-link active" href="./courses.html" rel="" target="" aria-current="page">
  <span class="menu-text">Courses</span></a>
   </li>  
   <li class="nav-item">
@@ -96,7 +94,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./cv.html" rel="" target="">
- <span class="menu-text">Curriculum Vitae</span></a>
+ <span class="menu-text">CV</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -113,71 +111,80 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">What I do</h1>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<p>I use statistical models to make sense of data, often Bayesian, hierarchical, and multi-level in nature, with a strong visual and computational focus.</p>
-<div style="text-align: center; margin: 2em 0;">
-<!-- Styled equations -->
-<div style="text-align: center; color: #00A68A; font-size: 1.2em; margin-bottom: 3em;">
-<p><span class="math display">\[
-\mu_i = f(\rho_{0,i}) + f(\rho_{1,i}) + f(\rho_{2,i})
-\]</span></p>
-<p><span class="math display">\[
-\rho_{j,i} = T + \left(\frac{1}{\zeta_{j,i}}\right) \times D_{j,i}
-\quad \text{for } j \in \{0, 1, 2\}
-\]</span></p>
-<p><span class="math display">\[
-D_{j,i} = -\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}
-\]</span></p>
-<p><span class="math display">\[
-\zeta_{j,i} = \beta_0 + \beta_1 \times z_i
-\]</span></p>
-<video width="600" autoplay="" loop="" muted="" playsinline="" style="border-radius: 8px; box-shadow: 0 0 20px #00A68A88; background-color: #202123;"> <source src="media/mu_wave.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
-<p style="color: #00A68A;">
-<em>Spatiotemporal interference on a fractal landscape</em>
-</p>
-</div>
-</div>
+<section id="undergraduate-teaching" class="level2">
+<h2 class="anchored" data-anchor-id="undergraduate-teaching">Undergraduate Teaching</h2>
+<section id="bi3010-statistical-analysis-of-biological-data" class="level3">
+<h3 class="anchored" data-anchor-id="bi3010-statistical-analysis-of-biological-data">BI3010: Statistical Analysis of Biological Data</h3>
+<p>This course introduces students to key statistical concepts and data analysis techniques in biological sciences. It makes strong use of R and <code>ggplot2</code> but aims to give a strong theoretical understanding of statistical modelling and associated topics.</p>
+<section id="modules" class="level4">
+<h4 class="anchored" data-anchor-id="modules">Modules:</h4>
+<ul>
+<li>Why do we need statistics?<br>
+</li>
+<li>Introduction to linear models (LM) and hidden assumptions<br>
+</li>
+<li>The theory of effective data visualisation<br>
+</li>
+<li>R and <code>ggplot2</code><br>
+</li>
+<li>LMs with a continuous predictor<br>
+</li>
+<li>Interpreting LMs with a continuous predictor<br>
+</li>
+<li>Assessing assumptions of LMs with a continuous predictor<br>
+</li>
+<li>LMs with a categorical predictor<br>
+</li>
+<li>Interpreting LMs with a categorical predictor<br>
+</li>
+<li>Assessing assumptions of LMs with a categorical predictor<br>
+</li>
+<li>LMs with multiple predictors<br>
+</li>
+<li>Confounding and causality<br>
+</li>
+<li>Null Hypothesis Significance Testing and P-values<br>
+</li>
+<li>An Information Criterion (AIC)<br>
+</li>
+<li>An introduction to GLMs<br>
+</li>
+<li>Poisson GLMs</li>
+</ul>
 <hr>
-<section id="contact" class="level2">
-<h2 class="anchored" data-anchor-id="contact">Contact</h2>
-<p>📧 <a href="mailto:deon.roos4@abdn.ac.uk">Email</a><br>
-📖 <a href="https://orcid.org/0000-0003-4866-7472">ORCID</a><br>
-🐱 <a href="https://github.com/Deon88">GitHub</a></p>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const observer = new MutationObserver(() => {
-      const svgIcon = document.querySelector(".aa-SubmitButton .aa-SubmitIcon svg");
-      if (svgIcon) {
-        svgIcon.setAttribute("fill", "#00A68A");
-        svgIcon.setAttribute("stroke", "#00A68A");
-        svgIcon.style.color = "#00A68A";
-      }
-    });
+</section>
+</section>
+</section>
+<section id="postgraduate-teaching" class="level2">
+<h2 class="anchored" data-anchor-id="postgraduate-teaching">Postgraduate Teaching</h2>
+<section id="pgr-course-generalised-linear-models-glms" class="level3">
+<h3 class="anchored" data-anchor-id="pgr-course-generalised-linear-models-glms">PGR Course: Generalised Linear Models (GLMs)</h3>
+<p>This advanced course focuses on the theory and application of Generalised Linear Models, tailored for postgraduate researchers. The course is tailored to be non-field specific meaning it can be taken by geologists to marketers and any in between.</p>
+<p>It emphasises:</p>
+<ul>
+<li>Understanding the underlying statistical theory</li>
+<li>Parameter estimation</li>
+<li>Model fitting</li>
+<li>Connecting models to the underlying equations</li>
+</ul>
+<section id="modules-1" class="level4">
+<h4 class="anchored" data-anchor-id="modules-1">Modules:</h4>
+<ul>
+<li>Introduction to statistical modelling and GLMs<br>
+</li>
+<li>Poisson GLMs<br>
+</li>
+<li>Binomial GLMs<br>
+</li>
+<li>Bernoulli GLMs</li>
+</ul>
+<p>🔗 <a href="https://alexd106.github.io/PGR-GLM/">Visit the course website</a></p>
 
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
-  });
-</script>
 
-
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

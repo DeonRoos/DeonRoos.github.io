@@ -1,0 +1,113 @@
+---
+title: ""
+format: html
+---
+
+## Peer-reviewed papers
+
+```{r include=TRUE, echo=FALSE, results='asis', message=FALSE, warning=FALSE}
+library(httr)
+library(jsonlite)
+library(glue)
+library(purrr)
+
+orcid_id <- "0000-0003-4866-7472"  # Replace with your ORCID iD
+
+res <- GET(glue("https://pub.orcid.org/v3.0/{orcid_id}/works"), accept("application/json"))
+
+if (res$status_code == 200) {
+  data <- content(res, as = "parsed", type = "application/json")
+  
+  for (work in data$group) {
+    summary <- work$`work-summary`[[1]]
+    put_code <- summary$`put-code`
+    
+    # Fetch full record to get author list and richer metadata
+    detail_url <- glue("https://pub.orcid.org/v3.0/{orcid_id}/work/{put_code}")
+    detail_res <- GET(detail_url, accept("application/json"))
+    
+    if (detail_res$status_code == 200) {
+      work_data <- content(detail_res, as = "parsed", type = "application/json")
+      
+      title <- work_data$title$title$value
+      journal <- work_data$`journal-title`$value %||% ""
+      year <- work_data$`publication-date`$year$value %||% "n.d."
+      
+      # Get author names
+      contributors <- work_data$contributors$contributor
+      authors <- if (!is.null(contributors)) {
+        raw_names <- map_chr(contributors, \(a) a$`credit-name`$value)
+        
+        # Highlight variants of "Deon Roos"
+        highlighted <- map_chr(raw_names, \(name) {
+          if (grepl("(?i)roos.*d|d.*roos|deon roos", name, perl = TRUE)) {
+            glue("<span style='color: #00A68A; font-weight: bold'>{name}</span>")
+          } else {
+            name
+          }
+        })
+        
+        paste(highlighted, collapse = ", ")
+      } else {
+        "Unknown Authors"
+      }
+      
+      # Build citation
+      citation <- glue("{authors} ({year}). <strong>{title}</strong>{if (journal != '') glue(', <em>{journal}</em>')}.")
+      
+      # External link if DOI exists
+      ext_ids <- work_data$`external-ids`$`external-id`
+      link <- NULL
+      if (!is.null(ext_ids)) {
+        for (id in ext_ids) {
+          if (tolower(id$`external-id-type`) == "doi") {
+            link <- glue("https://doi.org/{id$`external-id-value`}")
+            break
+          }
+        }
+      }
+      
+      # Output
+      if (!is.null(link)) {
+        cat(glue("<div style='margin-bottom: 1.2em;'>{citation} <a href='{link}' target='_blank'>📄</a></div>\n"))
+      } else {
+        cat(glue("<div style='margin-bottom: 1.2em;'>{citation}</div>\n"))
+      }
+    }
+  }
+} else {
+  cat("<p>Unable to fetch publications from ORCID at this time.</p>")
+}
+```
+
+## Web Applications
+
+```{r echo=FALSE, results='asis'}
+apps <- list(
+  list(name = "Statistical Distributions", url = "https://deonroos.shinyapps.io/Distributions/", image = "media/distributions.png"),
+  list(name = "Predicting House Prices", url = "https://deonroos.shinyapps.io/Aberdeen_House_Prices/", image = "media/house_price.png"),
+  list(name = "Predicting Rent Prices", url = "https://deonroos.shinyapps.io/BI3010_Rent/", image = "media/rent.png")
+)
+
+
+cat("<div class='app-tiles'>")
+for (app in apps) {
+  cat(glue("
+    <a href='{app$url}' class='app-tile' style='background-image: url({app$image});' target='_blank'>
+      <div class='app-label'>{app$name}</div>
+    </a>
+  "))
+}
+cat("</div>")
+```
+
+## Textbooks
+
+```{r echo=FALSE, results='asis'}
+# Manually formatted citation for the textbook
+title <- "An introduction to R"
+authors <- "A Douglas, <span style='color: #00A68A; font-weight: bold'>D Roos</span>, F Mancini, A Couto, D Lusseau"
+link <- "https://intro2r.com"
+
+cat(glue("<div style='margin-bottom: 1.2em;'>{authors}. <strong>{title}</strong>. <a href='{link}' target='_blank'>📘</a></div>"))
+```

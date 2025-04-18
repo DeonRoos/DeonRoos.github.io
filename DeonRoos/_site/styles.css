@@ -1,1 +1,497 @@
-/* css styles */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&display=swap');
+
+/* === Global Styles === */
+body {
+  background-color: #202123 !important;
+  color: white;
+}
+
+/* === Navbar === */
+.navbar {
+  background-color: #202123 !important;
+  color: #00A68A !important;
+  font-weight: normal;
+  font-size: 20px;
+  border: none !important;
+  box-shadow: none !important;
+  position: relative;
+  z-index: 10;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 4px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 166, 138, 1) 0%,
+    rgba(0, 166, 138, 0.8) 30%,
+    rgba(0, 166, 138, 0.5) 60%,
+    rgba(0, 166, 138, 0) 100%
+  );
+  filter: blur(4px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.navbar .navbar-brand {
+  font-weight: normal !important;
+  color: #fff !important;
+  font-size: 28px !important;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+/* === Headers and Text === */
+h1, h2, h3, h4, h5, h6, p {
+  color: white;
+}
+
+/* === Panels and Cards === */
+.panel, .card, .well {
+  background-color: #202123 !important;
+  border: 1px solid #00A68A;
+}
+
+/* === Inputs and Buttons === */
+input, select, textarea, .form-control {
+  background-color: #444654 !important;
+  color: white !important;
+  border: 1px solid #00A68A;
+}
+
+button, .btn {
+  background-color: #00A68A !important;
+  color: #FFFFFF !important;
+  border: 1px solid #00A68A;
+}
+
+/* === Image Styling === */
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.image-container img {
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+
+/* === Tables and Code === */
+table {
+  background-color: #202123;
+  color: white;
+  border-color: #00A68A;
+}
+
+th, td {
+  border-color: #00A68A;
+}
+
+/* === Modal === */
+.modal-content {
+  background-color: #202123 !important;
+  color: white !important;
+  border: 1px solid #00A68A !important;
+}
+
+.modal-header, .modal-footer {
+  background-color: #444654 !important;
+  border-top: 1px solid #00A68A;
+}
+
+.modal-title {
+  color: #00A68A !important;
+  font-weight: bold;
+}
+
+/* === Custom Highlighting (Optional for code blocks) === */
+pre, code {
+  background-color: #2d2f31 !important;
+  color: #00A68A !important;
+}
+
+/* === URLs === */
+a {
+  color: #F7C908;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f8d232;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #d1aa07;
+}
+
+/* === SEARCH BAR + MODAL STYLING === */
+
+/* Navbar search button */
+.navbar .nav-link[href="#quarto-search-modal"] {
+  background-color: #202123 !important;
+  border: none !important;
+}
+
+.navbar .nav-link[href="#quarto-search-modal"] i {
+  color: #00A68A !important;
+}
+
+/* Modal background */
+#quarto-search-modal .modal-content {
+  background-color: #202123 !important;
+  color: white !important;
+  border: 1px solid #00A68A !important;
+  box-shadow: 0 0 12px rgba(0, 166, 138, 0.4);
+}
+
+/* Input box in modal */
+#quarto-search-modal input[type="text"] {
+  background-color: #2d2f31 !important;
+  color: white !important;
+  border: 2px solid #00A68A !important;
+  box-shadow: 0 0 8px rgba(0, 166, 138, 0.8) !important;
+}
+
+/* Search icon inside modal input */
+#quarto-search-modal .search-input-icon i {
+  background-color: transparent !important;
+  color: #00A68A !important;
+}
+
+/* Cancel button styling */
+#quarto-search-modal .search-cancel-button {
+  background-color: #202123 !important;
+  color: #00A68A !important;
+  border: 1px solid #00A68A !important;
+}
+
+/* === Algolia-style Search Button Fix === */
+
+/* Change the button background in navbar */
+.aa-DetachedSearchButton {
+  background-color: #202123 !important;
+  border: 1px solid #00A68A !important;
+}
+
+/* Change the magnifying glass icon color */
+.aa-SubmitIcon svg {
+  fill: #00A68A !important;
+}
+
+/* === Modal Background + Input Box === */
+
+/* Whole modal background */
+.aa-Panel {
+  background-color: #202123 !important;
+  color: white !important;
+  border: 1px solid #00A68A !important;
+  box-shadow: 0 0 12px rgba(0, 166, 138, 0.4) !important;
+}
+
+/* Search input field inside the modal */
+.aa-Input {
+  background-color: #2d2f31 !important;
+  color: white !important;
+  border: 2px solid #00A68A !important;
+  box-shadow: 0 0 8px rgba(0, 166, 138, 0.8) !important;
+}
+
+/* Optional: glow the submit icon in modal */
+.aa-SubmitButton {
+  background-color: #202123 !important;
+  border: none !important;
+}
+
+.aa-SubmitIcon svg {
+  fill: #00A68A !important;
+}
+
+/* === Clean up remaining green outline on search button === */
+.aa-DetachedSearchButton:focus,
+.aa-DetachedSearchButton:focus-visible,
+.aa-DetachedSearchButton:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 1px solid #00A68A !important;  /* Clean green border only */
+}
+
+/* === Modal container (fix for full background) === */
+.aa-DetachedContainer.aa-DetachedContainer--modal {
+  background-color: #202123 !important;
+  border: 1px solid #00A68A !important;
+  box-shadow: 0 0 12px rgba(0, 166, 138, 0.5) !important;
+}
+
+/* Optional: strengthen glow of modal form */
+.aa-DetachedFormContainer {
+  background-color: #202123 !important;
+  box-shadow: 0 0 15px rgba(0, 166, 138, 0.3) !important;
+}
+
+/* === Modal submit button (inside search modal) === */
+.aa-SubmitButton {
+  background-color: #202123 !important;
+  border: 1px solid #00A68A !important;
+  padding: 8px !important;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal submit button parent — defines currentColor for SVG inside */
+.aa-SubmitButton {
+  background-color: #202123 !important;
+  border: 1px solid #00A68A !important;
+  padding: 8px !important;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00A68A !important; /* THIS is what controls the icon color */
+}
+
+/* Final override: force parent of SVG to pass green as currentColor */
+.aa-SubmitIcon {
+  color: #FFFFFF !important;
+}
+
+/* === Fix background of text entry container === */
+
+.aa-Form {
+  background-color: transparent !important;
+}
+
+.aa-InputWrapper {
+  background-color: #202123 !important;
+  border: 1px solid #00A68A !important;
+  border-radius: 6px !important;
+  padding: 2px;
+  box-shadow: 0 0 10px #202123 !important;
+}
+
+/* Optional: style the left icon (prefix) and right button (suffix) wrappers */
+.aa-InputWrapperPrefix,
+.aa-InputWrapperSuffix {
+  background-color: #202123 !important;
+}
+
+/* === Remove white glow/focus ring around input wrapper === */
+.aa-InputWrapper:focus-within {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #00A68A !important; /* Keep your green border */
+}
+
+/* Also remove outline directly from input field */
+.aa-Input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* === Kill any white border/line around form === */
+.aa-Form,
+.aa-Form * {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #202123 !important;
+  background-color: #202123 !important;
+}
+
+/* Optional: explicitly clean up default fieldset styling */
+.aa-Form fieldset {
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* === Remove green border/outline from navbar search icon === */
+.aa-DetachedSearchButton,
+.aa-DetachedSearchButton:focus,
+.aa-DetachedSearchButton:focus-visible,
+.aa-DetachedSearchButton:active {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: #202123 !important;
+}
+
+/* If it inherits from a parent (rare, but safe to include) */
+.aa-Autocomplete {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* === Search Results Dropdown === */
+.aa-DetachedOverlay {
+  background-color: #202123 !important;
+  color: white !important;
+  border: 1px solid #00A68A !important;
+}
+
+/* Search section titles (e.g., "Pages", "Posts") */
+.search-result-doc-section {
+  background-color: #202123 !important;
+  color: #00A68A !important;
+  font-weight: bold;
+  padding: 6px 10px;
+}
+
+/* Individual result item */
+.aa-Item {
+  background-color: #202123 !important;
+  color: white !important;
+  padding: 10px;
+  border-bottom: 1px solid #2d2f31;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Hovered result item */
+.aa-Item[aria-selected="true"],
+.aa-Item:hover {
+  background-color: #2d2f31 !important;
+  color: #00A68A !important;
+}
+
+/* === Search Result Panel === */
+.aa-DetachedOverlay,
+.aa-Panel {
+  background-color: #202123 !important;
+  color: white !important;
+  border: 1px solid #00A68A !important;
+}
+
+/* === Section headings (like "Pages", "Courses") === */
+.search-result-doc-section {
+  background-color: #202123 !important;
+  color: #00A68A !important;
+  font-weight: bold !important;
+  padding: 6px 12px;
+  border-bottom: 1px solid #2d2f31;
+}
+
+/* === Each search item === */
+.search-item,
+.search-result-container,
+.search-result-more,
+.aa-Item {
+  background-color: #202123 !important;
+  color: white !important;
+  border-bottom: 1px solid #2d2f31;
+  padding: 10px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* === Active/selected item (hover or arrow scroll) === */
+.aa-Item[aria-selected="true"],
+.search-result-container:has(.aa-Item[aria-selected="true"]),
+.search-item:hover,
+.search-result-more:hover {
+  background-color: #2d2f31 !important;
+  color: #00A68A !important;
+}
+
+/* === Force override for rogue white backgrounds or text */
+.search-item *,
+.search-result-container *,
+.search-result-more *,
+.aa-Item * {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+/* === Fix white background and white text in search-result-header === */
+.search-result-header {
+  background-color: #202123 !important;
+  color: #FFFFFF !important;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-bottom: 1px solid #2d2f31;
+}
+
+/* === CV Specific === */
+.cv-header {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.cv-header h1 {
+  font-size: 2.5em;
+  margin-bottom: 0;
+}
+
+.cv-subtitle {
+  font-size: 1.2em;
+  font-weight: 300;
+  color: #00A68A;
+}
+
+.cv-contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5em;
+  margin-top: 0.5em;
+}
+
+.cv-contact-item {
+  display: inline-block;
+  color: white;
+}
+
+
+.cv-entry {
+  margin-bottom: 1.5em;
+  border-left: 3px solid #00A68A;
+  padding-left: 1em;
+}
+
+.cv-entry .cv-dates {
+  font-style: italic;
+  color: #ccc;
+}
+
+/* === App Tiles === */
+.app-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+  font-family: 'Segoe UI', 'Roboto', 'Inter', sans-serif;
+  margin-top: 1em;
+}
+
+.app-tile {
+  position: relative;
+  width: 300px;
+  height: 170px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.app-tile:hover {
+  transform: scale(1.03);
+}
+
+.app-label {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.75);
+  color: #00A68A;
+  padding: 0.75em;
+  font-size: 1em;
+  text-align: center;
+  font-weight: bold;
+}

@@ -1,19 +1,25 @@
 project:
   type: website
+  resources:
+    - media/mu_wave.mp4
+    - media/distributions.png
+    - media/house_price.png
+    - media/rent.png
 
 website:
-  title: "DeonRoos"
+  title: "Dr Deon Roos"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: "Home"
+        file: index.qmd
+      - text: "Courses"
+        file: courses.qmd
+      - text: "Works"
+        file: publications.qmd
+      - text: "Curriculum Vitae"
+        file: cv.qmd
 
 format:
   html:
-    theme: cosmo
+    theme: default
     css: styles.css
-    toc: true
-
-editor: visual
-
