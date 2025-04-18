@@ -16,21 +16,21 @@
   {
     "objectID": "courses.html",
     "href": "courses.html",
-    "title": "Dr Deon Roos",
+    "title": "Deon Roos",
     "section": "",
     "text": "This course introduces students to key statistical concepts and data analysis techniques in biological sciences. It makes strong use of R and ggplot2 but aims to give a strong theoretical understanding of statistical modelling and associated topics.\n\n\n\nWhy do we need statistics?\n\nIntroduction to linear models (LM) and hidden assumptions\n\nThe theory of effective data visualisation\n\nR and ggplot2\n\nLMs with a continuous predictor\n\nInterpreting LMs with a continuous predictor\n\nAssessing assumptions of LMs with a continuous predictor\n\nLMs with a categorical predictor\n\nInterpreting LMs with a categorical predictor\n\nAssessing assumptions of LMs with a categorical predictor\n\nLMs with multiple predictors\n\nConfounding and causality\n\nNull Hypothesis Significance Testing and P-values\n\nAn Information Criterion (AIC)\n\nAn introduction to GLMs\n\nPoisson GLMs"
   },
   {
     "objectID": "courses.html#undergraduate-teaching",
     "href": "courses.html#undergraduate-teaching",
-    "title": "Dr Deon Roos",
+    "title": "Deon Roos",
     "section": "",
     "text": "This course introduces students to key statistical concepts and data analysis techniques in biological sciences. It makes strong use of R and ggplot2 but aims to give a strong theoretical understanding of statistical modelling and associated topics.\n\n\n\nWhy do we need statistics?\n\nIntroduction to linear models (LM) and hidden assumptions\n\nThe theory of effective data visualisation\n\nR and ggplot2\n\nLMs with a continuous predictor\n\nInterpreting LMs with a continuous predictor\n\nAssessing assumptions of LMs with a continuous predictor\n\nLMs with a categorical predictor\n\nInterpreting LMs with a categorical predictor\n\nAssessing assumptions of LMs with a categorical predictor\n\nLMs with multiple predictors\n\nConfounding and causality\n\nNull Hypothesis Significance Testing and P-values\n\nAn Information Criterion (AIC)\n\nAn introduction to GLMs\n\nPoisson GLMs"
   },
   {
     "objectID": "courses.html#postgraduate-teaching",
     "href": "courses.html#postgraduate-teaching",
-    "title": "Dr Deon Roos",
+    "title": "Deon Roos",
     "section": "Postgraduate Teaching",
     "text": "Postgraduate Teaching\n\nPGR Course: Generalised Linear Models (GLMs)\nThis advanced course focuses on the theory and application of Generalised Linear Models, tailored for postgraduate researchers. The course is tailored to be non-field specific meaning it can be taken by geologists to marketers and any in between.\nIt emphasises:\n\nUnderstanding the underlying statistical theory\nParameter estimation\nModel fitting\nConnecting models to the underlying equations\n\n\nModules:\n\nIntroduction to statistical modelling and GLMs\n\nPoisson GLMs\n\nBinomial GLMs\n\nBernoulli GLMs\n\n🔗 Visit the course website"
   },
@@ -81,40 +81,33 @@
     "href": "index.html",
     "title": "What I do",
     "section": "",
-    "text": "I use statistical models to make sense of data, often Bayesian, hierarchical, and multi-level in nature, with a strong visual and computational focus."
-  },
-  {
-    "objectID": "index.html#contact",
-    "href": "index.html#contact",
-    "title": "What I do",
-    "section": "Contact",
-    "text": "Contact\n📧 Email\n📖 ORCID\n🐱 GitHub"
+    "text": "I use statistical models to learn something about the world.\n\n\n\n\\[\n\\mu_i = f(\\rho_{0,i}) + f(\\rho_{1,i}) + f(\\rho_{2,i})\n\\]\n\\[\n\\rho_{j,i} = T + \\left(\\frac{1}{\\zeta_{j,i}}\\right) \\times D_{j,i}\n\\quad \\text{for } j \\in \\{0, 1, 2\\}\n\\]\n\\[\nD_{j,i} = -\\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}\n\\]\n\\[\n\\zeta_{j,i} = \\beta_0 + \\beta_1 \\times z_i\n\\]\n  Your browser does not support the video tag. \n\nSpatiotemporal interference on a fractal landscape"
   },
   {
     "objectID": "publications.html",
     "href": "publications.html",
-    "title": "Dr Deon Roos",
+    "title": "Deon Roos",
     "section": "",
     "text": "Cristiano Tiberi, Sarah Beatham, Julia Coats, Izzy Rochester, Deon Roos, Riccardo Primi, Andrea Vitali, Giovanna Massei (2025). An assessment of whether age, sex, and reproductive status affect bait uptake by grey squirrels, Journal of Wildlife Management. 📄\n\n\nTiago Crispim-Mendes, Deon Roos, Clara Mendes Ferreira, Joana Paupério, João Paulo Silva, Sérgio Godinho, Paulo Célio Alves, António Mira, Pedro Beja, Xavier Lambin, Ricardo Pita (2024). Patch spatial attributes and time to disturbance affect the emergence of source local populations within ephemeral habitats, Ecological Modelling. 📄\n\n\nJ. Colomer, G. Massei, Deon Roos, C. Rosell, J. D. Rodríguez-Teijeiro (2024). What drives wild boar density and population growth in Mediterranean environments?, Science of the Total Environment. 📄\n\n\nDeon Roos, Constantino Caminero‐Saldaña, David Elston, François Mougeot, María Carmen García‐Ariza, Beatriz Arroyo, Juan José Luque‐Larena, Francisco Javier Rojo Revilla, Xavier Lambin (2022). From pattern to process? Dual travelling waves, with contrasting propagation speeds, best describe a self‐organised spatio‐temporal pattern in population growth of a cyclic rodent, Ecology Letters. 📄\n\n\nJames Slingsby, Beth E. Scott, Louise Kregting, Jason McIlvenny, Jared Wilson, Ana Couto, Deon Roos, Marion Yanez, Benjamin Williamson (2021). Surface Characterisation of Kolk-Boils within Tidal Stream Environments Using UAV Imagery, Journal of Marine Science and Engineering. 📄\n\n\nRoos, D., Caminero Saldaña, C., Arroyo, B., Mougeot, F., Luque-Larena, J.J., Lambin, X. (2019). Unintentional effects of environmentally-friendly farming practices: Arising conflicts between zero-tillage and a crop pest, the common vole (Microtus arvalis), Agriculture, Ecosystems and Environment. 📄"
   },
   {
     "objectID": "publications.html#peer-reviewed-papers",
     "href": "publications.html#peer-reviewed-papers",
-    "title": "Dr Deon Roos",
+    "title": "Deon Roos",
     "section": "",
     "text": "Cristiano Tiberi, Sarah Beatham, Julia Coats, Izzy Rochester, Deon Roos, Riccardo Primi, Andrea Vitali, Giovanna Massei (2025). An assessment of whether age, sex, and reproductive status affect bait uptake by grey squirrels, Journal of Wildlife Management. 📄\n\n\nTiago Crispim-Mendes, Deon Roos, Clara Mendes Ferreira, Joana Paupério, João Paulo Silva, Sérgio Godinho, Paulo Célio Alves, António Mira, Pedro Beja, Xavier Lambin, Ricardo Pita (2024). Patch spatial attributes and time to disturbance affect the emergence of source local populations within ephemeral habitats, Ecological Modelling. 📄\n\n\nJ. Colomer, G. Massei, Deon Roos, C. Rosell, J. D. Rodríguez-Teijeiro (2024). What drives wild boar density and population growth in Mediterranean environments?, Science of the Total Environment. 📄\n\n\nDeon Roos, Constantino Caminero‐Saldaña, David Elston, François Mougeot, María Carmen García‐Ariza, Beatriz Arroyo, Juan José Luque‐Larena, Francisco Javier Rojo Revilla, Xavier Lambin (2022). From pattern to process? Dual travelling waves, with contrasting propagation speeds, best describe a self‐organised spatio‐temporal pattern in population growth of a cyclic rodent, Ecology Letters. 📄\n\n\nJames Slingsby, Beth E. Scott, Louise Kregting, Jason McIlvenny, Jared Wilson, Ana Couto, Deon Roos, Marion Yanez, Benjamin Williamson (2021). Surface Characterisation of Kolk-Boils within Tidal Stream Environments Using UAV Imagery, Journal of Marine Science and Engineering. 📄\n\n\nRoos, D., Caminero Saldaña, C., Arroyo, B., Mougeot, F., Luque-Larena, J.J., Lambin, X. (2019). Unintentional effects of environmentally-friendly farming practices: Arising conflicts between zero-tillage and a crop pest, the common vole (Microtus arvalis), Agriculture, Ecosystems and Environment. 📄"
   },
   {
     "objectID": "publications.html#web-applications",
     "href": "publications.html#web-applications",
-    "title": "Dr Deon Roos",
+    "title": "Deon Roos",
     "section": "Web Applications",
     "text": "Web Applications\n\n\n\nStatistical Distributions\n\n \n\nPredicting House Prices\n\n \n\nPredicting Rent Prices"
   },
   {
     "objectID": "publications.html#textbooks",
     "href": "publications.html#textbooks",
-    "title": "Dr Deon Roos",
+    "title": "Deon Roos",
     "section": "Textbooks",
     "text": "Textbooks\n\nA Douglas, D Roos, F Mancini, A Couto, D Lusseau. An introduction to R. 📘"
   }
