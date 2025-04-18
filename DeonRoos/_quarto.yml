@@ -8,6 +8,7 @@ project:
 
 website:
   title: "Deon Roos"
+  description: "Lecturer in Applied Statistics | Data Visualisation | Statistics Course | Statistical Distributions"
   navbar:
     left:
       - text: "Home"
