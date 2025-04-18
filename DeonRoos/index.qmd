@@ -3,8 +3,6 @@ title: "What I do"
 format: html
 ---
 
-I use statistical models to learn something about the world.
-
 <div style="text-align: center; margin: 2em 0;">
 
 <!-- Styled equations -->
