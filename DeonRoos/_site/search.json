@@ -81,7 +81,7 @@
     "href": "index.html",
     "title": "What I do",
     "section": "",
-    "text": "I use statistical models to make sense of data, often Bayesian, hierarchical, and multi-level in nature, with a strong visual and computational focus."
+    "text": "I use statistical models to learn something about the world.\n\n\n\n\\[\n\\mu_i = f(\\rho_{0,i}) + f(\\rho_{1,i}) + f(\\rho_{2,i})\n\\]\n\\[\n\\rho_{j,i} = T + \\left(\\frac{1}{\\zeta_{j,i}}\\right) \\times D_{j,i}\n\\quad \\text{for } j \\in \\{0, 1, 2\\}\n\\]\n\\[\nD_{j,i} = -\\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}\n\\]\n\\[\n\\zeta_{j,i} = \\beta_0 + \\beta_1 \\times z_i\n\\]\n  Your browser does not support the video tag. \n\nSpatiotemporal interference on a fractal landscape"
   },
   {
     "objectID": "index.html#contact",
