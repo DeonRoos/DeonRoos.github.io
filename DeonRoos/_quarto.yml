@@ -23,3 +23,7 @@ format:
   html:
     theme: default
     css: styles.css
+
+publish:
+  provider: gh-pages
+  branch: gh-pages
