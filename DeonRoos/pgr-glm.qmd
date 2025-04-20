@@ -1,0 +1,52 @@
+---
+title: "PGR Course: Generalised Linear Models"
+format: html
+---
+
+## Overview
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+This advanced course focuses on the theory and application of Generalised Linear Models, tailored for PhD students and researchers. The course is designed to be non-field specific meaning it can be taken by geologists to marketers and any in between.
+
+### Topics Covered
+
+- Introduction to statistical modelling and GLMs  
+- Poisson GLMs  
+- Binomial GLMs  
+- Bernoulli GLMs  
+
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+![An example of what students learn](media/glm_binomial_illustration.png)
+</br>
+
+:::
+
+:::
+
+---
+
+## Learning Objectives
+
+- Understand the core structure of GLMs
+- Fit models using R
+- Translate statistical equations into model syntax
+- Interpret coefficients and results with confidence
+- Recognise when assumptions are violated
+
+---
+
+## Course Website
+
+🔗 [Visit the course website](https://alexd106.github.io/PGR-GLM/)
+
+---
+
+[$\leftarrow$ Back to all courses](courses.qmd)

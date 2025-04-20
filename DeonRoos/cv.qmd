@@ -1,5 +1,5 @@
 ---
-title: "CV"
+title: "Curriculum Vitae"
 format:
   html:
     css: styles.css
@@ -17,122 +17,40 @@ format:
   <span class="cv-contact-item">🐱 <a href="https://github.com/DeonRoos">GitHub</a></span>
 </div>
 
-
-
 ---
 
-## Employment
+## Sections
 
-::: {.cv-entry}
-**Lecturer in Applied Statistics**, University of Aberdeen  
-<span class="cv-dates">January 2024 – Present</span>  
-Aberdeen, Scotland  
-- Leading and collaborating interdisciplinary research in applied statistics with real-world impact.  
-- Teaching statistical theory and methods across undergraduate to PhD levels.  
-- Assisting in research projects through the application of collaborator-specified statistical approaches.  
-:::
+<div class="course-grid">
 
-::: {.cv-entry}
-**Senior Statistical Ecologist**, Animal & Plant Health Agency  
-<span class="cv-dates">May 2022 – January 2024</span>  
-Sand Hutton, England  
-- Led statistics and mentoring, developing bespoke methods for policy-driven projects across multidisciplinary teams.
-:::
+<div class="course-card">
+  <h3>Employment</h3>
+  <p>Work history across academia, statistical roles, and non-academic jobs.</p>
+  <a href="cv-employment.qmd" class="btn">View section</a>
+</div>
 
-::: {.cv-entry}
-**Teaching Fellow**, University of Aberdeen  
-<span class="cv-dates">Dec 2021 – May 2022</span>  
-- Coordinated and delivered a highly rated, fully online undergraduate statistics course with strong student engagement.
-:::
+<div class="course-card">
+  <h3>Education</h3>
+  <p>Formal degrees and institutions attended.</p>
+  <a href="cv-education.qmd" class="btn">View section</a>
+</div>
 
-::: {.cv-entry}
-**Research Fellow**, University of Aberdeen  
-<span class="cv-dates">Jun 2021 – Feb 2022</span>  
-- Conducted international ecological research, including study design and simulation modeling for species management.
-:::
+<div class="course-card">
+  <h3>PhD Students</h3>
+  <p>Supervision roles and ongoing projects.</p>
+  <a href="cv-phd.qmd" class="btn">View section</a>
+</div>
 
-::: {.cv-entry}
-**Teaching Fellow**, University of Aberdeen  
-<span class="cv-dates">Dec 2020 – May 2021</span>  
-- Course coordinator for undergraduate statistical course.
-:::
+<div class="course-card">
+  <h3>Awards & Funding</h3>
+  <p>Recognition and research funding received.</p>
+  <a href="cv-awards.qmd" class="btn">View section</a>
+</div>
 
-::: {.cv-entry}
-**Operating Department Support Worker**, NHS Grampian  
-<span class="cv-dates">2008 – 2012</span>  
-Elgin, Scotland  
-- Assisted in surgical procedures (non-sterile support).
-:::
+<div class="course-card">
+  <h3>Skills</h3>
+  <p>Technical, statistical, and communication expertise.</p>
+  <a href="cv-skills.qmd" class="btn">View section</a>
+</div>
 
-## Education
-
-::: {.cv-entry}
-**PhD Ecology**, University of Aberdeen  
-<span class="cv-dates">2016 – 2021</span>  
-- Rodent pest population dynamics  
-- Publications: Roos et al. (2019, 2022)
-:::
-
-::: {.cv-entry}
-**BSc (Hons) Zoology**, University of Aberdeen  
-<span class="cv-dates">2012 – 2016</span>  
-- Graduated First Class
-:::
-
-## PhD students
-
-::: {.cv-entry}
-**Seungyeon Lee**, University of Aberdeen  
-<span class="cv-dates">2024 – Present</span>  
-- Integrated population models of tawny owls.
-:::
-
-## Awards & Funding
-
-::: {.cv-entry}
-**Best Student Presentation**, University of Aberdeen  
-<span class="cv-dates">2019</span>  
-Travelling waves as a form of spatio-temporal asynchrony
-:::
-
-::: {.cv-entry}
-**Best Presentation**, Iberian Vole Workshop, Porto  
-<span class="cv-dates">2019</span>  
-Spatio-temporal asynchrony in a cyclic vole species
-:::
-
-::: {.cv-entry}
-**Sir Maitland Mackie Scholarship**, University of Aberdeen  
-<span class="cv-dates">2017</span>  
-Funding for agricultural research
-:::
-
-::: {.cv-entry}
-**Outstanding BSc Zoology Student**, University of Aberdeen  
-<span class="cv-dates">2016</span>  
-:::
-
-::: {.cv-entry}
-**People’s Trust Internship**, PTES  
-<span class="cv-dates">2016</span>  
-Funded research after BSc thesis
-:::
-
-::: {.cv-entry}
-**Carnegie Summer Scholarship**  
-<span class="cv-dates">2015</span>  
-Supported BSc data collection
-:::
-
-## Skills
-
-- **Programming**: R, RShiny, basic Python  
-- **Statistical Methods**: Spatio-temporal modelling, Bayesian inference, Hidden Markov models, non-linear modelling, hierarchical modelling, simulation-based inference  
-- **Data Visualisation**: ggplot2, gganimate, plotly, leaflet  
-- **Data Wrangling**: comfortable with tidyverse and base R approaches; experience using SQL (SQLite via R)  
-- **Teaching & Communication**: In-person and online delivery, course coordination (ca. 150 students), course administration, interactive and accessible teaching of complex methods, supervision of postgraduate and PhD students   
-- **Reproducible Research**: RMarkdown, Quarto, version control (Git), simulation workflows, reproducible project structure  
-- **Version Control**: Git (via GitHub and GitHub Pages)  
-- **Markup & Documentation**: RMarkdown, LaTeX, Quarto  
-- **APIs & Data Integration**: Working with RESTful APIs, JSON parsing, ORCID integration  
-- **Languages**: English (Fluent), Afrikaans (Fluent), Spanish (Basic)
+</div>

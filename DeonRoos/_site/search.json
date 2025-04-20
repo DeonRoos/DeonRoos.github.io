@@ -18,68 +18,68 @@
     "href": "courses.html",
     "title": "Teaching",
     "section": "",
-    "text": "This course introduces students to key statistical concepts and data analysis techniques in biological sciences. It makes strong use of R and ggplot2 but aims to give a strong theoretical understanding of statistical modelling and associated topics.\n\n\n\nWhy do we need statistics?\n\nIntroduction to linear models (LM) and hidden assumptions\n\nThe theory of effective data visualisation\n\nR and ggplot2\n\nLMs with a continuous predictor\n\nInterpreting LMs with a continuous predictor\n\nAssessing assumptions of LMs with a continuous predictor\n\nLMs with a categorical predictor\n\nInterpreting LMs with a categorical predictor\n\nAssessing assumptions of LMs with a categorical predictor\n\nLMs with multiple predictors\n\nConfounding and causality\n\nNull Hypothesis Significance Testing and P-values\n\nAn Information Criterion (AIC)\n\nAn introduction to GLMs\n\nPoisson GLMs"
+    "text": "This course covers key statistical concepts and theory for biological data using R.\n\nLearn more"
   },
   {
     "objectID": "courses.html#undergraduate-teaching",
     "href": "courses.html#undergraduate-teaching",
     "title": "Teaching",
     "section": "",
-    "text": "This course introduces students to key statistical concepts and data analysis techniques in biological sciences. It makes strong use of R and ggplot2 but aims to give a strong theoretical understanding of statistical modelling and associated topics.\n\n\n\nWhy do we need statistics?\n\nIntroduction to linear models (LM) and hidden assumptions\n\nThe theory of effective data visualisation\n\nR and ggplot2\n\nLMs with a continuous predictor\n\nInterpreting LMs with a continuous predictor\n\nAssessing assumptions of LMs with a continuous predictor\n\nLMs with a categorical predictor\n\nInterpreting LMs with a categorical predictor\n\nAssessing assumptions of LMs with a categorical predictor\n\nLMs with multiple predictors\n\nConfounding and causality\n\nNull Hypothesis Significance Testing and P-values\n\nAn Information Criterion (AIC)\n\nAn introduction to GLMs\n\nPoisson GLMs"
+    "text": "This course covers key statistical concepts and theory for biological data using R.\n\nLearn more"
   },
   {
     "objectID": "courses.html#postgraduate-teaching",
     "href": "courses.html#postgraduate-teaching",
     "title": "Teaching",
     "section": "Postgraduate Teaching",
-    "text": "Postgraduate Teaching\n\nPGR Course: Generalised Linear Models (GLMs)\nThis advanced course focuses on the theory and application of Generalised Linear Models, tailored for postgraduate researchers. The course is tailored to be non-field specific meaning it can be taken by geologists to marketers and any in between.\nIt emphasises:\n\nUnderstanding the underlying statistical theory\nParameter estimation\nModel fitting\nConnecting models to the underlying equations\n\n\nModules:\n\nIntroduction to statistical modelling and GLMs\n\nPoisson GLMs\n\nBinomial GLMs\n\nBernoulli GLMs\n\n🔗 Visit the course website"
+    "text": "Postgraduate Teaching\n\n\n\nPGR Course: Generalised Linear Models\n\n\nAn advanced course on GLMs designed for postgrads across disciplines using R.\n\nLearn more"
   },
   {
     "objectID": "cv.html",
     "href": "cv.html",
-    "title": "CV",
+    "title": "Curriculum Vitae",
     "section": "",
     "text": "Lecturer in Applied Statistics"
   },
   {
     "objectID": "cv.html#employment",
     "href": "cv.html#employment",
-    "title": "CV",
+    "title": "Cuccirculum Vitae",
     "section": "Employment",
     "text": "Employment\n\nLecturer in Applied Statistics, University of Aberdeen\nJanuary 2024 – Present\nAberdeen, Scotland\n- Leading and collaborating interdisciplinary research in applied statistics with real-world impact.\n- Teaching statistical theory and methods across undergraduate to PhD levels.\n- Assisting in research projects through the application of collaborator-specified statistical approaches.\n\n\nSenior Statistical Ecologist, Animal & Plant Health Agency\nMay 2022 – January 2024\nSand Hutton, England\n- Led statistics and mentoring, developing bespoke methods for policy-driven projects across multidisciplinary teams.\n\n\nTeaching Fellow, University of Aberdeen\nDec 2021 – May 2022\n- Coordinated and delivered a highly rated, fully online undergraduate statistics course with strong student engagement.\n\n\nResearch Fellow, University of Aberdeen\nJun 2021 – Feb 2022\n- Conducted international ecological research, including study design and simulation modeling for species management.\n\n\nTeaching Fellow, University of Aberdeen\nDec 2020 – May 2021\n- Course coordinator for undergraduate statistical course.\n\n\nOperating Department Support Worker, NHS Grampian\n2008 – 2012\nElgin, Scotland\n- Assisted in surgical procedures (non-sterile support)."
   },
   {
     "objectID": "cv.html#education",
     "href": "cv.html#education",
-    "title": "CV",
+    "title": "Cuccirculum Vitae",
     "section": "Education",
     "text": "Education\n\nPhD Ecology, University of Aberdeen\n2016 – 2021\n- Rodent pest population dynamics\n- Publications: Roos et al. (2019, 2022)\n\n\nBSc (Hons) Zoology, University of Aberdeen\n2012 – 2016\n- Graduated First Class"
   },
   {
     "objectID": "cv.html#phd-students",
     "href": "cv.html#phd-students",
-    "title": "CV",
+    "title": "Cuccirculum Vitae",
     "section": "PhD students",
     "text": "PhD students\n\nSeungyeon Lee, University of Aberdeen\n2024 – Present\n- Integrated population models of tawny owls."
   },
   {
     "objectID": "cv.html#awards-funding",
     "href": "cv.html#awards-funding",
-    "title": "CV",
+    "title": "Cuccirculum Vitae",
     "section": "Awards & Funding",
     "text": "Awards & Funding\n\nBest Student Presentation, University of Aberdeen\n2019\nTravelling waves as a form of spatio-temporal asynchrony\n\n\nBest Presentation, Iberian Vole Workshop, Porto\n2019\nSpatio-temporal asynchrony in a cyclic vole species\n\n\nSir Maitland Mackie Scholarship, University of Aberdeen\n2017\nFunding for agricultural research\n\n\nOutstanding BSc Zoology Student, University of Aberdeen\n2016\n\n\nPeople’s Trust Internship, PTES\n2016\nFunded research after BSc thesis\n\n\nCarnegie Summer Scholarship\n2015\nSupported BSc data collection"
   },
   {
     "objectID": "cv.html#skills",
     "href": "cv.html#skills",
-    "title": "CV",
+    "title": "Cuccirculum Vitae",
     "section": "Skills",
     "text": "Skills\n\nProgramming: R, RShiny, basic Python\n\nStatistical Methods: Spatio-temporal modelling, Bayesian inference, Hidden Markov models, non-linear modelling, hierarchical modelling, simulation-based inference\n\nData Visualisation: ggplot2, gganimate, plotly, leaflet\n\nData Wrangling: comfortable with tidyverse and base R approaches; experience using SQL (SQLite via R)\n\nTeaching & Communication: In-person and online delivery, course coordination (ca. 150 students), course administration, interactive and accessible teaching of complex methods, supervision of postgraduate and PhD students\n\nReproducible Research: RMarkdown, Quarto, version control (Git), simulation workflows, reproducible project structure\n\nVersion Control: Git (via GitHub and GitHub Pages)\n\nMarkup & Documentation: RMarkdown, LaTeX, Quarto\n\nAPIs & Data Integration: Working with RESTful APIs, JSON parsing, ORCID integration\n\nLanguages: English (Fluent), Afrikaans (Fluent), Spanish (Basic)"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "What I do",
+    "title": "What I do:",
     "section": "",
     "text": "\\[\n\\mu_i = f(\\rho_{0,i}) + f(\\rho_{1,i}) + f(\\rho_{2,i})\n\\]\n\\[\n\\rho_{j,i} = T + \\left(\\frac{1}{\\zeta_{j,i}}\\right) \\times D_{j,i}\n\\quad \\text{for } j \\in \\{0, 1, 2\\}\n\\]\n\\[\nD_{j,i} = -\\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}\n\\]\n\\[\n\\zeta_{j,i} = \\beta_0 + \\beta_1 \\times z_i\n\\]\n  Your browser does not support the video tag. \n\nSpatiotemporal interference on a fractal landscape"
   },
@@ -88,21 +88,21 @@
     "href": "publications.html",
     "title": "Output",
     "section": "",
-    "text": "Cristiano Tiberi, Sarah Beatham, Julia Coats, Izzy Rochester, Deon Roos, Riccardo Primi, Andrea Vitali, Giovanna Massei (2025). An assessment of whether age, sex, and reproductive status affect bait uptake by grey squirrels, Journal of Wildlife Management. 📄\n\n\nTiago Crispim-Mendes, Deon Roos, Clara Mendes Ferreira, Joana Paupério, João Paulo Silva, Sérgio Godinho, Paulo Célio Alves, António Mira, Pedro Beja, Xavier Lambin, Ricardo Pita (2024). Patch spatial attributes and time to disturbance affect the emergence of source local populations within ephemeral habitats, Ecological Modelling. 📄\n\n\nJ. Colomer, G. Massei, Deon Roos, C. Rosell, J. D. Rodríguez-Teijeiro (2024). What drives wild boar density and population growth in Mediterranean environments?, Science of the Total Environment. 📄\n\n\nDeon Roos, Constantino Caminero‐Saldaña, David Elston, François Mougeot, María Carmen García‐Ariza, Beatriz Arroyo, Juan José Luque‐Larena, Francisco Javier Rojo Revilla, Xavier Lambin (2022). From pattern to process? Dual travelling waves, with contrasting propagation speeds, best describe a self‐organised spatio‐temporal pattern in population growth of a cyclic rodent, Ecology Letters. 📄\n\n\nJames Slingsby, Beth E. Scott, Louise Kregting, Jason McIlvenny, Jared Wilson, Ana Couto, Deon Roos, Marion Yanez, Benjamin Williamson (2021). Surface Characterisation of Kolk-Boils within Tidal Stream Environments Using UAV Imagery, Journal of Marine Science and Engineering. 📄\n\n\nRoos, D., Caminero Saldaña, C., Arroyo, B., Mougeot, F., Luque-Larena, J.J., Lambin, X. (2019). Unintentional effects of environmentally-friendly farming practices: Arising conflicts between zero-tillage and a crop pest, the common vole (Microtus arvalis), Agriculture, Ecosystems and Environment. 📄"
+    "text": "Statistical Distributions\n\n \n\nPredicting House Prices\n\n \n\nPredicting Rent Prices"
   },
   {
     "objectID": "publications.html#peer-reviewed-papers",
     "href": "publications.html#peer-reviewed-papers",
     "title": "Output",
-    "section": "",
-    "text": "Cristiano Tiberi, Sarah Beatham, Julia Coats, Izzy Rochester, Deon Roos, Riccardo Primi, Andrea Vitali, Giovanna Massei (2025). An assessment of whether age, sex, and reproductive status affect bait uptake by grey squirrels, Journal of Wildlife Management. 📄\n\n\nTiago Crispim-Mendes, Deon Roos, Clara Mendes Ferreira, Joana Paupério, João Paulo Silva, Sérgio Godinho, Paulo Célio Alves, António Mira, Pedro Beja, Xavier Lambin, Ricardo Pita (2024). Patch spatial attributes and time to disturbance affect the emergence of source local populations within ephemeral habitats, Ecological Modelling. 📄\n\n\nJ. Colomer, G. Massei, Deon Roos, C. Rosell, J. D. Rodríguez-Teijeiro (2024). What drives wild boar density and population growth in Mediterranean environments?, Science of the Total Environment. 📄\n\n\nDeon Roos, Constantino Caminero‐Saldaña, David Elston, François Mougeot, María Carmen García‐Ariza, Beatriz Arroyo, Juan José Luque‐Larena, Francisco Javier Rojo Revilla, Xavier Lambin (2022). From pattern to process? Dual travelling waves, with contrasting propagation speeds, best describe a self‐organised spatio‐temporal pattern in population growth of a cyclic rodent, Ecology Letters. 📄\n\n\nJames Slingsby, Beth E. Scott, Louise Kregting, Jason McIlvenny, Jared Wilson, Ana Couto, Deon Roos, Marion Yanez, Benjamin Williamson (2021). Surface Characterisation of Kolk-Boils within Tidal Stream Environments Using UAV Imagery, Journal of Marine Science and Engineering. 📄\n\n\nRoos, D., Caminero Saldaña, C., Arroyo, B., Mougeot, F., Luque-Larena, J.J., Lambin, X. (2019). Unintentional effects of environmentally-friendly farming practices: Arising conflicts between zero-tillage and a crop pest, the common vole (Microtus arvalis), Agriculture, Ecosystems and Environment. 📄"
+    "section": "Peer-reviewed papers",
+    "text": "Peer-reviewed papers\n\nCristiano Tiberi, Sarah Beatham, Julia Coats, Izzy Rochester, Deon Roos, Riccardo Primi, Andrea Vitali, Giovanna Massei (2025). An assessment of whether age, sex, and reproductive status affect bait uptake by grey squirrels, Journal of Wildlife Management. 📄\n\n\nTiago Crispim-Mendes, Deon Roos, Clara Mendes Ferreira, Joana Paupério, João Paulo Silva, Sérgio Godinho, Paulo Célio Alves, António Mira, Pedro Beja, Xavier Lambin, Ricardo Pita (2024). Patch spatial attributes and time to disturbance affect the emergence of source local populations within ephemeral habitats, Ecological Modelling. 📄\n\n\nJ. Colomer, G. Massei, Deon Roos, C. Rosell, J. D. Rodríguez-Teijeiro (2024). What drives wild boar density and population growth in Mediterranean environments?, Science of the Total Environment. 📄\n\n\nDeon Roos, Constantino Caminero‐Saldaña, David Elston, François Mougeot, María Carmen García‐Ariza, Beatriz Arroyo, Juan José Luque‐Larena, Francisco Javier Rojo Revilla, Xavier Lambin (2022). From pattern to process? Dual travelling waves, with contrasting propagation speeds, best describe a self‐organised spatio‐temporal pattern in population growth of a cyclic rodent, Ecology Letters. 📄\n\n\nJames Slingsby, Beth E. Scott, Louise Kregting, Jason McIlvenny, Jared Wilson, Ana Couto, Deon Roos, Marion Yanez, Benjamin Williamson (2021). Surface Characterisation of Kolk-Boils within Tidal Stream Environments Using UAV Imagery, Journal of Marine Science and Engineering. 📄\n\n\nRoos, D., Caminero Saldaña, C., Arroyo, B., Mougeot, F., Luque-Larena, J.J., Lambin, X. (2019). Unintentional effects of environmentally-friendly farming practices: Arising conflicts between zero-tillage and a crop pest, the common vole (Microtus arvalis), Agriculture, Ecosystems and Environment. 📄"
   },
   {
     "objectID": "publications.html#web-applications",
     "href": "publications.html#web-applications",
     "title": "Output",
-    "section": "Web Applications",
-    "text": "Web Applications\n\n\n\nStatistical Distributions\n\n \n\nPredicting House Prices\n\n \n\nPredicting Rent Prices"
+    "section": "",
+    "text": "Statistical Distributions\n\n \n\nPredicting House Prices\n\n \n\nPredicting Rent Prices"
   },
   {
     "objectID": "publications.html#textbooks",
@@ -110,5 +110,145 @@
     "title": "Output",
     "section": "Textbooks",
     "text": "Textbooks\n\nA Douglas, D Roos, F Mancini, A Couto, D Lusseau. An introduction to R. 📘"
+  },
+  {
+    "objectID": "pgr-glm.html",
+    "href": "pgr-glm.html",
+    "title": "PGR Course: Generalised Linear Models",
+    "section": "",
+    "text": "This advanced course focuses on the theory and application of Generalised Linear Models, tailored for PhD students and researchers. The course is designed to be non-field specific meaning it can be taken by geologists to marketers and any in between.\n\n\n\nIntroduction to statistical modelling and GLMs\n\nPoisson GLMs\n\nBinomial GLMs\n\nBernoulli GLMs"
+  },
+  {
+    "objectID": "pgr-glm.html#overview",
+    "href": "pgr-glm.html#overview",
+    "title": "PGR Course: Generalised Linear Models",
+    "section": "",
+    "text": "This advanced course focuses on the theory and application of Generalised Linear Models, tailored for PhD students and researchers. The course is designed to be non-field specific meaning it can be taken by geologists to marketers and any in between.\n\n\n\nIntroduction to statistical modelling and GLMs\n\nPoisson GLMs\n\nBinomial GLMs\n\nBernoulli GLMs"
+  },
+  {
+    "objectID": "pgr-glm.html#topics-covered",
+    "href": "pgr-glm.html#topics-covered",
+    "title": "PGR Course: Generalised Linear Models",
+    "section": "",
+    "text": "Introduction to statistical modelling and GLMs\n\nPoisson GLMs\n\nBinomial GLMs\n\nBernoulli GLMs"
+  },
+  {
+    "objectID": "pgr-glm.html#learning-objectives",
+    "href": "pgr-glm.html#learning-objectives",
+    "title": "PGR Course: Generalised Linear Models",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nUnderstand the core structure of GLMs\nFit models using R\nTranslate statistical equations into model syntax\nInterpret coefficients and results with confidence\nRecognise when assumptions are violated"
+  },
+  {
+    "objectID": "pgr-glm.html#course-website",
+    "href": "pgr-glm.html#course-website",
+    "title": "PGR Course: Generalised Linear Models",
+    "section": "Course Website",
+    "text": "Course Website\n🔗 Visit the course website\n\n\\(\\leftarrow\\) Back to all courses"
+  },
+  {
+    "objectID": "bi3010.html",
+    "href": "bi3010.html",
+    "title": "BI3010: Statistical Analysis of Biological Data",
+    "section": "",
+    "text": "This 3rd year undergraduate course introduces students to key statistical theory and data analysis techniques in biological sciences. It makes strong use of R and ggplot2 but aims to give a strong fundamental and theoretical understanding of statistical modelling and associated topics.\n\n\n\n\n\nWhy do we need statistics?\n\nIntroduction to linear models (LM) and hidden assumptions\n\nThe theory of effective data visualisation\n\nR and ggplot2\n\nLMs with a continuous predictor\n\nInterpreting LMs with a continuous predictor\n\nAssessing assumptions of LMs with a continuous predictor\n\nLMs with a categorical predictor\n\nInterpreting LMs with a categorical predictor\n\nAssessing assumptions of LMs with a categorical predictor\n\nLMs with multiple predictors\n\nConfounding and causality\n\nNull Hypothesis Significance Testing and P-values\n\nAn Information Criterion (AIC)\n\nAn introduction to GLMs\n\nPoisson GLMs\n\n\n\n\n\n\n\n\n\nWhat students learn"
+  },
+  {
+    "objectID": "bi3010.html#overview",
+    "href": "bi3010.html#overview",
+    "title": "BI3010: Statistical Analysis of Biological Data",
+    "section": "",
+    "text": "This 3rd year undergraduate course introduces students to key statistical theory and data analysis techniques in biological sciences. It makes strong use of R and ggplot2 but aims to give a strong fundamental and theoretical understanding of statistical modelling and associated topics.\n\n\n\n\n\nWhy do we need statistics?\n\nIntroduction to linear models (LM) and hidden assumptions\n\nThe theory of effective data visualisation\n\nR and ggplot2\n\nLMs with a continuous predictor\n\nInterpreting LMs with a continuous predictor\n\nAssessing assumptions of LMs with a continuous predictor\n\nLMs with a categorical predictor\n\nInterpreting LMs with a categorical predictor\n\nAssessing assumptions of LMs with a categorical predictor\n\nLMs with multiple predictors\n\nConfounding and causality\n\nNull Hypothesis Significance Testing and P-values\n\nAn Information Criterion (AIC)\n\nAn introduction to GLMs\n\nPoisson GLMs\n\n\n\n\n\n\n\n\n\nWhat students learn"
+  },
+  {
+    "objectID": "bi3010.html#topics-covered",
+    "href": "bi3010.html#topics-covered",
+    "title": "BI3010: Statistical Analysis of Biological Data",
+    "section": "Topics Covered",
+    "text": "Topics Covered\n\nWhy do we need statistics?\n\nIntroduction to linear models (LM) and hidden assumptions\n\nThe theory of effective data visualisation\n\nR and ggplot2\n\nLMs with a continuous predictor\n\nInterpreting LMs with a continuous predictor\n\nAssessing assumptions of LMs with a continuous predictor\n\nLMs with a categorical predictor\n\nInterpreting LMs with a categorical predictor\n\nAssessing assumptions of LMs with a categorical predictor\n\nLMs with multiple predictors\n\nConfounding and causality\n\nNull Hypothesis Significance Testing and P-values\n\nAn Information Criterion (AIC)\n\nAn introduction to GLMs\n\nPoisson GLMs"
+  },
+  {
+    "objectID": "bi3010.html#tools-software",
+    "href": "bi3010.html#tools-software",
+    "title": "BI3010: Statistical Analysis of Biological Data",
+    "section": "Tools & Software",
+    "text": "Tools & Software\n\nR\nRStudio\nggplot2\n\n\n\\(\\leftarrow\\) Back to all courses"
+  },
+  {
+    "objectID": "cv.html#sections",
+    "href": "cv.html#sections",
+    "title": "Curriculum Vitae",
+    "section": "Sections",
+    "text": "Sections\n\n\n\nEmployment\n\n\nWork history across academia, statistical roles, and non-academic jobs.\n\nView section\n\n\n\nEducation\n\n\nFormal degrees and institutions attended.\n\nView section\n\n\n\nPhD Students\n\n\nSupervision roles and ongoing projects.\n\nView section\n\n\n\nAwards & Funding\n\n\nRecognition and research funding received.\n\nView section\n\n\n\nSkills\n\n\nTechnical, statistical, and communication expertise.\n\nView section"
+  },
+  {
+    "objectID": "cv-skills.html",
+    "href": "cv-skills.html",
+    "title": "Skills",
+    "section": "",
+    "text": "Programming: R, RShiny, basic Python\n\nStatistical Methods: Spatio-temporal modelling, Bayesian inference, Hidden Markov models, non-linear modelling, hierarchical modelling, simulation-based inference\n\nData Visualisation: ggplot2, gganimate, plotly, leaflet\n\nData Wrangling: comfortable with tidyverse and base R approaches; experience using SQL (SQLite via R)\n\nTeaching & Communication: In-person and online delivery, course coordination (ca. 150 students), course administration, interactive and accessible teaching of complex methods, supervision of postgraduate and PhD students\n\nReproducible Research: RMarkdown, Quarto, version control (Git), simulation workflows, reproducible project structure\n\nVersion Control: Git (via GitHub and GitHub Pages)\n\nMarkup & Documentation: RMarkdown, LaTeX, Quarto\n\nAPIs & Data Integration: Working with RESTful APIs, JSON parsing, ORCID integration\n\nLanguages: English (Fluent), Afrikaans (Fluent), Spanish (Basic)\n\n\\(\\leftarrow\\) Back to CV Overview"
+  },
+  {
+    "objectID": "cv-skills.html#skills",
+    "href": "cv-skills.html#skills",
+    "title": "Skills",
+    "section": "",
+    "text": "Programming: R, RShiny, basic Python\n\nStatistical Methods: Spatio-temporal modelling, Bayesian inference, Hidden Markov models, non-linear modelling, hierarchical modelling, simulation-based inference\n\nData Visualisation: ggplot2, gganimate, plotly, leaflet\n\nData Wrangling: comfortable with tidyverse and base R approaches; experience using SQL (SQLite via R)\n\nTeaching & Communication: In-person and online delivery, course coordination (ca. 150 students), course administration, interactive and accessible teaching of complex methods, supervision of postgraduate and PhD students\n\nReproducible Research: RMarkdown, Quarto, version control (Git), simulation workflows, reproducible project structure\n\nVersion Control: Git (via GitHub and GitHub Pages)\n\nMarkup & Documentation: RMarkdown, LaTeX, Quarto\n\nAPIs & Data Integration: Working with RESTful APIs, JSON parsing, ORCID integration\n\nLanguages: English (Fluent), Afrikaans (Fluent), Spanish (Basic)\n\n\\(\\leftarrow\\) Back to CV Overview"
+  },
+  {
+    "objectID": "cv-awards.html",
+    "href": "cv-awards.html",
+    "title": "Awards & Funding",
+    "section": "",
+    "text": "Best Student Presentation, University of Aberdeen\n2019\nTravelling waves as a form of spatio-temporal asynchrony\n\n\nBest Presentation, Iberian Vole Workshop, Porto\n2019\nSpatio-temporal asynchrony in a cyclic vole species\n\n\nSir Maitland Mackie Scholarship, University of Aberdeen\n2017\nFunding for agricultural research\n\n\nOutstanding BSc Zoology Student, University of Aberdeen\n2016\n\n\nPeople’s Trust Internship, PTES\n2016\nFunded research after BSc thesis\n\n\nCarnegie Summer Scholarship\n2015\nSupported BSc data collection\n\n\\(\\leftarrow\\) Back to CV Overview"
+  },
+  {
+    "objectID": "cv-awards.html#awards-funding",
+    "href": "cv-awards.html#awards-funding",
+    "title": "Awards & Funding",
+    "section": "",
+    "text": "Best Student Presentation, University of Aberdeen\n2019\nTravelling waves as a form of spatio-temporal asynchrony\n\n\nBest Presentation, Iberian Vole Workshop, Porto\n2019\nSpatio-temporal asynchrony in a cyclic vole species\n\n\nSir Maitland Mackie Scholarship, University of Aberdeen\n2017\nFunding for agricultural research\n\n\nOutstanding BSc Zoology Student, University of Aberdeen\n2016\n\n\nPeople’s Trust Internship, PTES\n2016\nFunded research after BSc thesis\n\n\nCarnegie Summer Scholarship\n2015\nSupported BSc data collection\n\n\\(\\leftarrow\\) Back to CV Overview"
+  },
+  {
+    "objectID": "cv-education.html",
+    "href": "cv-education.html",
+    "title": "Education",
+    "section": "",
+    "text": "PhD Ecology, University of Aberdeen\n2016 – 2021\n- Rodent pest population dynamics\n- Publications: Roos et al. (2019), Roos et al. (2022)\n\n\nBSc (Hons) Zoology, University of Aberdeen\n2012 – 2016\n- Graduated First Class\n\n\\(\\leftarrow\\) Back to CV Overview"
+  },
+  {
+    "objectID": "cv-education.html#education",
+    "href": "cv-education.html#education",
+    "title": "Education",
+    "section": "",
+    "text": "PhD Ecology, University of Aberdeen\n2016 – 2021\n- Rodent pest population dynamics\n- Publications: Roos et al. (2019), Roos et al. (2022)\n\n\nBSc (Hons) Zoology, University of Aberdeen\n2012 – 2016\n- Graduated First Class\n\n\\(\\leftarrow\\) Back to CV Overview"
+  },
+  {
+    "objectID": "cv-employment.html",
+    "href": "cv-employment.html",
+    "title": "Employment",
+    "section": "",
+    "text": "Lecturer in Applied Statistics, University of Aberdeen\nJanuary 2024 – Present\nAberdeen, Scotland\n- Leading and collaborating interdisciplinary research in applied statistics with real-world impact.\n- Teaching statistical theory and methods across undergraduate to PhD levels.\n- Assisting in research projects through the application of collaborator-specified statistical approaches.\n\n\nSenior Statistical Ecologist, Animal & Plant Health Agency\nMay 2022 – January 2024\nSand Hutton, England\n- Led statistics and mentoring, developing bespoke methods for policy-driven projects across multidisciplinary teams.\n\n\nTeaching Fellow, University of Aberdeen\nDec 2021 – May 2022\n- Coordinated and delivered a highly rated, fully online undergraduate statistics course with strong student engagement.\n\n\nResearch Fellow, University of Aberdeen\nJun 2021 – Feb 2022\n- Conducted international ecological research, including study design and simulation modeling for species management.\n\n\nTeaching Fellow, University of Aberdeen\nDec 2020 – May 2021\n- Course coordinator for undergraduate statistical course.\n\n\nOperating Department Support Worker, NHS Grampian\n2008 – 2012\nElgin, Scotland\n- Assisted in surgical procedures (non-sterile support).\n\n\\(\\leftarrow\\) Back to CV Overview"
+  },
+  {
+    "objectID": "cv-employment.html#employment",
+    "href": "cv-employment.html#employment",
+    "title": "Employment",
+    "section": "",
+    "text": "Lecturer in Applied Statistics, University of Aberdeen\nJanuary 2024 – Present\nAberdeen, Scotland\n- Leading and collaborating interdisciplinary research in applied statistics with real-world impact.\n- Teaching statistical theory and methods across undergraduate to PhD levels.\n- Assisting in research projects through the application of collaborator-specified statistical approaches.\n\n\nSenior Statistical Ecologist, Animal & Plant Health Agency\nMay 2022 – January 2024\nSand Hutton, England\n- Led statistics and mentoring, developing bespoke methods for policy-driven projects across multidisciplinary teams.\n\n\nTeaching Fellow, University of Aberdeen\nDec 2021 – May 2022\n- Coordinated and delivered a highly rated, fully online undergraduate statistics course with strong student engagement.\n\n\nResearch Fellow, University of Aberdeen\nJun 2021 – Feb 2022\n- Conducted international ecological research, including study design and simulation modeling for species management.\n\n\nTeaching Fellow, University of Aberdeen\nDec 2020 – May 2021\n- Course coordinator for undergraduate statistical course.\n\n\nOperating Department Support Worker, NHS Grampian\n2008 – 2012\nElgin, Scotland\n- Assisted in surgical procedures (non-sterile support).\n\n\\(\\leftarrow\\) Back to CV Overview"
+  },
+  {
+    "objectID": "cv-phd.html",
+    "href": "cv-phd.html",
+    "title": "PhD Students",
+    "section": "",
+    "text": "Seungyeon Lee, University of Aberdeen\n2024 – Present\n- Integrated population models of tawny owls.\n\n\\(\\leftarrow\\) Back to CV Overview"
+  },
+  {
+    "objectID": "cv-phd.html#phd-students",
+    "href": "cv-phd.html#phd-students",
+    "title": "PhD Students",
+    "section": "",
+    "text": "Seungyeon Lee, University of Aberdeen\n2024 – Present\n- Integrated population models of tawny owls.\n\n\\(\\leftarrow\\) Back to CV Overview"
   }
 ]

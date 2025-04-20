@@ -1,0 +1,66 @@
+---
+title: "BI3010: Statistical Analysis of Biological Data"
+format: html
+---
+
+## Overview
+
+This 3^rd^ year undergraduate course introduces students to key statistical theory and data analysis techniques in biological sciences. It makes strong use of `R` and `ggplot2` but aims to give a strong fundamental and theoretical understanding of statistical modelling and associated topics.
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+### Topics Covered
+
+- Why do we need statistics?  
+- Introduction to linear models (LM) and hidden assumptions  
+- The theory of effective data visualisation  
+- `R` and `ggplot2`  
+- LMs with a continuous predictor  
+- Interpreting LMs with a continuous predictor  
+- Assessing assumptions of LMs with a continuous predictor  
+- LMs with a categorical predictor  
+- Interpreting LMs with a categorical predictor  
+- Assessing assumptions of LMs with a categorical predictor  
+- LMs with multiple predictors  
+- Confounding and causality  
+- Null Hypothesis Significance Testing and P-values  
+- An Information Criterion (AIC)  
+- An introduction to GLMs  
+- Poisson GLMs  
+
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+<br>
+
+<br>
+
+
+![What students learn](media/bi3010_glm_illustration.png)
+
+</br>
+
+</br>
+
+</br>
+
+:::
+
+:::
+
+---
+
+## Tools & Software
+
+- `R`
+- RStudio
+- `ggplot2`
+
+---
+
+[$\leftarrow$ Back to all courses](courses.qmd)

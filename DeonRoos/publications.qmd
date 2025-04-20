@@ -3,14 +3,35 @@ title: "Output"
 format: html
 ---
 
-## Peer-reviewed papers
+## Web Applications
 
-```{r include=TRUE, echo=FALSE, results='asis', message=FALSE, warning=FALSE}
+```{r echo=FALSE, results='asis', message=FALSE, warning=FALSE}
 library(httr)
 library(jsonlite)
 library(glue)
 library(purrr)
 
+apps <- list(
+  list(name = "Statistical Distributions", url = "https://deonroos.shinyapps.io/Distributions/", image = "media/distributions.png"),
+  list(name = "Predicting House Prices", url = "https://deonroos.shinyapps.io/Aberdeen_House_Prices/", image = "media/house_price.png"),
+  list(name = "Predicting Rent Prices", url = "https://deonroos.shinyapps.io/BI3010_Rent/", image = "media/rent.png")
+)
+
+
+cat("<div class='app-tiles'>")
+for (app in apps) {
+  cat(glue("
+    <a href='{app$url}' class='app-tile' style='background-image: url({app$image});' target='_blank'>
+      <div class='app-label'>{app$name}</div>
+    </a>
+  "))
+}
+cat("</div>")
+```
+
+## Peer-reviewed papers
+
+```{r include=TRUE, echo=FALSE, results='asis', message=FALSE, warning=FALSE}
 orcid_id <- "0000-0003-4866-7472"  # Replace with your ORCID iD
 
 res <- GET(glue("https://pub.orcid.org/v3.0/{orcid_id}/works"), accept("application/json"))
@@ -78,27 +99,6 @@ if (res$status_code == 200) {
 } else {
   cat("<p>Unable to fetch publications from ORCID at this time.</p>")
 }
-```
-
-## Web Applications
-
-```{r echo=FALSE, results='asis'}
-apps <- list(
-  list(name = "Statistical Distributions", url = "https://deonroos.shinyapps.io/Distributions/", image = "media/distributions.png"),
-  list(name = "Predicting House Prices", url = "https://deonroos.shinyapps.io/Aberdeen_House_Prices/", image = "media/house_price.png"),
-  list(name = "Predicting Rent Prices", url = "https://deonroos.shinyapps.io/BI3010_Rent/", image = "media/rent.png")
-)
-
-
-cat("<div class='app-tiles'>")
-for (app in apps) {
-  cat(glue("
-    <a href='{app$url}' class='app-tile' style='background-image: url({app$image});' target='_blank'>
-      <div class='app-label'>{app$name}</div>
-    </a>
-  "))
-}
-cat("</div>")
 ```
 
 ## Textbooks

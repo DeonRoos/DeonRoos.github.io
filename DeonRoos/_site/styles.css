@@ -495,3 +495,43 @@ a:visited {
   text-align: center;
   font-weight: bold;
 }
+
+.course-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 1rem;
+}
+
+.course-card {
+  flex: 1 1 300px;
+  background-color: #202123;
+  border: 1px solid #00A68A;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 166, 138, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+}
+
+.course-card h3 {
+  margin-top: 0;
+  color: #00A68A;
+}
+
+.course-card p {
+  margin-bottom: 1rem;
+}
+
+.course-card .btn {
+  background-color: #00A68A;
+  color: #fff;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+

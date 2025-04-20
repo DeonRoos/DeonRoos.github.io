@@ -5,47 +5,24 @@ format: html
 
 ## Undergraduate Teaching
 
-### BI3010: Statistical Analysis of Biological Data
+<div class="course-grid">
 
-This course introduces students to key statistical concepts and data analysis techniques in biological sciences. It makes strong use of R and `ggplot2` but aims to give a strong theoretical understanding of statistical modelling and associated topics.
+<div class="course-card">
+<h3>BI3010: Statistical Analysis of Biological Data</h3>
+<p>This course covers key statistical concepts and theory for biological data using <code>R</code>.</p>
+<a href="bi3010.qmd" class="btn">Learn more</a>
+</div>
 
-#### Modules:
-- Why do we need statistics?  
-- Introduction to linear models (LM) and hidden assumptions  
-- The theory of effective data visualisation  
-- R and `ggplot2`  
-- LMs with a continuous predictor  
-- Interpreting LMs with a continuous predictor  
-- Assessing assumptions of LMs with a continuous predictor  
-- LMs with a categorical predictor  
-- Interpreting LMs with a categorical predictor  
-- Assessing assumptions of LMs with a categorical predictor  
-- LMs with multiple predictors  
-- Confounding and causality  
-- Null Hypothesis Significance Testing and P-values  
-- An Information Criterion (AIC)  
-- An introduction to GLMs  
-- Poisson GLMs  
-
----
+</div>
 
 ## Postgraduate Teaching
 
-### PGR Course: Generalised Linear Models (GLMs)
+<div class="course-grid">
 
-This advanced course focuses on the theory and application of Generalised Linear Models, tailored for postgraduate researchers. The course is tailored to be non-field specific meaning it can be taken by geologists to marketers and any in between.
+<div class="course-card">
+<h3>PGR Course: Generalised Linear Models</h3>
+<p>An advanced course on GLMs designed for postgrads across disciplines using <code>R</code>.</p>
+<a href="pgr-glm.qmd" class="btn">Learn more</a>
+</div>
 
-It emphasises:
-
-- Understanding the underlying statistical theory
-- Parameter estimation
-- Model fitting
-- Connecting models to the underlying equations
-
-#### Modules:
-- Introduction to statistical modelling and GLMs  
-- Poisson GLMs  
-- Binomial GLMs  
-- Bernoulli GLMs  
-
-🔗 [Visit the course website](https://alexd106.github.io/PGR-GLM/)
+</div>

@@ -18,7 +18,7 @@ website:
         file: courses.qmd
       - text: "Works"
         file: publications.qmd
-      - text: "Curriculum Vitae"
+      - text: "CV"
         file: cv.qmd
 
 format:

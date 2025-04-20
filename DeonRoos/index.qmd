@@ -1,5 +1,5 @@
 ---
-title: "What I do"
+title: "What I do:"
 format: html
 ---
 

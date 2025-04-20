@@ -1,0 +1,17 @@
+---
+title: "Skills"
+format: html
+---
+
+- **Programming**: R, RShiny, basic Python  
+- **Statistical Methods**: Spatio-temporal modelling, Bayesian inference, Hidden Markov models, non-linear modelling, hierarchical modelling, simulation-based inference  
+- **Data Visualisation**: ggplot2, gganimate, plotly, leaflet  
+- **Data Wrangling**: comfortable with tidyverse and base R approaches; experience using SQL (SQLite via R)  
+- **Teaching & Communication**: In-person and online delivery, course coordination (ca. 150 students), course administration, interactive and accessible teaching of complex methods, supervision of postgraduate and PhD students   
+- **Reproducible Research**: RMarkdown, Quarto, version control (Git), simulation workflows, reproducible project structure  
+- **Version Control**: Git (via GitHub and GitHub Pages)  
+- **Markup & Documentation**: RMarkdown, LaTeX, Quarto  
+- **APIs & Data Integration**: Working with RESTful APIs, JSON parsing, ORCID integration  
+- **Languages**: English (Fluent), Afrikaans (Fluent), Spanish (Basic)
+
+[$\leftarrow$ Back to CV Overview](cv.qmd)
