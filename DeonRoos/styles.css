@@ -680,3 +680,101 @@ h1, h2, h3 {
   background-color: #00ffd1;
   color: #202123;
 }
+
+.course-card {
+  background-color: #1e1f24;
+  border: 1px solid #00A68A;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  color: white;
+  box-shadow: 0 0 12px rgba(0, 166, 138, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 16px rgba(0, 166, 138, 0.4);
+}
+
+.course-card h3 {
+  color: #00A68A;
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.course-card p {
+  font-family: 'Ubuntu', sans-serif;
+  margin-bottom: 1.2rem;
+}
+
+.course-card .btn {
+  align-self: start;
+  font-weight: bold;
+}
+
+.pub-card {
+  background-color: #1a1b1e;
+  border: 1px solid #00A68A;
+  border-radius: 10px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 10px rgba(0, 166, 138, 0.2);
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pub-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 14px rgba(0, 166, 138, 0.4);
+}
+
+.pub-card a {
+  color: #F7C908;
+  font-weight: bold;
+}
+
+.app-tile {
+  position: relative;
+  width: 300px;
+  height: 170px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  border: 1px solid #00A68A;
+  box-shadow: 0 0 12px rgba(0, 166, 138, 0.3); /* Glow effect */
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.app-tile:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(0, 166, 138, 0.6); /* Stronger glow on hover */
+}
+
+a.pub-card, .pub-card {
+  display: block;
+  text-decoration: none;
+  background-color: #1a1b1e;
+  border: 1px solid #00A68A;
+  border-radius: 10px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 10px rgba(0, 166, 138, 0.2);
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+a.pub-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 14px rgba(0, 166, 138, 0.4);
+  background-color: #222328;
+  color: white;
+}

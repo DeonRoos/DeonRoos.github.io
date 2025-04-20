@@ -8,6 +8,15 @@ format: html
   <source src="media/mu_wave.mp4" type="video/mp4">
 </video>
 
+<!-- AOS library for scroll animations -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    once: true, // fade in only once
+    duration: 600 // speed of animation in ms
+  });
+</script>
 
 ## Undergraduate Teaching
 

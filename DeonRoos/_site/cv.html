@@ -86,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./publications.html" rel="" target="">
- <span class="menu-text">Works</span></a>
+ <span class="menu-text">Output</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./cv.html" rel="" target="" aria-current="page">
@@ -127,56 +127,50 @@ University of Aberdeen
 <div class="cv-contact">
 <p><span class="cv-contact-item">📧 <a href="mailto:deon.roos4@abdn.ac.uk">Email</a></span> <span class="cv-contact-item">📖 <a href="https://orcid.org/0000-0003-4866-7472">ORCID</a></span> <span class="cv-contact-item">🐱 <a href="https://github.com/DeonRoos">GitHub</a></span></p>
 </div>
+<!-- AOS library for scroll animations -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    once: true, // fade in only once
+    duration: 600 // speed of animation in ms
+  });
+</script>
 <hr>
 <section id="sections" class="level2">
 <h2 class="anchored" data-anchor-id="sections">Sections</h2>
-<div class="course-grid">
-<div class="course-card">
-<h3 class="anchored">
-Employment
-</h3>
-<p>
-Work history across academia, statistical roles, and non-academic jobs.
-</p>
-<p><a href="./cv-employment.html" class="btn">View section</a></p>
-</div>
-<div class="course-card">
-<h3 class="anchored">
-Education
-</h3>
-<p>
-Formal degrees and institutions attended.
-</p>
-<p><a href="./cv-education.html" class="btn">View section</a></p>
-</div>
-<div class="course-card">
-<h3 class="anchored">
-PhD Students
-</h3>
-<p>
-Supervision roles and ongoing projects.
-</p>
-<p><a href="./cv-phd.html" class="btn">View section</a></p>
-</div>
-<div class="course-card">
-<h3 class="anchored">
-Awards &amp; Funding
-</h3>
-<p>
-Recognition and research funding received.
-</p>
-<p><a href="./cv-awards.html" class="btn">View section</a></p>
-</div>
-<div class="course-card">
-<h3 class="anchored">
-Skills
-</h3>
-<p>
-Technical, statistical, and communication expertise.
-</p>
-<p><a href="./cv-skills.html" class="btn">View section</a></p>
-</div>
-</div>
+<section class="course-grid">
+  <div class="course-card" data-aos="fade-up" data-aos-delay="0">
+    <h3 class="anchored">Employment</h3>
+    <p>Work history across academia, statistical roles, and non-academic jobs.</p>
+    <a href="./cv-employment.html" class="btn">View section</a>
+  </div>
+
+  <div class="course-card" data-aos="fade-up" data-aos-delay="100">
+    <h3 class="anchored">Education</h3>
+    <p>Formal degrees and institutions attended.</p>
+    <a href="./cv-education.html" class="btn">View section</a>
+  </div>
+
+  <div class="course-card" data-aos="fade-up" data-aos-delay="200">
+    <h3 class="anchored">PhD Students</h3>
+    <p>Supervision roles and ongoing projects.</p>
+    <a href="./cv-phd.html" class="btn">View section</a>
+  </div>
+
+  <div class="course-card" data-aos="fade-up" data-aos-delay="300">
+    <h3 class="anchored">Awards &amp; Funding</h3>
+    <p>Recognition and research funding received.</p>
+    <a href="./cv-awards.html" class="btn">View section</a>
+  </div>
+
+  <div class="course-card" data-aos="fade-up" data-aos-delay="400">
+    <h3 class="anchored">Skills</h3>
+    <p>Technical, statistical, and communication expertise.</p>
+    <a href="./cv-skills.html" class="btn">View section</a>
+  </div>
+</section>
+
 
 
 </section>

@@ -86,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./publications.html" rel="" target="">
- <span class="menu-text">Works</span></a>
+ <span class="menu-text">Output</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./cv.html" rel="" target="">
@@ -113,6 +113,15 @@ ul.task-list li input[type="checkbox"] {
 <video autoplay="" muted="" loop="" playsinline="" id="bg-video">
 <source src="media/mu_wave.mp4" type="video/mp4">
 </video>
+<!-- AOS library for scroll animations -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    once: true, // fade in only once
+    duration: 600 // speed of animation in ms
+  });
+</script>
 <section id="undergraduate-teaching" class="level2">
 <h2 class="anchored" data-anchor-id="undergraduate-teaching">Undergraduate Teaching</h2>
 <section class="course-grid" data-aos="fade-up">

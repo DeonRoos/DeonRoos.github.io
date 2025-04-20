@@ -71,7 +71,7 @@ $$
 
 <section class="card-grid" data-aos="fade-up">
   <a href="courses.html" class="code-card"><span class="code-text">load("courses")</span></a>
-  <a href="publications.html" class="code-card"><span class="code-text">view("research")</span></a>
+  <a href="publications.html" class="code-card"><span class="code-text">view("output")</span></a>
   <a href="cv.html" class="code-card"><span class="code-text">browse("cv")</span></a>
 </section>
 

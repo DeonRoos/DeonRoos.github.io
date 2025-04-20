@@ -23,40 +23,50 @@ format:
   <span class="cv-contact-item">🐱 <a href="https://github.com/DeonRoos">GitHub</a></span>
 </div>
 
+<!-- AOS library for scroll animations -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    once: true, // fade in only once
+    duration: 600 // speed of animation in ms
+  });
+</script>
 ---
 
 ## Sections
 
-<div class="course-grid">
+```{=html}
+<section class="course-grid">
+  <div class="course-card" data-aos="fade-up" data-aos-delay="0">
+    <h3>Employment</h3>
+    <p>Work history across academia, statistical roles, and non-academic jobs.</p>
+    <a href="cv-employment.qmd" class="btn">View section</a>
+  </div>
 
-<div class="course-card">
-  <h3>Employment</h3>
-  <p>Work history across academia, statistical roles, and non-academic jobs.</p>
-  <a href="cv-employment.qmd" class="btn">View section</a>
-</div>
+  <div class="course-card" data-aos="fade-up" data-aos-delay="100">
+    <h3>Education</h3>
+    <p>Formal degrees and institutions attended.</p>
+    <a href="cv-education.qmd" class="btn">View section</a>
+  </div>
 
-<div class="course-card">
-  <h3>Education</h3>
-  <p>Formal degrees and institutions attended.</p>
-  <a href="cv-education.qmd" class="btn">View section</a>
-</div>
+  <div class="course-card" data-aos="fade-up" data-aos-delay="200">
+    <h3>PhD Students</h3>
+    <p>Supervision roles and ongoing projects.</p>
+    <a href="cv-phd.qmd" class="btn">View section</a>
+  </div>
 
-<div class="course-card">
-  <h3>PhD Students</h3>
-  <p>Supervision roles and ongoing projects.</p>
-  <a href="cv-phd.qmd" class="btn">View section</a>
-</div>
+  <div class="course-card" data-aos="fade-up" data-aos-delay="300">
+    <h3>Awards & Funding</h3>
+    <p>Recognition and research funding received.</p>
+    <a href="cv-awards.qmd" class="btn">View section</a>
+  </div>
 
-<div class="course-card">
-  <h3>Awards & Funding</h3>
-  <p>Recognition and research funding received.</p>
-  <a href="cv-awards.qmd" class="btn">View section</a>
-</div>
+  <div class="course-card" data-aos="fade-up" data-aos-delay="400">
+    <h3>Skills</h3>
+    <p>Technical, statistical, and communication expertise.</p>
+    <a href="cv-skills.qmd" class="btn">View section</a>
+  </div>
+</section>
 
-<div class="course-card">
-  <h3>Skills</h3>
-  <p>Technical, statistical, and communication expertise.</p>
-  <a href="cv-skills.qmd" class="btn">View section</a>
-</div>
-
-</div>
+```

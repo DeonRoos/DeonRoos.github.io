@@ -1,5 +1,5 @@
 ---
-title: "Output"
+title: ""
 format: html
 ---
 
@@ -7,6 +7,16 @@ format: html
 <video autoplay muted loop playsinline id="bg-video">
   <source src="media/mu_wave.mp4" type="video/mp4">
 </video>
+
+<!-- AOS library for scroll animations -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    once: true, // fade in only once
+    duration: 600 // speed of animation in ms
+  });
+</script>
 
 ## Web Applications
 
@@ -22,14 +32,15 @@ apps <- list(
   list(name = "Predicting Rent Prices", url = "https://deonroos.shinyapps.io/BI3010_Rent/", image = "media/rent.png")
 )
 
-
 cat("<div class='app-tiles'>")
+delay <- 0
 for (app in apps) {
   cat(glue("
-    <a href='{app$url}' class='app-tile' style='background-image: url({app$image});' target='_blank'>
+    <a href='{app$url}' class='app-tile' style='background-image: url({app$image});' data-aos='fade-up' data-aos-delay='{delay}' target='_blank'>
       <div class='app-label'>{app$name}</div>
     </a>
   "))
+  delay <- delay + 100
 }
 cat("</div>")
 ```
@@ -37,7 +48,7 @@ cat("</div>")
 ## Peer-reviewed papers
 
 ```{r include=TRUE, echo=FALSE, results='asis', message=FALSE, warning=FALSE}
-orcid_id <- "0000-0003-4866-7472"  # Replace with your ORCID iD
+orcid_id <- "0000-0003-4866-7472"
 
 res <- GET(glue("https://pub.orcid.org/v3.0/{orcid_id}/works"), accept("application/json"))
 
@@ -48,7 +59,6 @@ if (res$status_code == 200) {
     summary <- work$`work-summary`[[1]]
     put_code <- summary$`put-code`
     
-    # Fetch full record to get author list and richer metadata
     detail_url <- glue("https://pub.orcid.org/v3.0/{orcid_id}/work/{put_code}")
     detail_res <- GET(detail_url, accept("application/json"))
     
@@ -59,12 +69,9 @@ if (res$status_code == 200) {
       journal <- work_data$`journal-title`$value %||% ""
       year <- work_data$`publication-date`$year$value %||% "n.d."
       
-      # Get author names
       contributors <- work_data$contributors$contributor
       authors <- if (!is.null(contributors)) {
         raw_names <- map_chr(contributors, \(a) a$`credit-name`$value)
-        
-        # Highlight variants of "Deon Roos"
         highlighted <- map_chr(raw_names, \(name) {
           if (grepl("(?i)roos.*d|d.*roos|deon roos", name, perl = TRUE)) {
             glue("<span style='color: #00A68A; font-weight: bold'>{name}</span>")
@@ -72,16 +79,13 @@ if (res$status_code == 200) {
             name
           }
         })
-        
         paste(highlighted, collapse = ", ")
       } else {
         "Unknown Authors"
       }
       
-      # Build citation
       citation <- glue("{authors} ({year}). <strong>{title}</strong>{if (journal != '') glue(', <em>{journal}</em>')}.")
       
-      # External link if DOI exists
       ext_ids <- work_data$`external-ids`$`external-id`
       link <- NULL
       if (!is.null(ext_ids)) {
@@ -93,11 +97,12 @@ if (res$status_code == 200) {
         }
       }
       
-      # Output
+      delay <- put_code %% 300
+      
       if (!is.null(link)) {
-        cat(glue("<div style='margin-bottom: 1.2em;'>{citation} <a href='{link}' target='_blank'>📄</a></div>\n"))
+        cat(glue("<a href='{link}' class='pub-card' target='_blank' data-aos='fade-up' data-aos-delay='{delay}'>{citation}</a>\n"))
       } else {
-        cat(glue("<div style='margin-bottom: 1.2em;'>{citation}</div>\n"))
+        cat(glue("<div class='pub-card' data-aos='fade-up' data-aos-delay='{delay}'>{citation}</div>\n"))
       }
     }
   }
@@ -109,10 +114,9 @@ if (res$status_code == 200) {
 ## Textbooks
 
 ```{r echo=FALSE, results='asis'}
-# Manually formatted citation for the textbook
 title <- "An introduction to R"
 authors <- "A Douglas, <span style='color: #00A68A; font-weight: bold'>D Roos</span>, F Mancini, A Couto, D Lusseau"
 link <- "https://intro2r.com"
 
-cat(glue("<div style='margin-bottom: 1.2em;'>{authors}. <strong>{title}</strong>. <a href='{link}' target='_blank'>📘</a></div>"))
+cat(glue("<a href='{link}' class='pub-card' target='_blank' data-aos='fade-up' data-aos-delay='100'>{authors}. <strong>{title}</strong>.</a>"))
 ```

@@ -14,7 +14,7 @@ website:
     left:
       - text: "Courses"
         file: courses.qmd
-      - text: "Works"
+      - text: "Output"
         file: publications.qmd
       - text: "CV"
         file: cv.qmd
