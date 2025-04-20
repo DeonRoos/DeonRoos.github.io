@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Raleway:wght@500&display=swap');
 
 /* === Global Styles === */
 body {
@@ -494,4 +495,188 @@ a:visited {
   font-size: 1em;
   text-align: center;
   font-weight: bold;
+}
+
+.course-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 1rem;
+}
+
+.course-card {
+  flex: 1 1 300px;
+  background-color: #202123;
+  border: 1px solid #00A68A;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 166, 138, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+}
+
+.course-card h3 {
+  margin-top: 0;
+  color: #00A68A;
+}
+
+.course-card p {
+  margin-bottom: 1rem;
+}
+
+.course-card .btn {
+  background-color: #00A68A;
+  color: #fff;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+/* === Homepage Enhancements === */
+.typing-container {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  color: #00A68A;
+  padding-top: 3rem;
+  text-align: center;
+  z-index: 2;
+}
+
+.highlight-section {
+  background: linear-gradient(145deg, #2d2f31, #202123);
+  border-left: 4px solid #00A68A;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 166, 138, 0.3);
+  color: white;
+}
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.2;
+}
+
+h1, h2, h3 {
+  font-family: 'Raleway', sans-serif;
+}
+
+.hero {
+  text-align: center;
+  padding: 6rem 1rem 3rem;
+  color: white;
+  text-shadow: 0 0 8px rgba(0,0,0,0.4);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #00A68A;
+}
+
+.card-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.code-card {
+  background-color: #1a1b1e;
+  color: #00FFD1;
+  border: 1px solid #00FFD1;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 255, 209, 0.3);
+  font-family: 'JetBrains Mono', monospace;
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 200px;
+  height: 100px;
+  text-align: center;
+}
+
+.code-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 0 20px rgba(0, 255, 209, 0.6);
+}
+
+.code-text {
+  font-size: 1.2rem;
+  color: #00FFD1;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+.course-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem auto;
+}
+
+.course-card {
+  background-color: #1a1b1e;
+  border: 1px solid #00A68A;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 166, 138, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 18px rgba(0, 166, 138, 0.4);
+}
+
+.course-card h3 {
+  color: #00A68A;
+  font-family: 'Raleway', sans-serif;
+  margin-top: 0;
+}
+
+.course-card p {
+  margin-bottom: 1rem;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.course-card .btn {
+  background-color: #00A68A;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.course-card .btn:hover {
+  background-color: #00ffd1;
+  color: #202123;
 }
