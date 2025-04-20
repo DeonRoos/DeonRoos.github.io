@@ -88,14 +88,14 @@
     "href": "cv.html#sections",
     "title": "\nDeon Roos\n",
     "section": "Sections",
-    "text": "Sections\n\n\n\nEmployment\n\n\nWork history across academia, statistical roles, and non-academic jobs.\n\nView section\n\n\n\nEducation\n\n\nFormal degrees and institutions attended.\n\nView section\n\n\n\nPhD Students\n\n\nSupervision roles and ongoing projects.\n\nView section\n\n\n\nAwards & Funding\n\n\nRecognition and research funding received.\n\nView section\n\n\n\nSkills\n\n\nTechnical, statistical, and communication expertise.\n\nView section"
+    "text": "Sections\n\n  \n    Employment\n    Work history across academia, statistical roles, and non-academic jobs.\n    View section\n  \n\n  \n    Education\n    Formal degrees and institutions attended.\n    View section\n  \n\n  \n    PhD Students\n    Supervision roles and ongoing projects.\n    View section\n  \n\n  \n    Awards & Funding\n    Recognition and research funding received.\n    View section\n  \n\n  \n    Skills\n    Technical, statistical, and communication expertise.\n    View section"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "\nHey, I’m Deon Roos\n",
     "section": "",
-    "text": "Hey, I’m Deon Roos\n\n\nLecturer | Scientist | Visualisation Enthusiast\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\mu_i = f(\\rho_{0,i}) + f(\\rho_{1,i}) + f(\\rho_{2,i})\n\\]\n\\[\n\\rho_{j,i} = T + \\left(\\frac{1}{\\zeta_{j,i}}\\right) \\times D_{j,i}\n\\quad \\text{for } j \\in \\{0, 1, 2\\}\n\\]\n\\[\nD_{j,i} = -\\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}\n\\]\n\\[\n\\zeta_{j,i} = \\beta_0 + \\beta_1 \\times z_i\n\\]\n\nload(“courses”) view(“research”) browse(“cv”)"
+    "text": "Hey, I’m Deon Roos\n\n\nLecturer | Scientist | Visualisation Enthusiast\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\mu_i = f(\\rho_{0,i}) + f(\\rho_{1,i}) + f(\\rho_{2,i})\n\\]\n\\[\n\\rho_{j,i} = T + \\left(\\frac{1}{\\zeta_{j,i}}\\right) \\times D_{j,i}\n\\quad \\text{for } j \\in \\{0, 1, 2\\}\n\\]\n\\[\nD_{j,i} = -\\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}\n\\]\n\\[\n\\zeta_{j,i} = \\beta_0 + \\beta_1 \\times z_i\n\\]\n\nload(“courses”) view(“output”) browse(“cv”)"
   },
   {
     "objectID": "pgr-glm.html",
@@ -128,22 +128,22 @@
   {
     "objectID": "publications.html#web-applications",
     "href": "publications.html#web-applications",
-    "title": "Output",
+    "title": "Deon Roos",
     "section": "Web Applications",
     "text": "Web Applications\n\n\n\nStatistical Distributions\n\n \n\nPredicting House Prices\n\n \n\nPredicting Rent Prices"
   },
   {
     "objectID": "publications.html#peer-reviewed-papers",
     "href": "publications.html#peer-reviewed-papers",
-    "title": "Output",
+    "title": "Deon Roos",
     "section": "Peer-reviewed papers",
-    "text": "Peer-reviewed papers\n\nCristiano Tiberi, Sarah Beatham, Julia Coats, Izzy Rochester, Deon Roos, Riccardo Primi, Andrea Vitali, Giovanna Massei (2025). An assessment of whether age, sex, and reproductive status affect bait uptake by grey squirrels, Journal of Wildlife Management. 📄\n\n\nTiago Crispim-Mendes, Deon Roos, Clara Mendes Ferreira, Joana Paupério, João Paulo Silva, Sérgio Godinho, Paulo Célio Alves, António Mira, Pedro Beja, Xavier Lambin, Ricardo Pita (2024). Patch spatial attributes and time to disturbance affect the emergence of source local populations within ephemeral habitats, Ecological Modelling. 📄\n\n\nJ. Colomer, G. Massei, Deon Roos, C. Rosell, J. D. Rodríguez-Teijeiro (2024). What drives wild boar density and population growth in Mediterranean environments?, Science of the Total Environment. 📄\n\n\nDeon Roos, Constantino Caminero‐Saldaña, David Elston, François Mougeot, María Carmen García‐Ariza, Beatriz Arroyo, Juan José Luque‐Larena, Francisco Javier Rojo Revilla, Xavier Lambin (2022). From pattern to process? Dual travelling waves, with contrasting propagation speeds, best describe a self‐organised spatio‐temporal pattern in population growth of a cyclic rodent, Ecology Letters. 📄\n\n\nJames Slingsby, Beth E. Scott, Louise Kregting, Jason McIlvenny, Jared Wilson, Ana Couto, Deon Roos, Marion Yanez, Benjamin Williamson (2021). Surface Characterisation of Kolk-Boils within Tidal Stream Environments Using UAV Imagery, Journal of Marine Science and Engineering. 📄\n\n\nRoos, D., Caminero Saldaña, C., Arroyo, B., Mougeot, F., Luque-Larena, J.J., Lambin, X. (2019). Unintentional effects of environmentally-friendly farming practices: Arising conflicts between zero-tillage and a crop pest, the common vole (Microtus arvalis), Agriculture, Ecosystems and Environment. 📄"
+    "text": "Peer-reviewed papers\nCristiano Tiberi, Sarah Beatham, Julia Coats, Izzy Rochester, Deon Roos, Riccardo Primi, Andrea Vitali, Giovanna Massei (2025). An assessment of whether age, sex, and reproductive status affect bait uptake by grey squirrels, Journal of Wildlife Management.Tiago Crispim-Mendes, Deon Roos, Clara Mendes Ferreira, Joana Paupério, João Paulo Silva, Sérgio Godinho, Paulo Célio Alves, António Mira, Pedro Beja, Xavier Lambin, Ricardo Pita (2024). Patch spatial attributes and time to disturbance affect the emergence of source local populations within ephemeral habitats, Ecological Modelling.J. Colomer, G. Massei, Deon Roos, C. Rosell, J. D. Rodríguez-Teijeiro (2024). What drives wild boar density and population growth in Mediterranean environments?, Science of the Total Environment.Deon Roos, Constantino Caminero‐Saldaña, David Elston, François Mougeot, María Carmen García‐Ariza, Beatriz Arroyo, Juan José Luque‐Larena, Francisco Javier Rojo Revilla, Xavier Lambin (2022). From pattern to process? Dual travelling waves, with contrasting propagation speeds, best describe a self‐organised spatio‐temporal pattern in population growth of a cyclic rodent, Ecology Letters.James Slingsby, Beth E. Scott, Louise Kregting, Jason McIlvenny, Jared Wilson, Ana Couto, Deon Roos, Marion Yanez, Benjamin Williamson (2021). Surface Characterisation of Kolk-Boils within Tidal Stream Environments Using UAV Imagery, Journal of Marine Science and Engineering.Roos, D., Caminero Saldaña, C., Arroyo, B., Mougeot, F., Luque-Larena, J.J., Lambin, X. (2019). Unintentional effects of environmentally-friendly farming practices: Arising conflicts between zero-tillage and a crop pest, the common vole (Microtus arvalis), Agriculture, Ecosystems and Environment."
   },
   {
     "objectID": "publications.html#textbooks",
     "href": "publications.html#textbooks",
-    "title": "Output",
+    "title": "Deon Roos",
     "section": "Textbooks",
-    "text": "Textbooks\n\nA Douglas, D Roos, F Mancini, A Couto, D Lusseau. An introduction to R. 📘"
+    "text": "Textbooks\nA Douglas, D Roos, F Mancini, A Couto, D Lusseau. An introduction to R."
   }
 ]
