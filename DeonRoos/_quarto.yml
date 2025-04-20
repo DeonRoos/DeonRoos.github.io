@@ -12,8 +12,6 @@ website:
   description: "Lecturer in Applied Statistics | Data Visualisation | Statistics Course | Statistical Distributions"
   navbar:
     left:
-      - text: "Home"
-        file: index.qmd
       - text: "Courses"
         file: courses.qmd
       - text: "Works"

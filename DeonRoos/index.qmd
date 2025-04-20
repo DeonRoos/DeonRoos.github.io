@@ -1,7 +1,51 @@
 ---
-title: "What I do:"
+title: ""
 format: html
 ---
+
+<!-- Video Background -->
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="media/mu_wave.mp4" type="video/mp4">
+</video>
+
+<section class="hero" data-aos="zoom-in">
+  <h1>Hey, I'm Deon Roos</h1>
+  <p>Lecturer | Scientist | Visualisation Enthusiast</p>
+</section>
+
+
+<!-- Typing Animation (via typed.js or CSS fallback) -->
+<div class="typing-container">
+  <code id="typed-text"></code>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+  var typed = new Typed("#typed-text", {
+    strings: [
+      "Deon_Roos <- \"Lecturer\"",
+      "Deon_Roos <- \"Ecologist\"",
+      "Deon_Roos <- \"Statistician\"",
+      "Deon_Roos <- \"Programmer\"",
+      "Deon_Roos <- \"Data Visualiser\"",
+      "Deon_Roos <- \"Scientist\"",
+      "Deon_Roos <- \"Data scientist\"",
+      "Deon_Roos <- \"Medical researcher\"",
+      "Deon_Roos <- \"Quantitative Modeller\""
+    ],
+    typeSpeed: 60,
+    backSpeed: 40,
+    backDelay: 0,
+    loop: true
+  });
+</script>
+
+<!-- Scroll Animation: Include AOS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 
 <div style="text-align: center; margin: 2em 0;">
 
@@ -25,31 +69,9 @@ $$
 \zeta_{j,i} = \beta_0 + \beta_1 \times z_i
 $$
 
-  <video width="600" autoplay loop muted playsinline style="border-radius: 8px; box-shadow: 0 0 20px #00A68A88; background-color: #202123;">
-    <source src="media/mu_wave.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <p style="color: #00A68A;"><em>Spatiotemporal interference on a fractal landscape</em></p>
-</div>
+<section class="card-grid" data-aos="fade-up">
+  <a href="courses.html" class="code-card"><span class="code-text">load("courses")</span></a>
+  <a href="publications.html" class="code-card"><span class="code-text">view("research")</span></a>
+  <a href="cv.html" class="code-card"><span class="code-text">browse("cv")</span></a>
+</section>
 
-</div>
-
----
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const observer = new MutationObserver(() => {
-      const svgIcon = document.querySelector(".aa-SubmitButton .aa-SubmitIcon svg");
-      if (svgIcon) {
-        svgIcon.setAttribute("fill", "#00A68A");
-        svgIcon.setAttribute("stroke", "#00A68A");
-        svgIcon.style.color = "#00A68A";
-      }
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
-  });
-</script>

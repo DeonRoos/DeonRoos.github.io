@@ -3,6 +3,11 @@ title: "Output"
 format: html
 ---
 
+<!-- Video Background -->
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="media/mu_wave.mp4" type="video/mp4">
+</video>
+
 ## Web Applications
 
 ```{r echo=FALSE, results='asis', message=FALSE, warning=FALSE}

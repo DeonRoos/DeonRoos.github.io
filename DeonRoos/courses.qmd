@@ -1,28 +1,34 @@
 ---
-title: "Teaching"
+title: ""
 format: html
 ---
 
+<!-- Video Background -->
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="media/mu_wave.mp4" type="video/mp4">
+</video>
+
+
 ## Undergraduate Teaching
 
-<div class="course-grid">
+```{=html}
+<section class="course-grid" data-aos="fade-up">
+  <div class="course-card">
+    <h3>BI3010: Statistical Analysis of Biological Data</h3>
+    <p>This course covers key statistical concepts and theory for biological data using <code>R</code>.</p>
+    <a href="bi3010.qmd" class="btn">Learn more</a>
+  </div>
+</section>
+```
 
-<div class="course-card">
-<h3>BI3010: Statistical Analysis of Biological Data</h3>
-<p>This course covers key statistical concepts and theory for biological data using <code>R</code>.</p>
-<a href="bi3010.qmd" class="btn">Learn more</a>
-</div>
+## Postgraudate Teaching
 
-</div>
-
-## Postgraduate Teaching
-
-<div class="course-grid">
-
-<div class="course-card">
-<h3>PGR Course: Generalised Linear Models</h3>
-<p>An advanced course on GLMs designed for postgrads across disciplines using <code>R</code>.</p>
-<a href="pgr-glm.qmd" class="btn">Learn more</a>
-</div>
-
-</div>
+```{=html}
+<section class="course-grid" data-aos="fade-up">
+  <div class="course-card">
+    <h3>PGR Course: Generalised Linear Models</h3>
+    <p>An advanced course on GLMs designed for postgrads across disciplines using <code>R</code>.</p>
+    <a href="pgr-glm.qmd" class="btn">Learn more</a>
+  </div>
+</section>
+```

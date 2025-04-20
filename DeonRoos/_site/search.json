@@ -16,23 +16,23 @@
   {
     "objectID": "courses.html",
     "href": "courses.html",
-    "title": "Teaching",
+    "title": "Deon Roos",
     "section": "",
-    "text": "This course covers key statistical concepts and theory for biological data using R.\n\nLearn more"
+    "text": "This course covers key statistical concepts and theory for biological data using R.\n    Learn more"
   },
   {
     "objectID": "courses.html#undergraduate-teaching",
     "href": "courses.html#undergraduate-teaching",
-    "title": "Teaching",
-    "section": "",
-    "text": "This course covers key statistical concepts and theory for biological data using R.\n\nLearn more"
+    "title": "Deon Roos",
+    "section": "Undergraduate Teaching",
+    "text": "Undergraduate Teaching\n\n  \n    BI3010: Statistical Analysis of Biological Data\n    This course covers key statistical concepts and theory for biological data using R.\n    Learn more"
   },
   {
     "objectID": "courses.html#postgraduate-teaching",
     "href": "courses.html#postgraduate-teaching",
     "title": "Teaching",
     "section": "Postgraduate Teaching",
-    "text": "Postgraduate Teaching\n\n\n\nPGR Course: Generalised Linear Models\n\n\nAn advanced course on GLMs designed for postgrads across disciplines using R.\n\nLearn more"
+    "text": "Postgraduate Teaching\n\n\n&lt;h3&gt;PGR Course: Generalised Linear Models&lt;/h3&gt;\n&lt;p&gt;An advanced course on GLMs designed for postgrads across disciplines using &lt;code&gt;R&lt;/code&gt;.&lt;/p&gt;\n&lt;a href=\"pgr-glm.qmd\" class=\"btn\"&gt;Learn more&lt;/a&gt;"
   },
   {
     "objectID": "cv.html",
@@ -79,9 +79,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "What I do:",
+    "title": "\nHey, I’m Deon Roos\n",
     "section": "",
-    "text": "\\[\n\\mu_i = f(\\rho_{0,i}) + f(\\rho_{1,i}) + f(\\rho_{2,i})\n\\]\n\\[\n\\rho_{j,i} = T + \\left(\\frac{1}{\\zeta_{j,i}}\\right) \\times D_{j,i}\n\\quad \\text{for } j \\in \\{0, 1, 2\\}\n\\]\n\\[\nD_{j,i} = -\\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}\n\\]\n\\[\n\\zeta_{j,i} = \\beta_0 + \\beta_1 \\times z_i\n\\]\n  Your browser does not support the video tag. \n\nSpatiotemporal interference on a fractal landscape"
+    "text": "Hey, I’m Deon Roos\n\n\nLecturer | Scientist | Visualisation Enthusiast\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\mu_i = f(\\rho_{0,i}) + f(\\rho_{1,i}) + f(\\rho_{2,i})\n\\]\n\\[\n\\rho_{j,i} = T + \\left(\\frac{1}{\\zeta_{j,i}}\\right) \\times D_{j,i}\n\\quad \\text{for } j \\in \\{0, 1, 2\\}\n\\]\n\\[\nD_{j,i} = -\\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}\n\\]\n\\[\n\\zeta_{j,i} = \\beta_0 + \\beta_1 \\times z_i\n\\]\n\nload(“courses”) view(“research”) browse(“cv”)"
   },
   {
     "objectID": "publications.html",
@@ -101,8 +101,8 @@
     "objectID": "publications.html#web-applications",
     "href": "publications.html#web-applications",
     "title": "Output",
-    "section": "",
-    "text": "Statistical Distributions\n\n \n\nPredicting House Prices\n\n \n\nPredicting Rent Prices"
+    "section": "Web Applications",
+    "text": "Web Applications\n\n\n\nStatistical Distributions\n\n \n\nPredicting House Prices\n\n \n\nPredicting Rent Prices"
   },
   {
     "objectID": "publications.html#textbooks",
@@ -177,7 +177,7 @@
   {
     "objectID": "cv.html#sections",
     "href": "cv.html#sections",
-    "title": "Curriculum Vitae",
+    "title": "\nDeon Roos\n",
     "section": "Sections",
     "text": "Sections\n\n\n\nEmployment\n\n\nWork history across academia, statistical roles, and non-academic jobs.\n\nView section\n\n\n\nEducation\n\n\nFormal degrees and institutions attended.\n\nView section\n\n\n\nPhD Students\n\n\nSupervision roles and ongoing projects.\n\nView section\n\n\n\nAwards & Funding\n\n\nRecognition and research funding received.\n\nView section\n\n\n\nSkills\n\n\nTechnical, statistical, and communication expertise.\n\nView section"
   },
@@ -250,5 +250,12 @@
     "title": "PhD Students",
     "section": "",
     "text": "Seungyeon Lee, University of Aberdeen\n2024 – Present\n- Integrated population models of tawny owls.\n\n\\(\\leftarrow\\) Back to CV Overview"
+  },
+  {
+    "objectID": "courses.html#postgraudate-teaching",
+    "href": "courses.html#postgraudate-teaching",
+    "title": "Deon Roos",
+    "section": "Postgraudate Teaching",
+    "text": "Postgraudate Teaching\n\n  \n    PGR Course: Generalised Linear Models\n    An advanced course on GLMs designed for postgrads across disciplines using R.\n    Learn more"
   }
 ]

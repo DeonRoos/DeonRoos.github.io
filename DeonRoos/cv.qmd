@@ -1,14 +1,20 @@
 ---
-title: "Curriculum Vitae"
+title: ""
 format:
   html:
     css: styles.css
     toc: false
 ---
 
+<!-- Video Background -->
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="media/mu_wave.mp4" type="video/mp4">
+</video>
+
 <div class="cv-header">
   <h1>Deon Roos</h1>
   <p class="cv-subtitle">Lecturer in Applied Statistics</p>
+  <p class="cv-subtitle">University of Aberdeen</p>
 </div>
 
 <div class="cv-contact">
