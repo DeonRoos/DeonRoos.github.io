@@ -1,0 +1,8 @@
+---
+title: "Blog"
+listing: default
+---
+
+# Blog
+
+Welcome to my blog! Here I post data analysis, visualisations, and research notes.

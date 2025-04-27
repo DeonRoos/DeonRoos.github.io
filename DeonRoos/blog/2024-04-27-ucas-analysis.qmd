@@ -1,0 +1,186 @@
+---
+title: "Undergraduate UCAS Applications and Acceptances Analysis"
+date: "2024-04-27"
+categories: [UCAS, Statistics, Generalized Additive Models, REM, It's the End of the World]
+format:
+  html:
+    toc: true
+    number-sections: true
+    code-fold: true
+---
+
+# Background
+
+Universities across the UK are in a pretty precarious position right now. After both Brexit and COVID the number of students has begun to fall. Especially the ever-attractive-to-senior-management-international-students-cause-£££.
+
+The well may be drying up.
+
+And in some cases dramatically. Coventry University was a crazy £90 million in debt. Dundee was talking about having to fire ca. 600 employees because senior management weren't too good at maths (-£40 million appeared over night!).
+
+Now, possibly in combination with inflation and the "cost-of-living-crisis", the long term viability of some universities is looking... Grim. Grim dark.
+
+This got me thinking over the weekend as to why. What's going on with high-school students that makes it less attractive to go to uni. I can't answer this. I'd need to do a survey of school kids and universities would never pay to get evidence to make a decision. Why waste money on research? You dumbass. Research is *how* they make money. They don't pay for it.
+
+Instead I can look at some larger scale patterns. I *think* universities right now see a lot of this as being due to Brexit (and latterly, the Tories not being the most welcoming to foreigners) removing the European pool of applicants (thanks O'Brexit...).
+
+But if that's the case, then we shouldn't see any similar kinds of trends in UK students, right? Their numbers should be relatively stable.
+
+So that's the idea. If UK students are relatively stable, while everything else collapses around them, then it's probably Brexit. And strategies to target non-EU international students may well work. But if not? Well shit I guess.
+
+## Load libraries
+
+I'll be skipping the data processing and going straight into the analysis. As such, I will only be using a few packages:
+
+```{r, message = FALSE, warning = FALSE}
+library(ggplot2)
+library(mgcv)
+
+# DT is just for including data in the blog
+library(DT)
+```
+
+# Data Preparation
+
+To look into this I pulled some data off of the UCAS website. The UCAS site is a bit of a nightmare to navigate and an even bigger cluster fuck to figure out which of the seemingly thousands of `.csv`s they've thrown into a zip file contain relevant information.
+
+Rest assured. I have been through the valley of cluster fuckery and have emerged with a dataset. I won't subject you to the Olympic levels of gymnastics I went through to get this but if you want a visual summary, watch The Book of Eli.
+
+Here's the data. All clean and nice like.
+
+## Load data
+
+```{r}
+ucas <- read.csv("data/UCAS.csv", stringsAsFactors = TRUE, header = TRUE)
+datatable(ucas, options = list(pageLength = 10, scrollX = TRUE))
+```
+
+# Modelling
+
+There are two main models fitted in this analysis:
+* The number of applications received by universities.
+* The number of acceptances (obviously conditional on an offer being made).
+
+Worth pointing out (it is, in fact, *not* worth pointing out) that I appear twice in this dataset. Once in 2006 and again in 2012. It's like a game of Where's Waldo, except here it's Find the Idiot.
+
+I use some vaguely fancy models to do this. The gist of them is I'm just fitting a time series for each region of origin, for each region of universities for each year. Technically, this uses something akin to temporal autocorrelation so that the predictions are a little more constrained by what's happened in the past (I stole the crude idea from a little toy example Ben Bolker had with grant funding).
+
+## Fit accepted applicants model
+
+```{r, eval = FALSE}
+fit1 <- gam(accepted ~
+             te(year, uni, origin, 
+                bs = c("gp", "re", "re"),
+                k = c(10, 4, 6),
+                m = list(c(3, 1, 1), NA, NA)) + 
+             s(age, bs = "re") +
+             offset(log(applicants)),
+           family = nb(),
+           select = TRUE,
+           method = "REML",
+           data = ucas)
+```
+
+## Fit applicants model
+
+```{r, eval = FALSE}
+fit2 <- gam(applicants ~
+             te(year, uni, origin, 
+                bs = c("gp", "re", "re"),
+                k = c(10, 4, 6),
+                m = list(c(3, 1, 1), NA, NA)) + 
+             s(age, bs = "re"),
+           family = nb(),
+           select = TRUE,
+           method = "REML",
+           data = ucas)
+```
+
+# Predictions and Plotting
+
+After fitting the models, predictions were made up to 2029. Below are the resulting plots.
+
+## Plot accepted applicants
+
+```{r, eval = F}
+synth <- expand.grid(
+  year = seq(from = min(ucas$year),
+             to = 2029,
+             by = 0.1),
+  uni = unique(ucas$uni),
+  origin = unique(ucas$origin),
+  age = "18",
+  applicants = 100000
+)
+
+preds <- predict(fit1, newdata = synth, se.fit = TRUE)
+
+synth$fit <- exp(preds$fit)
+synth$low <- exp(preds$fit - preds$se.fit * 1.96)
+synth$upp <- exp(preds$fit + preds$se.fit * 1.96)
+
+# plot
+
+ggplot(synth) +
+  geom_rect(aes(xmin = 2024, xmax = 2029, ymin = -Inf, ymax = Inf),
+            fill = "lightblue", alpha = 0.1) +
+  geom_ribbon(aes(x = year, ymin = low, ymax = upp), alpha = 0.1) +
+  geom_line(aes(x = year, y = fit)) +
+  facet_grid(uni ~ origin, scales = "free_y") +
+  labs(x = "Year", y = "Acceptances per 100k Applicants") +
+  theme_bw()
+```
+
+![](../media/acceptances.jpeg){width=90%}
+
+## Plot applications
+
+```{r, eval = FALSE}
+synth <- expand.grid(
+  year = seq(from = min(ucas$year),
+             to = 2029,
+             by = 0.1),
+  uni = unique(ucas$uni),
+  origin = unique(ucas$origin),
+  age = "18"
+)
+
+preds <- predict(fit2, newdata = synth, se.fit = TRUE)
+
+synth$fit <- exp(preds$fit)
+synth$low <- exp(preds$fit - preds$se.fit * 1.96)
+synth$upp <- exp(preds$fit + preds$se.fit * 1.96)
+
+# plot
+
+ggplot(synth) +
+  geom_rect(aes(xmin = 2024, xmax = 2029, ymin = -Inf, ymax = Inf),
+            fill = "lightblue", alpha = 0.1) +
+  geom_ribbon(aes(x = year, ymin = low, ymax = upp), alpha = 0.1) +
+  geom_line(aes(x = year, y = fit)) +
+  facet_grid(uni ~ origin, scales = "free_y") +
+  labs(x = "Year", y = "Applicants") +
+  theme_bw()
+```
+
+![](../media/applications.jpeg){width=90%}
+
+# Conclusion
+
+My guess at what's driving this?
+
+I can't help but notice that UK national student numbers have dropped in "similar" ways to non-UK students. Some of the decline in "foreign" students may well have something to do with Brexit and the Conservative government's attitude to immigration, but I think there may be something else at play, and not something specific to the UK.
+
+I suspect it may be the lingering effects of COVID. An entire cohort of students experienced "online" education (both its pros and cons - but probably mostly the cons, right?) and may now be less interested in continuing with formal education.
+There might also be an effect from their parents, who (like many of us during lockdown) reconsidered what they want from life. Is it worth sending their child off to university just to become stuck in the quagmire of being a *manager* one day? Do they really need little Sally to destroy their ambitions just to become a *patent* lawyer and earn the big bucks?
+Maybe not. Or maybe it's related but less nefarious (and tin foil-y). Maybe parents simply put less pressure on their children to go to universities than they would have previously.
+
+I have no idea. I'm speculating and waving my hands with all the spirit fingers.
+
+But putting all of the blame exclusively on Brexit and the current government doesn't seem justified, given the trends visible among domestic (UK) students.
+
+Regardless of which one of the suggestions above is your preferred one - the thing is  unclear to me is:
+Is this just a short-term blip in recruitment, or is it a sign that universities are no longer seen as the automatic "next step" after high school? That the educational culture has shifted and universities are the last to know. That's worrying because most of the "strategies" currently being discussed are intrinsically of the view that "this'll all blow over in a couple of days and we'll be back to normal". I'm not really sure that's the case.
+
+If the culture has shifted, then the "education-as-a-business" business model might be coming to a, crashing, ugly, and bitter end.
+
+And I doubt many will miss the days of over-charging students to make money from people wanting to improve themselves through education.

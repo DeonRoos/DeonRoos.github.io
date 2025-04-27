@@ -5,7 +5,8 @@ project:
     - media/distributions.png
     - media/house_price.png
     - media/rent.png
-    - googleac99a2840748e25e.html
+    - media/acceptances.jpeg
+    - media/applications.jpeg
 
 website:
   title: "Deon Roos"
@@ -18,11 +19,14 @@ website:
         file: publications.qmd
       - text: "CV"
         file: cv.qmd
+      - text: "Blog"
+        file: blog/index.qmd
 
 format:
   html:
     theme: default
     css: styles.css
+    highlight-style: atom-one-dark
 
 publish:
   provider: gh-pages
