@@ -201,5 +201,12 @@
     "title": "Deon Roos",
     "section": "Textbooks",
     "text": "Textbooks\nA Douglas, D Roos, F Mancini, A Couto, D Lusseau. An introduction to R."
+  },
+  {
+    "objectID": "explainers.html#models-concepts",
+    "href": "explainers.html#models-concepts",
+    "title": "Explainers",
+    "section": "Models & Concepts",
+    "text": "Models & Concepts\n\n\n\nBayesian Occupancy Models\n\n \n\nIntroduction to GLMs"
   }
 ]

@@ -19,6 +19,8 @@ website:
         file: publications.qmd
       - text: "CV"
         file: cv.qmd
+      - text: "Explainers"
+        file: explainers.qmd
       - text: "Blog"
         file: blog/index.qmd
 

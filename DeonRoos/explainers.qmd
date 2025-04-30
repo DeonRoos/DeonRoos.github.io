@@ -1,0 +1,39 @@
+---
+title: "Explainers"
+format: html
+---
+
+<!-- Background video -->
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="media/mu_wave.mp4" type="video/mp4">
+</video>
+
+<!-- AOS scroll animations -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ once: true, duration: 600 });
+</script>
+
+## Models & Concepts
+
+```{r echo=FALSE, results='asis'}
+library(glue)
+
+explainers <- list(
+  list(name = "Bayesian Occupancy Models", url = "https://deonroos.github.io/Occupancy_Modelling/Occupancy_Models.html", image = "media/occupancy.png"),
+  list(name = "Introduction to GLMs", url = "https://alexd106.github.io/PGR-GLM/", image = "media/glm_binomial_illustration.png")
+)
+
+cat("<div class='app-tiles'>")
+delay <- 0
+for (item in explainers) {
+  cat(glue("
+    <a href='{item$url}' class='app-tile' style='background-image: url({item$image});' data-aos='fade-up' data-aos-delay='{delay}' target='_blank'>
+      <div class='app-label'>{item$name}</div>
+    </a>
+  "))
+  delay <- delay + 100
+}
+cat("</div>")
+```
