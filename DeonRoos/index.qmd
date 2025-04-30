@@ -9,8 +9,16 @@ format: html
 </video>
 
 <section class="hero" data-aos="zoom-in">
-  <h1>Hey, I'm Deon Roos</h1>
-  <p>Lecturer | Scientist | Visualisation Enthusiast</p>
+  <h1>I'm Deon Roos. I do stuff.</h1>
+  <p>Check out my stuff to see what.</p>
+  <p>Lecturer | Scientist | Statistician</p>
+</section>
+
+
+<section class="card-grid" data-aos="fade-up">
+  <a href="courses.html" class="code-card"><span class="code-text">load("courses")</span></a>
+  <a href="publications.html" class="code-card"><span class="code-text">view("output")</span></a>
+  <a href="cv.html" class="code-card"><span class="code-text">browse("cv")</span></a>
 </section>
 
 
@@ -29,6 +37,7 @@ format: html
       "Deon_Roos <- \"Programmer\"",
       "Deon_Roos <- \"Data Visualiser\"",
       "Deon_Roos <- \"Scientist\"",
+      "Deon_Roos <- \"Teacher\"",
       "Deon_Roos <- \"Data scientist\"",
       "Deon_Roos <- \"Medical researcher\"",
       "Deon_Roos <- \"Quantitative Modeller\""
@@ -68,10 +77,4 @@ $$
 $$
 \zeta_{j,i} = \beta_0 + \beta_1 \times z_i
 $$
-
-<section class="card-grid" data-aos="fade-up">
-  <a href="courses.html" class="code-card"><span class="code-text">load("courses")</span></a>
-  <a href="publications.html" class="code-card"><span class="code-text">view("output")</span></a>
-  <a href="cv.html" class="code-card"><span class="code-text">browse("cv")</span></a>
-</section>
 

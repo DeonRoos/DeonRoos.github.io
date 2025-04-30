@@ -779,3 +779,19 @@ a.pub-card:hover {
   color: white;
 }
 
+.navbar .nav-link:hover,
+.navbar .nav-link:focus,
+.navbar .nav-link.active {
+  color: #00C4A3 !important; /* slightly lighter for hover effect */
+  text-decoration: underline;
+}
+
+.cv-contact-item i {
+  margin-right: 8px;
+  color: #00A68A;
+}
+
+.cv-contact-item img {
+  vertical-align: middle;
+  height: 1em;
+}

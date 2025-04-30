@@ -21,7 +21,7 @@ format: html
 library(glue)
 
 explainers <- list(
-  list(name = "Bayesian Occupancy Models", url = "https://deonroos.github.io/Occupancy_Modelling/Occupancy_Models.html", image = "media/occupancy.png"),
+  list(name = "Bayesian Occupancy Models", url = "https://deonroos.github.io/Occupancy_Modelling.html", image = "media/occupancy.png"),
   list(name = "Introduction to GLMs", url = "https://alexd106.github.io/PGR-GLM/", image = "media/glm_binomial_illustration.png")
 )
 

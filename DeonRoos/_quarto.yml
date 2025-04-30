@@ -7,20 +7,22 @@ project:
     - media/rent.png
     - media/acceptances.jpeg
     - media/applications.jpeg
+    - media/occupancy.png
+    - media/Bluesky_Logo.svg
 
 website:
   title: "Deon Roos"
   description: "Lecturer in Applied Statistics | Data Visualisation | Statistics Course | Statistical Distributions"
   navbar:
     left:
-      - text: "Courses"
+      - text: "My Courses"
         file: courses.qmd
-      - text: "Output"
-        file: publications.qmd
-      - text: "CV"
-        file: cv.qmd
-      - text: "Explainers"
+      - text: "Stats Explainers"
         file: explainers.qmd
+      - text: "My Output"
+        file: publications.qmd
+      - text: "My CV"
+        file: cv.qmd
       - text: "Blog"
         file: blog/index.qmd
 

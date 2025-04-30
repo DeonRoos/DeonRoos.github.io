@@ -6,6 +6,8 @@ format:
     toc: false
 ---
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <!-- Video Background -->
 <video autoplay muted loop playsinline id="bg-video">
   <source src="media/mu_wave.mp4" type="video/mp4">
@@ -18,12 +20,20 @@ format:
 </div>
 
 <div class="cv-contact">
-  <span class="cv-contact-item">📧 <a href="mailto:deon.roos4@abdn.ac.uk">Email</a></span>
-  <span class="cv-contact-item">📖 <a href="https://orcid.org/0000-0003-4866-7472">ORCID</a></span>
-  <span class="cv-contact-item">🐱 <a href="https://github.com/DeonRoos">GitHub</a></span>
+  <a class="cv-contact-item" href="mailto:deon.roos4@abdn.ac.uk">
+    <i class="fas fa-envelope"></i> Email
+  </a>
+  <a class="cv-contact-item" href="https://orcid.org/0000-0003-4866-7472">
+    <i class="fab fa-orcid"></i> ORCID
+  </a>
+  <a class="cv-contact-item" href="https://github.com/DeonRoos">
+    <i class="fab fa-github"></i> GitHub
+  </a>
+<a class="cv-contact-item" href="https://bsky.app/profile/deonroos.bsky.social">
+  <img src="media/Bluesky_Logo.svg" aria-hidden="true" style="height: 1em; margin-right: 8px;"> Bluesky
+</a>
 </div>
 
-<!-- AOS library for scroll animations -->
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>
@@ -32,7 +42,6 @@ format:
     duration: 600 // speed of animation in ms
   });
 </script>
----
 
 ## Sections
 

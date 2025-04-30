@@ -147,11 +147,18 @@
     "text": "Sections\n\n  \n    Employment\n    Work history across academia, statistical roles, and non-academic jobs.\n    View section\n  \n\n  \n    Education\n    Formal degrees and institutions attended.\n    View section\n  \n\n  \n    PhD Students\n    Supervision roles and ongoing projects.\n    View section\n  \n\n  \n    Awards & Funding\n    Recognition and research funding received.\n    View section\n  \n\n  \n    Skills\n    Technical, statistical, and communication expertise.\n    View section"
   },
   {
+    "objectID": "explainers.html#models-concepts",
+    "href": "explainers.html#models-concepts",
+    "title": "Explainers",
+    "section": "Models & Concepts",
+    "text": "Models & Concepts\n\n\n\nBayesian Occupancy Models\n\n \n\nIntroduction to GLMs"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "\nHey, I’m Deon Roos\n",
+    "title": "\nI’m Deon Roos. I do stuff.\n",
     "section": "",
-    "text": "Hey, I’m Deon Roos\n\n\nLecturer | Scientist | Visualisation Enthusiast\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\mu_i = f(\\rho_{0,i}) + f(\\rho_{1,i}) + f(\\rho_{2,i})\n\\]\n\\[\n\\rho_{j,i} = T + \\left(\\frac{1}{\\zeta_{j,i}}\\right) \\times D_{j,i}\n\\quad \\text{for } j \\in \\{0, 1, 2\\}\n\\]\n\\[\nD_{j,i} = -\\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}\n\\]\n\\[\n\\zeta_{j,i} = \\beta_0 + \\beta_1 \\times z_i\n\\]\n\nload(“courses”) view(“output”) browse(“cv”)"
+    "text": "I’m Deon Roos. I do stuff.\n\n\nCheck out my stuff to see what.\n\n\nLecturer | Scientist | Statistician\n\n\n\nload(“courses”) view(“output”) browse(“cv”)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\mu_i = f(\\rho_{0,i}) + f(\\rho_{1,i}) + f(\\rho_{2,i})\n\\]\n\\[\n\\rho_{j,i} = T + \\left(\\frac{1}{\\zeta_{j,i}}\\right) \\times D_{j,i}\n\\quad \\text{for } j \\in \\{0, 1, 2\\}\n\\]\n\\[\nD_{j,i} = -\\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}\n\\]\n\\[\n\\zeta_{j,i} = \\beta_0 + \\beta_1 \\times z_i\n\\]"
   },
   {
     "objectID": "pgr-glm.html",
@@ -201,12 +208,5 @@
     "title": "Deon Roos",
     "section": "Textbooks",
     "text": "Textbooks\nA Douglas, D Roos, F Mancini, A Couto, D Lusseau. An introduction to R."
-  },
-  {
-    "objectID": "explainers.html#models-concepts",
-    "href": "explainers.html#models-concepts",
-    "title": "Explainers",
-    "section": "Models & Concepts",
-    "text": "Models & Concepts\n\n\n\nBayesian Occupancy Models\n\n \n\nIntroduction to GLMs"
   }
 ]
