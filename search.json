@@ -39,56 +39,21 @@
     "href": "blog/2024-04-27-ucas-analysis.html",
     "title": "Undergraduate UCAS Applications and Acceptances Analysis",
     "section": "",
-    "text": "Universities across the UK are in a pretty precarious position right now. After both Brexit and COVID the number of students has begun to fall. Especially the ever-attractive-to-senior-management-international-students-cause-£££.\nThe well may be drying up.\nAnd in some cases dramatically. Coventry University was a crazy £90 million in debt. Dundee was talking about having to fire ca. 600 employees because senior management weren’t too good at maths (-£40 million appeared over night!).\nNow, possibly in combination with inflation and the “cost-of-living-crisis”, the long term viability of some universities is looking… Grim. Grim dark.\nThis got me thinking over the weekend as to why. What’s going on with high-school students that makes it less attractive to go to uni. I can’t answer this. I’d need to do a survey of school kids and universities would never pay to get evidence to make a decision. Why waste money on research? You dumbass. Research is how they make money. They don’t pay for it.\nInstead I can look at some larger scale patterns. I think universities right now see a lot of this as being due to Brexit (and latterly, the Tories not being the most welcoming to foreigners) removing the European pool of applicants (thanks O’Brexit…).\nBut if that’s the case, then we shouldn’t see any similar kinds of trends in UK students, right? Their numbers should be relatively stable.\nSo that’s the idea. If UK students are relatively stable, while everything else collapses around them, then it’s probably Brexit. And strategies to target non-EU international students may well work. But if not? Well shit I guess.\n\n\nI’ll be skipping the data processing and going straight into the analysis. As such, I will only be using a few packages:\n\n\nCode\nlibrary(ggplot2)\nlibrary(mgcv)\n\n# DT is just for including data in the blog\nlibrary(DT)"
+    "text": "Universities across the UK are in a pretty precarious position right now. After a host of issues, post 2020 has seen the number of students fall. The well seems to be drying up.\nAnd in some cases dramatically. Coventry University made a £54 million loss in 2023-24. Dundee was talking about having to fire ca. 600 employees because apparently the previous senior management team weren’t too good at maths.\nNow, possibly in combination with inflation and the “cost-of-living-crisis”, the long term viability of some universities is looking… Grim.\nThis got me thinking over the weekend as to why. What’s going on with high-school students that makes it less attractive to go to uni? I don’t know and I can’t answer this. I’d need to do a survey of school kids and universities would never pay to get evidence to make a decision. There’s no money remember? Unless it’s for an external consultancy team to tell you if you were fire red or earth green.\nWhat I can do is look at some larger scale patterns with some crude data. It’s something, I guess. I think most people would point to faltering university recruitment and see a clear line between Brexit (and latterly, the Tories not being the most welcoming to foreigners) and the loss of the pool of European applicants.\nBut if that’s the case, then we shouldn’t see any similar kinds of trends in UK students applying to UK universities, right? Their numbers should be relatively stable. If you’re in Englandshire, why would you care that you can’t go to Europe if you were planning to go to Englandshire University regardless?\nSo that’s the idea and my question. Is there something a bit more gloabl going on than just little Britain? If UK students are relatively stable, while EU applicants fall, then it’s probably mostly because of Brexit (and associated policies) that uni recruitment is falling. And strategies to target non-EU international students may well work. But if not? Well, that’s the more “global thing”, right?\n\n\nI’ll be skipping the data processing and going straight into the analysis. As such, I will only be using a few packages:\n\n\nCode\nlibrary(ggplot2)\nlibrary(mgcv)\n\n# DT is just for including data in the blog\nlibrary(DT)\n\n\nTo look into this I pulled some data off of the UCAS website. The UCAS site is a bit of a nightmare to navigate and an even bigger cluster fuck to figure out which of the seemingly gajillions of .csvs they’ve thrown into a zip file contain relevant information I want.\nRest assured, I have been through the valley of cluster fuckery and have emerged with a dataset. I won’t subject you to the Olympic levels of gymnastics I went through to get this but if you want a visual summary, watch The Book of Eli.\nHere’s the data. All clean ’n nice like.\n\n\nCode\nucas &lt;- read.csv(\"data/UCAS.csv\", stringsAsFactors = TRUE, header = TRUE)\ndatatable(ucas, options = list(pageLength = 10, scrollX = TRUE))"
   },
   {
-    "objectID": "blog/2024-04-27-ucas-analysis.html#load-libraries",
-    "href": "blog/2024-04-27-ucas-analysis.html#load-libraries",
+    "objectID": "blog/2024-04-27-ucas-analysis.html#deets",
+    "href": "blog/2024-04-27-ucas-analysis.html#deets",
     "title": "Undergraduate UCAS Applications and Acceptances Analysis",
     "section": "",
-    "text": "I’ll be skipping the data processing and going straight into the analysis. As such, I will only be using a few packages:\n\n\nCode\nlibrary(ggplot2)\nlibrary(mgcv)\n\n# DT is just for including data in the blog\nlibrary(DT)"
-  },
-  {
-    "objectID": "blog/2024-04-27-ucas-analysis.html#load-data",
-    "href": "blog/2024-04-27-ucas-analysis.html#load-data",
-    "title": "Undergraduate UCAS Applications and Acceptances Analysis",
-    "section": "2.1 Load data",
-    "text": "2.1 Load data\n\n\nCode\nucas &lt;- read.csv(\"data/UCAS.csv\", stringsAsFactors = TRUE, header = TRUE)\ndatatable(ucas, options = list(pageLength = 10, scrollX = TRUE))"
-  },
-  {
-    "objectID": "blog/2024-04-27-ucas-analysis.html#fit-accepted-applicants-model",
-    "href": "blog/2024-04-27-ucas-analysis.html#fit-accepted-applicants-model",
-    "title": "Undergraduate UCAS Applications and Acceptances Analysis",
-    "section": "3.1 Fit accepted applicants model",
-    "text": "3.1 Fit accepted applicants model\n\n\nCode\nfit1 &lt;- gam(accepted ~\n             te(year, uni, origin, \n                bs = c(\"gp\", \"re\", \"re\"),\n                k = c(10, 4, 6),\n                m = list(c(3, 1, 1), NA, NA)) + \n             s(age, bs = \"re\") +\n             offset(log(applicants)),\n           family = nb(),\n           select = TRUE,\n           method = \"REML\",\n           data = ucas)"
-  },
-  {
-    "objectID": "blog/2024-04-27-ucas-analysis.html#fit-applicants-model",
-    "href": "blog/2024-04-27-ucas-analysis.html#fit-applicants-model",
-    "title": "Undergraduate UCAS Applications and Acceptances Analysis",
-    "section": "3.2 Fit applicants model",
-    "text": "3.2 Fit applicants model\n\n\nCode\nfit2 &lt;- gam(applicants ~\n             te(year, uni, origin, \n                bs = c(\"gp\", \"re\", \"re\"),\n                k = c(10, 4, 6),\n                m = list(c(3, 1, 1), NA, NA)) + \n             s(age, bs = \"re\"),\n           family = nb(),\n           select = TRUE,\n           method = \"REML\",\n           data = ucas)"
-  },
-  {
-    "objectID": "blog/2024-04-27-ucas-analysis.html#plot-accepted-applicants",
-    "href": "blog/2024-04-27-ucas-analysis.html#plot-accepted-applicants",
-    "title": "Undergraduate UCAS Applications and Acceptances Analysis",
-    "section": "4.1 Plot accepted applicants",
-    "text": "4.1 Plot accepted applicants\n\n\nCode\nsynth &lt;- expand.grid(\n  year = seq(from = min(ucas$year),\n             to = 2029,\n             by = 0.1),\n  uni = unique(ucas$uni),\n  origin = unique(ucas$origin),\n  age = \"18\",\n  applicants = 100000\n)\n\npreds &lt;- predict(fit1, newdata = synth, se.fit = TRUE)\n\nsynth$fit &lt;- exp(preds$fit)\nsynth$low &lt;- exp(preds$fit - preds$se.fit * 1.96)\nsynth$upp &lt;- exp(preds$fit + preds$se.fit * 1.96)\n\n# plot\n\nggplot(synth) +\n  geom_rect(aes(xmin = 2024, xmax = 2029, ymin = -Inf, ymax = Inf),\n            fill = \"lightblue\", alpha = 0.1) +\n  geom_ribbon(aes(x = year, ymin = low, ymax = upp), alpha = 0.1) +\n  geom_line(aes(x = year, y = fit)) +\n  facet_grid(uni ~ origin, scales = \"free_y\") +\n  labs(x = \"Year\", y = \"Acceptances per 100k Applicants\") +\n  theme_bw()"
-  },
-  {
-    "objectID": "blog/2024-04-27-ucas-analysis.html#plot-applications",
-    "href": "blog/2024-04-27-ucas-analysis.html#plot-applications",
-    "title": "Undergraduate UCAS Applications and Acceptances Analysis",
-    "section": "4.2 Plot applications",
-    "text": "4.2 Plot applications\n\n\nCode\nsynth &lt;- expand.grid(\n  year = seq(from = min(ucas$year),\n             to = 2029,\n             by = 0.1),\n  uni = unique(ucas$uni),\n  origin = unique(ucas$origin),\n  age = \"18\"\n)\n\npreds &lt;- predict(fit2, newdata = synth, se.fit = TRUE)\n\nsynth$fit &lt;- exp(preds$fit)\nsynth$low &lt;- exp(preds$fit - preds$se.fit * 1.96)\nsynth$upp &lt;- exp(preds$fit + preds$se.fit * 1.96)\n\n# plot\n\nggplot(synth) +\n  geom_rect(aes(xmin = 2024, xmax = 2029, ymin = -Inf, ymax = Inf),\n            fill = \"lightblue\", alpha = 0.1) +\n  geom_ribbon(aes(x = year, ymin = low, ymax = upp), alpha = 0.1) +\n  geom_line(aes(x = year, y = fit)) +\n  facet_grid(uni ~ origin, scales = \"free_y\") +\n  labs(x = \"Year\", y = \"Applicants\") +\n  theme_bw()"
+    "text": "I’ll be skipping the data processing and going straight into the analysis. As such, I will only be using a few packages:\n\n\nCode\nlibrary(ggplot2)\nlibrary(mgcv)\n\n# DT is just for including data in the blog\nlibrary(DT)\n\n\nTo look into this I pulled some data off of the UCAS website. The UCAS site is a bit of a nightmare to navigate and an even bigger cluster fuck to figure out which of the seemingly gajillions of .csvs they’ve thrown into a zip file contain relevant information I want.\nRest assured, I have been through the valley of cluster fuckery and have emerged with a dataset. I won’t subject you to the Olympic levels of gymnastics I went through to get this but if you want a visual summary, watch The Book of Eli.\nHere’s the data. All clean ’n nice like.\n\n\nCode\nucas &lt;- read.csv(\"data/UCAS.csv\", stringsAsFactors = TRUE, header = TRUE)\ndatatable(ucas, options = list(pageLength = 10, scrollX = TRUE))"
   },
   {
     "objectID": "blog/index.html",
     "href": "blog/index.html",
     "title": "Blog",
     "section": "",
-    "text": "Blog\nWelcome to my blog! Here I post data analysis, visualisations, and research notes.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUndergraduate UCAS Applications and Acceptances Analysis\n\n\n\n\n\n\n`Apr 27, 2024`{=html}\n\n\n\n\nNo matching items"
+    "text": "My graveyard of ideas.\n\n\n\n\n\n\n\n\n\n\n\n\n\nUndergraduate UCAS Applications and Acceptances Analysis\n\n\n\n\n\n\n`Apr 27, 2024`{=html}\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "courses.html#undergraduate-teaching",
@@ -151,14 +116,14 @@
     "href": "explainers.html#models-concepts",
     "title": "Explainers",
     "section": "Models & Concepts",
-    "text": "Models & Concepts\n\n\n\nBayesian Occupancy Models\n\n \n\nIntroduction to GLMs"
+    "text": "Models & Concepts\n\n\n\nIntroduction to GLMs\n\n \n\nBayesian Occupancy Models"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "\nHey, I’m Deon Roos\n",
+    "title": "\nI’m Deon Roos. I do stuff.\n",
     "section": "",
-    "text": "Hey, I’m Deon Roos\n\n\nLecturer | Scientist | Visualisation Enthusiast\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\mu_i = f(\\rho_{0,i}) + f(\\rho_{1,i}) + f(\\rho_{2,i})\n\\]\n\\[\n\\rho_{j,i} = T + \\left(\\frac{1}{\\zeta_{j,i}}\\right) \\times D_{j,i}\n\\quad \\text{for } j \\in \\{0, 1, 2\\}\n\\]\n\\[\nD_{j,i} = -\\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}\n\\]\n\\[\n\\zeta_{j,i} = \\beta_0 + \\beta_1 \\times z_i\n\\]\n\nload(“courses”) view(“output”) browse(“cv”)"
+    "text": "I’m Deon Roos. I do stuff.\n\n\nCheck out my stuff to see what.\n\n\nLecturer | Scientist | Statistician\n\n\n\nload(“courses”) view(“output”) browse(“cv”)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\mu_i = f(\\rho_{0,i}) + f(\\rho_{1,i}) + f(\\rho_{2,i})\n\\]\n\\[\n\\rho_{j,i} = T + \\left(\\frac{1}{\\zeta_{j,i}}\\right) \\times D_{j,i}\n\\quad \\text{for } j \\in \\{0, 1, 2\\}\n\\]\n\\[\nD_{j,i} = -\\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}\n\\]\n\\[\n\\zeta_{j,i} = \\beta_0 + \\beta_1 \\times z_i\n\\]"
   },
   {
     "objectID": "pgr-glm.html",
