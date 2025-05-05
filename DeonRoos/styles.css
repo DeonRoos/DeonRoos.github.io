@@ -786,12 +786,34 @@ a.pub-card:hover {
   text-decoration: underline;
 }
 
-.cv-contact-item i {
-  margin-right: 8px;
+.cv-contact {
+  display: flex;
+  flex-wrap: nowrap; /* prevents line wrapping */
+  justify-content: center;
+  gap: 2em; /* slightly more space between each contact item */
+  margin-top: 0.5em;
+}
+
+.cv-contact-item {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1em;
+  color: #F7C908;
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap; /* prevents breaking inside */
+}
+
+.cv-contact-item i,
+.cv-contact-item img {
+  height: 1em;
+  width: 1em;
+  margin-right: 0.4em;
+  vertical-align: middle;
+  fill: #00A68A;
   color: #00A68A;
 }
 
-.cv-contact-item img {
+.cv-contact-item span {
   vertical-align: middle;
-  height: 1em;
 }

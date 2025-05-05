@@ -7,7 +7,7 @@ project:
     - media/rent.png
     - media/acceptances.jpeg
     - media/applications.jpeg
-    - media/occupancy.png
+    - media/occupancy.PNG
     - media/Bluesky_Logo.svg
 
 website:

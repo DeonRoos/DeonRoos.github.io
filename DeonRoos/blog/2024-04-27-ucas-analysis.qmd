@@ -11,23 +11,21 @@ format:
 
 # Background
 
-Universities across the UK are in a pretty precarious position right now. After both Brexit and COVID the number of students has begun to fall. Especially the ever-attractive-to-senior-management-international-students-cause-£££.
+Universities across the UK are in a pretty precarious position right now. After a host of issues, post 2020 has seen the number of students fall. The well seems to be drying up.
 
-The well may be drying up.
+And in some cases dramatically. Coventry University made a [£54 million loss](https://www.bbc.co.uk/news/articles/c0ell0354e7o) in 2023-24. Dundee was talking about having to fire ca. [600 employees](https://www.bbc.co.uk/news/articles/cy0520y092po) because apparently the previous senior management team weren't too good at maths.
 
-And in some cases dramatically. Coventry University was a crazy £90 million in debt. Dundee was talking about having to fire ca. 600 employees because senior management weren't too good at maths (-£40 million appeared over night!).
+Now, possibly in combination with inflation and the "cost-of-living-crisis", the long term viability of some universities is looking... Grim.
 
-Now, possibly in combination with inflation and the "cost-of-living-crisis", the long term viability of some universities is looking... Grim. Grim dark.
+This got me thinking over the weekend as to why. What's going on with high-school students that makes it less attractive to go to uni? I don't know and I can't answer this. I'd need to do a survey of school kids and universities would never pay to get evidence to make a decision. There's no money remember? Unless it's for an external consultancy team to tell you if you were [fire red or earth green](https://bsky.app/profile/statsepi.bsky.social/post/3lnzwceljfs23).
 
-This got me thinking over the weekend as to why. What's going on with high-school students that makes it less attractive to go to uni. I can't answer this. I'd need to do a survey of school kids and universities would never pay to get evidence to make a decision. Why waste money on research? You dumbass. Research is *how* they make money. They don't pay for it.
+What I can do is look at some larger scale patterns with some crude data. It's something, I guess. I *think* most people would point to faltering university recruitment and see a clear line between Brexit (and latterly, the Tories not being the most welcoming to foreigners) and the loss of the pool of European applicants.
 
-Instead I can look at some larger scale patterns. I *think* universities right now see a lot of this as being due to Brexit (and latterly, the Tories not being the most welcoming to foreigners) removing the European pool of applicants (thanks O'Brexit...).
+But if that's the case, then we shouldn't see any similar kinds of trends in UK students applying to UK universities, right? Their numbers should be relatively stable. If you're in Englandshire, why would you care that you can't go to Europe if you were planning to go to Englandshire University regardless?
 
-But if that's the case, then we shouldn't see any similar kinds of trends in UK students, right? Their numbers should be relatively stable.
+So that's the idea and my question. Is there something a bit more gloabl going on than just little Britain? If UK students are relatively stable, while EU applicants fall, then it's probably mostly because of Brexit (and associated policies) that uni recruitment is falling. And strategies to target non-EU international students may well work. But if not? Well, that's the more "global thing", right?
 
-So that's the idea. If UK students are relatively stable, while everything else collapses around them, then it's probably Brexit. And strategies to target non-EU international students may well work. But if not? Well shit I guess.
-
-## Load libraries
+## Deets
 
 I'll be skipping the data processing and going straight into the analysis. As such, I will only be using a few packages:
 
@@ -39,34 +37,28 @@ library(mgcv)
 library(DT)
 ```
 
-# Data Preparation
+To look into this I pulled some data off of the UCAS website. The UCAS site is a bit of a nightmare to navigate and an even bigger cluster fuck to figure out which of the seemingly gajillions of `.csv`s they've thrown into a zip file contain relevant information I want.
 
-To look into this I pulled some data off of the UCAS website. The UCAS site is a bit of a nightmare to navigate and an even bigger cluster fuck to figure out which of the seemingly thousands of `.csv`s they've thrown into a zip file contain relevant information.
+Rest assured, I have been through the valley of cluster fuckery and have emerged with a dataset. I won't subject you to the Olympic levels of gymnastics I went through to get this but if you want a visual summary, watch The Book of Eli.
 
-Rest assured. I have been through the valley of cluster fuckery and have emerged with a dataset. I won't subject you to the Olympic levels of gymnastics I went through to get this but if you want a visual summary, watch The Book of Eli.
-
-Here's the data. All clean and nice like.
-
-## Load data
+Here's the data. All clean 'n nice like.
 
 ```{r}
 ucas <- read.csv("data/UCAS.csv", stringsAsFactors = TRUE, header = TRUE)
 datatable(ucas, options = list(pageLength = 10, scrollX = TRUE))
 ```
 
-# Modelling
+# Science is stats
 
 There are two main models fitted in this analysis:
 * The number of applications received by universities.
 * The number of acceptances (obviously conditional on an offer being made).
 
-Worth pointing out (it is, in fact, *not* worth pointing out) that I appear twice in this dataset. Once in 2006 and again in 2012. It's like a game of Where's Waldo, except here it's Find the Idiot.
+Worth pointing out (it is, in fact, *not* worth pointing out) that I appear twice in this dataset. Once in 2006 and again in 2012 after a brief stint of being a uni drop out.
 
-I use some vaguely fancy models to do this. The gist of them is I'm just fitting a time series for each region of origin, for each region of universities for each year. Technically, this uses something akin to temporal autocorrelation so that the predictions are a little more constrained by what's happened in the past (I stole the crude idea from a little toy example Ben Bolker had with grant funding).
+I use some vaguely fancy models to do this. The gist of them is I'm just fitting something like a time series for each region of student origin, for each region of universities for each year. Vaguely, this uses something akin to temporal autocorrelation so that the predictions are a little more constrained by what's happened in the past (I stole the crude idea from a little toy example Ben Bolker had with grant funding).
 
-## Fit accepted applicants model
-
-```{r, eval = FALSE}
+```{r, cache = TRUE}
 fit1 <- gam(accepted ~
              te(year, uni, origin, 
                 bs = c("gp", "re", "re"),
@@ -78,11 +70,7 @@ fit1 <- gam(accepted ~
            select = TRUE,
            method = "REML",
            data = ucas)
-```
 
-## Fit applicants model
-
-```{r, eval = FALSE}
 fit2 <- gam(applicants ~
              te(year, uni, origin, 
                 bs = c("gp", "re", "re"),
@@ -97,11 +85,9 @@ fit2 <- gam(applicants ~
 
 # Predictions and Plotting
 
-After fitting the models, predictions were made up to 2029. Below are the resulting plots.
+After fitting the models, predictions were made up to 2029 - cause let's guess how big the fire'll get. Below are the resulting plots.
 
-## Plot accepted applicants
-
-```{r, eval = F}
+```{r, cache = TRUE}
 synth <- expand.grid(
   year = seq(from = min(ucas$year),
              to = 2029,
@@ -130,11 +116,7 @@ ggplot(synth) +
   theme_bw()
 ```
 
-![](../media/acceptances.jpeg){width=90%}
-
-## Plot applications
-
-```{r, eval = FALSE}
+```{r, cache = TRUE}
 synth <- expand.grid(
   year = seq(from = min(ucas$year),
              to = 2029,
@@ -162,13 +144,11 @@ ggplot(synth) +
   theme_bw()
 ```
 
-![](../media/applications.jpeg){width=90%}
-
 # Conclusion
 
 My guess at what's driving this?
 
-I can't help but notice that UK national student numbers have dropped in "similar" ways to non-UK students. Some of the decline in "foreign" students may well have something to do with Brexit and the Conservative government's attitude to immigration, but I think there may be something else at play, and not something specific to the UK.
+UK national student numbers have dropped in "similar" ways to non-UK students. Some of the decline in "foreign" students may well have something to do with Brexit and the Conservative government's attitude to immigration, but I think there may be something else at play, and not something specific to the UK.
 
 I suspect it may be the lingering effects of COVID. An entire cohort of students experienced "online" education (both its pros and cons - but probably mostly the cons, right?) and may now be less interested in continuing with formal education.
 There might also be an effect from their parents, who (like many of us during lockdown) reconsidered what they want from life. Is it worth sending their child off to university just to become stuck in the quagmire of being a *manager* one day? Do they really need little Sally to destroy their ambitions just to become a *patent* lawyer and earn the big bucks?
