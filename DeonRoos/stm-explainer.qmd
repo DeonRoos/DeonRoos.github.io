@@ -20,41 +20,70 @@ library(knitr)
 opts_chunk$set(echo = TRUE)
 ```
 
-## Structural Topic Models (STM): A Guided Walkthrough
+Hey Grace, this page has been written especially for you. I've tried to write the material here to help cover the underlying theory of STMs as well as how to actually *implement* them. But be warned, the theory here is tough and I'm new to this myself. It took me a good while to make sense of the stats here, so be patient with yourself (and me). This page is not intended to be your "supervisor" - I'm still here to help you. Instead, it's intended to be a stand alone document you can always come back to whenever you need.
 
-Hey Grace, this page has been written especially for you. I've tried to write the material here to help cover the underlying theory of STMs as well as how to actually *implement* them. This page is not intended to be your "supervisor" - it's intended to be a stand alone document you can always come back to whenever you need. We'll still have our weekly meetings where we can talk about this in more detail.
-
-Hopefully this page helps you understand the method and is useful, but let me know if you have any doubts. It's unlikely that this walkthrough will answer every bit of confusion you have.
+Hopefully this page helps you understand the method and is useful, but let me know if you have any doubts. It's unlikely that this walk through will answer every bit of confusion you have so I won't take any offence if you want to burn this in a giant pyre. Just tell me.
 
 ------------------------------------------------------------------------
+
+# Why analyse text?
+
+Let's say we want to understand how movie critic reviews have changed over time. How would we do this. Well, you say, maybe the "simplest" way is simply to read thousands of critic reviews over 50 years and try to summarise this ourselves. That's damned hard but do-able. That's what a lot of arts PhD students do. I'd argue I'm not smart enough to do that, so I want to cheat and use computers to do it for me.
+
+But how do we do that?
+
+This is where you are moving into a murky area; somewhere between statistics and machine learning (I'm not entirely sure where STM falls in this regard).
+
+One option is to use *supervised* learning. This is where you specify a goal and try to achieve it. For example, in BI3010, you learnt how to do *supervised* learning using linear models:
+
+$$
+y_i \sim Normal(\mu_i, \sigma) \\
+\mu_i = \beta_0 + \beta_1 \times x_i
+$$
+
+Here our goal was to learn $\beta_0$ and $\beta_1$. This is described as *supervised* because we have told the computer what it should learn; "learn these straight line parameters".
+
+To do this with text would require that you sit down and label each document that comes across your desk at being "Pro-Lynx" or "Anti-Lynx". Again, do-able, but that doesn't seem like much of an upgrade compared to the first arts PhD option.
+
+The last option is *unsupervised* learning. In contrast with *supervised*, we don't have a goal *per se* here. Instead, our goal is to *discover* the goal. What that means is that we are going to use an algorithm to discover themes and patterns in the text that we did not know to look for. Our job is to interpret these results; What does the first theme actually mean? That's much easier than trying to identify the theme ourselves!
+
+There are no shortage of options available out there to do this, but the one you'll use in your thesis is called Structural Topic Modelling.
 
 ## What is a Structural Topic Model?
 
 A *Structural Topic Model (STM)* is a type of analysis that allows us to explore large sets of text documents and identify what the common themes are; called *topics*. Just like you did in BI3010, you can also include covariates (also called explanatory variables) to say why you think a topic may be more or less prevalent over time.
 
-> **Grace**, in your case, this might include things like how date (i.e. how has coverage of lynx changed over time), and the illegal release of lynx (and maybe their interaction) may have change which topics are more or less prevelant. For example, *did negative topics become more common in the media after the illegal release compared to before*?
+> **Grace**, in your case, this might include things like how date (i.e. how has coverage of lynx changed over time), and if the illegal release of lynx (and maybe their interaction) may have changed which topics are more or less prevelant. For example, *did negative topics become more common in the media after the illegal release compared to before*?
 
-Structural Topic Models are a type of *hierarchical Bayesian model* that make the following key assumptions:
+STMs are a fairly complex beast. There are lots of elements that we could cover. One that I won't touch on much here is *Bayesian* statistics. I have written another set of [documents](https://deonroos.github.io/Occupancy_Modelling/Bayesian_Statistics.html) that explain the general theory of this, which you are welcome to see. Although STMs, as implemented in the `R` package `stm`, use the *Bayesian* statistical framework, you can't actually interact with it, so it's not crucial to understand in this case. However, I would recommend trying to wrap your head around it, as it's a piece of knowledge that may make you highly employable.
+
+Structural Topic Models make the following key assumptions:
 
 -   Each *document* (e.g., a newspaper article) is a *mixture of topics*, with each topic contributing to the document in a proportion.\
-    *Example*: A particular article might be 90% about “lynx are good” and 5% about “lynx are bad”
+    *Example*: A particular article might be 90% about "lynx are good" and 5% about "lynx are bad"
 
 -   Each *word* in the document is associated with one of these topics.\
-    *Example*: If a word belongs to the topic “lynx are bad”, it is more likely to be something like "kill", "predator", or "livestock". These topic-specific word distributions are referred to as *content*.
+    *Example*: If a word belongs to the topic "lynx are bad", it is more likely to be something like "kill", "predator", or "livestock". The probabilty for topic-specific word contribute to create an entire distribution of probabilities for all words used in a topic. Collectively, topic-words are referred to as *content*.
 
 Thus, each *topic* has a characteristic *distribution over words*, e.g., topic 3 might have a 30% chance of using "kill", 25% chance of "livestock", and only 0.5% for "natural".
 
-Mechanically, the STM works as follows:
+So our objective then, is to identify different *topics*, and which words tend to categorise those topics. This is what we're, fundamentally, trying to do in an STM.
 
-1.  For each document $d$, estimate the *latent* topic prevalences using a $logistic$ $normal$ distribution, whose mean is determined by document-level covariates (via a GLM-style structure).
+## But how do they work?
 
-2.  Convert these *latent* prevalences into a topic proportion vector $\theta_d$​ via a softmax transformation (i.e., normalizing onto the simplex).
+Mechanically, an STM works as follows:
 
-3.  For each word $w_{d,n}$​ in the document:
+1.  For each document $d$, estimate the *latent* topic prevalences (*latent* just means something we cannot observe, i.e. there's no label on a newspaper article that says "This is Pro-Lynx", we have to estimate that from data). We do this by using a $logistic$ $normal$ distribution, whose mean is determined by document-level covariates (basically through a GLM).
 
-    -   Estimate a *topic assignment* using $z_{d,n} \sim \text{Categorical}(\theta_d)$
+2.  Convert these *latent* prevalences into a topic proportion vector $\theta_d$ via a softmax transformation (i.e., normalizing onto the simplex).
 
-    -   Given the topic $z_{d,n}$​, estimate the word from that topic's word distribution $\beta{z_{d,n}}$
+3.  For each word $w_{d,n}$ in the document:
+
+    -   Estimate which *topic* to assign it to using $z_{d,n} \sim \text{Categorical}(\theta_d)$ (another GLM)
+
+    -   Then, given the topic $z_{d,n}$, estimate the word from that topic's word distribution $\beta{z_{d,n}}$
+
+That's only 5 bullet points and it made my head spin multiple times the first time I read it. By the time I wrote it (and re-wrote it multiple times to try and make it make sense) my head was doing cartwheels. It sounds horrible. It reads horribly. But in truth, it's not *that* bad. I genuinely believe you can wrap your head around it without any cartwheels.
 
 # What does it look like?
 
@@ -69,38 +98,39 @@ digraph stm {
 
   # Nodes
   Σ [shape=circle, label='Σ', style=dashed]
-  α [shape=circle, label='α', style=dashed]
+  γ [shape=circle, label='γ', style=dashed]
   X [shape=circle, label='X']
-  μ [shape=circle, label='μ', style=dashed]
+  Y [shape=circle, label='Y']
   θ [shape=circle, label='θ', style=dashed]
-  Z [shape=circle, label='Z', style=dashed]
+  z [shape=circle, label='z', style=dashed]
   w [shape=circle, label='w']
   β [shape=circle, label='β', style=dashed]
 
   # Edges
-  Σ -> μ
-  α -> μ
-  X -> μ
-  μ -> θ
-  θ -> Z
-  Z -> w
+  Σ -> θ
+  γ -> θ
+  X -> θ
+  θ -> z
+  z -> w
   β -> w
+  Y -> β
 
   # Outer plate: D
   subgraph cluster_D {
     label = 'D'
     style = 'solid'
-    X; μ; θ; β;
+    X; θ; β; Y;
 
     # Nested plate: N
     subgraph cluster_N {
       label = 'N'
       style = 'solid'
-      Z; w;
+      z; w;
     }
   }
 }
 ")
+
 ```
 
 Where:
@@ -131,36 +161,37 @@ And where the variables in the plate notation are:
 
 -   $w_{d,n}$ - The observed word
 
--   $\beta_k$ - Word distribution (cateogrical) for topic $k$.
+-   $\beta_k$ - Word distribution (categorical) for topic $k$.
+
+Here's what that looks like in a less "stats" way and with a few details omitted (also apologies for the generative AI image):
+
+![](media/lynx_stm.png)
 
 ## Mathematical formulation
 
-The generative model is:
+The core structure of an STM is:
 
 $$
-\begin{align*}
-\mu_d &= \alpha_0 + \alpha_1 X_d \\
-z_d &\sim \mathcal{N}(\mu_d, \Sigma) \\
-\theta_d &= \text{softmax}(z_d) \\
+\begin{aligned}
+\eta_d &\sim \mathcal{MVNorm}(X_d \Gamma, \Sigma) \\
+\theta_d &= \text{softmax}(\eta_d) \\
 z_{d,n} &\sim \text{Categorical}(\theta_d) \\
 w_{d,n} &\sim \text{Categorical}(\beta_{z_{d,n}}) \\
-\beta_k &\sim \text{Dirichlet}(\eta)
-\end{align*}
+\beta_{k,v} \propto \exp\left( m_v + \kappa_{k,v}^{(\text{topic})} + \kappa_{g,v}^{(\text{cov})} + \kappa_{k,g,v}^{(\text{int})} \right) \\
+\end{aligned}
 $$
 
-$\mu_d$: A linear predictor for topic tendencies in document $d$ based on covariates.
+$\eta_d$ is a *latent* vector of logit-scale topic propensities for document $d$, drawn from a multivariate normal distribution with mean $X_d\Gamma$ and covariance $\Sigma$. (Rather than there being a single conditional mean like in a $Normal$ linear model, here $X_d\Gamma$ is a column, or *vector* of means, one for each document).
 
-$z_d$​: Drawn from a multivariate normal centered at $\mu_d$; adds document-level variation and models topic correlation via $Σ$.
+$\theta_d$ is the topic proportion *vector* for document $d$, obtained by applying a softmax transformation to $\eta_d$. All entries are non-negative and sum to 1.
 
-$\theta_d$​: Obtained by applying softmax to $z_d$; results in a valid topic distribution over $K$ topics.
+$z_{d,n}$ is the *latent* topic assignment for word $n$ in document $d$, drawn from a categorical distribution with probabilities $\theta_d$.
 
-$z_{d,n}$: Each word in the document is assigned to a topic based on $\theta_d$​.
+$w_{d,n}$ is the actual observed word, drawn from the categorical distribution $\beta_z_{d,n}$, i.e., from the word distribution corresponding to the assigned topic.
 
-$w_{d,n}$: The observed word is drawn from the word distribution of the assigned topic.
+$\beta$ is the topic--word matrix, of dimension $\mathbf{K}\times \mathbf{V}$, where each row $\beta_k$ is a probability distribution over the vocabulary (words) for topic $k$ (each row in the $\beta$ matrix below). $\beta$ can be estimated from the data or modeled as a logit-linear function of content covariates.
 
-$\beta_k$: Each topic's word distribution is drawn from a Dirichlet prior.
-
-For $\beta_k$ it's actually a topic-word matrix $\beta$: $K \times V$
+For $\beta$ it's actually a topic-word matrix $\beta$: $\mathbf{K} \times \mathbf{V}$
 
 $$
 \begin{array}{c|cccc}
@@ -168,45 +199,24 @@ $$
 \hline
 \text{Topic } 1 & \beta_{1,1} & \beta_{1,2} & \cdots & \beta_{1,V} \\
 \text{Topic } 2 & \beta_{2,1} & \beta_{2,2} & \cdots & \beta_{2,V} \\
+\text{Topic } 3 & \beta_{3,1} & \beta_{3,2} & \cdots & \beta_{3,V} \\
 \vdots & \vdots & \vdots & \ddots & \vdots \\
 \text{Topic } K & \beta_{K,1} & \beta_{K,2} & \cdots & \beta_{K,V}
 \end{array}
 $$
 
-And for $\theta_d$, it's actually a document-topic matrix: $D \times K$
+And for $\theta$, it's a document-topic matrix: $\mathbf{D} \times \mathbf{K}$
 
 $$
 \begin{array}{c|cccc}
 & \text{Topic 1} & \text{Topic 2} & \cdots & \text{Topic } K \\
 \hline
-1 & \theta_{1,1} & \theta_{1,2} & \cdots & \theta_{1,K} \\
-2 & \theta_{2,1} & \theta_{2,2} & \cdots & \theta_{2,K} \\
+Doc1 & \theta_{1,1} & \theta_{1,2} & \cdots & \theta_{1,K} \\
+Doc2 & \theta_{2,1} & \theta_{2,2} & \cdots & \theta_{2,K} \\
+Doc3 & \theta_{3,1} & \theta_{3,2} & \cdots & \theta_{3,K} \\
 \vdots & \vdots & \vdots & \ddots & \vdots \\
 D & \theta_{D,1} & \theta_{D,2} & \cdots & \theta_{D,K}
 \end{array}
-$$
-
-# What does it mean?
-
-Here, the top line describes how the linear predictor for document $d$, where $\alpha_0$ and $\alpha_1$ are vectors (i.e. columns of numbers) rather than scalars (i.e. single values), with each value in $\alpha_0$ and $\alpha_1$ being specific to a topic (minus one). This is basically asking: What topics would I expect in this document, given the covariate(s) $X$.
-
-The next line is saying that the actual topic propensities for this document ($z_d$) are drawn from a *multivariate normal distribution*, which takes $\mu_i$ from the above equation, and a covariance matrix ($\Sigma$, which models how topics tend to co-occur or avoid each other).
-
-The third line is where we convert $z_d$ into a probability distribution over the different topics using the $\text{softmax}$ resulting in a vector of topic proportions for document $d$, where all entries are between 0 and 1, and all entries sum to 1. This is what STM uses as the topic mixture for each document.
-
-The fourth line is the topic assignment for each document, sampled from a $Categorical$ distribution, where $z_{d,n}$ tells us; *Which topic generated word* $n$ *in this document?* Which is sampled from the topic proportions ($\theta_d$), such that a if a particular topic has a high prevalence, is likely generated word $n$.
-
-The final line says that once a topic has been chosen for word $w$, we sample the actual word from that topic's word distribution. $\beta_k$ is the probability that the word came from topic $k$, so if $z_{d,n} = 3$, we draw $w_{d,n}$ from topic 3's vocabulary distribution $\beta_3$. Ultimately, this is informed by word to topic co-occurence patterns.
-
-$\beta$ is a $K \times V$ matrix, where $K$ is the number of topics and $V$ is the size of the vocabulary (number of unique words). Each row of $\beta_k$ is the categorical distribution over the vocabulary for topic $k$, so:
-
-$$
-\beta = \begin{array}{c|cccc} & \text{predator} & \text{policy} & \cdots & \text{illegal} \\\hline \text{Topic }1 & \beta_{1,1} & \beta_{1,2} & \cdots & \beta_{1,V} \\\text{Topic } 2 & \beta_{2,1} & \beta_{2,2} & \cdots & \beta_{2,V} \\\vdots & \vdots & \vdots & \ddots & \vdots \\K & \beta_{K,1} & \beta_{K,2} & \cdots & \beta_{K,V} \\\end{array}
-$$
-
-$\theta$ is a $D \times K$ matrix, where $D$ is the number of documents and $K$ is the number of topics. Each row of $\theta_d$ is a probability distribution of topics for document $d$, so:\
-$$
-\theta = \begin{array}{c|cccc} & \text{Topic 1} & \text{Topic 2} & \cdots & \text{Topic } K \\\hline1 & \theta_{1,1} & \theta_{1,2} & \cdots & \theta_{1,K} \\2 & \theta_{2,1} & \theta_{2,2} & \cdots & \theta_{2,K} \\\vdots & \vdots & \vdots & \ddots & \vdots \\D & \theta_{D,1} & \theta_{D,2} & \cdots & \theta_{D,K} \\\end{array}
 $$
 
 ## Structural Topic Models Explained (Video)
@@ -269,7 +279,7 @@ Expectation-Maximiation equivalent to brute forcing MCMC - give it a function an
 
 ------------------------------------------------------------------------
 
-## Fit STM – Model 1 (No Covariates)
+## Fit STM -- Model 1 (No Covariates)
 
 ```{r}
 #| label: model1
@@ -294,7 +304,7 @@ findThoughts(model1, texts = meta$documents, n = 2, topics = 3)
 
 ------------------------------------------------------------------------
 
-## Fit STM – Model 2 (With Covariates)
+## Fit STM -- Model 2 (With Covariates)
 
 ```{r}
 #| label: model2
