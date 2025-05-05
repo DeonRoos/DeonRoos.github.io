@@ -1,0 +1,360 @@
+---
+title: "Structural Topic Models"
+author: "Deon Roos"
+format: 
+  html:
+    theme: flatly
+    highlight: monochrome
+    code-fold: true
+    toc: true
+    toc-depth: 2
+    toc-location: left
+    css: styles.css
+---
+
+```{r setup}
+#| include: false
+#| message: false
+#| warning: false
+library(knitr)
+opts_chunk$set(echo = TRUE)
+```
+
+## Structural Topic Models (STM): A Guided Walkthrough
+
+Hey Grace, this page has been written especially for you. I've tried to write the material here to help cover the underlying theory of STMs as well as how to actually *implement* them. This page is not intended to be your "supervisor" - it's intended to be a stand alone document you can always come back to whenever you need. We'll still have our weekly meetings where we can talk about this in more detail.
+
+Hopefully this page helps you understand the method and is useful, but let me know if you have any doubts. It's unlikely that this walkthrough will answer every bit of confusion you have.
+
+------------------------------------------------------------------------
+
+## What is a Structural Topic Model?
+
+A *Structural Topic Model (STM)* is a type of analysis that allows us to explore large sets of text documents and identify what the common themes are; called *topics*. Just like you did in BI3010, you can also include covariates (also called explanatory variables) to say why you think a topic may be more or less prevalent over time.
+
+> **Grace**, in your case, this might include things like how date (i.e. how has coverage of lynx changed over time), and the illegal release of lynx (and maybe their interaction) may have change which topics are more or less prevelant. For example, *did negative topics become more common in the media after the illegal release compared to before*?
+
+Structural Topic Models are a type of *hierarchical Bayesian model* that make the following key assumptions:
+
+-   Each *document* (e.g., a newspaper article) is a *mixture of topics*, with each topic contributing to the document in a proportion.\
+    *Example*: A particular article might be 90% about “lynx are good” and 5% about “lynx are bad”
+
+-   Each *word* in the document is associated with one of these topics.\
+    *Example*: If a word belongs to the topic “lynx are bad”, it is more likely to be something like "kill", "predator", or "livestock". These topic-specific word distributions are referred to as *content*.
+
+Thus, each *topic* has a characteristic *distribution over words*, e.g., topic 3 might have a 30% chance of using "kill", 25% chance of "livestock", and only 0.5% for "natural".
+
+Mechanically, the STM works as follows:
+
+1.  For each document $d$, estimate the *latent* topic prevalences using a $logistic$ $normal$ distribution, whose mean is determined by document-level covariates (via a GLM-style structure).
+
+2.  Convert these *latent* prevalences into a topic proportion vector $\theta_d$​ via a softmax transformation (i.e., normalizing onto the simplex).
+
+3.  For each word $w_{d,n}$​ in the document:
+
+    -   Estimate a *topic assignment* using $z_{d,n} \sim \text{Categorical}(\theta_d)$
+
+    -   Given the topic $z_{d,n}$​, estimate the word from that topic's word distribution $\beta{z_{d,n}}$
+
+# What does it look like?
+
+One way to visualise an STM is by using *plate notation*:
+
+```{r}
+library(DiagrammeR)
+
+grViz("
+digraph stm {
+  graph [layout = dot, rankdir = LR]
+
+  # Nodes
+  Σ [shape=circle, label='Σ', style=dashed]
+  α [shape=circle, label='α', style=dashed]
+  X [shape=circle, label='X']
+  μ [shape=circle, label='μ', style=dashed]
+  θ [shape=circle, label='θ', style=dashed]
+  Z [shape=circle, label='Z', style=dashed]
+  w [shape=circle, label='w']
+  β [shape=circle, label='β', style=dashed]
+
+  # Edges
+  Σ -> μ
+  α -> μ
+  X -> μ
+  μ -> θ
+  θ -> Z
+  Z -> w
+  β -> w
+
+  # Outer plate: D
+  subgraph cluster_D {
+    label = 'D'
+    style = 'solid'
+    X; μ; θ; β;
+
+    # Nested plate: N
+    subgraph cluster_N {
+      label = 'N'
+      style = 'solid'
+      Z; w;
+    }
+  }
+}
+")
+```
+
+Where:
+
+-   *Nodes*: Circles represent variables. Dashed circles mean they are *latent* (a variable we have to estimate), while solid circles are observed data.
+
+-   *Plates*: Rectangle indicate repetition:
+
+    -   $D$: For each document
+
+    -   $N$: For each word in a document
+
+And where the variables in the plate notation are:
+
+-   $X$ - Document level covariates (e.g. date of publication, political leaning)
+
+-   $\alpha$ - The regression coefficients for the mean of the logistic normal
+
+-   $\mu$ - The mean *vector* for the multivariate normal (logit-scale topic propensities)
+
+-   $\Sigma$ - The *covariance* *matrix* between topics (models topic co-occurence)
+
+-   $z_d$ - Latent logit-scale topic propensity for document $d$
+
+-   $\theta$ - Topic proportions for a document (which sums to 1)
+
+-   $z_{d,n}$ - Topic assignment for word $n$ in document $d$
+
+-   $w_{d,n}$ - The observed word
+
+-   $\beta_k$ - Word distribution (cateogrical) for topic $k$.
+
+## Mathematical formulation
+
+The generative model is:
+
+$$
+\begin{align*}
+\mu_d &= \alpha_0 + \alpha_1 X_d \\
+z_d &\sim \mathcal{N}(\mu_d, \Sigma) \\
+\theta_d &= \text{softmax}(z_d) \\
+z_{d,n} &\sim \text{Categorical}(\theta_d) \\
+w_{d,n} &\sim \text{Categorical}(\beta_{z_{d,n}}) \\
+\beta_k &\sim \text{Dirichlet}(\eta)
+\end{align*}
+$$
+
+$\mu_d$: A linear predictor for topic tendencies in document $d$ based on covariates.
+
+$z_d$​: Drawn from a multivariate normal centered at $\mu_d$; adds document-level variation and models topic correlation via $Σ$.
+
+$\theta_d$​: Obtained by applying softmax to $z_d$; results in a valid topic distribution over $K$ topics.
+
+$z_{d,n}$: Each word in the document is assigned to a topic based on $\theta_d$​.
+
+$w_{d,n}$: The observed word is drawn from the word distribution of the assigned topic.
+
+$\beta_k$: Each topic's word distribution is drawn from a Dirichlet prior.
+
+For $\beta_k$ it's actually a topic-word matrix $\beta$: $K \times V$
+
+$$
+\begin{array}{c|cccc}
+& \text{predator} & \text{policy} & \cdots & \text{illegal} \\
+\hline
+\text{Topic } 1 & \beta_{1,1} & \beta_{1,2} & \cdots & \beta_{1,V} \\
+\text{Topic } 2 & \beta_{2,1} & \beta_{2,2} & \cdots & \beta_{2,V} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+\text{Topic } K & \beta_{K,1} & \beta_{K,2} & \cdots & \beta_{K,V}
+\end{array}
+$$
+
+And for $\theta_d$, it's actually a document-topic matrix: $D \times K$
+
+$$
+\begin{array}{c|cccc}
+& \text{Topic 1} & \text{Topic 2} & \cdots & \text{Topic } K \\
+\hline
+1 & \theta_{1,1} & \theta_{1,2} & \cdots & \theta_{1,K} \\
+2 & \theta_{2,1} & \theta_{2,2} & \cdots & \theta_{2,K} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+D & \theta_{D,1} & \theta_{D,2} & \cdots & \theta_{D,K}
+\end{array}
+$$
+
+# What does it mean?
+
+Here, the top line describes how the linear predictor for document $d$, where $\alpha_0$ and $\alpha_1$ are vectors (i.e. columns of numbers) rather than scalars (i.e. single values), with each value in $\alpha_0$ and $\alpha_1$ being specific to a topic (minus one). This is basically asking: What topics would I expect in this document, given the covariate(s) $X$.
+
+The next line is saying that the actual topic propensities for this document ($z_d$) are drawn from a *multivariate normal distribution*, which takes $\mu_i$ from the above equation, and a covariance matrix ($\Sigma$, which models how topics tend to co-occur or avoid each other).
+
+The third line is where we convert $z_d$ into a probability distribution over the different topics using the $\text{softmax}$ resulting in a vector of topic proportions for document $d$, where all entries are between 0 and 1, and all entries sum to 1. This is what STM uses as the topic mixture for each document.
+
+The fourth line is the topic assignment for each document, sampled from a $Categorical$ distribution, where $z_{d,n}$ tells us; *Which topic generated word* $n$ *in this document?* Which is sampled from the topic proportions ($\theta_d$), such that a if a particular topic has a high prevalence, is likely generated word $n$.
+
+The final line says that once a topic has been chosen for word $w$, we sample the actual word from that topic's word distribution. $\beta_k$ is the probability that the word came from topic $k$, so if $z_{d,n} = 3$, we draw $w_{d,n}$ from topic 3's vocabulary distribution $\beta_3$. Ultimately, this is informed by word to topic co-occurence patterns.
+
+$\beta$ is a $K \times V$ matrix, where $K$ is the number of topics and $V$ is the size of the vocabulary (number of unique words). Each row of $\beta_k$ is the categorical distribution over the vocabulary for topic $k$, so:
+
+$$
+\beta = \begin{array}{c|cccc} & \text{predator} & \text{policy} & \cdots & \text{illegal} \\\hline \text{Topic }1 & \beta_{1,1} & \beta_{1,2} & \cdots & \beta_{1,V} \\\text{Topic } 2 & \beta_{2,1} & \beta_{2,2} & \cdots & \beta_{2,V} \\\vdots & \vdots & \vdots & \ddots & \vdots \\K & \beta_{K,1} & \beta_{K,2} & \cdots & \beta_{K,V} \\\end{array}
+$$
+
+$\theta$ is a $D \times K$ matrix, where $D$ is the number of documents and $K$ is the number of topics. Each row of $\theta_d$ is a probability distribution of topics for document $d$, so:\
+$$
+\theta = \begin{array}{c|cccc} & \text{Topic 1} & \text{Topic 2} & \cdots & \text{Topic } K \\\hline1 & \theta_{1,1} & \theta_{1,2} & \cdots & \theta_{1,K} \\2 & \theta_{2,1} & \theta_{2,2} & \cdots & \theta_{2,K} \\\vdots & \vdots & \vdots & \ddots & \vdots \\D & \theta_{D,1} & \theta_{D,2} & \cdots & \theta_{D,K} \\\end{array}
+$$
+
+## Structural Topic Models Explained (Video)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3kcjbzy4UPM?start=828" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+
+</iframe>
+
+------------------------------------------------------------------------
+
+## Load Packages and Data
+
+```{r}
+#| label: load-packages
+#| cache: true
+library(stm)
+library(tm)
+library(ggplot2)
+
+# Load the data
+data <- read.csv("data/poliblogs2008.csv", stringsAsFactors = FALSE)
+
+# Display just the first few rows
+head(data, 5)
+```
+
+------------------------------------------------------------------------
+
+## Preprocess Text
+
+```{r}
+#| label: preprocess-text
+#| cache: true
+processed <- textProcessor(data$documents, metadata = data)
+out <- prepDocuments(processed$documents, processed$vocab, processed$meta)
+
+docs <- out$documents
+vocab <- out$vocab
+meta <- out$meta
+```
+
+```{r}
+#| label: plot-removed
+#| cache: true
+plotRemoved(processed$documents, lower.thresh = seq(1, 200, by = 100))
+```
+
+------------------------------------------------------------------------
+
+## Choosing K (Number of Topics)
+
+```{r}
+#| label: choose-k
+#| eval: false
+#| cache: true
+# searchK(docs, vocab, K = c(10, 15, 20, 25), data = meta)
+```
+
+Expectation-Maximiation equivalent to brute forcing MCMC - give it a function and iteratively optimise it until threshold of error reached. Priors locked (I think)
+
+------------------------------------------------------------------------
+
+## Fit STM – Model 1 (No Covariates)
+
+```{r}
+#| label: model1
+#| cache: true
+model1 <- stm(documents = docs,
+              vocab = vocab,
+              K = 20,
+              data = meta,
+              init.type = "Spectral", 
+              verbose = FALSE)
+```
+
+### Explore Model 1
+
+```{r}
+#| label: model1-explore
+#| cache: true
+plot(model1, type = "summary")
+labelTopics(model1)
+findThoughts(model1, texts = meta$documents, n = 2, topics = 3)
+```
+
+------------------------------------------------------------------------
+
+## Fit STM – Model 2 (With Covariates)
+
+```{r}
+#| label: model2
+#| cache: true
+model2 <- stm(documents = docs,
+              vocab = vocab,
+              K = 20,
+              prevalence = ~ rating + s(day, df = 5),
+              data = meta,
+              init.type = "Spectral",
+              verbose = FALSE)
+```
+
+### Explore Model 2
+
+```{r}
+#| label: model2-explore
+#| cache: true
+plot(model2, type = "summary")
+labelTopics(model2, topics = c(3, 7, 20))
+findThoughts(model2, texts = meta$documents, n = 2, topics = 3)$docs[[1]]
+```
+
+------------------------------------------------------------------------
+
+## Estimate and Plot Covariate Effects
+
+```{r}
+#| label: estimate-effect
+#| cache: true
+effect_model <- estimateEffect(1:20 ~ rating + s(day), model2,
+                               meta = meta, uncertainty = "Global")
+summary(effect_model, topics = 3)
+```
+
+```{r}
+#| label: plot-time
+#| cache: true
+plot(effect_model, "day", method = "continuous", topics = 7,
+     printlegend = FALSE, xlab = "Time (2008)", xaxt = "n")
+
+monthseq <- seq(from = as.Date("2008-01-01"), to = as.Date("2008-12-01"), by = "month")
+monthnames <- months(monthseq)
+axis(1, at = as.numeric(monthseq) - min(as.numeric(monthseq)), labels = monthnames)
+```
+
+```{r}
+#| label: plot-rating-diff
+#| cache: true
+plot(effect_model, covariate = "rating", topics = 3, method = "difference",
+     cov.value1 = "Liberal", cov.value2 = "Conservative",
+     xlab = "More Liberal ... More Conservative",
+     main = "Topic 3: Difference by Political Rating")
+```
+
+------------------------------------------------------------------------
+
+## Summary
+
+-   STM helps uncover underlying topics in a collection of documents.
+-   Document-level metadata can be used to model how topic proportions vary.
+-   The logistic normal plays a similar role to a logit link in GLMs.
+-   STM is hierarchical: topic use varies across documents; topics generate words.
