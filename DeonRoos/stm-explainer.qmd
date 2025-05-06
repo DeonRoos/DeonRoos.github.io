@@ -22,21 +22,21 @@ opts_chunk$set(echo = TRUE)
 
 Hey Grace,
 
-I’ve written this page especially for you and your honours project. I’ve aimed to keep it accessible, covering both the core theory behind the stats you'll use (Structural Topic Models, STMs) but also how to actually implement them. That said, the theory can get complex at times, and I’m still learning it myself! (It’s also surprisingly hard to find good, clear explanations online.) It took me a while to make sense of the stats, so don’t worry if it takes some time. Be patient with yourself.
+I've written this page especially for you and your honours project. I've aimed to keep it accessible, covering both the core theory behind the stats you'll use (Structural Topic Models, STMs) but also how to actually implement them. That said, the theory can get complex at times, and I'm still learning it myself! (It's also surprisingly hard to find good, clear explanations online.) It took me a while to make sense of the stats, so don't worry if it takes some time. Be patient with yourself.
 
-To be clear, this page isn’t meant to replace our meetings or turn me into a hands-off “supervisor.” It’s a resource you can return to whenever you need a refresher or some help getting unstuck.
+To be clear, this page isn't meant to replace our meetings or turn me into a hands-off "supervisor." It's a resource you can return to whenever you need a refresher or some help getting unstuck.
 
-Hopefully, this helps you get a handle on the method, but let me know if anything is confusing. It probably won’t answer every question, and I won’t be offended if you want to toss it in a bonfire. Just flag anything that’s unclear, and we’ll work through it together.
+Hopefully, this helps you get a handle on the method, but let me know if anything is confusing. It probably won't answer every question, and I won't be offended if you want to toss it in a bonfire. Just flag anything that's unclear, and we'll work through it together.
 
 ------------------------------------------------------------------------
 
 # Why analyse text?
 
-Let’s say we want to understand how movie reviews have changed over time. How would we do that?
+Let's say we want to understand how movie reviews have changed over time. How would we do that?
 
-“Well,” you might say, “maybe we could read thousands of reviews from the last 50 years and summarise them.” That’s technically possible but massively time-consuming. Even if we narrowed it down to the “best” reviews, we’d still face a huge pile of reading plus we'd now have the problem of how do you define which are the "best" reviews.
+"Well," you might say, "maybe we could read thousands of reviews from the last 50 years and summarise them." That's technically possible but massively time-consuming. Even if we narrowed it down to the "best" reviews, we'd still face a huge pile of reading plus we'd now have the problem of how do you define which are the "best" reviews.
 
-In fact, that’s exactly what many arts PhD students do: read hundreds (or thousands) of documents and distill them into themes. But I’d argue I’m not smart enough to do an arts PhD so instead, I’d like to cheat and let computers do the hard work for me.
+In fact, that's exactly what many arts PhD students do: read hundreds (or thousands) of documents and distill them into themes. But I'd argue I'm not smart enough to do an arts PhD so instead, I'd like to cheat and let computers do the hard work for me.
 
 But how do we cheat?
 
@@ -49,15 +49,15 @@ y_i \sim Normal(\mu_i, \sigma) \\
 \mu_i = \beta_0 + \beta_1 \times x_i
 $$
 
-Here, the goal was to estimate \$\\beta_0\$ and \$\\beta_1\$. It’s supervised because we’ve *defined* the task: "Fit this straight line."
+Here, the goal was to estimate \$\\beta_0\$ and \$\\beta_1\$. It's supervised because we've *defined* the task: "Fit this straight line."
 
-Doing this with text means labelling each document manually. For example, marking them “Pro-Lynx” or “Anti-Lynx”, and then fitting a model. Doable? Yes. But incredibly time-intensive, and not much easier than just summarising the documents yourself.
+Doing this with text means labelling each document manually. For example, marking them "Pro-Lynx" or "Anti-Lynx", and then fitting a model. Doable? Yes. But incredibly time-intensive, and not much easier than just summarising the documents yourself.
 
-The other option is *unsupervised* learning. Here, you *don’t* tell the model what to look for, you let it discover patterns on its own. The model identifies clusters or themes in the text, and your job afterward is simply to *interpret* those themes.
+The other option is *unsupervised* learning. Here, you *don't* tell the model what to look for, you let it discover patterns on its own. The model identifies clusters or themes in the text, and your job afterward is simply to *interpret* those themes.
 
-That’s way more manageable.
+That's way more manageable.
 
-There are many ways to do this (Large Language Models like ChatGPT use similar ideas), but for your project, we’ll use a method called *Structural Topic Modelling* (STM).
+There are many ways to do this (Large Language Models like ChatGPT use similar ideas), but for your project, we'll use a method called *Structural Topic Modelling* (STM).
 
 ## What is a Structural Topic Model?
 
@@ -108,7 +108,7 @@ $$
 \vec{\theta} |X_{d\gamma}, \Sigma \sim \mathcal{MVNorm}(\boldsymbol{X_d} \boldsymbol{\Gamma}, \boldsymbol\Sigma)
 $$
 
-> A multivariate normal distribution is like several normal distributions stacked together. So, instead of having just one mean and one variance, you have a mean and variance for each topic. The covariance matrix $\Sigma$ (which is the variance) also tells you how topics tend to co-occur, for example, maybe “Lynx are bad” often appears alongside “Predator control”.
+> A multivariate normal distribution is like several normal distributions stacked together. So, instead of having just one mean and one variance, you have a mean and variance for each topic. The covariance matrix $\Sigma$ (which is the variance) also tells you how topics tend to co-occur, for example, maybe "Lynx are bad" often appears alongside "Predator control".
 
 where $\vec{X}_d$ is a 1-by-$p$ vector (your covariates), $\gamma$ is a $p$-by-($K-1$) matrix of coefficients (this is a way to describe all the parameters, $p$, in the model) and $\boldsymbol{\Sigma}$ is a ($K-1$)-by-($K-1$) covariance matrix.
 
