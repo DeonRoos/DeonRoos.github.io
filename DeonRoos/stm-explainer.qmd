@@ -20,74 +20,168 @@ library(knitr)
 opts_chunk$set(echo = TRUE)
 ```
 
-Hey Grace, this page has been written especially for you. I've tried to write the material here to help cover the underlying theory of STMs as well as how to actually *implement* them. But be warned, the theory here is tough and I'm new to this myself. It took me a good while to make sense of the stats here, so be patient with yourself (and me). This page is not intended to be your "supervisor" - I'm still here to help you. Instead, it's intended to be a stand alone document you can always come back to whenever you need.
+Hey Grace,
 
-Hopefully this page helps you understand the method and is useful, but let me know if you have any doubts. It's unlikely that this walk through will answer every bit of confusion you have so I won't take any offence if you want to burn this in a giant pyre. Just tell me.
+I’ve written this page especially for you and your honours project. I’ve aimed to keep it accessible, covering both the core theory behind the stats you'll use (Structural Topic Models, STMs) but also how to actually implement them. That said, the theory can get complex at times, and I’m still learning it myself! (It’s also surprisingly hard to find good, clear explanations online.) It took me a while to make sense of the stats, so don’t worry if it takes some time. Be patient with yourself.
+
+To be clear, this page isn’t meant to replace our meetings or turn me into a hands-off “supervisor.” It’s a resource you can return to whenever you need a refresher or some help getting unstuck.
+
+Hopefully, this helps you get a handle on the method, but let me know if anything is confusing. It probably won’t answer every question, and I won’t be offended if you want to toss it in a bonfire. Just flag anything that’s unclear, and we’ll work through it together.
 
 ------------------------------------------------------------------------
 
 # Why analyse text?
 
-Let's say we want to understand how movie critic reviews have changed over time. How would we do this. Well, you say, maybe the "simplest" way is simply to read thousands of critic reviews over 50 years and try to summarise this ourselves. That's damned hard but do-able. That's what a lot of arts PhD students do. I'd argue I'm not smart enough to do that, so I want to cheat and use computers to do it for me.
+Let’s say we want to understand how movie reviews have changed over time. How would we do that?
 
-But how do we do that?
+“Well,” you might say, “maybe we could read thousands of reviews from the last 50 years and summarise them.” That’s technically possible but massively time-consuming. Even if we narrowed it down to the “best” reviews, we’d still face a huge pile of reading plus we'd now have the problem of how do you define which are the "best" reviews.
 
-This is where you are moving into a murky area; somewhere between statistics and machine learning (I'm not entirely sure where STM falls in this regard).
+In fact, that’s exactly what many arts PhD students do: read hundreds (or thousands) of documents and distill them into themes. But I’d argue I’m not smart enough to do an arts PhD so instead, I’d like to cheat and let computers do the hard work for me.
 
-One option is to use *supervised* learning. This is where you specify a goal and try to achieve it. For example, in BI3010, you learnt how to do *supervised* learning using linear models:
+But how do we cheat?
+
+This is where your thesis steps into a murky (but exciting) space between statistics and machine learning.
+
+One option is *supervised learning*. This is where you tell the model what it *should* learn. For example, in BI3010 you learned:
 
 $$
 y_i \sim Normal(\mu_i, \sigma) \\
 \mu_i = \beta_0 + \beta_1 \times x_i
 $$
 
-Here our goal was to learn $\beta_0$ and $\beta_1$. This is described as *supervised* because we have told the computer what it should learn; "learn these straight line parameters".
+Here, the goal was to estimate \$\\beta_0\$ and \$\\beta_1\$. It’s supervised because we’ve *defined* the task: "Fit this straight line."
 
-To do this with text would require that you sit down and label each document that comes across your desk at being "Pro-Lynx" or "Anti-Lynx". Again, do-able, but that doesn't seem like much of an upgrade compared to the first arts PhD option.
+Doing this with text means labelling each document manually. For example, marking them “Pro-Lynx” or “Anti-Lynx”, and then fitting a model. Doable? Yes. But incredibly time-intensive, and not much easier than just summarising the documents yourself.
 
-The last option is *unsupervised* learning. In contrast with *supervised*, we don't have a goal *per se* here. Instead, our goal is to *discover* the goal. What that means is that we are going to use an algorithm to discover themes and patterns in the text that we did not know to look for. Our job is to interpret these results; What does the first theme actually mean? That's much easier than trying to identify the theme ourselves!
+The other option is *unsupervised* learning. Here, you *don’t* tell the model what to look for, you let it discover patterns on its own. The model identifies clusters or themes in the text, and your job afterward is simply to *interpret* those themes.
 
-There are no shortage of options available out there to do this, but the one you'll use in your thesis is called Structural Topic Modelling.
+That’s way more manageable.
+
+There are many ways to do this (Large Language Models like ChatGPT use similar ideas), but for your project, we’ll use a method called *Structural Topic Modelling* (STM).
 
 ## What is a Structural Topic Model?
 
-A *Structural Topic Model (STM)* is a type of analysis that allows us to explore large sets of text documents and identify what the common themes are; called *topics*. Just like you did in BI3010, you can also include covariates (also called explanatory variables) to say why you think a topic may be more or less prevalent over time.
+A *Structural Topic Model (STM)* is a type of analysis that allows us to explore large sets of text documents and identify what the common themes are; called *topics*. Just like you did in BI3010, you can also include covariates (also called explanatory variables) to see if that makes a topic may be more or less prevalent.
 
 > **Grace**, in your case, this might include things like how date (i.e. how has coverage of lynx changed over time), and if the illegal release of lynx (and maybe their interaction) may have changed which topics are more or less prevelant. For example, *did negative topics become more common in the media after the illegal release compared to before*?
 
-STMs are a fairly complex beast. There are lots of elements that we could cover. One that I won't touch on much here is *Bayesian* statistics. I have written another set of [documents](https://deonroos.github.io/Occupancy_Modelling/Bayesian_Statistics.html) that explain the general theory of this, which you are welcome to see. Although STMs, as implemented in the `R` package `stm`, use the *Bayesian* statistical framework, you can't actually interact with it, so it's not crucial to understand in this case. However, I would recommend trying to wrap your head around it, as it's a piece of knowledge that may make you highly employable.
+STMs are a fairly complex beast, with lots of new ideas. One of these new ideas that I won't explain in this document is *Bayesian* statistics. Luckily, I have written another set of [documents](https://deonroos.github.io/Occupancy_Modelling/Bayesian_Statistics.html) that explain the general theory of this, which you are welcome and encouraged to read through. Although STMs, as implemented in the `R` package `stm`, use the *Bayesian* statistical framework, you can't actually interact with it, so it's not crucial to understand in this case. However, I would recommend trying to wrap your head around it, as it's a piece of knowledge that may make you highly employable.
 
-Structural Topic Models make the following key assumptions:
+With that said, let's go over, conceptually, what Structural Topic Models are going.
 
--   Each *document* (e.g., a newspaper article) is a *mixture of topics*, with each topic contributing to the document in a proportion.\
-    *Example*: A particular article might be 90% about "lynx are good" and 5% about "lynx are bad"
-
--   Each *word* in the document is associated with one of these topics.\
-    *Example*: If a word belongs to the topic "lynx are bad", it is more likely to be something like "kill", "predator", or "livestock". The probabilty for topic-specific word contribute to create an entire distribution of probabilities for all words used in a topic. Collectively, topic-words are referred to as *content*.
-
-Thus, each *topic* has a characteristic *distribution over words*, e.g., topic 3 might have a 30% chance of using "kill", 25% chance of "livestock", and only 0.5% for "natural".
+1.  We begin by gathering a *corpus*. This is a collection of *documents*, like newspaper articles. Our objective is to learn something about the *corpus*.
+2.  We assume that within each *document,* there can exist multiple *topics*. Topics are the "themes" that the document covers; things like "Lynx are bad and we shouldn't release them" or "Lynx are good and we should release them".
+3.  These *topics* are *latent*, which means "hidden" or "unobserved" (newspapers don't add a sticker on each article to say what the theme is afterall) and we want to use the STM to identify them and to see which are most prevalent.
+4.  We state how many theme we *think* there are. This might be 5 or it might be 200. This is a choice we make. (There are some tools that can help make this choice.)
+5.  Within each *document* we consider each *word*. We assume that each *word* is associated with one of these topics with differing probabilities. For example, if there is a topic for "Lynx are bad", then we might expect that "livestock" has a 90% chance of belonging to this topic, while "rewilding" only has a 0.5% chance.
+6.  Each topic will have a distribution of words associated with it, each with their own probability to belong to that topic.
 
 So our objective then, is to identify different *topics*, and which words tend to categorise those topics. This is what we're, fundamentally, trying to do in an STM.
 
-## But how do they work?
+# But how do they work?
 
-Mechanically, an STM works as follows:
+By the conceptual description above, you may notice something. STMs have a *hierarchical* structure. At the top level is the *document*, within which we have *topics*, within which we have *words*.
 
-1.  For each document $d$, estimate the *latent* topic prevalences (*latent* just means something we cannot observe, i.e. there's no label on a newspaper article that says "This is Pro-Lynx", we have to estimate that from data). We do this by using a $logistic$ $normal$ distribution, whose mean is determined by document-level covariates (basically through a GLM).
+The have data we have is *document* and *words*, and we use these to estimate *topic*.
 
-2.  Convert these *latent* prevalences into a topic proportion vector $\theta_d$ via a softmax transformation (i.e., normalizing onto the simplex).
+This *hierarchical* structure is common in many of the more advanced statistical methods, especially in ecology. Occupancy models are a type of this, as a Cormack-Jolly-Seber models which estimate the survival indivudual animals. For your heritage, know the Cormack and Jolly worked in Aberdeen when they developed the method. That's something to be super proud of! The CJS is such an important model in ecology that there are entire conferences dedicated to people using it.
 
-3.  For each word $w_{d,n}$ in the document:
+## What does an STM look like?
 
-    -   Estimate which *topic* to assign it to using $z_{d,n} \sim \text{Categorical}(\theta_d)$ (another GLM)
+Let's start with a simple way to visualise the data and output of an STM (apologies for the generative AI image):
 
-    -   Then, given the topic $z_{d,n}$, estimate the word from that topic's word distribution $\beta{z_{d,n}}$
+![](media/lynx_stm.png)
 
-That's only 5 bullet points and it made my head spin multiple times the first time I read it. By the time I wrote it (and re-wrote it multiple times to try and make it make sense) my head was doing cartwheels. It sounds horrible. It reads horribly. But in truth, it's not *that* bad. I genuinely believe you can wrap your head around it without any cartwheels.
+The things to take away from this are to highlight that $d$ is just the current document you are looking at. $\theta_k$ describes the relative proportion of a document that is dedicated to topic $k$ (e.g. in the above figure we have three topics, called A, B and C). These topics are determined by the word ($w$, given all words $n$ used in the document $d$) within them, that appears in the topic ($k$) with probability $\beta$.
 
-# What does it look like?
+That's the simplified version. If we dive into the details, things get a bit more complex.
 
-One way to visualise an STM is by using *plate notation*:
+## The equations
+
+We'll go through this step-by-step because the estimation process in structural topic modeling is complex (but powerful).
+
+### 1. Topic proportions
+
+For each document $d$ that we have, with covariates $\vec{X}_d$, there is a corresponding vocabulary size of $\vec{V}$, given $K$ topics, we're going to fit a GLM that uses a multivariate normal distribution to estimate which topic is present in a document (note that the $\vec{}$ is shorthand for *vector*, or a column of data):
+
+$$
+\vec{\theta} |X_{d\gamma}, \Sigma \sim \mathcal{MVNorm}(\boldsymbol{X_d} \boldsymbol{\Gamma}, \boldsymbol\Sigma)
+$$
+
+> A multivariate normal distribution is like several normal distributions stacked together. So, instead of having just one mean and one variance, you have a mean and variance for each topic. The covariance matrix $\Sigma$ (which is the variance) also tells you how topics tend to co-occur, for example, maybe “Lynx are bad” often appears alongside “Predator control”.
+
+where $\vec{X}_d$ is a 1-by-$p$ vector (your covariates), $\gamma$ is a $p$-by-($K-1$) matrix of coefficients (this is a way to describe all the parameters, $p$, in the model) and $\boldsymbol{\Sigma}$ is a ($K-1$)-by-($K-1$) covariance matrix.
+
+### 2. Topic-Word distributions
+
+Assume you included a document-level content covariate $y_d$ (e.g. Politically Left versus Politically Right newspaper), we can form a document-specific distribution of words (as a vector, or "column" of numbers), called $\boldsymbol{\beta}$, which represents each topic ($k$) by using:
+
+-   The baseline word distribution ($m$, i.e. how common is this word across all documents),
+
+-   The topic specific deviation $\boldsymbol{\kappa}^{(t)}_k$ (i.e. is that word more or less common in topic $k$)
+
+-   The covariate group deviation $\boldsymbol{\kappa}^{(c)}_{y_d}$ (i.e. is that word more or less common in Politically Left or Right newspapers),
+
+-   And the interaction between the two $\boldsymbol{\kappa}^{(i)}_{y_d,k}$ if we want one
+
+which we can estimate by doing:
+
+$$
+\vec{\beta}_{d,k} \propto exp(\vec{m} + \vec{\kappa}^{(t)}_k + \vec{\kappa}^{(c)}_{y_d} + \vec{\kappa}^{(i)}_{y_d,k})
+$$
+
+> Read this as saying "the probability, $\beta$, to see a given unique word in document $d$, in topic $k$ is proportional to (the $\propto$ symbol) how common it is in general, as well as how common it is in the given topic and/or group"
+
+This gives:
+
+$$
+\vec{\beta}_{d,k} = [\beta_{d,k,1}, \beta_{d,k,2}, ..., \beta_{d,k,V}]
+$$
+
+where $\vec{\beta}_{d,k}$ is a vector that contains the probability to see a given unique word \[the $_{1,2,...,V}$ bit\] in a topic ($k$), in a document ($d$)).
+
+### Estimating $\vec{\beta}_{d,k}$
+
+Keep in mind that $\vec{\beta}_{d,k}$ should be a probability. But to figure it out we start by estimating the rate that at which we see each unique word ($v$) across the entire *corpus* in multiple Poisson GLM (one for each unique word):
+
+$$
+y_v \sim Poisson(\lambda_v) \\
+log(\lambda_v) = m_v + \kappa^{(t)}_{k,v} + \kappa^{(c)}_{y_d,v} + \kappa^{(i)}_{y_d,k,v}
+$$
+
+Here, $y_v$ is the observed count of word $v$. Remember from BI3010 that a Poisson GLM estimates a *rate* but here we need a probability. To do that, we take the estimated rate ($\lambda$) for word $v$ and divide it by the sum all of the $\lambda$s of all the other Poisson GLMs to get a probability (e.g. if we see the word *lynx* 100 times but we see a total of 500 words, then the probability to see the word *lynx* is $\frac{100}{500} = 0.2 = 20\%$. We do this by:
+
+$$
+\beta_{d,k,v} = \frac{\lambda_v}{\sum\lambda_{v'}}
+$$
+
+> A small note here. Normally you'd want to estimate this by using a *multinomial* GLM, which estimates the probability of an event happening - like seeing the word *lynx* - but when you have lots of different words. The problem occurs when you have hundreds of thousands of unique words. In that case a multinomial model can take far too long to fit. That's why `stm` uses a Poisson model for *each unique word* which takes these rates and converts them to probabilities.
+
+### Estimating topic assignment and words
+
+Now that we've estimated the topic proportions $\vec{\theta}_d$ and the topic-word distributions $\vec{\beta}_{d,k}$, we can now estimate the latent variables that explain how each word was chosen.
+
+For each word in the document (which we can write as $n \in \{1,...,N_d\}$, or "for each word that is in all words from the first to the last") :
+
+-   Estimate the topic by fitting a multinomial GLM, based on the probabilities in the vector $\vec{\theta}_d$:
+
+    $$
+    z_{d,n}|\vec{\theta_d} \sim Multinomial(\vec{\theta_d})
+    $$
+
+-   Then conditional on the topic, we fit another multinomial GLM to estimate which word is most likely to appear in that topic:
+
+    $$
+    w_{d,n}|z_{d,n}, \vec{\beta}_{d,k=z_{d,n}} \sim Multinomial(\vec{\beta}_{d,k=z_{d,n}})
+    $$
+
+And that's it. *Suuuuuper* simple, right? For transparency, I spent about three days going over material trying to make sense of the literature, in part because quantitative social scientists use very different terminology and a lot of the material I found glossed over the details, making it frustratingly hard to understand what an STM is *actually* doing. (But also a hell of a lot of fun).
+
+## Plate notation
+
+If the above equations were too much, there's another way to describe how the model works; more visual and less algebraic. It doesn't given the *nuts-and-bolts* but it might help to give an intuition.
+
+To do so, we can use *plate notation*. These are diagrams that describe how different parts of the model relate to each other.
 
 ```{r}
 library(DiagrammeR)
@@ -98,9 +192,9 @@ digraph stm {
 
   # Nodes
   Σ [shape=circle, label='Σ', style=dashed]
-  γ [shape=circle, label='γ', style=dashed]
+  Γ [shape=circle, label='Γ', style=dashed]
   X [shape=circle, label='X']
-  Y [shape=circle, label='Y']
+  κ [shape=circle, label='κ']
   θ [shape=circle, label='θ', style=dashed]
   z [shape=circle, label='z', style=dashed]
   w [shape=circle, label='w']
@@ -108,18 +202,18 @@ digraph stm {
 
   # Edges
   Σ -> θ
-  γ -> θ
+  Γ -> θ
   X -> θ
   θ -> z
   z -> w
   β -> w
-  Y -> β
+  κ -> β
 
   # Outer plate: D
   subgraph cluster_D {
     label = 'D'
     style = 'solid'
-    X; θ; β; Y;
+    X; θ; β; κ;
 
     # Nested plate: N
     subgraph cluster_N {
@@ -135,61 +229,35 @@ digraph stm {
 
 Where:
 
--   *Nodes*: Circles represent variables. Dashed circles mean they are *latent* (a variable we have to estimate), while solid circles are observed data.
+-   *Nodes*: Circles represent variables. Dashed circles mean they are *latent* (a variable we have to estimate), while solid circles means they are observed data.
 
 -   *Plates*: Rectangle indicate repetition:
 
-    -   $D$: For each document
+    -   $D$: Each node is relevent for each document
 
-    -   $N$: For each word in a document
+    -   $N$: Each node is relevant for each word (and because $N$ is within $D$, also for each document)
 
 And where the variables in the plate notation are:
 
 -   $X$ - Document level covariates (e.g. date of publication, political leaning)
 
--   $\alpha$ - The regression coefficients for the mean of the logistic normal
-
--   $\mu$ - The mean *vector* for the multivariate normal (logit-scale topic propensities)
+-   $\Gamma$ - Coefficients that determine how $X$ affects topic proportions
 
 -   $\Sigma$ - The *covariance* *matrix* between topics (models topic co-occurence)
 
--   $z_d$ - Latent logit-scale topic propensity for document $d$
+-   $\theta$ - The estimated topic proportion (which sums to 1)
 
--   $\theta$ - Topic proportions for a document (which sums to 1)
+-   $z$ - Estimated topic assignment for word $n$ in document $d$
 
--   $z_{d,n}$ - Topic assignment for word $n$ in document $d$
+-   $w$ - The actual observed word (e.g. *lynx*)
 
--   $w_{d,n}$ - The observed word
+-   $\beta$ - The estimated word distribution for topic $k$
 
--   $\beta_k$ - Word distribution (categorical) for topic $k$.
+-   $\kappa$ - Document level content covariate (e.g. political group)
 
-Here's what that looks like in a less "stats" way and with a few details omitted (also apologies for the generative AI image):
+### What's in the box?
 
-![](media/lynx_stm.png)
-
-## Mathematical formulation
-
-The core structure of an STM is:
-
-$$
-\begin{aligned}
-\eta_d &\sim \mathcal{MVNorm}(X_d \Gamma, \Sigma) \\
-\theta_d &= \text{softmax}(\eta_d) \\
-z_{d,n} &\sim \text{Categorical}(\theta_d) \\
-w_{d,n} &\sim \text{Categorical}(\beta_{z_{d,n}}) \\
-\beta_{k,v} \propto \exp\left( m_v + \kappa_{k,v}^{(\text{topic})} + \kappa_{g,v}^{(\text{cov})} + \kappa_{k,g,v}^{(\text{int})} \right) \\
-\end{aligned}
-$$
-
-$\eta_d$ is a *latent* vector of logit-scale topic propensities for document $d$, drawn from a multivariate normal distribution with mean $X_d\Gamma$ and covariance $\Sigma$. (Rather than there being a single conditional mean like in a $Normal$ linear model, here $X_d\Gamma$ is a column, or *vector* of means, one for each document).
-
-$\theta_d$ is the topic proportion *vector* for document $d$, obtained by applying a softmax transformation to $\eta_d$. All entries are non-negative and sum to 1.
-
-$z_{d,n}$ is the *latent* topic assignment for word $n$ in document $d$, drawn from a categorical distribution with probabilities $\theta_d$.
-
-$w_{d,n}$ is the actual observed word, drawn from the categorical distribution $\beta_z_{d,n}$, i.e., from the word distribution corresponding to the assigned topic.
-
-$\beta$ is the topic--word matrix, of dimension $\mathbf{K}\times \mathbf{V}$, where each row $\beta_k$ is a probability distribution over the vocabulary (words) for topic $k$ (each row in the $\beta$ matrix below). $\beta$ can be estimated from the data or modeled as a logit-linear function of content covariates.
+$\beta$ is the topic-word matrix, of dimension $\mathbf{K}\times \mathbf{V}$, where each row $\beta_k$ is a probability distribution over the vocabulary (words) for topic $k$ (each row in the $\beta$ matrix below). $\beta$ can be estimated from the data or modeled as a logit-linear function of content covariates.
 
 For $\beta$ it's actually a topic-word matrix $\beta$: $\mathbf{K} \times \mathbf{V}$
 
@@ -219,13 +287,19 @@ D & \theta_{D,1} & \theta_{D,2} & \cdots & \theta_{D,K}
 \end{array}
 $$
 
-## Structural Topic Models Explained (Video)
+# Structural Topic Models Explained (Video)
+
+This is one of the better videos I found that explains STMs. It keeps things fairly light and doesn't dive into the kind of details I included above, so have a watch to see if this helps things make sense.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3kcjbzy4UPM?start=828" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 
 </iframe>
 
 ------------------------------------------------------------------------
+
+# Implementing STM
+
+Now that we've covered the theory, let's have a look at how we actually implement the method. To do so, I'll make use of a dataset that contains text of political blogs from 2008 (when Obama and McCain were running for president of the USA). Have a look at the data because the data you collect will need to be stored in the same way.
 
 ## Load Packages and Data
 
@@ -246,6 +320,18 @@ head(data, 5)
 ------------------------------------------------------------------------
 
 ## Preprocess Text
+
+The first important stage in the analysis, before we get to the modelling, is to process the text. There's apparently a lot of debate in the social sciences over whether or not to do some of these steps. I won't lie. I'm no expert so I can't give any meaningful advice here, other than to do some of your own research and decide what you want to do.
+
+Imagine we have this sentence:
+
+> A lynx was released today in Edinburgh. Locals are said to have fed it Whiskers cat food and offered it some buckfast.
+
+After text processing, this becomes:
+
+> **lynx** ~~was~~ **released** **today** ~~in~~ **edinburgh**
+>
+> **locals** ~~are said to have~~ **fed** ~~it~~ **whiskers** **cat** **food** ~~and~~ **offer**~~ed~~ ~~it some~~ **buckfast**
 
 ```{r}
 #| label: preprocess-text
