@@ -123,16 +123,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link" href="./publications.html" rel="" target="">
+ <span class="menu-text">My Work</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./courses.html" rel="" target="">
  <span class="menu-text">My Courses</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./explainers.html" rel="" target="">
  <span class="menu-text">Stats Explainers</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./publications.html" rel="" target="">
- <span class="menu-text">My Output</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./cv.html" rel="" target="">
@@ -381,8 +381,8 @@ w_{d,n}|z_{d,n}, \vec{\beta}_{d,k=z_{d,n}} \sim Multinomial(\vec{\beta}_{d,k=z_{
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-b1d3939402da925ab741" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-b1d3939402da925ab741">{"x":{"diagram":"\ndigraph stm {\n  graph [layout = dot, rankdir = LR]\n\n  # Nodes\n  Σ [shape=circle, label=\"Σ\", style=dashed]\n  Γ [shape=circle, label=\"Γ\", style=dashed]\n  X [shape=circle, label=\"X\"]\n  κ [shape=circle, label=\"κ\"]\n  θ [shape=circle, label=\"θ\", style=dashed]\n  z [shape=circle, label=\"z\", style=dashed]\n  w [shape=circle, label=\"w\"]\n  β [shape=circle, label=\"β\", style=dashed]\n\n  # Edges\n  Σ -> θ\n  Γ -> θ\n  X -> θ\n  θ -> z\n  z -> w\n  β -> w\n  κ -> β\n\n  # Outer plate: D\n  subgraph cluster_D {\n    label = \"D\"\n    style = \"solid\"\n    X; θ; β; κ;\n\n    # Nested plate: N\n    subgraph cluster_N {\n      label = \"N\"\n      style = \"solid\"\n      z; w;\n    }\n  }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-d6cf067f8d9c8c072f6d" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-d6cf067f8d9c8c072f6d">{"x":{"diagram":"\ndigraph stm {\n  graph [layout = dot, rankdir = LR]\n\n  # Nodes\n  Σ [shape=circle, label=\"Σ\", style=dashed]\n  Γ [shape=circle, label=\"Γ\", style=dashed]\n  X [shape=circle, label=\"X\"]\n  κ [shape=circle, label=\"κ\"]\n  θ [shape=circle, label=\"θ\", style=dashed]\n  z [shape=circle, label=\"z\", style=dashed]\n  w [shape=circle, label=\"w\"]\n  β [shape=circle, label=\"β\", style=dashed]\n\n  # Edges\n  Σ -> θ\n  Γ -> θ\n  X -> θ\n  θ -> z\n  z -> w\n  β -> w\n  κ -> β\n\n  # Outer plate: D\n  subgraph cluster_D {\n    label = \"D\"\n    style = \"solid\"\n    X; θ; β; κ;\n\n    # Nested plate: N\n    subgraph cluster_N {\n      label = \"N\"\n      style = \"solid\"\n      z; w;\n    }\n  }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Where:</p>
