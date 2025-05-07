@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Deon Roos">
+
+<title>Deon Roos - Structural Topic Models</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/viz-1.8.2/viz.js"></script>
+<link href="site_libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="site_libs/grViz-binding-1.0.11/grViz.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Deon Roos</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./courses.html" rel="" target="">
+ <span class="menu-text">My Courses</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./explainers.html" rel="" target="">
+ <span class="menu-text">Stats Explainers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./publications.html" rel="" target="">
+ <span class="menu-text">My Output</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./cv.html" rel="" target="">
+ <span class="menu-text">My CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./blog/index.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#why-analyse-text" id="toc-why-analyse-text" class="nav-link active" data-scroll-target="#why-analyse-text">Why analyse text?</a>
+  <ul class="collapse">
+  <li><a href="#what-is-a-structural-topic-model" id="toc-what-is-a-structural-topic-model" class="nav-link" data-scroll-target="#what-is-a-structural-topic-model">What is a Structural Topic Model?</a></li>
+  </ul></li>
+  <li><a href="#but-how-do-they-work" id="toc-but-how-do-they-work" class="nav-link" data-scroll-target="#but-how-do-they-work">But how do they work?</a>
+  <ul class="collapse">
+  <li><a href="#what-does-an-stm-look-like" id="toc-what-does-an-stm-look-like" class="nav-link" data-scroll-target="#what-does-an-stm-look-like">What does an STM look like?</a></li>
+  <li><a href="#the-equations" id="toc-the-equations" class="nav-link" data-scroll-target="#the-equations">The equations</a></li>
+  <li><a href="#plate-notation" id="toc-plate-notation" class="nav-link" data-scroll-target="#plate-notation">Plate notation</a></li>
+  </ul></li>
+  <li><a href="#structural-topic-models-explained-video" id="toc-structural-topic-models-explained-video" class="nav-link" data-scroll-target="#structural-topic-models-explained-video">Structural Topic Models Explained (Video)</a></li>
+  <li><a href="#implementing-stm" id="toc-implementing-stm" class="nav-link" data-scroll-target="#implementing-stm">Implementing STM</a>
+  <ul class="collapse">
+  <li><a href="#load-packages-and-data" id="toc-load-packages-and-data" class="nav-link" data-scroll-target="#load-packages-and-data">Load Packages and Data</a></li>
+  <li><a href="#preprocess-text" id="toc-preprocess-text" class="nav-link" data-scroll-target="#preprocess-text">Preprocess Text</a></li>
+  <li><a href="#choosing-k-number-of-topics" id="toc-choosing-k-number-of-topics" class="nav-link" data-scroll-target="#choosing-k-number-of-topics">Choosing K (Number of Topics)</a></li>
+  <li><a href="#fit-stm-model-1-no-covariates" id="toc-fit-stm-model-1-no-covariates" class="nav-link" data-scroll-target="#fit-stm-model-1-no-covariates">Fit STM – Model 1 (No Covariates)</a></li>
+  <li><a href="#fit-stm-model-2-with-covariates" id="toc-fit-stm-model-2-with-covariates" class="nav-link" data-scroll-target="#fit-stm-model-2-with-covariates">Fit STM – Model 2 (With Covariates)</a></li>
+  <li><a href="#estimate-and-plot-covariate-effects" id="toc-estimate-and-plot-covariate-effects" class="nav-link" data-scroll-target="#estimate-and-plot-covariate-effects">Estimate and Plot Covariate Effects</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Structural Topic Models</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Deon Roos </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Hey Grace,</p>
+<p>I’ve written this page especially for you and your honours project. I’ve aimed to keep it accessible, covering both the core theory behind the stats you’ll use (Structural Topic Models, STMs) but also how to actually implement them. That said, the theory can get complex at times, and I’m still learning it myself! (It’s also surprisingly hard to find good, clear explanations online.) It took me a while to make sense of the stats, so don’t worry if it takes some time. Be patient with yourself.</p>
+<p>To be clear, this page isn’t meant to replace our meetings or turn me into a hands-off “supervisor.” It’s a resource you can return to whenever you need a refresher or some help getting unstuck.</p>
+<p>Hopefully, this helps you get a handle on the method, but let me know if anything is confusing. It probably won’t answer every question, and I won’t be offended if you want to toss it in a bonfire. Just flag anything that’s unclear, and we’ll work through it together.</p>
+<hr>
+<section id="why-analyse-text" class="level1">
+<h1>Why analyse text?</h1>
+<p>Let’s say we want to understand how movie reviews have changed over time. How would we do that?</p>
+<p>“Well,” you might say, “maybe we could read thousands of reviews from the last 50 years and summarise them.” That’s technically possible but massively time-consuming. Even if we narrowed it down to the “best” reviews, we’d still face a huge pile of reading plus we’d now have the problem of how do you define which are the “best” reviews.</p>
+<p>In fact, that’s exactly what many arts PhD students do: read hundreds (or thousands) of documents and distill them into themes. But I’d argue I’m not smart enough to do an arts PhD so instead, I’d like to cheat and let computers do the hard work for me.</p>
+<p>But how do we cheat?</p>
+<p>This is where your thesis steps into a murky (but exciting) space between statistics and machine learning.</p>
+<p>One option is <em>supervised learning</em>. This is where you tell the model what it <em>should</em> learn. For example, in BI3010 you learned:</p>
+<p><span class="math display">\[
+y_i \sim Normal(\mu_i, \sigma) \\
+\mu_i = \beta_0 + \beta_1 \times x_i
+\]</span></p>
+<p>Here, the goal was to estimate $\beta_0$ and $\beta_1$. It’s supervised because we’ve <em>defined</em> the task: “Fit this straight line.”</p>
+<p>Doing this with text means labelling each document manually. For example, marking them “Pro-Lynx” or “Anti-Lynx”, and then fitting a model. Doable? Yes. But incredibly time-intensive, and not much easier than just summarising the documents yourself.</p>
+<p>The other option is <em>unsupervised</em> learning. Here, you <em>don’t</em> tell the model what to look for, you let it discover patterns on its own. The model identifies clusters or themes in the text, and your job afterward is simply to <em>interpret</em> those themes.</p>
+<p>That’s way more manageable.</p>
+<p>There are many ways to do this (Large Language Models like ChatGPT use similar ideas), but for your project, we’ll use a method called <em>Structural Topic Modelling</em> (STM).</p>
+<section id="what-is-a-structural-topic-model" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-structural-topic-model">What is a Structural Topic Model?</h2>
+<p>A <em>Structural Topic Model (STM)</em> is a type of analysis that allows us to explore large sets of text documents and identify what the common themes are; called <em>topics</em>. Just like you did in BI3010, you can also include covariates (also called explanatory variables) to see if that makes a topic may be more or less prevalent.</p>
+<blockquote class="blockquote">
+<p><strong>Grace</strong>, in your case, this might include things like how date (i.e.&nbsp;how has coverage of lynx changed over time), and if the illegal release of lynx (and maybe their interaction) may have changed which topics are more or less prevelant. For example, <em>did negative topics become more common in the media after the illegal release compared to before</em>?</p>
+</blockquote>
+<p>STMs are a fairly complex beast, with lots of new ideas. One of these new ideas that I won’t explain in this document is <em>Bayesian</em> statistics. Luckily, I have written another set of <a href="https://deonroos.github.io/Occupancy_Modelling/Bayesian_Statistics.html">documents</a> that explain the general theory of this, which you are welcome and encouraged to read through. Although STMs, as implemented in the <code>R</code> package <code>stm</code>, use the <em>Bayesian</em> statistical framework, you can’t actually interact with it, so it’s not crucial to understand in this case. However, I would recommend trying to wrap your head around it, as it’s a piece of knowledge that may make you highly employable.</p>
+<p>With that said, let’s go over, conceptually, what Structural Topic Models are going.</p>
+<ol type="1">
+<li>We begin by gathering a <em>corpus</em>. This is a collection of <em>documents</em>, like newspaper articles. Our objective is to learn something about the <em>corpus</em>.</li>
+<li>We assume that within each <em>document,</em> there can exist multiple <em>topics</em>. Topics are the “themes” that the document covers; things like “Lynx are bad and we shouldn’t release them” or “Lynx are good and we should release them”.</li>
+<li>These <em>topics</em> are <em>latent</em>, which means “hidden” or “unobserved” (newspapers don’t add a sticker on each article to say what the theme is afterall) and we want to use the STM to identify them and to see which are most prevalent.</li>
+<li>We state how many theme we <em>think</em> there are. This might be 5 or it might be 200. This is a choice we make. (There are some tools that can help make this choice.)</li>
+<li>Within each <em>document</em> we consider each <em>word</em>. We assume that each <em>word</em> is associated with one of these topics with differing probabilities. For example, if there is a topic for “Lynx are bad”, then we might expect that “livestock” has a 90% chance of belonging to this topic, while “rewilding” only has a 0.5% chance.</li>
+<li>Each topic will have a distribution of words associated with it, each with their own probability to belong to that topic.</li>
+</ol>
+<p>So our objective then, is to identify different <em>topics</em>, and which words tend to categorise those topics. This is what we’re, fundamentally, trying to do in an STM.</p>
+</section>
+</section>
+<section id="but-how-do-they-work" class="level1">
+<h1>But how do they work?</h1>
+<p>By the conceptual description above, you may notice something. STMs have a <em>hierarchical</em> structure. At the top level is the <em>document</em>, within which we have <em>topics</em>, within which we have <em>words</em>.</p>
+<p>The have data we have is <em>document</em> and <em>words</em>, and we use these to estimate <em>topic</em>.</p>
+<p>This <em>hierarchical</em> structure is common in many of the more advanced statistical methods, especially in ecology. Occupancy models are a type of this, as a Cormack-Jolly-Seber models which estimate the survival indivudual animals. For your heritage, know the Cormack and Jolly worked in Aberdeen when they developed the method. That’s something to be super proud of! The CJS is such an important model in ecology that there are entire conferences dedicated to people using it.</p>
+<section id="what-does-an-stm-look-like" class="level2">
+<h2 class="anchored" data-anchor-id="what-does-an-stm-look-like">What does an STM look like?</h2>
+<p>Let’s start with a simple way to visualise the data and output of an STM (apologies for the generative AI image):</p>
+<p><img src="media/lynx_stm.png" class="img-fluid"></p>
+<p>The things to take away from this are to highlight that <span class="math inline">\(d\)</span> is just the current document you are looking at. <span class="math inline">\(\theta_k\)</span> describes the relative proportion of a document that is dedicated to topic <span class="math inline">\(k\)</span> (e.g.&nbsp;in the above figure we have three topics, called A, B and C). These topics are determined by the word (<span class="math inline">\(w\)</span>, given all words <span class="math inline">\(n\)</span> used in the document <span class="math inline">\(d\)</span>) within them, that appears in the topic (<span class="math inline">\(k\)</span>) with probability <span class="math inline">\(\beta\)</span>.</p>
+<p>That’s the simplified version. If we dive into the details, things get a bit more complex.</p>
+</section>
+<section id="the-equations" class="level2">
+<h2 class="anchored" data-anchor-id="the-equations">The equations</h2>
+<p>We’ll go through this step-by-step because the estimation process in structural topic modeling is complex (but powerful).</p>
+<section id="topic-proportions" class="level3">
+<h3 class="anchored" data-anchor-id="topic-proportions">1. Topic proportions</h3>
+<p>For each document <span class="math inline">\(d\)</span> that we have, with covariates <span class="math inline">\(\vec{X}_d\)</span>, there is a corresponding vocabulary size of <span class="math inline">\(\vec{V}\)</span>, given <span class="math inline">\(K\)</span> topics, we’re going to fit a GLM that uses a multivariate normal distribution to estimate which topic is present in a document (note that the <span class="math inline">\(\vec{}\)</span> is shorthand for <em>vector</em>, or a column of data):</p>
+<p><span class="math display">\[
+\vec{\theta} |X_{d\gamma}, \Sigma \sim \mathcal{MVNorm}(\boldsymbol{X_d} \boldsymbol{\Gamma}, \boldsymbol\Sigma)
+\]</span></p>
+<blockquote class="blockquote">
+<p>A multivariate normal distribution is like several normal distributions stacked together. So, instead of having just one mean and one variance, you have a mean and variance for each topic. The covariance matrix <span class="math inline">\(\Sigma\)</span> (which is the variance) also tells you how topics tend to co-occur, for example, maybe “Lynx are bad” often appears alongside “Predator control”.</p>
+</blockquote>
+<p>where <span class="math inline">\(\vec{X}_d\)</span> is a 1-by-<span class="math inline">\(p\)</span> vector (your covariates), <span class="math inline">\(\gamma\)</span> is a <span class="math inline">\(p\)</span>-by-(<span class="math inline">\(K-1\)</span>) matrix of coefficients (this is a way to describe all the parameters, <span class="math inline">\(p\)</span>, in the model) and <span class="math inline">\(\boldsymbol{\Sigma}\)</span> is a (<span class="math inline">\(K-1\)</span>)-by-(<span class="math inline">\(K-1\)</span>) covariance matrix.</p>
+</section>
+<section id="topic-word-distributions" class="level3">
+<h3 class="anchored" data-anchor-id="topic-word-distributions">2. Topic-Word distributions</h3>
+<p>Assume you included a document-level content covariate <span class="math inline">\(y_d\)</span> (e.g.&nbsp;Politically Left versus Politically Right newspaper), we can form a document-specific distribution of words (as a vector, or “column” of numbers), called <span class="math inline">\(\boldsymbol{\beta}\)</span>, which represents each topic (<span class="math inline">\(k\)</span>) by using:</p>
+<ul>
+<li><p>The baseline word distribution (<span class="math inline">\(m\)</span>, i.e.&nbsp;how common is this word across all documents),</p></li>
+<li><p>The topic specific deviation <span class="math inline">\(\boldsymbol{\kappa}^{(t)}_k\)</span> (i.e.&nbsp;is that word more or less common in topic <span class="math inline">\(k\)</span>)</p></li>
+<li><p>The covariate group deviation <span class="math inline">\(\boldsymbol{\kappa}^{(c)}_{y_d}\)</span> (i.e.&nbsp;is that word more or less common in Politically Left or Right newspapers),</p></li>
+<li><p>And the interaction between the two <span class="math inline">\(\boldsymbol{\kappa}^{(i)}_{y_d,k}\)</span> if we want one</p></li>
+</ul>
+<p>which we can estimate by doing:</p>
+<p><span class="math display">\[
+\vec{\beta}_{d,k} \propto exp(\vec{m} + \vec{\kappa}^{(t)}_k + \vec{\kappa}^{(c)}_{y_d} + \vec{\kappa}^{(i)}_{y_d,k})
+\]</span></p>
+<blockquote class="blockquote">
+<p>Read this as saying “the probability, <span class="math inline">\(\beta\)</span>, to see a given unique word in document <span class="math inline">\(d\)</span>, in topic <span class="math inline">\(k\)</span> is proportional to (the <span class="math inline">\(\propto\)</span> symbol) how common it is in general, as well as how common it is in the given topic and/or group”</p>
+</blockquote>
+<p>This gives:</p>
+<p><span class="math display">\[
+\vec{\beta}_{d,k} = [\beta_{d,k,1}, \beta_{d,k,2}, ..., \beta_{d,k,V}]
+\]</span></p>
+<p>where <span class="math inline">\(\vec{\beta}_{d,k}\)</span> is a vector that contains the probability to see a given unique word [the <span class="math inline">\(_{1,2,...,V}\)</span> bit] in a topic (<span class="math inline">\(k\)</span>), in a document (<span class="math inline">\(d\)</span>)).</p>
+</section>
+<section id="estimating-vecbeta_dk" class="level3">
+<h3 class="anchored" data-anchor-id="estimating-vecbeta_dk">Estimating <span class="math inline">\(\vec{\beta}_{d,k}\)</span></h3>
+<p>Keep in mind that <span class="math inline">\(\vec{\beta}_{d,k}\)</span> should be a probability. But to figure it out we start by estimating the rate that at which we see each unique word (<span class="math inline">\(v\)</span>) across the entire <em>corpus</em> in multiple Poisson GLM (one for each unique word):</p>
+<p><span class="math display">\[
+y_v \sim Poisson(\lambda_v) \\
+log(\lambda_v) = m_v + \kappa^{(t)}_{k,v} + \kappa^{(c)}_{y_d,v} + \kappa^{(i)}_{y_d,k,v}
+\]</span></p>
+<p>Here, <span class="math inline">\(y_v\)</span> is the observed count of word <span class="math inline">\(v\)</span>. Remember from BI3010 that a Poisson GLM estimates a <em>rate</em> but here we need a probability. To do that, we take the estimated rate (<span class="math inline">\(\lambda\)</span>) for word <span class="math inline">\(v\)</span> and divide it by the sum all of the <span class="math inline">\(\lambda\)</span>s of all the other Poisson GLMs to get a probability (e.g.&nbsp;if we see the word <em>lynx</em> 100 times but we see a total of 500 words, then the probability to see the word <em>lynx</em> is <span class="math inline">\(\frac{100}{500} = 0.2 = 20\%\)</span>. We do this by:</p>
+<p><span class="math display">\[
+\beta_{d,k,v} = \frac{\lambda_v}{\sum\lambda_{v'}}
+\]</span></p>
+<blockquote class="blockquote">
+<p>A small note here. Normally you’d want to estimate this by using a <em>multinomial</em> GLM, which estimates the probability of an event happening - like seeing the word <em>lynx</em> - but when you have lots of different words. The problem occurs when you have hundreds of thousands of unique words. In that case a multinomial model can take far too long to fit. That’s why <code>stm</code> uses a Poisson model for <em>each unique word</em> which takes these rates and converts them to probabilities.</p>
+</blockquote>
+</section>
+<section id="estimating-topic-assignment-and-words" class="level3">
+<h3 class="anchored" data-anchor-id="estimating-topic-assignment-and-words">Estimating topic assignment and words</h3>
+<p>Now that we’ve estimated the topic proportions <span class="math inline">\(\vec{\theta}_d\)</span> and the topic-word distributions <span class="math inline">\(\vec{\beta}_{d,k}\)</span>, we can now estimate the latent variables that explain how each word was chosen.</p>
+<p>For each word in the document (which we can write as <span class="math inline">\(n \in \{1,...,N_d\}\)</span>, or “for each word that is in all words from the first to the last”) :</p>
+<ul>
+<li><p>Estimate the topic by fitting a multinomial GLM, based on the probabilities in the vector <span class="math inline">\(\vec{\theta}_d\)</span>:</p>
+<p><span class="math display">\[
+z_{d,n}|\vec{\theta_d} \sim Multinomial(\vec{\theta_d})
+\]</span></p></li>
+<li><p>Then conditional on the topic, we fit another multinomial GLM to estimate which word is most likely to appear in that topic:</p>
+<p><span class="math display">\[
+w_{d,n}|z_{d,n}, \vec{\beta}_{d,k=z_{d,n}} \sim Multinomial(\vec{\beta}_{d,k=z_{d,n}})
+\]</span></p></li>
+</ul>
+<p>And that’s it. <em>Suuuuuper</em> simple, right? For transparency, I spent about three days going over material trying to make sense of the literature, in part because quantitative social scientists use very different terminology and a lot of the material I found glossed over the details, making it frustratingly hard to understand what an STM is <em>actually</em> doing. (But also a hell of a lot of fun).</p>
+</section>
+</section>
+<section id="plate-notation" class="level2">
+<h2 class="anchored" data-anchor-id="plate-notation">Plate notation</h2>
+<p>If the above equations were too much, there’s another way to describe how the model works; more visual and less algebraic. It doesn’t given the <em>nuts-and-bolts</em> but it might help to give an intuition.</p>
+<p>To do so, we can use <em>plate notation</em>. These are diagrams that describe how different parts of the model relate to each other.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DiagrammeR)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grViz</span>(<span class="st">"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">digraph stm {</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">  graph [layout = dot, rankdir = LR]</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">  # Nodes</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">  Σ [shape=circle, label='Σ', style=dashed]</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">  Γ [shape=circle, label='Γ', style=dashed]</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">  X [shape=circle, label='X']</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">  κ [shape=circle, label='κ']</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">  θ [shape=circle, label='θ', style=dashed]</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st">  z [shape=circle, label='z', style=dashed]</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st">  w [shape=circle, label='w']</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="st">  β [shape=circle, label='β', style=dashed]</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="st">  # Edges</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="st">  Σ -&gt; θ</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="st">  Γ -&gt; θ</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="st">  X -&gt; θ</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="st">  θ -&gt; z</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="st">  z -&gt; w</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="st">  β -&gt; w</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="st">  κ -&gt; β</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="st">  # Outer plate: D</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="st">  subgraph cluster_D {</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="st">    label = 'D'</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="st">    style = 'solid'</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="st">    X; θ; β; κ;</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="st">    # Nested plate: N</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="st">    subgraph cluster_N {</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="st">      label = 'N'</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="st">      style = 'solid'</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="st">      z; w;</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-b1d3939402da925ab741" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-b1d3939402da925ab741">{"x":{"diagram":"\ndigraph stm {\n  graph [layout = dot, rankdir = LR]\n\n  # Nodes\n  Σ [shape=circle, label=\"Σ\", style=dashed]\n  Γ [shape=circle, label=\"Γ\", style=dashed]\n  X [shape=circle, label=\"X\"]\n  κ [shape=circle, label=\"κ\"]\n  θ [shape=circle, label=\"θ\", style=dashed]\n  z [shape=circle, label=\"z\", style=dashed]\n  w [shape=circle, label=\"w\"]\n  β [shape=circle, label=\"β\", style=dashed]\n\n  # Edges\n  Σ -> θ\n  Γ -> θ\n  X -> θ\n  θ -> z\n  z -> w\n  β -> w\n  κ -> β\n\n  # Outer plate: D\n  subgraph cluster_D {\n    label = \"D\"\n    style = \"solid\"\n    X; θ; β; κ;\n\n    # Nested plate: N\n    subgraph cluster_N {\n      label = \"N\"\n      style = \"solid\"\n      z; w;\n    }\n  }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Where:</p>
+<ul>
+<li><p><em>Nodes</em>: Circles represent variables. Dashed circles mean they are <em>latent</em> (a variable we have to estimate), while solid circles means they are observed data.</p></li>
+<li><p><em>Plates</em>: Rectangle indicate repetition:</p>
+<ul>
+<li><p><span class="math inline">\(D\)</span>: Each node is relevent for each document</p></li>
+<li><p><span class="math inline">\(N\)</span>: Each node is relevant for each word (and because <span class="math inline">\(N\)</span> is within <span class="math inline">\(D\)</span>, also for each document)</p></li>
+</ul></li>
+</ul>
+<p>And where the variables in the plate notation are:</p>
+<ul>
+<li><p><span class="math inline">\(X\)</span> - Document level covariates (e.g.&nbsp;date of publication, political leaning)</p></li>
+<li><p><span class="math inline">\(\Gamma\)</span> - Coefficients that determine how <span class="math inline">\(X\)</span> affects topic proportions</p></li>
+<li><p><span class="math inline">\(\Sigma\)</span> - The <em>covariance</em> <em>matrix</em> between topics (models topic co-occurence)</p></li>
+<li><p><span class="math inline">\(\theta\)</span> - The estimated topic proportion (which sums to 1)</p></li>
+<li><p><span class="math inline">\(z\)</span> - Estimated topic assignment for word <span class="math inline">\(n\)</span> in document <span class="math inline">\(d\)</span></p></li>
+<li><p><span class="math inline">\(w\)</span> - The actual observed word (e.g.&nbsp;<em>lynx</em>)</p></li>
+<li><p><span class="math inline">\(\beta\)</span> - The estimated word distribution for topic <span class="math inline">\(k\)</span></p></li>
+<li><p><span class="math inline">\(\kappa\)</span> - Document level content covariate (e.g.&nbsp;political group)</p></li>
+</ul>
+<section id="whats-in-the-box" class="level3">
+<h3 class="anchored" data-anchor-id="whats-in-the-box">What’s in the box?</h3>
+<p><span class="math inline">\(\beta\)</span> is the topic-word matrix, of dimension <span class="math inline">\(\mathbf{K}\times \mathbf{V}\)</span>, where each row <span class="math inline">\(\beta_k\)</span> is a probability distribution over the vocabulary (words) for topic <span class="math inline">\(k\)</span> (each row in the <span class="math inline">\(\beta\)</span> matrix below). <span class="math inline">\(\beta\)</span> can be estimated from the data or modeled as a logit-linear function of content covariates.</p>
+<p>For <span class="math inline">\(\beta\)</span> it’s actually a topic-word matrix <span class="math inline">\(\beta\)</span>: <span class="math inline">\(\mathbf{K} \times \mathbf{V}\)</span></p>
+<p><span class="math display">\[
+\begin{array}{c|cccc}
+&amp; \text{predator} &amp; \text{policy} &amp; \cdots &amp; \text{illegal} \\
+\hline
+\text{Topic } 1 &amp; \beta_{1,1} &amp; \beta_{1,2} &amp; \cdots &amp; \beta_{1,V} \\
+\text{Topic } 2 &amp; \beta_{2,1} &amp; \beta_{2,2} &amp; \cdots &amp; \beta_{2,V} \\
+\text{Topic } 3 &amp; \beta_{3,1} &amp; \beta_{3,2} &amp; \cdots &amp; \beta_{3,V} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\text{Topic } K &amp; \beta_{K,1} &amp; \beta_{K,2} &amp; \cdots &amp; \beta_{K,V}
+\end{array}
+\]</span></p>
+<p>And for <span class="math inline">\(\theta\)</span>, it’s a document-topic matrix: <span class="math inline">\(\mathbf{D} \times \mathbf{K}\)</span></p>
+<p><span class="math display">\[
+\begin{array}{c|cccc}
+&amp; \text{Topic 1} &amp; \text{Topic 2} &amp; \cdots &amp; \text{Topic } K \\
+\hline
+Doc1 &amp; \theta_{1,1} &amp; \theta_{1,2} &amp; \cdots &amp; \theta_{1,K} \\
+Doc2 &amp; \theta_{2,1} &amp; \theta_{2,2} &amp; \cdots &amp; \theta_{2,K} \\
+Doc3 &amp; \theta_{3,1} &amp; \theta_{3,2} &amp; \cdots &amp; \theta_{3,K} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+D &amp; \theta_{D,1} &amp; \theta_{D,2} &amp; \cdots &amp; \theta_{D,K}
+\end{array}
+\]</span></p>
+</section>
+</section>
+</section>
+<section id="structural-topic-models-explained-video" class="level1">
+<h1>Structural Topic Models Explained (Video)</h1>
+<p>This is one of the better videos I found that explains STMs. It keeps things fairly light and doesn’t dive into the kind of details I included above, so have a watch to see if this helps things make sense.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3kcjbzy4UPM?start=828" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+<hr>
+</section>
+<section id="implementing-stm" class="level1">
+<h1>Implementing STM</h1>
+<p>Now that we’ve covered the theory, let’s have a look at how we actually implement the method. To do so, I’ll make use of a dataset that contains text of political blogs from 2008 (when Obama and McCain were running for president of the USA). Have a look at the data because the data you collect will need to be stored in the same way.</p>
+<section id="load-packages-and-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-packages-and-data">Load Packages and Data</h2>
+<div class="cell" data-hash="stm-explainer_cache/html/load-packages_7497116084cbd4aef6fa2d84f5504ad1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>stm v1.3.7 successfully loaded. See ?stm for help. 
+ Papers, resources, and other materials at structuraltopicmodel.com</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: NLP</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'ggplot2'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:NLP':
+
+    annotate</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/poliblogs2008.csv"</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display just the first few rows</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  X
+1 1
+2 2
+3 3
+4 4
+5 5
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    documents
+1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       After a week of false statements, lies, and dismissive apologies, Pakistani President Pervez Musharraf now says that he is disatisfied with the probe into former Prime Minister Benazir Bhutto's death and is asking Scotland Yard for help:"One should not give a statement that's 100 percent final. That's the flaw that we suffer from," Musharraf said at a news conference, noting that more evidence was emerging about the attack. "We needed more experience, maybe more forensic and technical experience that our people don't have. Therefore I thought Scotland Yard may be more helpful." Musharraf said he also reached out to British investigators for assistance to dispel accusations that Pakistan's military or intelligence services were involved. "We don't mind going to any extent, as nobody is involved from the government or agency side," he said. Speaking a week after Bhutto's assassination in a shooting and suicide bombing, Musharraf denied there had been a security lapse and implied that Bhutto, who was greeting supporters through the sunroof of her armored vehicle at the time of the attack, was partly responsible. "Who is to be blamed for her coming out (of) her vehicle?" he asked, adding that others in the vehicle had not been hurt in the attack.When in doubt, blame the victim.Reports in the immediate aftermath of the bombing said that as far back as November, Bhutto believed Musharraf was deliberately withholding security forces that could have made her safer. Unless he feared Bhutto more than the street riotors, I doubt whether that was really true. More likely, he didn't trust the army to protect her. And when she requested that Musharraf allow her to use western private security firms, he refused.I don't think Musharraf wanted Bhutto dead. But I think he is just too weak and indecisive to have done what was needed to protect her.
+2 I honestly don't know how either party's caucus results will play out tonight. Usually, you can get a good idea of&nbsp;perhaps not a winner but at least you can figure out who's up, who's down, and who's on life support.Not with the Iowa Caucuses. Races in both parties are just too close to call. So many variables. So much&nbsp;volatility among the voters. And the polls are whacky.As an example, here are the final two polls out on Iowa. First, ARG:Mike Huckabee 29% (23%) Mitt Romney 24% (32%) Fred Thompson 13% (7%) John McCain 11% (11%) Rudy Giuliani 8% (6%) Ron Paul 6% (6%) Duncan Hunter 4% (2%) Undecided 4% (11%) (Number in parentheses is from ARG survey taken&nbsp;last week)The spread between Huckabee and Romney is the margin of error which means they are virtually tied. Note Thompson's huge bump. Is he surging? Many think so although he probably doesn't have enough juice to catch either front runner for second place. But a strong third sends him along the campaign trail - despite what you might have heard about him dropping out.&nbsp;(Fred and his staff are denying the filthy rumor every chance they get.)Meanwhile, Zogby's daily tracking poll (three day rolling average) tells a little different story:* Huckabee - 31%* Romney - 25%* Thompson - 11%*McCain -10%Here the Huckster opens up a slight lead on Romney with Thompson and McCain far back in the pack.On the Democratic side, Obama has sprinted into the lead:Democrat Barack Obama continued his upward momentum through the evening before the Iowa caucuses, capturing the lead ahead of rivals John Edwards and Hillary Clinton.. Meanwhile, Republican Mike Hucakbee widened his lead over Mitt Romney down the stretch, the newest and last Reuters/C–SPAN/Zogby daily telephone tracking poll in Iowa shows. Obama broke through the 30% barrier for the first time, gaining 31% support after another strong day leading up to the caucuses. But more dramatic was Clinton’s four-point drop in this last day of tracking. Edwards moved into second place by himself after another day where he steadily gained ground. This fifth and final daily tracking poll was conducted using live telephone operators in the Zogby call center in Upstate New York. Edwards finished this Zogby daily tracking in Iowa in the same place as four years ago, when Zogby correctly identified the finishing order of the candidates in that caucus.Hillary Clinton has been playing down her chances the last 48 hours and could very well finish 3rd.All of this matters little in the end. The process of caucusing is complicated for the Democrats and it is possible for any of the top three candidates to win or come in third.We'll see by midnight tonight central time.
+3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          While we stand in awe of the willingness of our troops in Iraq to sacrifice themselves for the Nation, the fewer that are required to do so, the better.&nbsp; And the news on that front is good.&nbsp; As can be seen in the chart below, our military deaths in December&nbsp;dropped to 23 from 37 in November.&nbsp; December deaths are down over 80% (82%) from May's peak this year of 126.&nbsp; Assuming this reflects a permanent change in the correlation of forces in Iraq - and it is likely that it does, although we cannot be certain of it - it reflects a tremendous achievement on the part of General Petraeus, since this is the result not of retreating from our objectives in Iraq but of advancing toward them - of executing the mission.What of Iraqi deaths?&nbsp; Iraqi security forces and civilian fatalities are also down in December from November.&nbsp;Iraqi deaths are down only by a small amount - from 560 in November to 534 in December, although that difference is not small if you are one of the ones who are now still alive.&nbsp; And the decline from this year's peak in February of 3,014 is a drop of 82%(!).Are we out of the woods in Iraq?&nbsp; It would seem not.&nbsp; We have General Odierno's estremely disturbing cri de coeur&nbsp; at the end of November, which we can assume was endorsed by his chief, General Petraeus.&nbsp; So far as we know, General Odierno's point "A window of opportunity has opened for the government to reach out to its former foes, said Army Lt. Gen. Raymond T. Odierno, the commander of day-to-day U.S. military operations in Iraq, but ‘it's unclear how long that window is going to be open.'"has not been resolved.&nbsp; While some economic indicators, such as the Iraq Stock Exchange and the value of the Iraqi dinar, are showing real strength, the status of the estimated 4 million internal and external refugees remains open, as does the high unemployment rate, estimated at over 40%.&nbsp; But the fatalities figures are good news on the war-fighting front and we don't want to miss them.&nbsp; Success doesn't always announce itself.&nbsp;&nbsp; It's important not to miss it when it is achieved.
+4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                These pages recently said goodbye to global warming.&nbsp;&nbsp;Ironically, the current spell of global warming, such as it is, can be expected to end just as the Kyoto treaty ends in 2012, but having nothing to do with reduced emissions from fossil fuels.&nbsp; For the remainder of this century, it will be global cooling we'll have to worry about, according to highly credentialed Russian scientist, Dr. Oleg Sorokhtin.Dr. Sorokhtin, Merited Scientist of Russia and fellow of the Russian Academy of Natural Sciences, is staff researcher of the Oceanology Institute.&nbsp; He explains the recent warming as a natural trend."Earth is now at the peak of one of its passing warm spells. It started in the 17th century when there was no industrial influence on the climate to speak of and no such thing as the hothouse effect. The current warming is evidently a natural process and utterly independent of hothouse gases."So what will happen in the future?"Astrophysics knows two solar activity cycles, of 11 and 200 years. Both are caused by changes in the radius and area of the irradiating solar surface. The latest data, obtained by Habibullah Abdusamatov, head of the Pulkovo Observatory space research laboratory, say that Earth has passed the peak of its warmer period, and a fairly cold spell will set in quite soon, by 2012. Real cold will come when solar activity reaches its minimum, by 2041, and will last for 50-60 years or even longer."Physical and mathematical calculations predict a new Ice Age. It will come in 100,000 years, at the earliest, and will be much worse than the previous. Europe will be ice-bound, with glaciers reaching south of Moscow."The high standing of Dr. Sorkhtin and the inherent plausibility of his argument that climate will continue to follow the same basic causal factor, solar activity, make this another heavy blow to the heavy breathing of the global warming alarmists, who insist there is no argument at all.
+5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       A US report shows how the enemy controlled the information on the battlefield in Fallujah and used this to force the US and Iraqi forces out, in the first battle there. The Belmont&nbsp;Club points out UPI coverage of the report by Shaun Waterman. Here is how the enemy worked: First they kidnapped reporters from major Western news sources, driving them out of the city, and leaving&nbsp;only Al Jazeera, Al Arabiya&nbsp;and local stringers controlled by the enemy as the sole&nbsp;sources of news.&nbsp;When the US returned with many embedded journalists and cut the enemy's information monopoly we won.These figures demonstrate how the insurgency purposely drove the press from the field to recreate the information monopoly they found so advantageous in the opening days of the First Fallujah, when only journalists from Al Jazeera and Al Arabiya were reporting from the scene. The kidnapping campaign compelled news outlets to rely on stringers who could then be controlled by the insurgency and who could be counted on to miraculously stumble on photo opportunities showing insurgents in action, such as the Pulitzer Prize winning photograph of an Iraqi election worker being killed on Haifa Street. The effective riposte again turned out to be finding ways to break the reportorial stranglehold the enemy had established. The information blockade runners turned out to be bloggers and journalists embedded in the military, of whom Michael Yon is perhaps the most famous. The Iraqi bloggers were protected by their anonymity and the embedded journalists were protected by coalition troops. These reporters outflanked the wall of "access journalism" which was gradually restricting the majors and created alternative sources of reportage. Although few in number these blockade runners played a pivotal role in penetrating the "bodyguard of lies" with which al-Qaeda and the Sunni insurgency had surrounded itself.
+           docname       rating day blog
+1 at0800300_1.text Conservative   3   at
+2 at0800300_2.text Conservative   3   at
+3 at0800300_3.text Conservative   3   at
+4 at0800300_4.text Conservative   3   at
+5 at0800300_5.text Conservative   3   at</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="preprocess-text" class="level2">
+<h2 class="anchored" data-anchor-id="preprocess-text">Preprocess Text</h2>
+<p>The first important stage in the analysis, before we get to the modelling, is to process the text. There’s apparently a lot of debate in the social sciences over whether or not to do some of these steps. I won’t lie. I’m no expert so I can’t give any meaningful advice here, other than to do some of your own research and decide what you want to do.</p>
+<p>Imagine we have this sentence:</p>
+<blockquote class="blockquote">
+<p>A lynx was released today in Edinburgh. Locals are said to have fed it Whiskers cat food and offered it some buckfast.</p>
+</blockquote>
+<p>After text processing, this becomes:</p>
+<blockquote class="blockquote">
+<p><strong>lynx</strong> <del>was</del> <strong>released</strong> <strong>today</strong> <del>in</del> <strong>edinburgh</strong></p>
+<p><strong>locals</strong> <del>are said to have</del> <strong>fed</strong> <del>it</del> <strong>whiskers</strong> <strong>cat</strong> <strong>food</strong> <del>and</del> <strong>offer</strong><del>ed</del> <del>it some</del> <strong>buckfast</strong></p>
+</blockquote>
+<div class="cell" data-hash="stm-explainer_cache/html/preprocess-text_75652b1a63d2a9b2a48a070431f12180">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>processed <span class="ot">&lt;-</span> <span class="fu">textProcessor</span>(data<span class="sc">$</span>documents, <span class="at">metadata =</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Building corpus... 
+Converting to Lower Case... 
+Removing punctuation... 
+Removing stopwords... 
+Removing numbers... 
+Stemming... 
+Creating Output... </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">prepDocuments</span>(processed<span class="sc">$</span>documents, processed<span class="sc">$</span>vocab, processed<span class="sc">$</span>meta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Removing 83198 of 123990 terms (83198 of 2298953 tokens) due to frequency 
+Your corpus now has 13246 documents, 40792 terms and 2215755 tokens.</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>docs <span class="ot">&lt;-</span> out<span class="sc">$</span>documents</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>vocab <span class="ot">&lt;-</span> out<span class="sc">$</span>vocab</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>meta <span class="ot">&lt;-</span> out<span class="sc">$</span>meta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-hash="stm-explainer_cache/html/plot-removed_069f61196cac09cf54a30b7c697d7ab1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotRemoved</span>(processed<span class="sc">$</span>documents, <span class="at">lower.thresh =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">200</span>, <span class="at">by =</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="stm-explainer_files/figure-html/plot-removed-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="choosing-k-number-of-topics" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-k-number-of-topics">Choosing K (Number of Topics)</h2>
+<div class="cell" data-hash="stm-explainer_cache/html/choose-k_4e11f06a074f9a7d9d8c08624bbf220c">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># searchK(docs, vocab, K = c(10, 15, 20, 25), data = meta)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Expectation-Maximiation equivalent to brute forcing MCMC - give it a function and iteratively optimise it until threshold of error reached. Priors locked (I think)</p>
+<hr>
+</section>
+<section id="fit-stm-model-1-no-covariates" class="level2">
+<h2 class="anchored" data-anchor-id="fit-stm-model-1-no-covariates">Fit STM – Model 1 (No Covariates)</h2>
+<div class="cell" data-hash="stm-explainer_cache/html/model1_f8dcf181ee5bbf3517b208d1767ddda2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">stm</span>(<span class="at">documents =</span> docs,</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">vocab =</span> vocab,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">K =</span> <span class="dv">20</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> meta,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">init.type =</span> <span class="st">"Spectral"</span>, </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="explore-model-1" class="level3">
+<h3 class="anchored" data-anchor-id="explore-model-1">Explore Model 1</h3>
+<div class="cell" data-hash="stm-explainer_cache/html/model1-explore_9d168e9e0f6c6d8e5cc06f62461e5463">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model1, <span class="at">type =</span> <span class="st">"summary"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">labelTopics</span>(model1)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">findThoughts</span>(model1, <span class="at">texts =</span> meta<span class="sc">$</span>documents, <span class="at">n =</span> <span class="dv">2</span>, <span class="at">topics =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<hr>
+</section>
+</section>
+<section id="fit-stm-model-2-with-covariates" class="level2">
+<h2 class="anchored" data-anchor-id="fit-stm-model-2-with-covariates">Fit STM – Model 2 (With Covariates)</h2>
+<div class="cell" data-hash="stm-explainer_cache/html/model2_d7a55354fcee3b3256efda1d14cf9e73">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">stm</span>(<span class="at">documents =</span> docs,</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">vocab =</span> vocab,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">K =</span> <span class="dv">20</span>,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">prevalence =</span> <span class="sc">~</span> rating <span class="sc">+</span> <span class="fu">s</span>(day, <span class="at">df =</span> <span class="dv">5</span>),</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> meta,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">init.type =</span> <span class="st">"Spectral"</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="explore-model-2" class="level3">
+<h3 class="anchored" data-anchor-id="explore-model-2">Explore Model 2</h3>
+<div class="cell" data-hash="stm-explainer_cache/html/model2-explore_18d72d183498c95cfc05e18d8b520e54">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model2, <span class="at">type =</span> <span class="st">"summary"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">labelTopics</span>(model2, <span class="at">topics =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">20</span>))</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">findThoughts</span>(model2, <span class="at">texts =</span> meta<span class="sc">$</span>documents, <span class="at">n =</span> <span class="dv">2</span>, <span class="at">topics =</span> <span class="dv">3</span>)<span class="sc">$</span>docs[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<hr>
+</section>
+</section>
+<section id="estimate-and-plot-covariate-effects" class="level2">
+<h2 class="anchored" data-anchor-id="estimate-and-plot-covariate-effects">Estimate and Plot Covariate Effects</h2>
+<div class="cell" data-hash="stm-explainer_cache/html/estimate-effect_cb2bd683a05cbd43f83b73d756d224d7">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>effect_model <span class="ot">&lt;-</span> <span class="fu">estimateEffect</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span> <span class="sc">~</span> rating <span class="sc">+</span> <span class="fu">s</span>(day), model2,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                               <span class="at">meta =</span> meta, <span class="at">uncertainty =</span> <span class="st">"Global"</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(effect_model, <span class="at">topics =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-hash="stm-explainer_cache/html/plot-time_0480f933749b9ae96285fae640a840c5">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(effect_model, <span class="st">"day"</span>, <span class="at">method =</span> <span class="st">"continuous"</span>, <span class="at">topics =</span> <span class="dv">7</span>,</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">printlegend =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">"Time (2008)"</span>, <span class="at">xaxt =</span> <span class="st">"n"</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>monthseq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">as.Date</span>(<span class="st">"2008-01-01"</span>), <span class="at">to =</span> <span class="fu">as.Date</span>(<span class="st">"2008-12-01"</span>), <span class="at">by =</span> <span class="st">"month"</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>monthnames <span class="ot">&lt;-</span> <span class="fu">months</span>(monthseq)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">as.numeric</span>(monthseq) <span class="sc">-</span> <span class="fu">min</span>(<span class="fu">as.numeric</span>(monthseq)), <span class="at">labels =</span> monthnames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-hash="stm-explainer_cache/html/plot-rating-diff_c452b5d9ab3ddc6766bef2996efb6b47">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(effect_model, <span class="at">covariate =</span> <span class="st">"rating"</span>, <span class="at">topics =</span> <span class="dv">3</span>, <span class="at">method =</span> <span class="st">"difference"</span>,</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">cov.value1 =</span> <span class="st">"Liberal"</span>, <span class="at">cov.value2 =</span> <span class="st">"Conservative"</span>,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"More Liberal ... More Conservative"</span>,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Topic 3: Difference by Political Rating"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<hr>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li>STM helps uncover underlying topics in a collection of documents.</li>
+<li>Document-level metadata can be used to model how topic proportions vary.</li>
+<li>The logistic normal plays a similar role to a logit link in GLMs.</li>
+<li>STM is hierarchical: topic use varies across documents; topics generate words.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

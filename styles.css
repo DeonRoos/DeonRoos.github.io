@@ -817,3 +817,61 @@ a.pub-card:hover {
 .cv-contact-item span {
   vertical-align: middle;
 }
+
+/* === Sidebar (on this page navigation) === */
+.sidebar, .quarto-sidebar, .page-navigation {
+  background-color: #202123 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.sidebar a, .quarto-sidebar a, .page-navigation a {
+  color: #00A68A !important;
+  text-decoration: none;
+}
+
+/* Current active item — make it white */
+.sidebar a.active, 
+.quarto-sidebar a.active, 
+.page-navigation a.active {
+  color: white !important;
+  font-weight: bold;
+}
+
+/* Hover style — keep green and underline */
+.sidebar a:hover, 
+.quarto-sidebar a:hover, 
+.page-navigation a:hover {
+  color: #F7C908 !important;
+  text-decoration: underline !important;
+}
+
+/* Visited links — optional, consistent with site */
+.sidebar a:visited, 
+.quarto-sidebar a:visited, 
+.page-navigation a:visited {
+  color: #00A68A !important;
+}
+
+/* Force "on this page" sidebar links to match dark theme */
+
+/* Base style for sidebar links */
+.page-navigation a {
+  color: #00A68A !important;
+  text-decoration: none !important;
+}
+
+/* Hovered link */
+.page-navigation a:hover {
+  color: #F7C908 !important;
+  text-decoration: underline !important;
+}
+
+/* Active/current section link (blue by default) */
+.page-navigation a.nav-link.active,
+.page-navigation .nav-link.active,
+.page-navigation .active {
+  color: white !important;
+  font-weight: bold !important;
+  text-decoration: none !important;
+}
