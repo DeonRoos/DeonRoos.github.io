@@ -250,5 +250,12 @@
     "title": "Structural Topic Models",
     "section": "Estimate and Plot Covariate Effects",
     "text": "Estimate and Plot Covariate Effects\nNow that we’ve included covariates, we can test and plot how topic prevalence varies by metadata. This is where STM becomes really powerful.\n\n\nCode\neffect_model &lt;- estimateEffect(1:15 ~ rating + s(day), model2,\n                               meta = meta, uncertainty = \"Global\")\n\n\nWhich we can use to plot how a topic changes over time. For example, how did Topic 7’s prevalence change over time?\n\n\nCode\nplot(effect_model, \"day\", method = \"continuous\", topics = 7,\n     printlegend = FALSE, xlab = \"Time (2008)\", xaxt = \"n\")\n\nmonthseq &lt;- seq(from = as.Date(\"2008-01-01\"), to = as.Date(\"2008-12-01\"), by = \"month\")\nmonthnames &lt;- months(monthseq)\naxis(1, at = as.numeric(monthseq) - min(as.numeric(monthseq)), labels = monthnames)\n\n\n\n\n\n\n\nCode\nplot(effect_model, covariate = \"rating\", topics = 3, method = \"difference\",\n     cov.value1 = \"Liberal\", cov.value2 = \"Conservative\",\n     xlab = \"&lt;- More Liberal | More Conservative -&gt;\",\n     main = \"Topic 3: Difference by Political Rating\")\n\n\n\n\n\nThese figures are… ok but I think we can do better. Here’s my attempt:\n\n\nCode\nggplot(plot_data, aes(x = day, y = est, color = topic)) +\n  geom_line(linewidth = 1) +\n  geom_ribbon(aes(ymin = ci.lower, ymax = ci.upper, fill = topic), alpha = 0.15, colour = NA) +\n  labs(x = \"Time\",\n       y = \"Estimated Topic Proportion\",\n       color = \"Topic\",\n       fill = \"Topic\") +\n  theme_minimal(base_size = 13)"
+  },
+  {
+    "objectID": "theses.html",
+    "href": "theses.html",
+    "title": "Undergraduate Theses",
+    "section": "",
+    "text": "Shanan Davies\n\n\n2024\n\n\nRoe deer occupancy and habitat preferences\n\n\n\n\nAlice Semple\n\n\n2024\n\n\nPredicting vole population growth and cycles\n\n\n\n\nJoe Davidson\n\n\n2025\n\n\nPost-release pheasant distribution\n\n\n\n\nGrace Sommerville\n\n\n2025\n\n\nMedia coverage of illegal lynx reintroduction\n\n\n\n\nZitong Lui\n\n\n2025\n\n\nRoe deer and road collision risk"
   }
 ]
