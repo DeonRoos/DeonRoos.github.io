@@ -40,4 +40,11 @@ format: html
     <a href="pgr-glm.qmd" class="btn">Learn more</a>
   </div>
 </section>
+
+<section class="course-grid" data-aos="fade-up">
+  <div class="course-card">
+    <h3>PU5058: Introduction to Health Data Science</h3>
+    <p>Lecture on the theory underlying effective data visualisation.</p>
+  </div>
+</section>
 ```

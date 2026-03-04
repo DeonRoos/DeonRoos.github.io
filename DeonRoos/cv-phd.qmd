@@ -9,4 +9,10 @@ format: html
 - Integrated population models of tawny owls.
 :::
 
+::: {.cv-entry}
+**James Owen**, Queen's University Belfast  
+<span class="cv-dates">2025 – Present</span>  
+- Geoprofiling methodology development.
+:::
+
 [$\leftarrow$ Back to CV Overview](cv.qmd)
