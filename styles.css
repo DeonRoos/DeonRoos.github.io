@@ -50,7 +50,8 @@ h3 {
 
 .navbar .nav-link:hover,
 .navbar .nav-link:focus,
-.navbar .nav-link.active {
+.navbar .nav-link.active,
+.navbar .nav-link[aria-current="page"] {
   color: #ffffff !important;
   background-color: transparent !important;
   border: none !important;
