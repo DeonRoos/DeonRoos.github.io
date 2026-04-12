@@ -1,15 +1,9 @@
 ---
 title: "Structural Topic Models"
 author: "Deon Roos"
-format: 
-  html:
-    theme: flatly
-    highlight: monochrome
-    code-fold: true
-    toc: true
-    toc-depth: 2
-    toc-location: left
-    css: styles.css
+format: html
+execute:
+  freeze: auto
 ---
 
 ```{r setup}
@@ -18,6 +12,27 @@ format:
 #| warning: false
 library(knitr)
 opts_chunk$set(echo = TRUE)
+
+theme_dark_site <- function(...) {
+  ggplot2::theme_minimal(...) +
+  ggplot2::theme(
+    plot.background   = ggplot2::element_rect(fill = "#202123", colour = NA),
+    panel.background  = ggplot2::element_rect(fill = "#202123", colour = NA),
+    panel.grid.major  = ggplot2::element_line(colour = "#333333"),
+    panel.grid.minor  = ggplot2::element_line(colour = "#2d2e30"),
+    text              = ggplot2::element_text(colour = "#cccccc"),
+    axis.text         = ggplot2::element_text(colour = "#999999"),
+    plot.title        = ggplot2::element_text(colour = "#ffffff", face = "bold"),
+    plot.subtitle     = ggplot2::element_text(colour = "#999999"),
+    plot.caption      = ggplot2::element_text(colour = "#666666"),
+    legend.background = ggplot2::element_rect(fill = "#202123", colour = NA),
+    legend.key        = ggplot2::element_rect(fill = "#202123", colour = NA),
+    legend.text       = ggplot2::element_text(colour = "#cccccc"),
+    legend.title      = ggplot2::element_text(colour = "#cccccc"),
+    strip.background  = ggplot2::element_rect(fill = "#2d2e30", colour = NA),
+    strip.text        = ggplot2::element_text(colour = "#cccccc")
+  )
+}
 ```
 
 Hey Grace,
@@ -164,7 +179,7 @@ ggplot(df_all, aes(x = X1, y = X2, z = z)) +
     x = expression(Y[1]),
     y = expression(Y[2])
   ) +
-  theme_minimal(base_size = 14)
+  theme_dark_site(base_size = 14)
 ```
 
 
@@ -644,7 +659,7 @@ ggplot(df, aes(x = Coherence, y = Exclusivity, label = Topic)) +
   geom_text(nudge_y = 0.05, size = 3, check_overlap = TRUE) +
   labs(title = "Semantic Coherence vs. Exclusivity",
        x = "Semantic Coherence", y = "Exclusivity") +
-  theme_minimal()
+  theme_dark_site()
 ```
 
 STM provides different ways to list the top words in each topic. Each highlights different characteristics of a topic:
@@ -711,7 +726,7 @@ ggplot(topic_df, aes(x = Label, y = Mean)) +
   labs(x = "Topic",
        y = "Expected %\nof Corpus") +
   scale_y_continuous(labels = scales::percent) +
-  theme_minimal(base_size = 12) +
+  theme_dark_site(base_size = 12) +
   theme(axis.text.x = element_text(angle = 60, hjust = 1))
 ```
 
@@ -746,7 +761,7 @@ library(ggwordcloud)
 ggplot(df, aes(label = word, size = prob)) +
   geom_text_wordcloud(area_corr = TRUE, color = "#00A68A") +
   scale_size_area(max_size = 50) +
-  theme_minimal()
+  theme_dark_site()
 ```
 
 These tools allow us to evaluate the structure and interpretability of our STM model. From here, we can either adjust the number of topics, clean the vocabulary further, or move on to analyzing topic prevalence with covariates.
@@ -822,7 +837,7 @@ ggplot(df, aes(x = Coherence, y = Exclusivity, label = Topic)) +
   geom_text(nudge_y = 0.05, size = 3, check_overlap = TRUE) +
   labs(x = "Semantic Coherence (closer to 0 is better)", 
        y = "Exclusivity (higher is better)") +
-  theme_minimal()
+  theme_dark_site()
 ```
 
 And we can check the top words per topic for our new model:
@@ -869,7 +884,7 @@ ggplot(topic_df, aes(x = Label, y = Mean)) +
   geom_errorbar(aes(ymin = Mean - SD, ymax = Mean + SD), width = 0.2, color = "white") +
   labs(x = "Topic", y = "Expected %\nof Corpus") +
   scale_y_continuous(labels = scales::percent) +
-  theme_minimal(base_size = 12) +
+  theme_dark_site(base_size = 12) +
   theme(axis.text.x = element_text(angle = 60, hjust = 1))
 
 ```
@@ -897,7 +912,7 @@ df <- data.frame(
 ggplot(df, aes(label = word, size = prob)) +
   geom_text_wordcloud(area_corr = TRUE, color = "#00A68A") +
   scale_size_area(max_size = 50) +
-  theme_minimal()
+  theme_dark_site()
 ```
 
 ## Estimate and Plot Covariate Effects
@@ -979,7 +994,7 @@ ggplot(plot_data, aes(x = day, y = est, color = topic)) +
        y = "Estimated Topic Proportion",
        color = "Topic",
        fill = "Topic") +
-  theme_minimal(base_size = 13)
+  theme_dark_site(base_size = 13)
 ```
 
 # Summary
