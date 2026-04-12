@@ -25,48 +25,54 @@ h3 {
 
 /* === Navbar === */
 .navbar {
-  background-color: #202123 !important;
-  color: #00a68a !important;
-  font-weight: normal;
-  font-size: 20px;
+  background-color: #2d2e30 !important;
   border: none !important;
+  border-bottom: 1px solid #333333 !important;
   box-shadow: none !important;
-  position: relative;
-  z-index: 10;
+  font-size: 15px;
+  font-weight: normal;
   font-family: "Ubuntu", sans-serif;
-}
-
-.navbar::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 10%;
-  width: 80%;
-  height: 4px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(0, 166, 138, 1) 0%,
-    rgba(0, 166, 138, 0.8) 30%,
-    rgba(0, 166, 138, 0.5) 60%,
-    rgba(0, 166, 138, 0) 100%
-  );
-  filter: blur(4px);
-  z-index: -1;
-  pointer-events: none;
 }
 
 .navbar .navbar-brand {
-  font-weight: normal !important;
-  color: #fff !important;
-  font-size: 28px !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
   font-family: "Ubuntu", sans-serif;
+}
+
+.navbar .nav-link {
+  color: #999999 !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .navbar .nav-link:hover,
 .navbar .nav-link:focus,
 .navbar .nav-link.active {
-  color: #00c4a3 !important;
-  text-decoration: underline;
+  color: #ffffff !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: inset 0 -3px 0 #00a68a !important;
+  text-decoration: none !important;
+}
+
+/* === Dropdown menu === */
+.navbar .dropdown-menu {
+  background-color: #2d2e30;
+  border: 1px solid #333333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.navbar .dropdown-menu .dropdown-item {
+  color: #999999 !important;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover,
+.navbar .dropdown-menu .dropdown-item:focus {
+  background-color: #3a3b3d !important;
+  color: #ffffff !important;
 }
 
 /* === Panels and cards === */
@@ -149,18 +155,41 @@ a:visited {
 .modal-content {
   background-color: #202123 !important;
   color: white !important;
-  border: 1px solid #00a68a !important;
+  border: 1px solid #333333 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
 }
 
-.modal-header,
+.modal-header {
+  background-color: #202123 !important;
+  border-bottom: none !important;
+  padding: 20px 24px 8px !important;
+}
+
 .modal-footer {
-  background-color: #444654 !important;
-  border-top: 1px solid #00a68a;
+  background-color: #202123 !important;
+  border-top: 1px solid #2a2b2d !important;
 }
 
 .modal-title {
-  color: #00a68a !important;
-  font-weight: bold;
+  color: white !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.modal-header .close {
+  color: #666666 !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+.modal-header .close:hover {
+  color: white !important;
+}
+
+.modal-body {
+  padding: 12px 24px 24px !important;
+  color: white !important;
 }
 
 /* === Search (Algolia / Quarto) === */
@@ -531,7 +560,7 @@ table.dataTable {
 }
 
 .code-card {
-  background-color: #1a1b1e;
+  background-color: #2a2b2d;
   color: #00ffd1;
   border: 1px solid #00ffd1;
   border-radius: 10px;
@@ -561,6 +590,21 @@ table.dataTable {
   margin: 0;
 }
 
+/* === CV sections two-column grid === */
+.cv-sections-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 860px;
+  margin: 1.5rem auto;
+}
+
+@media (max-width: 600px) {
+  .cv-sections-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* === Courses (final chosen version) === */
 .course-grid {
   display: flex;
@@ -571,7 +615,7 @@ table.dataTable {
 }
 
 .course-card {
-  background-color: #1e1f24;
+  background-color: #2a2b2d;
   border: 1px solid #00a68a;
   border-radius: 12px;
   padding: 2rem;
@@ -623,7 +667,7 @@ table.dataTable {
 a.pub-card {
   display: block;
   text-decoration: none;
-  background-color: #1a1b1e;
+  background-color: #2a2b2d;
   border: 1px solid #00a68a;
   border-radius: 10px;
   padding: 1.2rem 1.5rem;
@@ -638,7 +682,7 @@ a.pub-card {
 a.pub-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 0 14px rgba(0, 166, 138, 0.4);
-  background-color: #222328;
+  background-color: #333436;
   color: white;
 }
 
