@@ -84,23 +84,23 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./publications.html" rel="" target="">
- <span class="menu-text">My Work</span></a>
+ <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./courses.html" rel="" target="">
- <span class="menu-text">My Courses</span></a>
+ <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./explainers.html" rel="" target="">
- <span class="menu-text">Stats Explainers</span></a>
+ <span class="menu-text">Explainers</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./theses.html" rel="" target="">
- <span class="menu-text">Student Theses</span></a>
+ <span class="menu-text">Theses</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./cv.html" rel="" target="" aria-current="page">
- <span class="menu-text">My CV</span></a>
+ <span class="menu-text">CV</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -182,21 +182,16 @@ University of Aberdeen
 .cv-tl-track {
   flex: 1;
   position: relative;
-  height: 46px;
 }
 
 /* ── Bars ───────────────────────────────────────────── */
 .cv-tl-bar {
   position: absolute;
-  top: 7px;
-  height: 32px;
   border-radius: 6px;
   cursor: pointer;
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 0 9px;
-  font-size: 0.68rem;
   font-weight: 600;
   color: rgba(255,255,255,0.9);
   white-space: nowrap;
@@ -205,11 +200,11 @@ University of Aberdeen
 }
 .cv-tl-bar:hover {
   filter: brightness(1.22);
-  transform: scaleY(1.1);
+  transform: scaleY(1.08);
   z-index: 5;
 }
 .cv-tl-bar-text  { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-.cv-tl-bar-arrow { flex-shrink: 0; margin-left: 5px; font-size: 0.85rem; opacity: 0.7; }
+.cv-tl-bar-arrow { flex-shrink: 0; margin-left: 5px; opacity: 0.7; }
 
 .cv-tl-bar-edu  { background: #a06a0c; }
 .cv-tl-bar-emp  { background: #00a68a; }
@@ -243,30 +238,6 @@ University of Aberdeen
 .cv-tl-tick-now .cv-tl-tick-mark { background: #00a68a; height: 10px; }
 .cv-tl-tick-now .cv-tl-tick-lbl  { color: #00a68a; font-weight: 700; }
 
-/* ── Legend ─────────────────────────────────────────── */
-.cv-tl-legend {
-  display: flex;
-  gap: 1.5rem;
-  margin-top: 1rem;
-  justify-content: flex-end;
-  padding-right: 4px;
-}
-.cv-tl-legend-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.65rem;
-  color: #666;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-}
-.cv-tl-legend-dot {
-  width: 10px; height: 10px;
-  border-radius: 3px;
-  flex-shrink: 0;
-}
-
 /* ── Modal backdrop ─────────────────────────────────── */
 .cv-tl-backdrop {
   position: fixed;
@@ -283,7 +254,7 @@ University of Aberdeen
   background: #1e1f21;
   border-radius: 14px;
   padding: 1.75rem 2rem 1.5rem;
-  max-width: 440px;
+  max-width: 420px;
   width: 90vw;
   position: relative;
   border: 1px solid #333;
@@ -331,13 +302,13 @@ University of Aberdeen
   margin: 0 0 0.25rem; line-height: 1.3;
 }
 .cv-tl-morg   { color: #888; font-size: 0.8rem; margin-bottom: 0.2rem; }
-.cv-tl-mdates { color: #4a4a4a; font-size: 0.76rem; font-style: italic; margin-bottom: 1rem; }
-hr.cv-tl-mdivider { border: none; border-top: 1px solid #2a2c2f; margin-bottom: 0.9rem; }
+.cv-tl-mdates { color: #555; font-size: 0.76rem; font-style: italic; }
+hr.cv-tl-mdivider { border: none; border-top: 1px solid #2a2c2f; margin: 0.9rem 0; }
 .cv-tl-mbullets {
   list-style: none; padding: 0; margin: 0;
 }
 .cv-tl-mbullets li {
-  padding: 0.4rem 0 0.4rem 1.1rem;
+  padding: 0.35rem 0 0.35rem 1.1rem;
   position: relative;
   color: #b8b8b8;
   font-size: 0.82rem;
@@ -350,7 +321,6 @@ hr.cv-tl-mdivider { border: none; border-top: 1px solid #2a2c2f; margin-bottom: 
   width: 5px; height: 5px; border-radius: 50%;
 }
 .cv-tl-mbullets-edu li::before { background: #a06a0c; }
-.cv-tl-mbullets-emp li::before { background: #00a68a; }
 .cv-tl-mbullets a { color: #00a68a; text-decoration: none; }
 .cv-tl-mbullets a:hover { text-decoration: underline; }
 </style>
@@ -360,22 +330,12 @@ hr.cv-tl-mdivider { border: none; border-top: 1px solid #2a2c2f; margin-bottom: 
   <div class="cv-tl-scroll">
     <div class="cv-tl-inner" id="cvTlInner"></div>
   </div>
-  <div class="cv-tl-legend">
-    <div class="cv-tl-legend-item">
-      <div class="cv-tl-legend-dot" style="background:#a06a0c"></div>
-      Education
-    </div>
-    <div class="cv-tl-legend-item">
-      <div class="cv-tl-legend-dot" style="background:#00a68a"></div>
-      Employment
-    </div>
-  </div>
 </div>
 
 <script>
 (function () {
   var VS = 2012.0;
-  var VE = 2026 + 3 / 12;   /* Apr 2026 */
+  var VE = 2026 + 3 / 12;  /* ~Apr 2026 */
   var SP = VE - VS;
 
   function yr(y, m) { return y + (m - 1) / 12; }
@@ -385,82 +345,93 @@ hr.cv-tl-mdivider { border: none; border-top: 1px solid #2a2c2f; margin-bottom: 
   /* ── Data ─────────────────────────────────────────── */
   var items = [
     /* Education */
-    { id:0, row:'edu', type:'edu',
-      label:'BSc Zoology',  title:'BSc (Hons) Zoology',
+    { id:0, type:'edu',
+      label:'BSc Zoology', title:'BSc (Hons) Zoology',
       org:'University of Aberdeen', loc:'Aberdeen, Scotland',
       start:yr(2012,9), end:yr(2016,6),
       dateStr:'September 2012 – June 2016',
-      bullets:[
-        'Graduated First Class.',
-        'Thesis: <a href="./theses/DeonRoos_2015.pdf" target="_blank">Water vole ecosystem engineering</a>.'
-      ] },
+      bullets:['Thesis: <a href="./theses/DeonRoos_2015.pdf" target="_blank">Water vole ecosystem engineering</a>.'] },
 
-    { id:1, row:'edu', type:'edu',
+    { id:1, type:'edu',
       label:'PhD Ecology', title:'PhD Ecology',
       org:'University of Aberdeen', loc:'Aberdeen, Scotland',
       start:yr(2016,9), end:yr(2021,6),
       dateStr:'September 2016 – June 2021',
-      bullets:[
-        'Rodent pest population dynamics.',
-        'Publications: <a href="https://doi.org/10.1016/j.agee.2018.11.013" target="_blank">Roos et al. (2019)</a> and <a href="https://doi.org/10.1111/ele.14074" target="_blank">Roos et al. (2022)</a>.'
-      ] },
+      bullets:['Publications: <a href="https://doi.org/10.1016/j.agee.2018.11.013" target="_blank">Roos et al. (2019)</a> and <a href="https://doi.org/10.1111/ele.14074" target="_blank">Roos et al. (2022)</a>.'] },
 
-    /* Employment — row 1 */
-    { id:2, row:'emp1', type:'emp',
+    /* Employment */
+    { id:2, type:'emp',
       label:'Teaching Fellow', title:'Teaching Fellow',
       org:'University of Aberdeen', loc:'Aberdeen, Scotland',
       start:yr(2020,12), end:yr(2021,5),
       dateStr:'December 2020 – May 2021',
-      bullets:['Course coordinator for undergraduate statistical course.'] },
+      bullets:[] },
 
-    { id:3, row:'emp1', type:'emp',
+    { id:3, type:'emp',
       label:'Research Fellow', title:'Research Fellow',
       org:'University of Aberdeen', loc:'Aberdeen, Scotland',
       start:yr(2021,6), end:yr(2022,2),
       dateStr:'June 2021 – February 2022',
-      bullets:['Conducted international ecological research, including study design and simulation modelling for species management.'] },
+      bullets:[] },
 
-    { id:4, row:'emp1', type:'emp',
-      label:'Sr. Stat. Ecologist', title:'Senior Statistical Ecologist',
-      org:'Animal & Plant Health Agency', loc:'Sand Hutton, England',
-      start:yr(2022,5), end:yr(2024,1),
-      dateStr:'May 2022 – January 2024',
-      bullets:['Led statistics and mentoring, developing bespoke methods for policy-driven projects across multidisciplinary teams.'] },
-
-    { id:5, row:'emp1', type:'emp', present:true,
-      label:'Lecturer', title:'Lecturer in Applied Statistics',
-      org:'University of Aberdeen', loc:'Aberdeen, Scotland',
-      start:yr(2024,1), end:null,
-      dateStr:'January 2024 – Present',
-      bullets:[
-        'Leading and collaborating on interdisciplinary research in applied statistics with real-world impact.',
-        'Teaching statistical theory and methods across undergraduate to PhD levels.',
-        'Assisting in research projects through the application of collaborator-specified statistical approaches.'
-      ] },
-
-    /* Employment — row 2 (overlaps Research Fellow above) */
-    { id:6, row:'emp2', type:'emp',
+    { id:6, type:'emp',
       label:'Teaching Fellow', title:'Teaching Fellow',
       org:'University of Aberdeen', loc:'Aberdeen, Scotland',
       start:yr(2021,12), end:yr(2022,5),
       dateStr:'December 2021 – May 2022',
-      bullets:['Coordinated and delivered a highly rated, fully online undergraduate statistics course with strong student engagement.'] }
+      bullets:[] },
+
+    { id:4, type:'emp',
+      label:'Sr. Stat. Ecologist', title:'Senior Statistical Ecologist',
+      org:'Animal & Plant Health Agency', loc:'Sand Hutton, England',
+      start:yr(2022,5), end:yr(2024,1),
+      dateStr:'May 2022 – January 2024',
+      bullets:[] },
+
+    { id:5, type:'emp', present:true,
+      label:'Lecturer', title:'Lecturer in Applied Statistics',
+      org:'University of Aberdeen', loc:'Aberdeen, Scotland',
+      start:yr(2024,1), end:null,
+      dateStr:'January 2024 – Present',
+      bullets:[] }
   ];
 
   var TICKS = [2012, 2014, 2016, 2018, 2020, 2022, 2024];
 
-  /* ── Bar builder ──────────────────────────────────── */
-  function barHtml(item) {
+  /* ── Slot assignment (greedy interval colouring) ──── */
+  function assignSlots(group) {
+    var sorted = group.slice().sort(function(a, b) { return a.start - b.start; });
+    var slotEnds = [];
+    sorted.forEach(function(item) {
+      var end = item.end !== null ? item.end : VE;
+      var slot = 0;
+      while (slotEnds[slot] !== undefined && slotEnds[slot] > item.start + 0.001) {
+        slot++;
+      }
+      item._slot = slot;
+      slotEnds[slot] = end;
+    });
+    return slotEnds.length;
+  }
+
+  /* ── Bar geometry ─────────────────────────────────── */
+  var SINGLE = { trackH: 46, barH: 32, baseTop: 7, gap: 0,  fs: '0.68rem', pad: '0 9px' };
+  var DOUBLE = { trackH: 54, barH: 21, baseTop: 4, gap: 4,  fs: '0.60rem', pad: '0 6px' };
+
+  function barHtml(item, cfg) {
     var l = pct(item.start);
     var isPresent = item.end === null;
+    var slot = item._slot || 0;
+    var top  = cfg.baseTop + slot * (cfg.barH + cfg.gap);
+    var commonStyle = 'top:' + top + 'px;height:' + cfg.barH + 'px;padding:' + cfg.pad + ';font-size:' + cfg.fs + ';';
     var style, barCls;
 
     if (isPresent) {
-      style  = 'left:' + l + '%;right:0;';
+      style  = 'left:' + l + '%;right:0;' + commonStyle;
       barCls = 'cv-tl-bar cv-tl-bar-pres';
     } else {
       var w = wpct(item.start, item.end);
-      style  = 'left:' + l + '%;width:' + w + '%;';
+      style  = 'left:' + l + '%;width:' + w + '%;' + commonStyle;
       barCls = 'cv-tl-bar ' + (item.type === 'edu' ? 'cv-tl-bar-edu' : 'cv-tl-bar-emp');
     }
 
@@ -470,28 +441,30 @@ hr.cv-tl-mdivider { border: none; border-top: 1px solid #2a2c2f; margin-bottom: 
     var textSpan = wNum > 4
       ? '<span class="cv-tl-bar-text">' + item.label + '</span>'
       : '';
-    var arrow = isPresent ? '<span class="cv-tl-bar-arrow">&#8594;</span>' : '';
+    var arrow = isPresent
+      ? '<span class="cv-tl-bar-arrow" style="font-size:' + (parseFloat(cfg.fs) * 1.2) + 'rem">&#8594;</span>'
+      : '';
 
     return '<div class="' + barCls + '" style="' + style + '" ' +
            'title="' + item.title + '" data-tl="' + item.id + '">' +
            textSpan + arrow + '</div>';
   }
 
-  function trackHtml(rowItems) {
-    return '<div class="cv-tl-track">' +
-      rowItems.map(barHtml).join('') +
+  function trackHtml(group, cfg) {
+    return '<div class="cv-tl-track" style="height:' + cfg.trackH + 'px;">' +
+      group.map(function(item) { return barHtml(item, cfg); }).join('') +
     '</div>';
   }
 
-  function rowHtml(label, rowItems) {
+  function rowHtml(label, group, cfg) {
     return '<div class="cv-tl-row">' +
       '<div class="cv-tl-row-label">' + label + '</div>' +
-      trackHtml(rowItems) +
+      trackHtml(group, cfg) +
     '</div>';
   }
 
   function axisHtml() {
-    var ticks = TICKS.map(function (y) {
+    var ticks = TICKS.map(function(y) {
       return '<div class="cv-tl-tick" style="left:' + pct(y) + '%">' +
         '<div class="cv-tl-tick-mark"></div>' +
         '<div class="cv-tl-tick-lbl">' + y + '</div>' +
@@ -515,19 +488,22 @@ hr.cv-tl-mdivider { border: none; border-top: 1px solid #2a2c2f; margin-bottom: 
   var inner = document.getElementById('cvTlInner');
   if (!inner) return;
 
-  var edu  = items.filter(function (i) { return i.row === 'edu';  });
-  var emp1 = items.filter(function (i) { return i.row === 'emp1'; });
-  var emp2 = items.filter(function (i) { return i.row === 'emp2'; });
+  var edu = items.filter(function(i) { return i.type === 'edu'; });
+  var emp = items.filter(function(i) { return i.type === 'emp'; });
+
+  var eduSlots = assignSlots(edu);
+  var empSlots = assignSlots(emp);
+  var eduCfg   = eduSlots > 1 ? DOUBLE : SINGLE;
+  var empCfg   = empSlots > 1 ? DOUBLE : SINGLE;
 
   inner.innerHTML =
-    rowHtml('Education', edu) +
+    rowHtml('Education', edu, eduCfg) +
     axisHtml() +
-    rowHtml('Employment', emp1) +
-    rowHtml('', emp2);
+    rowHtml('Employment', emp, empCfg);
 
   /* ── Modal ────────────────────────────────────────── */
   var bd = document.createElement('div');
-  bd.className    = 'cv-tl-backdrop';
+  bd.className     = 'cv-tl-backdrop';
   bd.style.display = 'none';
   bd.innerHTML =
     '<div class="cv-tl-modal">' +
@@ -541,18 +517,22 @@ hr.cv-tl-mdivider { border: none; border-top: 1px solid #2a2c2f; margin-bottom: 
 
   function openModal(item) {
     var isEdu = item.type === 'edu';
-    var bCls  = isEdu ? 'cv-tl-badge-edu'    : 'cv-tl-badge-emp';
-    var bText = isEdu ? 'Education'           : 'Employment';
+    var bCls  = isEdu ? 'cv-tl-badge-edu' : 'cv-tl-badge-emp';
+    var bText = isEdu ? 'Education'        : 'Employment';
     var ulCls = isEdu ? 'cv-tl-mbullets-edu' : 'cv-tl-mbullets-emp';
-    var lis   = item.bullets.map(function (b) { return '<li>' + b + '</li>'; }).join('');
+
+    var bulletHtml = '';
+    if (item.bullets && item.bullets.length > 0) {
+      var lis = item.bullets.map(function(b) { return '<li>' + b + '</li>'; }).join('');
+      bulletHtml = '<hr class="cv-tl-mdivider"><ul class="cv-tl-mbullets ' + ulCls + '">' + lis + '</ul>';
+    }
 
     mbody.innerHTML =
       '<span class="cv-tl-badge ' + bCls + '">' + bText + '</span>' +
       '<h3>' + item.title + '</h3>' +
       '<div class="cv-tl-morg">' + item.org + ' &middot; ' + item.loc + '</div>' +
       '<div class="cv-tl-mdates">' + item.dateStr + '</div>' +
-      '<hr class="cv-tl-mdivider">' +
-      '<ul class="cv-tl-mbullets ' + ulCls + '">' + lis + '</ul>';
+      bulletHtml;
 
     bd.style.display = 'flex';
     document.body.style.overflow = 'hidden';
@@ -564,15 +544,15 @@ hr.cv-tl-mdivider { border: none; border-top: 1px solid #2a2c2f; margin-bottom: 
   }
 
   mclose.addEventListener('click', closeModal);
-  bd.addEventListener('click', function (e) { if (e.target === bd) closeModal(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+  bd.addEventListener('click', function(e) { if (e.target === bd) closeModal(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
-  inner.addEventListener('click', function (e) {
+  inner.addEventListener('click', function(e) {
     var el = e.target;
     while (el && el !== inner) {
       if (el.dataset && el.dataset.tl !== undefined) {
         var id   = parseInt(el.dataset.tl, 10);
-        var item = items.filter(function (i) { return i.id === id; })[0];
+        var item = items.filter(function(i) { return i.id === id; })[0];
         if (item) openModal(item);
         return;
       }
@@ -583,35 +563,30 @@ hr.cv-tl-mdivider { border: none; border-top: 1px solid #2a2c2f; margin-bottom: 
 })();
 </script>
 <section class="cv-sections-grid">
-  <div class="course-card" data-aos="fade-up" data-aos-delay="0">
+  <a href="./cv-employment.html" class="course-card" data-aos="fade-up" data-aos-delay="0">
     <h3 class="anchored">Employment</h3>
-    <p>Work history across academia, statistical roles, and non-academic jobs.</p>
-    <a href="./cv-employment.html" class="btn">View section</a>
-  </div>
+    <p>Work history across academia and statistical roles.</p>
+  </a>
 
-  <div class="course-card" data-aos="fade-up" data-aos-delay="100">
+  <a href="./cv-education.html" class="course-card" data-aos="fade-up" data-aos-delay="100">
     <h3 class="anchored">Education</h3>
     <p>Formal degrees and institutions attended.</p>
-    <a href="./cv-education.html" class="btn">View section</a>
-  </div>
+  </a>
 
-  <div class="course-card" data-aos="fade-up" data-aos-delay="200">
+  <a href="./cv-phd.html" class="course-card" data-aos="fade-up" data-aos-delay="200">
     <h3 class="anchored">PhD Students</h3>
     <p>Supervision roles and ongoing projects.</p>
-    <a href="./cv-phd.html" class="btn">View section</a>
-  </div>
+  </a>
 
-  <div class="course-card" data-aos="fade-up" data-aos-delay="300">
+  <a href="./cv-awards.html" class="course-card" data-aos="fade-up" data-aos-delay="300">
     <h3 class="anchored">Awards &amp; Funding</h3>
     <p>Recognition and research funding received.</p>
-    <a href="./cv-awards.html" class="btn">View section</a>
-  </div>
+  </a>
 
-  <div class="course-card" data-aos="fade-up" data-aos-delay="400">
+  <a href="./cv-skills.html" class="course-card" data-aos="fade-up" data-aos-delay="400">
     <h3 class="anchored">Skills</h3>
     <p>Technical, statistical, and communication expertise.</p>
-    <a href="./cv-skills.html" class="btn">View section</a>
-  </div>
+  </a>
 </section>
 
 
