@@ -136,10 +136,448 @@ University of Aberdeen
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>
-  AOS.init({
-    once: true, // fade in only once
-    duration: 600 // speed of animation in ms
+  AOS.init({ once: true, duration: 600 });
+</script>
+<style>
+/* ── Timeline card ─────────────────────────────────── */
+.cv-timeline-card {
+  background: #2a2b2d;
+  border-radius: 12px;
+  padding: 1.75rem 1.5rem 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #3a3b3d;
+}
+.cv-tl-heading {
+  color: #aaa;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0 0 1.4rem;
+}
+/* ── Scroll wrapper ─────────────────────────────────── */
+.cv-tl-scroll { overflow-x: auto; padding-bottom: 0.5rem; }
+.cv-tl-inner  { min-width: 700px; }
+
+/* ── Rows ───────────────────────────────────────────── */
+.cv-tl-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3px;
+}
+.cv-tl-row-label {
+  width: 88px;
+  flex-shrink: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #555;
+  text-align: right;
+  padding-right: 14px;
+  user-select: none;
+}
+
+/* ── Bar track ──────────────────────────────────────── */
+.cv-tl-track {
+  flex: 1;
+  position: relative;
+  height: 46px;
+}
+
+/* ── Bars ───────────────────────────────────────────── */
+.cv-tl-bar {
+  position: absolute;
+  top: 7px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 0 9px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  white-space: nowrap;
+  box-sizing: border-box;
+  transition: filter 0.15s ease, transform 0.15s ease;
+}
+.cv-tl-bar:hover {
+  filter: brightness(1.22);
+  transform: scaleY(1.1);
+  z-index: 5;
+}
+.cv-tl-bar-text  { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.cv-tl-bar-arrow { flex-shrink: 0; margin-left: 5px; font-size: 0.85rem; opacity: 0.7; }
+
+.cv-tl-bar-edu  { background: #a06a0c; }
+.cv-tl-bar-emp  { background: #00a68a; }
+.cv-tl-bar-pres { background: linear-gradient(to right, #00a68a 70%, #006e5c); }
+
+/* ── Axis ───────────────────────────────────────────── */
+.cv-tl-axis-row { margin: 1px 0 1px; }
+.cv-tl-axis-track {
+  flex: 1;
+  position: relative;
+  height: 28px;
+}
+.cv-tl-axis-line {
+  position: absolute;
+  top: 50%;
+  left: 0; right: 0;
+  height: 1px;
+  background: #404244;
+  transform: translateY(-50%);
+}
+.cv-tl-tick {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cv-tl-tick-mark { width: 1px; height: 8px; background: #484a4d; }
+.cv-tl-tick-lbl  { font-size: 0.58rem; color: #555; margin-top: 2px; white-space: nowrap; }
+.cv-tl-tick-now .cv-tl-tick-mark { background: #00a68a; height: 10px; }
+.cv-tl-tick-now .cv-tl-tick-lbl  { color: #00a68a; font-weight: 700; }
+
+/* ── Legend ─────────────────────────────────────────── */
+.cv-tl-legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  justify-content: flex-end;
+  padding-right: 4px;
+}
+.cv-tl-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.65rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+.cv-tl-legend-dot {
+  width: 10px; height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* ── Modal backdrop ─────────────────────────────────── */
+.cv-tl-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.62);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+}
+/* ── Modal box ──────────────────────────────────────── */
+.cv-tl-modal {
+  background: #1e1f21;
+  border-radius: 14px;
+  padding: 1.75rem 2rem 1.5rem;
+  max-width: 440px;
+  width: 90vw;
+  position: relative;
+  border: 1px solid #333;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.65);
+  animation: cvTlIn 0.18s ease;
+}
+@keyframes cvTlIn {
+  from { opacity:0; transform: scale(0.93) translateY(10px); }
+  to   { opacity:1; transform: scale(1)    translateY(0);    }
+}
+.cv-tl-mclose {
+  position: absolute;
+  top: 0.9rem; right: 0.9rem;
+  background: none; border: none;
+  color: #555; font-size: 1.4rem;
+  cursor: pointer; line-height: 1;
+  padding: 3px 7px; border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+.cv-tl-mclose:hover { color: #ccc; background: #2a2b2d; }
+
+/* ── Modal content ──────────────────────────────────── */
+.cv-tl-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.7rem;
+}
+.cv-tl-badge-edu {
+  background: rgba(160,106,12,0.2);
+  color: #c48010;
+  border: 1px solid rgba(160,106,12,0.38);
+}
+.cv-tl-badge-emp {
+  background: rgba(0,166,138,0.15);
+  color: #00a68a;
+  border: 1px solid rgba(0,166,138,0.3);
+}
+.cv-tl-modal h3 {
+  color: #f0f0f0; font-size: 1.08rem; font-weight: 700;
+  margin: 0 0 0.25rem; line-height: 1.3;
+}
+.cv-tl-morg   { color: #888; font-size: 0.8rem; margin-bottom: 0.2rem; }
+.cv-tl-mdates { color: #4a4a4a; font-size: 0.76rem; font-style: italic; margin-bottom: 1rem; }
+hr.cv-tl-mdivider { border: none; border-top: 1px solid #2a2c2f; margin-bottom: 0.9rem; }
+.cv-tl-mbullets {
+  list-style: none; padding: 0; margin: 0;
+}
+.cv-tl-mbullets li {
+  padding: 0.4rem 0 0.4rem 1.1rem;
+  position: relative;
+  color: #b8b8b8;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+.cv-tl-mbullets li + li { border-top: 1px solid #282929; }
+.cv-tl-mbullets li::before {
+  content: '';
+  position: absolute; left: 0; top: 0.72rem;
+  width: 5px; height: 5px; border-radius: 50%;
+}
+.cv-tl-mbullets-edu li::before { background: #a06a0c; }
+.cv-tl-mbullets-emp li::before { background: #00a68a; }
+.cv-tl-mbullets a { color: #00a68a; text-decoration: none; }
+.cv-tl-mbullets a:hover { text-decoration: underline; }
+</style>
+
+<div class="cv-timeline-card" data-aos="fade-up">
+  <p class="cv-tl-heading">Career at a Glance</p>
+  <div class="cv-tl-scroll">
+    <div class="cv-tl-inner" id="cvTlInner"></div>
+  </div>
+  <div class="cv-tl-legend">
+    <div class="cv-tl-legend-item">
+      <div class="cv-tl-legend-dot" style="background:#a06a0c"></div>
+      Education
+    </div>
+    <div class="cv-tl-legend-item">
+      <div class="cv-tl-legend-dot" style="background:#00a68a"></div>
+      Employment
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var VS = 2012.0;
+  var VE = 2026 + 3 / 12;   /* Apr 2026 */
+  var SP = VE - VS;
+
+  function yr(y, m) { return y + (m - 1) / 12; }
+  function pct(d)   { return ((d - VS) / SP * 100).toFixed(3); }
+  function wpct(s, e) { return ((e - s) / SP * 100).toFixed(3); }
+
+  /* ── Data ─────────────────────────────────────────── */
+  var items = [
+    /* Education */
+    { id:0, row:'edu', type:'edu',
+      label:'BSc Zoology',  title:'BSc (Hons) Zoology',
+      org:'University of Aberdeen', loc:'Aberdeen, Scotland',
+      start:yr(2012,9), end:yr(2016,6),
+      dateStr:'September 2012 – June 2016',
+      bullets:['Graduated First Class.'] },
+
+    { id:1, row:'edu', type:'edu',
+      label:'PhD Ecology', title:'PhD Ecology',
+      org:'University of Aberdeen', loc:'Aberdeen, Scotland',
+      start:yr(2016,9), end:yr(2021,6),
+      dateStr:'September 2016 – June 2021',
+      bullets:[
+        'Rodent pest population dynamics.',
+        'Publications: <a href="https://doi.org/10.1016/j.agee.2018.11.013" target="_blank">Roos et al. (2019)</a> and <a href="https://doi.org/10.1111/ele.14074" target="_blank">Roos et al. (2022)</a>.'
+      ] },
+
+    /* Employment — row 1 */
+    { id:2, row:'emp1', type:'emp',
+      label:'Teaching Fellow', title:'Teaching Fellow',
+      org:'University of Aberdeen', loc:'Aberdeen, Scotland',
+      start:yr(2020,12), end:yr(2021,5),
+      dateStr:'December 2020 – May 2021',
+      bullets:['Course coordinator for undergraduate statistical course.'] },
+
+    { id:3, row:'emp1', type:'emp',
+      label:'Research Fellow', title:'Research Fellow',
+      org:'University of Aberdeen', loc:'Aberdeen, Scotland',
+      start:yr(2021,6), end:yr(2022,2),
+      dateStr:'June 2021 – February 2022',
+      bullets:['Conducted international ecological research, including study design and simulation modelling for species management.'] },
+
+    { id:4, row:'emp1', type:'emp',
+      label:'Sr. Stat. Ecologist', title:'Senior Statistical Ecologist',
+      org:'Animal & Plant Health Agency', loc:'Sand Hutton, England',
+      start:yr(2022,5), end:yr(2024,1),
+      dateStr:'May 2022 – January 2024',
+      bullets:['Led statistics and mentoring, developing bespoke methods for policy-driven projects across multidisciplinary teams.'] },
+
+    { id:5, row:'emp1', type:'emp', present:true,
+      label:'Lecturer', title:'Lecturer in Applied Statistics',
+      org:'University of Aberdeen', loc:'Aberdeen, Scotland',
+      start:yr(2024,1), end:null,
+      dateStr:'January 2024 – Present',
+      bullets:[
+        'Leading and collaborating on interdisciplinary research in applied statistics with real-world impact.',
+        'Teaching statistical theory and methods across undergraduate to PhD levels.',
+        'Assisting in research projects through the application of collaborator-specified statistical approaches.'
+      ] },
+
+    /* Employment — row 2 (overlaps Research Fellow above) */
+    { id:6, row:'emp2', type:'emp',
+      label:'Teaching Fellow', title:'Teaching Fellow',
+      org:'University of Aberdeen', loc:'Aberdeen, Scotland',
+      start:yr(2021,12), end:yr(2022,5),
+      dateStr:'December 2021 – May 2022',
+      bullets:['Coordinated and delivered a highly rated, fully online undergraduate statistics course with strong student engagement.'] }
+  ];
+
+  var TICKS = [2012, 2014, 2016, 2018, 2020, 2022, 2024];
+
+  /* ── Bar builder ──────────────────────────────────── */
+  function barHtml(item) {
+    var l = pct(item.start);
+    var isPresent = item.end === null;
+    var style, barCls;
+
+    if (isPresent) {
+      style  = 'left:' + l + '%;right:0;';
+      barCls = 'cv-tl-bar cv-tl-bar-pres';
+    } else {
+      var w = wpct(item.start, item.end);
+      style  = 'left:' + l + '%;width:' + w + '%;';
+      barCls = 'cv-tl-bar ' + (item.type === 'edu' ? 'cv-tl-bar-edu' : 'cv-tl-bar-emp');
+    }
+
+    var wNum = isPresent
+      ? (VE - item.start) / SP * 100
+      : parseFloat(wpct(item.start, item.end));
+    var textSpan = wNum > 4
+      ? '<span class="cv-tl-bar-text">' + item.label + '</span>'
+      : '';
+    var arrow = isPresent ? '<span class="cv-tl-bar-arrow">&#8594;</span>' : '';
+
+    return '<div class="' + barCls + '" style="' + style + '" ' +
+           'title="' + item.title + '" data-tl="' + item.id + '">' +
+           textSpan + arrow + '</div>';
+  }
+
+  function trackHtml(rowItems) {
+    return '<div class="cv-tl-track">' +
+      rowItems.map(barHtml).join('') +
+    '</div>';
+  }
+
+  function rowHtml(label, rowItems) {
+    return '<div class="cv-tl-row">' +
+      '<div class="cv-tl-row-label">' + label + '</div>' +
+      trackHtml(rowItems) +
+    '</div>';
+  }
+
+  function axisHtml() {
+    var ticks = TICKS.map(function (y) {
+      return '<div class="cv-tl-tick" style="left:' + pct(y) + '%">' +
+        '<div class="cv-tl-tick-mark"></div>' +
+        '<div class="cv-tl-tick-lbl">' + y + '</div>' +
+      '</div>';
+    }).join('');
+    var nowTick =
+      '<div class="cv-tl-tick cv-tl-tick-now" style="left:99%;transform:translate(-100%,-50%)">' +
+        '<div class="cv-tl-tick-mark"></div>' +
+        '<div class="cv-tl-tick-lbl">Now</div>' +
+      '</div>';
+    return '<div class="cv-tl-row cv-tl-axis-row">' +
+      '<div class="cv-tl-row-label"></div>' +
+      '<div class="cv-tl-axis-track">' +
+        '<div class="cv-tl-axis-line"></div>' +
+        ticks + nowTick +
+      '</div>' +
+    '</div>';
+  }
+
+  /* ── Render ───────────────────────────────────────── */
+  var inner = document.getElementById('cvTlInner');
+  if (!inner) return;
+
+  var edu  = items.filter(function (i) { return i.row === 'edu';  });
+  var emp1 = items.filter(function (i) { return i.row === 'emp1'; });
+  var emp2 = items.filter(function (i) { return i.row === 'emp2'; });
+
+  inner.innerHTML =
+    rowHtml('Education', edu) +
+    axisHtml() +
+    rowHtml('Employment', emp1) +
+    rowHtml('', emp2);
+
+  /* ── Modal ────────────────────────────────────────── */
+  var bd = document.createElement('div');
+  bd.className    = 'cv-tl-backdrop';
+  bd.style.display = 'none';
+  bd.innerHTML =
+    '<div class="cv-tl-modal">' +
+      '<button class="cv-tl-mclose" aria-label="Close">&times;</button>' +
+      '<div id="cvTlMBody"></div>' +
+    '</div>';
+  document.body.appendChild(bd);
+
+  var mbody  = bd.querySelector('#cvTlMBody');
+  var mclose = bd.querySelector('.cv-tl-mclose');
+
+  function openModal(item) {
+    var isEdu = item.type === 'edu';
+    var bCls  = isEdu ? 'cv-tl-badge-edu'    : 'cv-tl-badge-emp';
+    var bText = isEdu ? 'Education'           : 'Employment';
+    var ulCls = isEdu ? 'cv-tl-mbullets-edu' : 'cv-tl-mbullets-emp';
+    var lis   = item.bullets.map(function (b) { return '<li>' + b + '</li>'; }).join('');
+
+    mbody.innerHTML =
+      '<span class="cv-tl-badge ' + bCls + '">' + bText + '</span>' +
+      '<h3>' + item.title + '</h3>' +
+      '<div class="cv-tl-morg">' + item.org + ' &middot; ' + item.loc + '</div>' +
+      '<div class="cv-tl-mdates">' + item.dateStr + '</div>' +
+      '<hr class="cv-tl-mdivider">' +
+      '<ul class="cv-tl-mbullets ' + ulCls + '">' + lis + '</ul>';
+
+    bd.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    bd.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  mclose.addEventListener('click', closeModal);
+  bd.addEventListener('click', function (e) { if (e.target === bd) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+  inner.addEventListener('click', function (e) {
+    var el = e.target;
+    while (el && el !== inner) {
+      if (el.dataset && el.dataset.tl !== undefined) {
+        var id   = parseInt(el.dataset.tl, 10);
+        var item = items.filter(function (i) { return i.id === id; })[0];
+        if (item) openModal(item);
+        return;
+      }
+      el = el.parentElement;
+    }
   });
+
+})();
 </script>
 <section class="cv-sections-grid">
   <div class="course-card" data-aos="fade-up" data-aos-delay="0">
@@ -172,7 +610,6 @@ University of Aberdeen
     <a href="./cv-skills.html" class="btn">View section</a>
   </div>
 </section>
-
 
 
 
