@@ -734,6 +734,33 @@ a.pub-card:hover {
   letter-spacing: 0.02em;
 }
 
+/* === Two-column course layout === */
+.course-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  max-width: 900px;
+  margin: 1.5rem auto;
+  align-items: start;
+}
+
+.course-column h2 {
+  color: #cccccc;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #333333;
+}
+
+@media (max-width: 640px) {
+  .course-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* === Horizontal course cards === */
 .course-list {
   display: flex;
