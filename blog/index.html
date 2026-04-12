@@ -430,17 +430,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-      &nbsp;
-    </div>   
-    <div class="nav-footer-center"></div>
-    <div class="nav-footer-right">
-      &nbsp;
-    </div>
-  </div>
-</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var c = document.querySelector('.nav-footer-center');
+  if (c) {
+    c.innerHTML = '<div class="footer-contents"><div class="site-footer-inner"><span class="footer-name">Deon Roos \u00b7 University of Aberdeen<\/span><span class="footer-links"><a href="mailto:deon.roos4@abdn.ac.uk" class="footer-link" title="Email"><i class="fas fa-envelope"><\/i><\/a><a href="https://orcid.org/0000-0003-4866-7472" class="footer-link" title="ORCID"><i class="fab fa-orcid"><\/i><\/a><a href="https://github.com/DeonRoos" class="footer-link" title="GitHub"><i class="fab fa-github"><\/i><\/a><\/span><\/div><\/div>';
+  }
+});
+</script>
 
 
 
