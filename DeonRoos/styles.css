@@ -25,48 +25,55 @@ h3 {
 
 /* === Navbar === */
 .navbar {
-  background-color: #202123 !important;
-  color: #00a68a !important;
-  font-weight: normal;
-  font-size: 20px;
+  background-color: #2d2e30 !important;
   border: none !important;
+  border-bottom: 1px solid #333333 !important;
   box-shadow: none !important;
-  position: relative;
-  z-index: 10;
+  font-size: 15px;
+  font-weight: normal;
   font-family: "Ubuntu", sans-serif;
-}
-
-.navbar::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 10%;
-  width: 80%;
-  height: 4px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(0, 166, 138, 1) 0%,
-    rgba(0, 166, 138, 0.8) 30%,
-    rgba(0, 166, 138, 0.5) 60%,
-    rgba(0, 166, 138, 0) 100%
-  );
-  filter: blur(4px);
-  z-index: -1;
-  pointer-events: none;
 }
 
 .navbar .navbar-brand {
-  font-weight: normal !important;
-  color: #fff !important;
-  font-size: 28px !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
   font-family: "Ubuntu", sans-serif;
+}
+
+.navbar .nav-link {
+  color: #999999 !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .navbar .nav-link:hover,
 .navbar .nav-link:focus,
-.navbar .nav-link.active {
-  color: #00c4a3 !important;
-  text-decoration: underline;
+.navbar .nav-link.active,
+.navbar .nav-link[aria-current="page"] {
+  color: #ffffff !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: inset 0 -3px 0 #00a68a !important;
+  text-decoration: none !important;
+}
+
+/* === Dropdown menu === */
+.navbar .dropdown-menu {
+  background-color: #2d2e30;
+  border: 1px solid #333333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.navbar .dropdown-menu .dropdown-item {
+  color: #999999 !important;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover,
+.navbar .dropdown-menu .dropdown-item:focus {
+  background-color: #3a3b3d !important;
+  color: #ffffff !important;
 }
 
 /* === Panels and cards === */
@@ -149,28 +156,54 @@ a:visited {
 .modal-content {
   background-color: #202123 !important;
   color: white !important;
-  border: 1px solid #00a68a !important;
+  border: 1px solid #333333 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
 }
 
-.modal-header,
+.modal-header {
+  background-color: #202123 !important;
+  border-bottom: none !important;
+  padding: 20px 24px 8px !important;
+}
+
 .modal-footer {
-  background-color: #444654 !important;
-  border-top: 1px solid #00a68a;
+  background-color: #202123 !important;
+  border-top: 1px solid #2a2b2d !important;
 }
 
 .modal-title {
-  color: #00a68a !important;
-  font-weight: bold;
+  color: white !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.modal-header .close {
+  color: #666666 !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+.modal-header .close:hover {
+  color: white !important;
+}
+
+.modal-body {
+  padding: 12px 24px 24px !important;
+  color: white !important;
 }
 
 /* === Search (Algolia / Quarto) === */
-.navbar .nav-link[href="#quarto-search-modal"] {
-  background-color: #202123 !important;
+#quarto-search,
+#quarto-search .aa-Autocomplete,
+#quarto-search button {
+  background-color: #2d2e30 !important;
   border: none !important;
 }
 
-.navbar .nav-link[href="#quarto-search-modal"] i {
-  color: #00a68a !important;
+#quarto-search .search-icon,
+#quarto-search button i {
+  color: #999999 !important;
 }
 
 #quarto-search-modal .modal-content {
@@ -354,15 +387,92 @@ a:visited {
 }
 
 .cv-entry {
-  margin-bottom: 1.5em;
+  background: #2a2b2d;
   border-left: 3px solid #00a68a;
-  padding-left: 1em;
+  border-radius: 0 10px 10px 0;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
-.cv-entry .cv-dates {
+.cv-entry:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 18px rgba(0,166,138,0.15);
+}
+.cv-entry-edu {
+  border-left-color: #a06a0c;
+}
+.cv-entry-edu:hover {
+  box-shadow: 0 4px 18px rgba(160,106,12,0.15);
+}
+.cv-entry-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+}
+.cv-entry-title {
+  color: #00a68a;
+  font-weight: 700;
+  font-size: 1rem;
+  font-family: "Raleway", sans-serif;
+  line-height: 1.3;
+  margin: 0 0 0.2rem;
+}
+.cv-entry-edu .cv-entry-title { color: #c48010; }
+.cv-entry-org {
+  color: #888;
+  font-size: 0.82rem;
+  margin: 0;
+}
+.cv-entry-badge {
+  background: rgba(0,166,138,0.1);
+  color: #00a68a;
+  border: 1px solid rgba(0,166,138,0.25);
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
   font-style: italic;
-  color: #ccc;
+  align-self: flex-start;
 }
+.cv-entry-edu .cv-entry-badge {
+  background: rgba(160,106,12,0.1);
+  color: #c48010;
+  border-color: rgba(160,106,12,0.25);
+}
+.cv-entry-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #333;
+  padding-top: 0.75rem;
+}
+.cv-entry-list li {
+  position: relative;
+  padding-left: 1rem;
+  color: #b8b8b8;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-bottom: 0.3rem;
+}
+.cv-entry-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #00a68a;
+}
+.cv-entry-edu .cv-entry-list li::before { background: #a06a0c; }
+.cv-entry-list a { color: #00a68a; }
+.cv-entry-list a:hover { text-decoration: underline; }
 
 .cv-contact {
   display: flex;
@@ -471,6 +581,122 @@ table.dataTable {
   border: 1px solid #00a68a !important;
 }
 
+/* === Homepage === */
+.home-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 56px);
+}
+
+.home-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 4rem 4rem 4rem 6rem;
+}
+
+.home-title {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+  color: white;
+}
+
+.home-sub {
+  color: #00a68a;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.home-items {
+  max-width: 480px;
+}
+
+.home-item {
+  border-top: 1px solid #333;
+  padding: 0.9rem 0;
+}
+
+.home-item-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #00a68a;
+  margin-bottom: 0.35rem;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.home-item-text {
+  color: #b8b8b8;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.home-contact {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1.8rem;
+  padding-top: 1rem;
+  border-top: 1px solid #333;
+}
+
+.home-contact-link {
+  color: #f7c908 !important;
+  font-size: 1.15rem;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.home-contact-link:hover {
+  color: #f8d232 !important;
+}
+
+.home-right {
+  position: relative;
+  background: #1a1b1d;
+  border-left: 1px solid #2a2b2d;
+  overflow: hidden;
+}
+
+.home-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-eq-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 2.5rem;
+  text-align: center;
+  background: linear-gradient(to top, rgba(26,27,29,0.97) 0%, rgba(26,27,29,0.5) 50%, transparent 100%);
+  color: #00a68a;
+  opacity: 0.65;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .home-split {
+    grid-template-columns: 1fr;
+  }
+  .home-right {
+    min-height: 320px;
+  }
+}
+
 /* === Homepage enhancements === */
 .typing-container {
   font-family: "JetBrains Mono", monospace;
@@ -531,7 +757,7 @@ table.dataTable {
 }
 
 .code-card {
-  background-color: #1a1b1e;
+  background-color: #2a2b2d;
   color: #00ffd1;
   border: 1px solid #00ffd1;
   border-radius: 10px;
@@ -561,6 +787,21 @@ table.dataTable {
   margin: 0;
 }
 
+/* === CV sections two-column grid === */
+.cv-sections-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 860px;
+  margin: 1.5rem auto;
+}
+
+@media (max-width: 600px) {
+  .cv-sections-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* === Courses (final chosen version) === */
 .course-grid {
   display: flex;
@@ -571,10 +812,11 @@ table.dataTable {
 }
 
 .course-card {
-  background-color: #1e1f24;
-  border: 1px solid #00a68a;
+  background-color: #2a2b2d;
+  border: 1px solid rgba(0,166,138,0.2);
+  border-top: 3px solid #00a68a;
   border-radius: 12px;
-  padding: 2rem;
+  padding: 1.1rem 1.4rem;
   width: 100%;
   max-width: 400px;
   color: white;
@@ -593,12 +835,17 @@ table.dataTable {
 .course-card h3 {
   color: #00a68a;
   font-family: "Raleway", sans-serif;
-  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
   margin-top: 0;
 }
 
 .course-card p {
+  color: #b8b8b8;
   font-family: "Ubuntu", sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.6;
   margin-bottom: 1.2rem;
 }
 
@@ -618,18 +865,95 @@ table.dataTable {
   color: #202123;
 }
 
+/* === Page header === */
+.page-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #333;
+}
+
+.page-header-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.page-header-intro {
+  color: #888;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* === Explainer cards === */
+.explainer-card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background: #2a2b2d;
+  border: 1px solid rgba(0,166,138,0.2);
+  border-top: 3px solid #00a68a;
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.explainer-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 14px rgba(0,166,138,0.25);
+}
+
+.explainer-card-img-wrap {
+  width: 100px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.explainer-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  -webkit-mask-image: radial-gradient(ellipse 110% 130% at 20% 50%, black 30%, transparent 72%);
+  mask-image: radial-gradient(ellipse 110% 130% at 20% 50%, black 30%, transparent 72%);
+}
+
+.explainer-card-content {
+  flex: 1;
+  padding: 1.1rem 1.4rem;
+}
+
+.explainer-card-title {
+  color: #00a68a;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.explainer-card-desc {
+  color: #b8b8b8;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
 /* === Publications === */
 .pub-card,
 a.pub-card {
   display: block;
   text-decoration: none;
-  background-color: #1a1b1e;
-  border: 1px solid #00a68a;
+  background-color: #2a2b2d;
+  border: 1px solid rgba(0,166,138,0.2);
+  border-top: 3px solid #00a68a;
   border-radius: 10px;
   padding: 1.2rem 1.5rem;
   margin-bottom: 1.5rem;
   box-shadow: 0 0 10px rgba(0, 166, 138, 0.2);
-  color: white;
+  color: #b8b8b8;
   font-family: "Ubuntu", sans-serif;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -638,7 +962,7 @@ a.pub-card {
 a.pub-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 0 14px rgba(0, 166, 138, 0.4);
-  background-color: #222328;
+  background-color: #333436;
   color: white;
 }
 
@@ -680,12 +1004,138 @@ a.pub-card:hover {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.75);
-  color: #00a68a;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.2) 100%);
+  color: #ffffff;
   padding: 0.75em;
   font-size: 1em;
   text-align: center;
   font-weight: bold;
+  letter-spacing: 0.02em;
+}
+
+/* === Two-column course layout === */
+.course-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  max-width: 900px;
+  margin: 1.5rem auto;
+  align-items: start;
+}
+
+/* Global section header style — h2 across the site */
+h2 {
+  color: #cccccc !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #333333;
+  margin-bottom: 1rem;
+}
+.course-column h2 {
+  margin-top: 0;
+}
+
+@media (max-width: 640px) {
+  .course-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === Horizontal course cards === */
+.course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 760px;
+  margin: 1rem auto 2rem;
+}
+
+.course-card-h {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1.5rem;
+  background-color: #2a2b2d;
+  border: 1px solid rgba(0,166,138,0.2);
+  border-top: 3px solid #00a68a;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 0 12px rgba(0, 166, 138, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+}
+
+.course-card-h:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 16px rgba(0, 166, 138, 0.4);
+}
+
+.course-card-icon {
+  font-size: 1.3rem;
+  color: #00a68a;
+  flex-shrink: 0;
+  padding-top: 0.2rem;
+  width: 1.8rem;
+  text-align: center;
+}
+
+.course-card-body {
+  flex: 1;
+}
+
+.course-card-body h3 {
+  color: #00a68a;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem 0;
+}
+
+.course-card-body p {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 0.88rem;
+  color: #b8b8b8;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* === Footer === */
+.page-footer {
+  background-color: #2d2e30 !important;
+  border-top: 1px solid #333333 !important;
+  padding: 1.25rem 2rem !important;
+}
+
+.site-footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.footer-name {
+  color: #666666;
+  font-size: 0.85rem;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.footer-link {
+  color: #f7c908 !important;
+  font-size: 1.1rem;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #00a68a;
 }
 
 /* === Theses === */
@@ -697,23 +1147,29 @@ a.pub-card:hover {
   align-items: stretch;
 }
 
-/* Defensive: hide any unexpected children Quarto/theme injects */
-.thesis-grid > :not(.thesis-card) {
-  display: none !important;
-}
+
 
 
 .thesis-card {
   flex: 1 1 320px;
   max-width: 420px;
-  background-color: #202123;
-  border: 1px solid #00a68a;
+  background-color: #2a2b2d;
+  border: 1px solid rgba(0,166,138,0.2);
+  border-top: 3px solid #00a68a;
   border-radius: 12px;
   padding: 1rem;
   box-shadow: 0 0 10px rgba(0, 166, 138, 0.2);
-  text-decoration: none;
+  text-decoration: none !important;
   display: block;
   transition: transform 0.2s ease;
+  color: #b8b8b8 !important;
+}
+
+.thesis-card:visited,
+.thesis-card:hover,
+.thesis-card:focus {
+  text-decoration: none !important;
+  color: #b8b8b8 !important;
 }
 
 .thesis-card::before,
@@ -729,27 +1185,47 @@ a.pub-card:hover {
 }
 
 .thesis-name {
-  font-size: 1.1em;
-  color: white;
-  margin: 0;
-}
-
-.thesis-name .surname {
+  color: #00a68a;
   font-weight: 700;
-  color: #f7c908;
+  font-size: 1rem;
+  font-family: "Raleway", sans-serif;
+  margin-bottom: 0.2rem;
 }
 
 .thesis-year {
-  font-size: 0.9em;
-  color: #00a68a;
-  margin-top: 0.25rem;
+  color: #555;
+  font-size: 0.75rem;
+  font-style: italic;
+  margin: 0.3rem 0 0;
+  padding: 0;
 }
 
 .thesis-title {
-  font-size: 0.9em;
-  color: white;
-  margin-top: 0.75rem;
-  line-height: 1.3;
+  color: #b8b8b8;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  margin: 0.4rem 0 0;
+  padding: 0;
+}
+
+.thesis-data {
+  border-top: 1px solid #333;
+  padding-top: 0.6rem;
+  margin-top: 0.6rem;
+  color: #555;
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+.thesis-data a {
+  color: #00a68a;
+  font-size: 0.75rem;
+  font-family: "Ubuntu", sans-serif;
+  text-decoration: none;
+}
+
+.thesis-data a:hover {
+  text-decoration: underline;
 }
 
 .thesis-btn {
@@ -762,15 +1238,230 @@ a.pub-card:hover {
   border: 1px solid #00a68a;
 }
 
-.thesis-grid a:before,
-.thesis-grid a:after,
-.thesis-grid a::before,
-.thesis-grid a::after,
-.thesis-card:before,
-.thesis-card:after,
-.thesis-card::before,
-.thesis-card::after {
-  content: none !important;
-  display: none !important;
-  border: 0 !important;
+
+/* ── PhD student cards ──────────────────────────────── */
+.phd-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin: 1rem 0 1.5rem;
 }
+.phd-card {
+  background: #2a2b2d;
+  border: 1px solid rgba(0,166,138,0.2);
+  border-top: 3px solid #00a68a;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.phd-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,166,138,0.18);
+}
+.phd-name {
+  color: #00a68a;
+  font-weight: 700;
+  font-size: 1rem;
+  font-family: "Raleway", sans-serif;
+  margin-bottom: 0.2rem;
+}
+.phd-uni {
+  color: #888;
+  font-size: 0.8rem;
+}
+.phd-dates {
+  color: #555;
+  font-size: 0.75rem;
+  font-style: italic;
+  margin: 0.3rem 0 0.8rem;
+}
+.phd-topic {
+  color: #b8b8b8;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  border-top: 1px solid #333;
+  padding-top: 0.75rem;
+}
+
+/* ── Awards ─────────────────────────────────────────── */
+.award-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  background: #2a2b2d;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.award-entry:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 14px rgba(0,166,138,0.12);
+}
+.award-year {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  background: rgba(0,166,138,0.12);
+  border: 1px solid rgba(0,166,138,0.28);
+  color: #00a68a;
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
+}
+.award-body { flex: 1; }
+.award-title {
+  color: white;
+  font-weight: 700;
+  font-size: 0.95rem;
+  font-family: "Raleway", sans-serif;
+  margin-bottom: 0.15rem;
+}
+.award-venue {
+  color: #888;
+  font-size: 0.8rem;
+  margin-bottom: 0.1rem;
+}
+.award-desc {
+  color: #b0b0b0;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+/* ── Skills chip layout ─────────────────────────────── */
+.skills-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.skills-group {
+  background: #2a2b2d;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+}
+.skills-group-label {
+  color: #00a68a;
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.65rem;
+  font-family: "Raleway", sans-serif;
+}
+.skills-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+.skill-chip {
+  background: rgba(0,166,138,0.07);
+  border: 1px solid rgba(0,166,138,0.2);
+  color: #ccc;
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: 0.78rem;
+  font-family: "Ubuntu", sans-serif;
+}
+
+/* ── Course badge, chips, link ──────────────────────── */
+.course-card-meta {
+  margin-bottom: 0.5rem;
+}
+
+.course-badge {
+  display: inline-block;
+  background: rgba(0,166,138,0.08);
+  color: #00a68a;
+  border: 1px solid rgba(0,166,138,0.25);
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: "Ubuntu", sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.course-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.75rem 0 1rem;
+}
+
+.course-link {
+  font-size: 0.85rem;
+  color: #00a68a !important;
+  text-decoration: none !important;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 600;
+}
+
+.course-link:hover {
+  text-decoration: underline !important;
+}
+
+/* ── Guest lectures ──────────────────────────────────── */
+.guest-lecture-list {
+  max-width: 760px;
+  margin: 1rem auto 2rem;
+}
+
+.guest-lecture {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1rem 1.5rem;
+  background: #2a2b2d;
+  border-left: 3px solid #333;
+  border-radius: 0 8px 8px 0;
+}
+
+.guest-lecture-code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.8rem;
+  color: #666;
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+  min-width: 4rem;
+}
+
+.guest-lecture-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.guest-lecture-title {
+  color: #b8b8b8;
+  font-size: 0.9rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 600;
+}
+
+.guest-lecture-desc {
+  color: #666;
+  font-size: 0.82rem;
+  font-family: "Ubuntu", sans-serif;
+}
+
+/* ── Clickable course-card (a element wrapper) ──────── */
+a.course-card {
+  text-decoration: none !important;
+  color: white !important;
+  display: flex;
+}
+a.course-card:hover,
+a.course-card:visited,
+a.course-card:focus {
+  text-decoration: none !important;
+  color: white !important;
+}
+a.course-card h3 { color: #00a68a; }
+a.course-card p  { color: #cccccc; }

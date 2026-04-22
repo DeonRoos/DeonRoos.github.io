@@ -5,7 +5,7 @@ format: html
 
 ## Overview
 
-This 3^rd^ year undergraduate course introduces students to key statistical theory and data analysis techniques in biological sciences. It makes strong use of `R` and `ggplot2` but aims to give a strong fundamental and theoretical understanding of statistical modelling and associated topics.
+This 3^rd^ year undergraduate course aims to give students a genuine understanding of statistical theory and modelling in biological sciences. The goal is for students to be able to translate statistical ideas to their own research questions, particularly when they reach their honours projects. `R` and `ggplot2` are used throughout.
 
 ::: {.columns}
 

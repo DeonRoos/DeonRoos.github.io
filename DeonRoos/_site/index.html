@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Deon Roos -</title>
+<title>Deon Roos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -58,6 +59,7 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -84,23 +86,23 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./publications.html" rel="" target="">
- <span class="menu-text">My Work</span></a>
+ <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./courses.html" rel="" target="">
- <span class="menu-text">My Courses</span></a>
+ <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./explainers.html" rel="" target="">
- <span class="menu-text">Stats Explainers</span></a>
+ <span class="menu-text">Explainers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./theses.html" rel="" target="">
- <span class="menu-text">Student Theses</span></a>
+    <a class="nav-link" href="./people.html" rel="" target="">
+ <span class="menu-text">People</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./cv.html" rel="" target="">
- <span class="menu-text">My CV</span></a>
+ <span class="menu-text">CV</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -110,86 +112,53 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
 <!-- main -->
-<main class="content" id="quarto-document-content">
 
 
 
-<!-- Video Background -->
-<video autoplay="" muted="" loop="" playsinline="" id="bg-video">
-<source src="media/mu_wave.mp4" type="video/mp4">
-</video>
-<section class="hero" data-aos="zoom-in">
-<h1>
-I’m Deon Roos. I do stuff.
-</h1>
-<p>
-Check out my stuff to see what.
-</p>
-<p>
-Lecturer | Scientist | Statistician
-</p>
-</section>
-<section class="card-grid" data-aos="fade-up">
-<a href="courses.html" class="code-card"><span class="code-text">load(“courses”)</span></a> <a href="publications.html" class="code-card"><span class="code-text">view(“output”)</span></a> <a href="cv.html" class="code-card"><span class="code-text">browse(“cv”)</span></a>
-</section>
-<!-- Typing Animation (via typed.js or CSS fallback) -->
-<div class="typing-container">
-<p><code id="typed-text"></code></p>
+<div class="home-split">
+  <div class="home-left">
+    <h1 class="home-title">I'm Deon Roos.<br>I do stuff.</h1>
+    <p class="home-sub">Lecturer | Scientist | Statistician</p>
+    <div class="home-items">
+      <div class="home-item">
+        <span class="home-item-label">Data</span>
+        <p class="home-item-text">Messy, real-world observations that rarely measure what you actually care about directly.</p>
+      </div>
+      <div class="home-item">
+        <span class="home-item-label">Fields</span>
+        <p class="home-item-text">Interdisciplinary, but a lot in biology and medicine.</p>
+      </div>
+      <div class="home-item">
+        <span class="home-item-label">Philosophy</span>
+        <p class="home-item-text">Picking the right tool for the question matters more than having a favourite one.</p>
+      </div>
+    </div>
+    <div class="home-contact">
+      <a href="mailto:deon.roos4@abdn.ac.uk" class="home-contact-link" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://orcid.org/0000-0003-4866-7472" class="home-contact-link" title="ORCID"><i class="fab fa-orcid"></i></a>
+      <a href="https://github.com/DeonRoos" class="home-contact-link" title="GitHub"><i class="fab fa-github"></i></a>
+    </div>
+  </div>
+  <div class="home-right">
+    <video autoplay="" muted="" loop="" playsinline="" class="home-video">
+      <source src="media/mu_wave.mp4" type="video/mp4">
+    </video>
+    <div class="home-eq-overlay" aria-hidden="true">
+<p><span class="math display">\[\mu_i = f(\rho_{0,i}) + f(\rho_{1,i}) + f(\rho_{2,i})\]</span></p>
+<p><span class="math display">\[\rho_{j,i} = T + \left(\frac{1}{\zeta_{j,i}}\right) \times D_{j,i} \quad \text{for } j \in \{0, 1, 2\}\]</span></p>
+<p><span class="math display">\[D_{j,i} = -\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}\]</span></p>
+<p><span class="math display">\[\zeta_{j,i} = \beta_0 + \beta_1 \times z_i\]</span></p>
+    </div>
+  </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-<script>
-  var typed = new Typed("#typed-text", {
-    strings: [
-      "Deon_Roos <- \"Lecturer\"",
-      "Deon_Roos <- \"Ecologist\"",
-      "Deon_Roos <- \"Statistician\"",
-      "Deon_Roos <- \"Programmer\"",
-      "Deon_Roos <- \"Data Visualiser\"",
-      "Deon_Roos <- \"Scientist\"",
-      "Deon_Roos <- \"Teacher\"",
-      "Deon_Roos <- \"Data scientist\"",
-      "Deon_Roos <- \"Medical researcher\"",
-      "Deon_Roos <- \"Quantitative Modeller\""
-    ],
-    typeSpeed: 60,
-    backSpeed: 40,
-    backDelay: 0,
-    loop: true
-  });
-</script>
-<!-- Scroll Animation: Include AOS -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
-<div style="text-align: center; margin: 2em 0;">
-
-<!-- Styled equations -->
-<div style="text-align: center; color: #00A68A; font-size: 1.2em; margin-bottom: 3em;">
-
-<p><span class="math display">\[
-\mu_i = f(\rho_{0,i}) + f(\rho_{1,i}) + f(\rho_{2,i})
-\]</span></p>
-<p><span class="math display">\[
-\rho_{j,i} = T + \left(\frac{1}{\zeta_{j,i}}\right) \times D_{j,i}
-\quad \text{for } j \in \{0, 1, 2\}
-\]</span></p>
-<p><span class="math display">\[
-D_{j,i} = -\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}
-\]</span></p>
-<p><span class="math display">\[
-\zeta_{j,i} = \beta_0 + \beta_1 \times z_i
-\]</span></p>
 
 
 
-</div></div></main> <!-- /main -->
+
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -424,6 +393,25 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">&nbsp;</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var c = document.querySelector('.nav-footer-center');
+  if (c) {
+    c.innerHTML = '<div class="footer-contents"><div class="site-footer-inner"><span class="footer-name">Deon Roos \u00b7 University of Aberdeen<\/span><span class="footer-links"><a href="mailto:deon.roos4@abdn.ac.uk" class="footer-link" title="Email"><i class="fas fa-envelope"><\/i><\/a><a href="https://orcid.org/0000-0003-4866-7472" class="footer-link" title="ORCID"><i class="fab fa-orcid"><\/i><\/a><a href="https://github.com/DeonRoos" class="footer-link" title="GitHub"><i class="fab fa-github"><\/i><\/a><\/span><\/div><\/div>';
+  }
+});
+</script>
 
 
 

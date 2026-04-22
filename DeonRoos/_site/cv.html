@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Deon Roos -</title>
+<title>CV | Deon Roos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -58,6 +59,7 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -82,23 +84,23 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./publications.html" rel="" target="">
- <span class="menu-text">My Work</span></a>
+ <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./courses.html" rel="" target="">
- <span class="menu-text">My Courses</span></a>
+ <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./explainers.html" rel="" target="">
- <span class="menu-text">Stats Explainers</span></a>
+ <span class="menu-text">Explainers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./theses.html" rel="" target="">
- <span class="menu-text">Student Theses</span></a>
+    <a class="nav-link" href="./people.html" rel="" target="">
+ <span class="menu-text">People</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./cv.html" rel="" target="" aria-current="page">
- <span class="menu-text">My CV</span></a>
+ <span class="menu-text">CV</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -117,70 +119,439 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></p>
-<!-- Video Background -->
-<video autoplay="" muted="" loop="" playsinline="" id="bg-video">
-<source src="media/mu_wave.mp4" type="video/mp4">
-</video>
-<div class="cv-header">
-<h1>
-Deon Roos
-</h1>
-<p class="cv-subtitle">
-Lecturer in Applied Statistics
-</p>
-<p class="cv-subtitle">
-University of Aberdeen
-</p>
-</div>
-<div class="cv-contact">
-<p><a class="cv-contact-item" href="mailto:deon.roos4@abdn.ac.uk"> <i class="fas fa-envelope"></i><span>Email</span> </a> <a class="cv-contact-item" href="https://orcid.org/0000-0003-4866-7472"> <i class="fab fa-orcid"></i><span>ORCID</span> </a> <a class="cv-contact-item" href="https://github.com/DeonRoos"> <i class="fab fa-github"></i><span>GitHub</span> </a> <a class="cv-contact-item" href="https://bsky.app/profile/deonroos.bsky.social"> <img src="media/Bluesky_Logo.svg" aria-hidden="true"><span>Bluesky</span> </a></p>
-</div>
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({
-    once: true, // fade in only once
-    duration: 600 // speed of animation in ms
-  });
-</script>
-<section id="sections" class="level2">
-<h2 class="anchored" data-anchor-id="sections">Sections</h2>
-<section class="course-grid">
-  <div class="course-card" data-aos="fade-up" data-aos-delay="0">
-    <h3 class="anchored">Employment</h3>
-    <p>Work history across academia, statistical roles, and non-academic jobs.</p>
-    <a href="./cv-employment.html" class="btn">View section</a>
-  </div>
+<style>
+/* ── Timeline card ─────────────────────────────────── */
+.cv-timeline-card {
+  background: #2a2b2d;
+  border-radius: 12px;
+  padding: 1.75rem 1.5rem 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #3a3b3d;
+}
+.cv-tl-heading {
+  color: #aaa;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0 0 1.4rem;
+}
+/* ── Scroll wrapper ─────────────────────────────────── */
+.cv-tl-scroll { overflow-x: auto; padding-bottom: 0.5rem; }
+.cv-tl-inner  { min-width: 700px; }
 
-  <div class="course-card" data-aos="fade-up" data-aos-delay="100">
+/* ── Rows ───────────────────────────────────────────── */
+.cv-tl-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3px;
+}
+.cv-tl-row-label {
+  width: 88px;
+  flex-shrink: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #555;
+  text-align: right;
+  padding-right: 14px;
+  user-select: none;
+}
+
+/* ── Bar track ──────────────────────────────────────── */
+.cv-tl-track {
+  flex: 1;
+  position: relative;
+}
+
+/* ── Bars ───────────────────────────────────────────── */
+.cv-tl-bar {
+  position: absolute;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  white-space: nowrap;
+  box-sizing: border-box;
+  transition: filter 0.15s ease, transform 0.15s ease;
+}
+.cv-tl-bar:hover {
+  filter: brightness(1.22);
+  transform: scaleY(1.08);
+  z-index: 5;
+}
+.cv-tl-bar-text  { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.cv-tl-bar-arrow { flex-shrink: 0; margin-left: 5px; opacity: 0.7; }
+
+.cv-tl-bar-edu  { background: #a06a0c; }
+.cv-tl-bar-emp  { background: #00a68a; }
+.cv-tl-bar-pres { background: linear-gradient(to right, #00a68a 70%, #006e5c); }
+
+/* ── Axis ───────────────────────────────────────────── */
+.cv-tl-axis-row { margin: 1px 0 1px; }
+.cv-tl-axis-track {
+  flex: 1;
+  position: relative;
+  height: 28px;
+}
+.cv-tl-axis-line {
+  position: absolute;
+  top: 50%;
+  left: 0; right: 0;
+  height: 1px;
+  background: #404244;
+  transform: translateY(-50%);
+}
+.cv-tl-tick {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cv-tl-tick-mark { width: 1px; height: 8px; background: #484a4d; }
+.cv-tl-tick-lbl  { font-size: 0.58rem; color: #555; margin-top: 2px; white-space: nowrap; }
+.cv-tl-tick-now .cv-tl-tick-mark { background: #00a68a; height: 10px; }
+.cv-tl-tick-now .cv-tl-tick-lbl  { color: #00a68a; font-weight: 700; }
+
+/* ── Modal backdrop ─────────────────────────────────── */
+.cv-tl-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.62);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+}
+/* ── Modal box ──────────────────────────────────────── */
+.cv-tl-modal {
+  background: #1e1f21;
+  border-radius: 14px;
+  padding: 1.75rem 2rem 1.5rem;
+  max-width: 420px;
+  width: 90vw;
+  position: relative;
+  border: 1px solid #333;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.65);
+  animation: cvTlIn 0.18s ease;
+}
+@keyframes cvTlIn {
+  from { opacity:0; transform: scale(0.93) translateY(10px); }
+  to   { opacity:1; transform: scale(1)    translateY(0);    }
+}
+.cv-tl-mclose {
+  position: absolute;
+  top: 0.9rem; right: 0.9rem;
+  background: none; border: none;
+  color: #555; font-size: 1.4rem;
+  cursor: pointer; line-height: 1;
+  padding: 3px 7px; border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+.cv-tl-mclose:hover { color: #ccc; background: #2a2b2d; }
+
+/* ── Modal content ──────────────────────────────────── */
+.cv-tl-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.7rem;
+}
+.cv-tl-badge-edu {
+  background: rgba(160,106,12,0.2);
+  color: #c48010;
+  border: 1px solid rgba(160,106,12,0.38);
+}
+.cv-tl-badge-emp {
+  background: rgba(0,166,138,0.15);
+  color: #00a68a;
+  border: 1px solid rgba(0,166,138,0.3);
+}
+.cv-tl-modal h3 {
+  color: #f0f0f0; font-size: 1.08rem; font-weight: 700;
+  margin: 0 0 0.25rem; line-height: 1.3;
+}
+.cv-tl-morg   { color: #888; font-size: 0.8rem; margin-bottom: 0.2rem; }
+.cv-tl-mdates { color: #555; font-size: 0.76rem; font-style: italic; }
+hr.cv-tl-mdivider { border: none; border-top: 1px solid #2a2c2f; margin: 0.9rem 0; }
+.cv-tl-mbullets {
+  list-style: none; padding: 0; margin: 0;
+}
+.cv-tl-mbullets li {
+  padding: 0.35rem 0 0.35rem 1.1rem;
+  position: relative;
+  color: #b8b8b8;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+.cv-tl-mbullets li + li { border-top: 1px solid #282929; }
+.cv-tl-mbullets li::before {
+  content: '';
+  position: absolute; left: 0; top: 0.72rem;
+  width: 5px; height: 5px; border-radius: 50%;
+}
+.cv-tl-mbullets-edu li::before { background: #a06a0c; }
+.cv-tl-mbullets a { color: #00a68a; text-decoration: none; }
+.cv-tl-mbullets a:hover { text-decoration: underline; }
+</style>
+
+<div class="cv-timeline-card">
+  <p class="cv-tl-heading">Career at a Glance</p>
+  <div class="cv-tl-scroll">
+    <div class="cv-tl-inner" id="cvTlInner"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var VS = 2012.0;
+  var VE = 2026 + 3 / 12;  /* ~Apr 2026 */
+  var SP = VE - VS;
+
+  function yr(y, m) { return y + (m - 1) / 12; }
+  function pct(d)   { return ((d - VS) / SP * 100).toFixed(3); }
+  function wpct(s, e) { return ((e - s) / SP * 100).toFixed(3); }
+
+  /* ── Data ─────────────────────────────────────────── */
+  var items = [
+    /* Education */
+    { id:0, type:'edu',
+      label:'BSc Zoology', title:'BSc (Hons) Zoology',
+      org:'University of Aberdeen', loc:'Aberdeen, Scotland',
+      start:yr(2012,9), end:yr(2016,6),
+      dateStr:'September 2012 – June 2016',
+      bullets:['Thesis: <a href="./theses/DeonRoos_2015.pdf" target="_blank">Water vole ecosystem engineering</a>.'] },
+
+    { id:1, type:'edu',
+      label:'PhD Ecology', title:'PhD Ecology',
+      org:'University of Aberdeen', loc:'Aberdeen, Scotland',
+      start:yr(2016,9), end:yr(2021,6),
+      dateStr:'September 2016 – June 2021',
+      bullets:['Publications: <a href="https://doi.org/10.1016/j.agee.2018.11.013" target="_blank">Roos et al. (2019)</a> and <a href="https://doi.org/10.1111/ele.14074" target="_blank">Roos et al. (2022)</a>.'] },
+
+    /* Employment */
+    { id:2, type:'emp',
+      label:'Research & Teaching', title:'Research & Teaching Fellow',
+      org:'University of Aberdeen', loc:'Aberdeen, Scotland',
+      start:yr(2020,12), end:yr(2022,5),
+      dateStr:'December 2020 – May 2022',
+      bullets:[] },
+
+    { id:4, type:'emp',
+      label:'Sr. Stat. Ecologist', title:'Senior Statistical Ecologist',
+      org:'Animal & Plant Health Agency', loc:'Sand Hutton, England',
+      start:yr(2022,5), end:yr(2024,1),
+      dateStr:'May 2022 – January 2024',
+      bullets:[] },
+
+    { id:5, type:'emp', present:true,
+      label:'Lecturer', title:'Lecturer in Applied Statistics',
+      org:'University of Aberdeen', loc:'Aberdeen, Scotland',
+      start:yr(2024,1), end:null,
+      dateStr:'January 2024 – Present',
+      bullets:[] }
+  ];
+
+  var TICKS = [2012, 2014, 2016, 2018, 2020, 2022, 2024];
+
+  /* ── Slot assignment (greedy interval colouring) ──── */
+  function assignSlots(group) {
+    var sorted = group.slice().sort(function(a, b) { return a.start - b.start; });
+    var slotEnds = [];
+    sorted.forEach(function(item) {
+      var end = item.end !== null ? item.end : VE;
+      var slot = 0;
+      while (slotEnds[slot] !== undefined && slotEnds[slot] > item.start + 0.001) {
+        slot++;
+      }
+      item._slot = slot;
+      slotEnds[slot] = end;
+    });
+    return slotEnds.length;
+  }
+
+  /* ── Bar geometry ─────────────────────────────────── */
+  var SINGLE = { trackH: 46, barH: 32, baseTop: 7, gap: 0,  fs: '0.68rem', pad: '0 9px' };
+  var DOUBLE = { trackH: 54, barH: 21, baseTop: 4, gap: 4,  fs: '0.60rem', pad: '0 6px' };
+
+  function barHtml(item, cfg) {
+    var l = pct(item.start);
+    var isPresent = item.end === null;
+    var slot = item._slot || 0;
+    var top  = cfg.baseTop + slot * (cfg.barH + cfg.gap);
+    var commonStyle = 'top:' + top + 'px;height:' + cfg.barH + 'px;padding:' + cfg.pad + ';font-size:' + cfg.fs + ';';
+    var style, barCls;
+
+    if (isPresent) {
+      style  = 'left:' + l + '%;right:0;' + commonStyle;
+      barCls = 'cv-tl-bar cv-tl-bar-pres';
+    } else {
+      var w = wpct(item.start, item.end);
+      style  = 'left:' + l + '%;width:' + w + '%;' + commonStyle;
+      barCls = 'cv-tl-bar ' + (item.type === 'edu' ? 'cv-tl-bar-edu' : 'cv-tl-bar-emp');
+    }
+
+    var wNum = isPresent
+      ? (VE - item.start) / SP * 100
+      : parseFloat(wpct(item.start, item.end));
+    var textSpan = wNum > 4
+      ? '<span class="cv-tl-bar-text">' + item.label + '</span>'
+      : '';
+    var arrow = isPresent
+      ? '<span class="cv-tl-bar-arrow" style="font-size:' + (parseFloat(cfg.fs) * 1.2) + 'rem">&#8594;</span>'
+      : '';
+
+    return '<div class="' + barCls + '" style="' + style + '" ' +
+           'title="' + item.title + '" data-tl="' + item.id + '">' +
+           textSpan + arrow + '</div>';
+  }
+
+  function trackHtml(group, cfg) {
+    return '<div class="cv-tl-track" style="height:' + cfg.trackH + 'px;">' +
+      group.map(function(item) { return barHtml(item, cfg); }).join('') +
+    '</div>';
+  }
+
+  function rowHtml(label, group, cfg) {
+    return '<div class="cv-tl-row">' +
+      '<div class="cv-tl-row-label">' + label + '</div>' +
+      trackHtml(group, cfg) +
+    '</div>';
+  }
+
+  function axisHtml() {
+    var ticks = TICKS.map(function(y) {
+      return '<div class="cv-tl-tick" style="left:' + pct(y) + '%">' +
+        '<div class="cv-tl-tick-mark"></div>' +
+        '<div class="cv-tl-tick-lbl">' + y + '</div>' +
+      '</div>';
+    }).join('');
+    var nowTick =
+      '<div class="cv-tl-tick cv-tl-tick-now" style="left:99%;transform:translate(-100%,-50%)">' +
+        '<div class="cv-tl-tick-mark"></div>' +
+        '<div class="cv-tl-tick-lbl">Now</div>' +
+      '</div>';
+    return '<div class="cv-tl-row cv-tl-axis-row">' +
+      '<div class="cv-tl-row-label"></div>' +
+      '<div class="cv-tl-axis-track">' +
+        '<div class="cv-tl-axis-line"></div>' +
+        ticks + nowTick +
+      '</div>' +
+    '</div>';
+  }
+
+  /* ── Render ───────────────────────────────────────── */
+  var inner = document.getElementById('cvTlInner');
+  if (!inner) return;
+
+  var edu = items.filter(function(i) { return i.type === 'edu'; });
+  var emp = items.filter(function(i) { return i.type === 'emp'; });
+
+  var eduSlots = assignSlots(edu);
+  var empSlots = assignSlots(emp);
+  var eduCfg   = eduSlots > 1 ? DOUBLE : SINGLE;
+  var empCfg   = empSlots > 1 ? DOUBLE : SINGLE;
+
+  inner.innerHTML =
+    rowHtml('Education', edu, eduCfg) +
+    axisHtml() +
+    rowHtml('Employment', emp, empCfg);
+
+  /* ── Modal ────────────────────────────────────────── */
+  var bd = document.createElement('div');
+  bd.className     = 'cv-tl-backdrop';
+  bd.style.display = 'none';
+  bd.innerHTML =
+    '<div class="cv-tl-modal">' +
+      '<button class="cv-tl-mclose" aria-label="Close">&times;</button>' +
+      '<div id="cvTlMBody"></div>' +
+    '</div>';
+  document.body.appendChild(bd);
+
+  var mbody  = bd.querySelector('#cvTlMBody');
+  var mclose = bd.querySelector('.cv-tl-mclose');
+
+  function openModal(item) {
+    var isEdu = item.type === 'edu';
+    var bCls  = isEdu ? 'cv-tl-badge-edu' : 'cv-tl-badge-emp';
+    var bText = isEdu ? 'Education'        : 'Employment';
+    var ulCls = isEdu ? 'cv-tl-mbullets-edu' : 'cv-tl-mbullets-emp';
+
+    var bulletHtml = '';
+    if (item.bullets && item.bullets.length > 0) {
+      var lis = item.bullets.map(function(b) { return '<li>' + b + '</li>'; }).join('');
+      bulletHtml = '<hr class="cv-tl-mdivider"><ul class="cv-tl-mbullets ' + ulCls + '">' + lis + '</ul>';
+    }
+
+    mbody.innerHTML =
+      '<span class="cv-tl-badge ' + bCls + '">' + bText + '</span>' +
+      '<h3>' + item.title + '</h3>' +
+      '<div class="cv-tl-morg">' + item.org + ' &middot; ' + item.loc + '</div>' +
+      '<div class="cv-tl-mdates">' + item.dateStr + '</div>' +
+      bulletHtml;
+
+    bd.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    bd.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  mclose.addEventListener('click', closeModal);
+  bd.addEventListener('click', function(e) { if (e.target === bd) closeModal(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+  inner.addEventListener('click', function(e) {
+    var el = e.target;
+    while (el && el !== inner) {
+      if (el.dataset && el.dataset.tl !== undefined) {
+        var id   = parseInt(el.dataset.tl, 10);
+        var item = items.filter(function(i) { return i.id === id; })[0];
+        if (item) openModal(item);
+        return;
+      }
+      el = el.parentElement;
+    }
+  });
+
+})();
+</script>
+<section class="cv-sections-grid">
+  <a href="./cv-employment.html" class="course-card">
+    <h3 class="anchored">Employment</h3>
+    <p>Work history across academia and statistical roles.</p>
+  </a>
+
+  <a href="./cv-education.html" class="course-card">
     <h3 class="anchored">Education</h3>
     <p>Formal degrees and institutions attended.</p>
-    <a href="./cv-education.html" class="btn">View section</a>
-  </div>
+  </a>
 
-  <div class="course-card" data-aos="fade-up" data-aos-delay="200">
-    <h3 class="anchored">PhD Students</h3>
-    <p>Supervision roles and ongoing projects.</p>
-    <a href="./cv-phd.html" class="btn">View section</a>
-  </div>
-
-  <div class="course-card" data-aos="fade-up" data-aos-delay="300">
+  <a href="./cv-awards.html" class="course-card">
     <h3 class="anchored">Awards &amp; Funding</h3>
     <p>Recognition and research funding received.</p>
-    <a href="./cv-awards.html" class="btn">View section</a>
-  </div>
+  </a>
 
-  <div class="course-card" data-aos="fade-up" data-aos-delay="400">
+  <a href="./cv-skills.html" class="course-card">
     <h3 class="anchored">Skills</h3>
     <p>Technical, statistical, and communication expertise.</p>
-    <a href="./cv-skills.html" class="btn">View section</a>
-  </div>
+  </a>
 </section>
 
 
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -417,6 +788,25 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">&nbsp;</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var c = document.querySelector('.nav-footer-center');
+  if (c) {
+    c.innerHTML = '<div class="footer-contents"><div class="site-footer-inner"><span class="footer-name">Deon Roos \u00b7 University of Aberdeen<\/span><span class="footer-links"><a href="mailto:deon.roos4@abdn.ac.uk" class="footer-link" title="Email"><i class="fas fa-envelope"><\/i><\/a><a href="https://orcid.org/0000-0003-4866-7472" class="footer-link" title="ORCID"><i class="fab fa-orcid"><\/i><\/a><a href="https://github.com/DeonRoos" class="footer-link" title="GitHub"><i class="fab fa-github"><\/i><\/a><\/span><\/div><\/div>';
+  }
+});
+</script>
 
 
 

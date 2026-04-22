@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(quarto render:*)",
+      "Bash(\"/c/Program Files/RStudio/resources/app/bin/quarto/bin/quarto.exe\" render)",
+      "Skill(anthropic-skills:humanizer)",
+      "Skill(anthropic-skills:humanizer:*)",
+      "Bash(\"C:/Program Files/RStudio/resources/app/bin/quarto/bin/quarto.exe\" render \"C:/Robust_Design\")",
+      "Bash(\"C:/Program Files/RStudio/resources/app/bin/quarto/bin/quarto.exe\" render \"C:/DeonRoos.github.io/DeonRoos\")",
+      "Bash(\"C:/Program Files/RStudio/resources/app/bin/quarto/bin/quarto.exe\" render \"C:/Robust_Design/GLM_Refresher.qmd\")",
+      "Bash(ls /c/Occupancy_Modelling/*.qmd)",
+      "Bash(\"C:/Program Files/RStudio/resources/app/bin/quarto/bin/quarto.exe\" render \"C:/Occupancy_Modelling\")",
+      "Bash(git -C C:/DeonRoos.github.io log --oneline -10)",
+      "Bash(git -C C:/DeonRoos.github.io branch -a)",
+      "Bash(git -C C:/DeonRoos.github.io show gh-pages:index.html)",
+      "Bash(git -C C:/DeonRoos.github.io log --oneline gh-pages)",
+      "Bash(git -C C:/DeonRoos.github.io check-ignore -v DeonRoos/stm-explainer_cache)",
+      "Bash(git -C C:/DeonRoos.github.io ls-files DeonRoos/_site/stm-explainer.html)",
+      "Bash(git -C C:/DeonRoos.github.io ls-tree --name-only gh-pages)",
+      "Bash(\"C:/Program Files/RStudio/resources/app/bin/quarto/bin/quarto.exe\" render stm-explainer.qmd)",
+      "Bash(\"C:/Program Files/RStudio/resources/app/bin/quarto/bin/quarto.exe\" publish gh-pages --no-prompt)",
+      "Bash(\"C:/Program Files/RStudio/resources/app/bin/quarto/bin/quarto.exe\" render)",
+      "Bash(cp \"C:/DeonRoos.github.io/DeonRoos/styles.css\" \"C:/Robust_Design/styles.css\")",
+      "Bash(cp \"C:/DeonRoos.github.io/DeonRoos/styles.css\" \"C:/Occupancy_Modelling/styles.css\")",
+      "Bash(\"C:/Program Files/RStudio/resources/app/bin/quarto/bin/quarto.exe\" render courses.qmd)",
+      "Bash(\"C:/Program Files/RStudio/resources/app/bin/quarto/bin/quarto.exe\" render index.qmd)",
+      "Bash(\"C:/Program Files/RStudio/resources/app/bin/quarto/bin/quarto.exe\" --version)",
+      "Bash(dir \"C:\\\\DeonRoos.github.io\\\\DeonRoos\\\\_site\\\\*.html\")",
+      "Bash(ls -la \"C:/DeonRoos.github.io/DeonRoos/_site/\"*.html)",
+      "Bash(sort -k6,7)",
+      "Bash(\"C:/Program Files/RStudio/resources/app/bin/quarto/bin/quarto.exe\" render index.qmd courses.qmd explainers.qmd theses.qmd cv.qmd)",
+      "Bash(ls \"C:/DeonRoos.github.io/DeonRoos/\"cv-*.qmd)",
+      "Bash(\"C:/Program Files/RStudio/resources/app/bin/quarto/bin/quarto.exe\" render cv.qmd)",
+      "Bash(\"C:/Program Files/RStudio/resources/app/bin/quarto/bin/quarto.exe\" render cv-skills.qmd)",
+      "WebFetch(domain:chrissuthy.github.io)",
+      "Read(//usr/local/bin/**)",
+      "Read(//c/Users/deonr/AppData/Local/Programs/Quarto/**)",
+      "Bash(cmd.exe /c \"where quarto\")",
+      "PowerShell(Get-Command quarto -ErrorAction SilentlyContinue)"
+    ]
+  }
+}

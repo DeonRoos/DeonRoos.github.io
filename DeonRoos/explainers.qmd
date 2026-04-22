@@ -1,41 +1,98 @@
 ---
-title: "Explainers"
+title: ""
+pagetitle: "Explainers | Deon Roos"
 format: html
 ---
 
-<!-- Background video -->
-<video autoplay muted loop playsinline id="bg-video">
-  <source src="media/mu_wave.mp4" type="video/mp4">
-</video>
-
-<!-- AOS scroll animations -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({ once: true, duration: 600 });
-</script>
+```{=html}
+<div class="page-header">
+  <h1 class="page-header-title">Explainers</h1>
+  <p class="page-header-intro">Detailed walkthroughs of statistical models and methods, primarily written for students doing their honours projects, but available to anyone who wants them.</p>
+</div>
+```
 
 ## Models & Concepts
 
-```{r echo=FALSE, results='asis'}
-library(glue)
+```{=html}
+<div class="course-list">
 
-explainers <- list(
-  list(name = "Introduction to GLMs", url = "https://alexd106.github.io/PGR-GLM/", image = "media/glm_binomial_illustration.png"),
-  list(name = "Bayesian Occupancy Models", url = "https://deonroos.github.io/Occupancy_Modelling/", image = "media/occupancy.PNG"),
-  list(name = "Structural Topic Models", url = "stm-explainer.html", image = "media/wordcloud_stm.png"),
-  list(name = "Robust Design Mark-Recapture", url = "https://deonroos.github.io/Robust_Design/", image = "media/warbler.png")
-)
+  <a href="https://alexd106.github.io/PGR-GLM/" class="explainer-card" target="_blank">
+    <div class="explainer-card-img-wrap">
+      <img src="media/glm_binomial_illustration.png" class="explainer-card-img" alt="">
+    </div>
+    <div class="explainer-card-content">
+      <div class="explainer-card-title">Introduction to GLMs</div>
+      <p class="explainer-card-desc">Course materials covering the theory and application of Generalised Linear Models, from model structure through to interpretation. Part of the PGR course series.</p>
+    </div>
+  </a>
 
-cat("<div class='app-tiles'>")
-delay <- 0
-for (item in explainers) {
-  cat(glue("
-    <a href='{item$url}' class='app-tile' style='background-image: url({item$image});' data-aos='fade-up' data-aos-delay='{delay}' target='_blank'>
-      <div class='app-label'>{item$name}</div>
-    </a>
-  "))
-  delay <- delay + 100
-}
-cat("</div>")
+  <a href="https://deonroos.github.io/Occupancy_Modelling/" class="explainer-card" target="_blank">
+    <div class="explainer-card-img-wrap">
+      <img src="media/occupancy.PNG" class="explainer-card-img" alt="">
+    </div>
+    <div class="explainer-card-content">
+      <div class="explainer-card-title">Bayesian Occupancy Models</div>
+      <p class="explainer-card-desc">A walkthrough of occupancy modelling for ecologists working with presence/absence data where detection is imperfect. Covers the theory and implementation in R.</p>
+    </div>
+  </a>
+
+  <a href="stm-explainer.html" class="explainer-card">
+    <div class="explainer-card-img-wrap">
+      <img src="media/wordcloud_stm.png" class="explainer-card-img" alt="">
+    </div>
+    <div class="explainer-card-content">
+      <div class="explainer-card-title">Structural Topic Models</div>
+      <p class="explainer-card-desc">A detailed explainer covering the theory and R implementation of Structural Topic Models for text analysis. Written to be accessible to researchers without a machine learning background.</p>
+    </div>
+  </a>
+
+  <a href="https://deonroos.github.io/Robust_Design/" class="explainer-card" target="_blank">
+    <div class="explainer-card-img-wrap">
+      <img src="media/warbler.png" class="explainer-card-img" alt="">
+    </div>
+    <div class="explainer-card-content">
+      <div class="explainer-card-title">Robust Design Mark-Recapture</div>
+      <p class="explainer-card-desc">An introduction to robust design mark-recapture for estimating population size and demographic parameters from capture history data.</p>
+    </div>
+  </a>
+
+</div>
+```
+
+## Teaching Aids
+
+```{=html}
+<div class="course-list">
+
+  <a href="https://deonroos.shinyapps.io/Distributions/" class="explainer-card" target="_blank">
+    <div class="explainer-card-img-wrap">
+      <img src="media/distributions.png" class="explainer-card-img" alt="">
+    </div>
+    <div class="explainer-card-content">
+      <div class="explainer-card-title">Statistical Distributions</div>
+      <p class="explainer-card-desc">An interactive explorer for common statistical distributions with adjustable parameters, built to help students build intuition for how distributions behave.</p>
+    </div>
+  </a>
+
+  <a href="https://deonroos.shinyapps.io/Aberdeen_House_Prices/" class="explainer-card" target="_blank">
+    <div class="explainer-card-img-wrap">
+      <img src="media/house_price.png" class="explainer-card-img" alt="">
+    </div>
+    <div class="explainer-card-content">
+      <div class="explainer-card-title">Predicting House Prices</div>
+      <p class="explainer-card-desc">A Shiny app for exploring house price prediction in Aberdeen using regression models. Used in BI3010 to make modelling tangible with real local data.</p>
+    </div>
+  </a>
+
+  <a href="https://deonroos.shinyapps.io/BI3010_Rent/" class="explainer-card" target="_blank">
+    <div class="explainer-card-img-wrap">
+      <img src="media/rent.png" class="explainer-card-img" alt="">
+    </div>
+    <div class="explainer-card-content">
+      <div class="explainer-card-title">Predicting Rent Prices</div>
+      <p class="explainer-card-desc">A companion app to BI3010 for exploring rent price prediction, giving students a second worked example to consolidate their understanding of regression.</p>
+    </div>
+  </a>
+
+</div>
 ```

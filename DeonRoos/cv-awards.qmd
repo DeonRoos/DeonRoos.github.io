@@ -3,39 +3,58 @@ title: "Awards & Funding"
 format: html
 ---
 
-::: {.cv-entry}
-**Best Student Presentation**, University of Aberdeen  
-<span class="cv-dates">2019</span>  
-Travelling waves as a form of spatio-temporal asynchrony
-:::
+```{=html}
+<div class="award-entry">
+  <div class="award-year">2019</div>
+  <div class="award-body">
+    <div class="award-title">Best Student Presentation</div>
+    <div class="award-venue">University of Aberdeen</div>
+    <div class="award-desc">Travelling waves as a form of spatio-temporal asynchrony</div>
+  </div>
+</div>
 
-::: {.cv-entry}
-**Best Presentation**, Iberian Vole Workshop, Porto  
-<span class="cv-dates">2019</span>  
-Spatio-temporal asynchrony in a cyclic vole species
-:::
+<div class="award-entry">
+  <div class="award-year">2019</div>
+  <div class="award-body">
+    <div class="award-title">Best Presentation</div>
+    <div class="award-venue">Iberian Vole Workshop, Porto</div>
+    <div class="award-desc">Spatio-temporal asynchrony in a cyclic vole species</div>
+  </div>
+</div>
 
-::: {.cv-entry}
-**Sir Maitland Mackie Scholarship**, University of Aberdeen  
-<span class="cv-dates">2017</span>  
-Funding for agricultural research
-:::
+<div class="award-entry">
+  <div class="award-year">2017</div>
+  <div class="award-body">
+    <div class="award-title">Sir Maitland Mackie Scholarship</div>
+    <div class="award-venue">University of Aberdeen</div>
+    <div class="award-desc">Funding for agricultural research</div>
+  </div>
+</div>
 
-::: {.cv-entry}
-**Outstanding BSc Zoology Student**, University of Aberdeen  
-<span class="cv-dates">2016</span>  
-:::
+<div class="award-entry">
+  <div class="award-year">2016</div>
+  <div class="award-body">
+    <div class="award-title">Outstanding BSc Zoology Student</div>
+    <div class="award-venue">University of Aberdeen</div>
+  </div>
+</div>
 
-::: {.cv-entry}
-**People’s Trust Internship**, PTES  
-<span class="cv-dates">2016</span>  
-Funded research after BSc thesis
-:::
+<div class="award-entry">
+  <div class="award-year">2016</div>
+  <div class="award-body">
+    <div class="award-title">People's Trust Internship</div>
+    <div class="award-venue">PTES</div>
+    <div class="award-desc">Funded research position following BSc thesis</div>
+  </div>
+</div>
 
-::: {.cv-entry}
-**Carnegie Summer Scholarship**  
-<span class="cv-dates">2015</span>  
-Supported BSc data collection
-:::
+<div class="award-entry">
+  <div class="award-year">2015</div>
+  <div class="award-body">
+    <div class="award-title">Carnegie Summer Scholarship</div>
+    <div class="award-desc">Supported BSc data collection</div>
+  </div>
+</div>
+```
 
 [$\leftarrow$ Back to CV Overview](cv.qmd)

@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -58,6 +59,7 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -84,23 +86,23 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./publications.html" rel="" target="">
- <span class="menu-text">My Work</span></a>
+ <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./courses.html" rel="" target="">
- <span class="menu-text">My Courses</span></a>
+ <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./explainers.html" rel="" target="">
- <span class="menu-text">Stats Explainers</span></a>
+ <span class="menu-text">Explainers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./theses.html" rel="" target="">
- <span class="menu-text">Student Theses</span></a>
+    <a class="nav-link" href="./people.html" rel="" target="">
+ <span class="menu-text">People</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./cv.html" rel="" target="">
- <span class="menu-text">My CV</span></a>
+ <span class="menu-text">CV</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -134,16 +136,35 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="cv-entry">
-<p><strong>PhD Ecology</strong>, University of Aberdeen<br>
-<span class="cv-dates">2016 – 2021</span><br>
-- Rodent pest population dynamics<br>
-- Publications: <a href="https://doi.org/10.1016/j.agee.2018.11.013">Roos et al.&nbsp;(2019)</a>, <a href="https://doi.org/10.1111/ele.14074">Roos et al.&nbsp;(2022)</a></p>
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init({ once: true, duration: 600 });</script>
+<div class="cv-entry cv-entry-edu" data-aos="fade-up" data-aos-delay="0">
+  <div class="cv-entry-meta">
+    <div>
+      <div class="cv-entry-title">PhD Ecology</div>
+      <div class="cv-entry-org">University of Aberdeen · Aberdeen, Scotland</div>
+    </div>
+    <span class="cv-entry-badge">2016 – 2021</span>
+  </div>
+  <ul class="cv-entry-list">
+    <li>Rodent pest population dynamics.</li>
+    <li>Publications: <a href="https://doi.org/10.1016/j.agee.2018.11.013" target="_blank">Roos et al. (2019)</a> and <a href="https://doi.org/10.1111/ele.14074" target="_blank">Roos et al. (2022)</a>.</li>
+  </ul>
 </div>
-<div class="cv-entry">
-<p><strong>BSc (Hons) Zoology</strong>, University of Aberdeen<br>
-<span class="cv-dates">2012 – 2016</span><br>
-- Graduated First Class</p>
+
+<div class="cv-entry cv-entry-edu" data-aos="fade-up" data-aos-delay="100">
+  <div class="cv-entry-meta">
+    <div>
+      <div class="cv-entry-title">BSc (Hons) Zoology</div>
+      <div class="cv-entry-org">University of Aberdeen · Aberdeen, Scotland</div>
+    </div>
+    <span class="cv-entry-badge">2012 – 2016</span>
+  </div>
+  <ul class="cv-entry-list">
+    <li>Graduated First Class.</li>
+    <li>Thesis: <a href="./theses/DeonRoos_2015.pdf" target="_blank">Water vole ecosystem engineering</a>.</li>
+  </ul>
 </div>
 <p><a href="./cv.html"><span class="math inline">\(\leftarrow\)</span> Back to CV Overview</a></p>
 
@@ -384,6 +405,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var c = document.querySelector('.nav-footer-center');
+  if (c) {
+    c.innerHTML = '<div class="footer-contents"><div class="site-footer-inner"><span class="footer-name">Deon Roos \u00b7 University of Aberdeen<\/span><span class="footer-links"><a href="mailto:deon.roos4@abdn.ac.uk" class="footer-link" title="Email"><i class="fas fa-envelope"><\/i><\/a><a href="https://orcid.org/0000-0003-4866-7472" class="footer-link" title="ORCID"><i class="fab fa-orcid"><\/i><\/a><a href="https://github.com/DeonRoos" class="footer-link" title="GitHub"><i class="fab fa-github"><\/i><\/a><\/span><\/div><\/div>';
+  }
+});
+</script>
 
 
 

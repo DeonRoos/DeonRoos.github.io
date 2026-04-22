@@ -1,6 +1,0 @@
----
-title: "Blog"
-listing: default
----
-
-My graveyard of ideas.

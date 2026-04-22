@@ -10,22 +10,30 @@ project:
     - media/occupancy.PNG
     - media/Bluesky_Logo.svg
     - media/wordcloud_stm.png
+    - media/warbler.png
+    - media/glm_binomial_illustration.png
+    - favicon.svg
     - theses/**
 
 website:
   title: "Deon Roos"
+  favicon: favicon.svg
   description: "Lecturer in Applied Statistics | Data Visualisation | Statistics Course | Statistical Distributions"
+  page-footer:
+    background: "#2d2e30"
+    border: true
+    center: "&nbsp;"
   navbar:
     left:
-      - text: "My Work"
+      - text: "Publications"
         file: publications.qmd
-      - text: "My Courses"
+      - text: "Teaching"
         file: courses.qmd
-      - text: "Stats Explainers"
+      - text: "Explainers"
         file: explainers.qmd
-      - text: "Student Theses"
-        file: theses.qmd
-      - text: "My CV"
+      - text: "People"
+        file: people.qmd
+      - text: "CV"
         file: cv.qmd
 
 format:
@@ -33,6 +41,22 @@ format:
     theme: default
     css: styles.css
     highlight-style: atom-one-dark
+    code-fold: true
+    toc: false
+    include-in-header:
+      - text: |
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    include-after-body:
+      - text: |
+          <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            var c = document.querySelector('.nav-footer-center');
+            if (c) {
+              c.innerHTML = '<div class="footer-contents"><div class="site-footer-inner"><span class="footer-name">Deon Roos \u00b7 University of Aberdeen<\/span><span class="footer-links"><a href="mailto:deon.roos4@abdn.ac.uk" class="footer-link" title="Email"><i class="fas fa-envelope"><\/i><\/a><a href="https://orcid.org/0000-0003-4866-7472" class="footer-link" title="ORCID"><i class="fab fa-orcid"><\/i><\/a><a href="https://github.com/DeonRoos" class="footer-link" title="GitHub"><i class="fab fa-github"><\/i><\/a><\/span><\/div><\/div>';
+            }
+          });
+          </script>
 
 publish:
   provider: gh-pages

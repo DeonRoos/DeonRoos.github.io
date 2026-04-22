@@ -1,0 +1,102 @@
+---
+title: ""
+pagetitle: "People | Deon Roos"
+format: html
+---
+
+```{=html}
+<div class="page-header">
+  <h1 class="page-header-title">People</h1>
+  <p class="page-header-intro">PhD students I supervise and undergraduate theses I have supervised.</p>
+</div>
+```
+
+## PhD Students
+
+```{=html}
+<div class="phd-grid">
+
+  <div class="phd-card">
+    <div class="phd-name">Seungyeon Lee</div>
+    <div class="phd-uni">University of Aberdeen</div>
+    <div class="phd-dates">2024 – Present</div>
+    <div class="phd-topic">Integrated population models of tawny owls.</div>
+  </div>
+
+  <div class="phd-card">
+    <div class="phd-name">James Owen</div>
+    <div class="phd-uni">Queen's University Belfast</div>
+    <div class="phd-dates">2025 – Present</div>
+    <div class="phd-topic">Geoprofiling methodology development.</div>
+  </div>
+
+  <div class="phd-card">
+    <div class="phd-name">Joe Davidson</div>
+    <div class="phd-uni">University of Aberdeen</div>
+    <div class="phd-dates">2026 – Present</div>
+    <div class="phd-topic">Predicting vole population cycles using raptor data.</div>
+  </div>
+
+  <div class="phd-card">
+    <div class="phd-name">Sam Durston</div>
+    <div class="phd-uni">University of St Andrews</div>
+    <div class="phd-dates">2026 – Present</div>
+    <div class="phd-topic">Refining spatial methodology for marine environments.</div>
+  </div>
+
+</div>
+```
+
+## Undergraduate Theses
+
+```{=html}
+<p style="color: #b8b8b8; margin-bottom: 1rem;">Click a card to download the thesis.</p>
+```
+
+```{=html}
+<div class="thesis-grid">
+
+  <a class="thesis-card" href="./theses/DeonRoos_2015.pdf">
+    <div class="thesis-name">Deon Roos</div>
+    <div class="thesis-year">2015</div>
+    <div class="thesis-title">Water vole ecosystem engineering</div>
+    <div class="thesis-data">Data not yet available</div>
+  </a>
+
+  <a class="thesis-card" href="./theses/ShananDavies_2024.pdf">
+    <div class="thesis-name">Shanan Davies</div>
+    <div class="thesis-year">2024</div>
+    <div class="thesis-title">Roe deer occupancy and habitat preferences</div>
+    <div class="thesis-data">Data not yet available</div>
+  </a>
+
+  <a class="thesis-card" href="./theses/AliceSemple_2024.pdf">
+    <div class="thesis-name">Alice Semple</div>
+    <div class="thesis-year">2024</div>
+    <div class="thesis-title">Predicting vole population growth and cycles</div>
+    <div class="thesis-data">Data not yet available</div>
+  </a>
+
+  <a class="thesis-card" href="./theses/JoeDavidson_2025.pdf">
+    <div class="thesis-name">Joe Davidson</div>
+    <div class="thesis-year">2025</div>
+    <div class="thesis-title">Post-release pheasant distribution</div>
+    <div class="thesis-data">Data not yet available</div>
+  </a>
+
+  <a class="thesis-card" href="./theses/GraceSommerville_2025.pdf">
+    <div class="thesis-name">Grace Sommerville</div>
+    <div class="thesis-year">2025</div>
+    <div class="thesis-title">Media coverage of illegal lynx reintroduction</div>
+    <div class="thesis-data">Data not yet available</div>
+  </a>
+
+  <a class="thesis-card" href="./theses/ZitongLui_2025.docx">
+    <div class="thesis-name">Zitong Lui</div>
+    <div class="thesis-year">2025</div>
+    <div class="thesis-title">Roe deer and road collision risk</div>
+    <div class="thesis-data">Data not yet available</div>
+  </a>
+
+</div>
+```

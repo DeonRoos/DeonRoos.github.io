@@ -1,80 +1,53 @@
 ---
 title: ""
-format: html
+pagetitle: "Deon Roos"
+format:
+  html:
+    page-layout: custom
 ---
 
-<!-- Video Background -->
-<video autoplay muted loop playsinline id="bg-video">
-  <source src="media/mu_wave.mp4" type="video/mp4">
-</video>
+```{=html}
+<div class="home-split">
+  <div class="home-left">
+    <h1 class="home-title">I'm Deon Roos.<br>I do stuff.</h1>
+    <p class="home-sub">Lecturer | Scientist | Statistician</p>
+    <div class="home-items">
+      <div class="home-item">
+        <span class="home-item-label">Data</span>
+        <p class="home-item-text">Messy, real-world observations that rarely measure what you actually care about directly.</p>
+      </div>
+      <div class="home-item">
+        <span class="home-item-label">Fields</span>
+        <p class="home-item-text">Interdisciplinary, but a lot in biology and medicine.</p>
+      </div>
+      <div class="home-item">
+        <span class="home-item-label">Philosophy</span>
+        <p class="home-item-text">Picking the right tool for the question matters more than having a favourite one.</p>
+      </div>
+    </div>
+    <div class="home-contact">
+      <a href="mailto:deon.roos4@abdn.ac.uk" class="home-contact-link" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://orcid.org/0000-0003-4866-7472" class="home-contact-link" title="ORCID"><i class="fab fa-orcid"></i></a>
+      <a href="https://github.com/DeonRoos" class="home-contact-link" title="GitHub"><i class="fab fa-github"></i></a>
+    </div>
+  </div>
+  <div class="home-right">
+    <video autoplay muted loop playsinline class="home-video">
+      <source src="media/mu_wave.mp4" type="video/mp4">
+    </video>
+    <div class="home-eq-overlay" aria-hidden="true">
+```
 
-<section class="hero" data-aos="zoom-in">
-  <h1>I'm Deon Roos. I do stuff.</h1>
-  <p>Check out my stuff to see what.</p>
-  <p>Lecturer | Scientist | Statistician</p>
-</section>
+$$\mu_i = f(\rho_{0,i}) + f(\rho_{1,i}) + f(\rho_{2,i})$$
 
+$$\rho_{j,i} = T + \left(\frac{1}{\zeta_{j,i}}\right) \times D_{j,i} \quad \text{for } j \in \{0, 1, 2\}$$
 
-<section class="card-grid" data-aos="fade-up">
-  <a href="courses.html" class="code-card"><span class="code-text">load("courses")</span></a>
-  <a href="publications.html" class="code-card"><span class="code-text">view("output")</span></a>
-  <a href="cv.html" class="code-card"><span class="code-text">browse("cv")</span></a>
-</section>
+$$D_{j,i} = -\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}$$
 
+$$\zeta_{j,i} = \beta_0 + \beta_1 \times z_i$$
 
-<!-- Typing Animation (via typed.js or CSS fallback) -->
-<div class="typing-container">
-  <code id="typed-text"></code>
+```{=html}
+    </div>
+  </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-<script>
-  var typed = new Typed("#typed-text", {
-    strings: [
-      "Deon_Roos <- \"Lecturer\"",
-      "Deon_Roos <- \"Ecologist\"",
-      "Deon_Roos <- \"Statistician\"",
-      "Deon_Roos <- \"Programmer\"",
-      "Deon_Roos <- \"Data Visualiser\"",
-      "Deon_Roos <- \"Scientist\"",
-      "Deon_Roos <- \"Teacher\"",
-      "Deon_Roos <- \"Data scientist\"",
-      "Deon_Roos <- \"Medical researcher\"",
-      "Deon_Roos <- \"Quantitative Modeller\""
-    ],
-    typeSpeed: 60,
-    backSpeed: 40,
-    backDelay: 0,
-    loop: true
-  });
-</script>
-
-<!-- Scroll Animation: Include AOS -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
-
-<div style="text-align: center; margin: 2em 0;">
-
-<!-- Styled equations -->
-<div style="text-align: center; color: #00A68A; font-size: 1.2em; margin-bottom: 3em;">
-
-$$
-\mu_i = f(\rho_{0,i}) + f(\rho_{1,i}) + f(\rho_{2,i})
-$$
-
-$$
-\rho_{j,i} = T + \left(\frac{1}{\zeta_{j,i}}\right) \times D_{j,i}
-\quad \text{for } j \in \{0, 1, 2\}
-$$
-
-$$
-D_{j,i} = -\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}
-$$
-
-$$
-\zeta_{j,i} = \beta_0 + \beta_1 \times z_i
-$$
-
+```

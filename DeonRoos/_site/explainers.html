@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Deon Roos - Explainers</title>
+<title>Explainers | Deon Roos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -58,6 +59,7 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -82,23 +84,23 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./publications.html" rel="" target="">
- <span class="menu-text">My Work</span></a>
+ <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./courses.html" rel="" target="">
- <span class="menu-text">My Courses</span></a>
+ <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./explainers.html" rel="" target="" aria-current="page">
- <span class="menu-text">Stats Explainers</span></a>
+ <span class="menu-text">Explainers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./theses.html" rel="" target="">
- <span class="menu-text">Student Theses</span></a>
+    <a class="nav-link" href="./people.html" rel="" target="">
+ <span class="menu-text">People</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./cv.html" rel="" target="">
- <span class="menu-text">My CV</span></a>
+ <span class="menu-text">CV</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -115,53 +117,93 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Explainers</h1>
+
+
+<div class="page-header">
+  <h1 class="page-header-title">Explainers</h1>
+  <p class="page-header-intro">Detailed walkthroughs of statistical models and methods, primarily written for students doing their honours projects, but available to anyone who wants them.</p>
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<!-- Background video -->
-<video autoplay="" muted="" loop="" playsinline="" id="bg-video">
-<source src="media/mu_wave.mp4" type="video/mp4">
-</video>
-<!-- AOS scroll animations -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({ once: true, duration: 600 });
-</script>
 <section id="models-concepts" class="level2">
 <h2 class="anchored" data-anchor-id="models-concepts">Models &amp; Concepts</h2>
-<div class="app-tiles">
-<a href="https://alexd106.github.io/PGR-GLM/" class="app-tile" style="background-image: url(media/glm_binomial_illustration.png);" data-aos="fade-up" data-aos-delay="0" target="_blank">
-<div class="app-label">
-Introduction to GLMs
+<div class="course-list">
+
+  <a href="https://alexd106.github.io/PGR-GLM/" class="explainer-card" target="_blank">
+    <div class="explainer-card-img-wrap">
+      <img src="media/glm_binomial_illustration.png" class="explainer-card-img" alt="">
+    </div>
+    <div class="explainer-card-content">
+      <div class="explainer-card-title">Introduction to GLMs</div>
+      <p class="explainer-card-desc">Course materials covering the theory and application of Generalised Linear Models, from model structure through to interpretation. Part of the PGR course series.</p>
+    </div>
+  </a>
+
+  <a href="https://deonroos.github.io/Occupancy_Modelling/" class="explainer-card" target="_blank">
+    <div class="explainer-card-img-wrap">
+      <img src="media/occupancy.PNG" class="explainer-card-img" alt="">
+    </div>
+    <div class="explainer-card-content">
+      <div class="explainer-card-title">Bayesian Occupancy Models</div>
+      <p class="explainer-card-desc">A walkthrough of occupancy modelling for ecologists working with presence/absence data where detection is imperfect. Covers the theory and implementation in R.</p>
+    </div>
+  </a>
+
+  <a href="stm-explainer.html" class="explainer-card">
+    <div class="explainer-card-img-wrap">
+      <img src="media/wordcloud_stm.png" class="explainer-card-img" alt="">
+    </div>
+    <div class="explainer-card-content">
+      <div class="explainer-card-title">Structural Topic Models</div>
+      <p class="explainer-card-desc">A detailed explainer covering the theory and R implementation of Structural Topic Models for text analysis. Written to be accessible to researchers without a machine learning background.</p>
+    </div>
+  </a>
+
+  <a href="https://deonroos.github.io/Robust_Design/" class="explainer-card" target="_blank">
+    <div class="explainer-card-img-wrap">
+      <img src="media/warbler.png" class="explainer-card-img" alt="">
+    </div>
+    <div class="explainer-card-content">
+      <div class="explainer-card-title">Robust Design Mark-Recapture</div>
+      <p class="explainer-card-desc">An introduction to robust design mark-recapture for estimating population size and demographic parameters from capture history data.</p>
+    </div>
+  </a>
+
 </div>
-</a> <a href="https://deonroos.github.io/Occupancy_Modelling/" class="app-tile" style="background-image: url(media/occupancy.PNG);" data-aos="fade-up" data-aos-delay="100" target="_blank">
-<div class="app-label">
-Bayesian Occupancy Models
-</div>
-</a> <a href="stm-explainer.html" class="app-tile" style="background-image: url(media/wordcloud_stm.png);" data-aos="fade-up" data-aos-delay="200" target="_blank">
-<div class="app-label">
-Structural Topic Models
-</div>
-</a> <a href="https://deonroos.github.io/Robust_Design/" class="app-tile" style="background-image: url(media/warbler.png);" data-aos="fade-up" data-aos-delay="300" target="_blank">
-<div class="app-label">
-Robust Design Mark-Recapture
-</div>
-</a>
+</section>
+<section id="teaching-aids" class="level2">
+<h2 class="anchored" data-anchor-id="teaching-aids">Teaching Aids</h2>
+
+<div class="course-list">
+
+  <a href="https://deonroos.shinyapps.io/Distributions/" class="explainer-card" target="_blank">
+    <div class="explainer-card-img-wrap">
+      <img src="media/distributions.png" class="explainer-card-img" alt="">
+    </div>
+    <div class="explainer-card-content">
+      <div class="explainer-card-title">Statistical Distributions</div>
+      <p class="explainer-card-desc">An interactive explorer for common statistical distributions with adjustable parameters, built to help students build intuition for how distributions behave.</p>
+    </div>
+  </a>
+
+  <a href="https://deonroos.shinyapps.io/Aberdeen_House_Prices/" class="explainer-card" target="_blank">
+    <div class="explainer-card-img-wrap">
+      <img src="media/house_price.png" class="explainer-card-img" alt="">
+    </div>
+    <div class="explainer-card-content">
+      <div class="explainer-card-title">Predicting House Prices</div>
+      <p class="explainer-card-desc">A Shiny app for exploring house price prediction in Aberdeen using regression models. Used in BI3010 to make modelling tangible with real local data.</p>
+    </div>
+  </a>
+
+  <a href="https://deonroos.shinyapps.io/BI3010_Rent/" class="explainer-card" target="_blank">
+    <div class="explainer-card-img-wrap">
+      <img src="media/rent.png" class="explainer-card-img" alt="">
+    </div>
+    <div class="explainer-card-content">
+      <div class="explainer-card-title">Predicting Rent Prices</div>
+      <p class="explainer-card-desc">A companion app to BI3010 for exploring rent price prediction, giving students a second worked example to consolidate their understanding of regression.</p>
+    </div>
+  </a>
+
 </div>
 
 
@@ -402,6 +444,25 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">&nbsp;</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var c = document.querySelector('.nav-footer-center');
+  if (c) {
+    c.innerHTML = '<div class="footer-contents"><div class="site-footer-inner"><span class="footer-name">Deon Roos \u00b7 University of Aberdeen<\/span><span class="footer-links"><a href="mailto:deon.roos4@abdn.ac.uk" class="footer-link" title="Email"><i class="fas fa-envelope"><\/i><\/a><a href="https://orcid.org/0000-0003-4866-7472" class="footer-link" title="ORCID"><i class="fab fa-orcid"><\/i><\/a><a href="https://github.com/DeonRoos" class="footer-link" title="GitHub"><i class="fab fa-github"><\/i><\/a><\/span><\/div><\/div>';
+  }
+});
+</script>
 
 
 

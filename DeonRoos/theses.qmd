@@ -1,0 +1,111 @@
+---
+title: ""
+pagetitle: "Theses | Deon Roos"
+page-layout: full
+---
+
+## Undergraduate Theses
+
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ once: true, duration: 600 });
+</script>
+
+::: thesis-grid
+<a class="thesis-card" href="./theses/DeonRoos_2015.pdf" data-aos="fade-up" data-aos-delay="0">
+
+::: thesis-name
+Deon [Roos]{.surname}
+:::
+
+::: thesis-year
+2015
+:::
+
+::: thesis-title
+Water vole ecosystem engineering
+:::
+
+</a>
+
+<a class="thesis-card" href="./theses/ShananDavies_2024.pdf" data-aos="fade-up" data-aos-delay="100">
+
+::: thesis-name
+Shanan [Davies]{.surname}
+:::
+
+::: thesis-year
+2024
+:::
+
+::: thesis-title
+Roe deer occupancy and habitat preferences
+:::
+
+</a>
+
+<a class="thesis-card" href="./theses/AliceSemple_2024.pdf" data-aos="fade-up" data-aos-delay="200">
+
+::: thesis-name
+Alice [Semple]{.surname}
+:::
+
+::: thesis-year
+2024
+:::
+
+::: thesis-title
+Predicting vole population growth and cycles
+:::
+
+</a>
+
+<a class="thesis-card" href="./theses/JoeDavidson_2025.pdf" data-aos="fade-up" data-aos-delay="300">
+
+::: thesis-name
+Joe [Davidson]{.surname}
+:::
+
+::: thesis-year
+2025
+:::
+
+::: thesis-title
+Post-release pheasant distribution
+:::
+
+</a>
+
+<a class="thesis-card" href="./theses/GraceSommerville_2025.pdf" data-aos="fade-up" data-aos-delay="400">
+
+::: thesis-name
+Grace [Sommerville]{.surname}
+:::
+
+::: thesis-year
+2025
+:::
+
+::: thesis-title
+Media coverage of illegal lynx reintroduction
+:::
+
+</a>
+
+<a class="thesis-card" href="./theses/ZitongLui_2025.docx" data-aos="fade-up" data-aos-delay="500">
+
+::: thesis-name
+Zitong [Lui]{.surname}
+:::
+
+::: thesis-year
+2025
+:::
+
+::: thesis-title
+Roe deer and road collision risk
+:::
+
+</a>
+:::
