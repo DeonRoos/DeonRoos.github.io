@@ -1,5 +1,19 @@
+# R session artifacts
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
+
+# Quarto caches (keep _freeze — needed to avoid re-running R)
 *_cache/
+.quarto/
+
+# Rendered site output (published to gh-pages branch via quarto publish)
+DeonRoos/_site/
+
+# Claude Code settings
+.claude/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
