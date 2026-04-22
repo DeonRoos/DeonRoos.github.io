@@ -1,71 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://DeonRoos.github.io/about.html</loc>
-    <lastmod>2026-04-13T08:42:44.952Z</lastmod>
-  </url>
-  <url>
     <loc>https://DeonRoos.github.io/bi3010.html</loc>
-    <lastmod>2026-04-13T08:42:45.297Z</lastmod>
-  </url>
-  <url>
-    <loc>https://DeonRoos.github.io/blog/2024-04-27-ucas-analysis.html</loc>
-    <lastmod>2026-04-13T08:42:48.485Z</lastmod>
-  </url>
-  <url>
-    <loc>https://DeonRoos.github.io/blog/index.html</loc>
-    <lastmod>2026-04-13T08:42:48.818Z</lastmod>
+    <lastmod>2026-04-22T15:18:48.789Z</lastmod>
   </url>
   <url>
     <loc>https://DeonRoos.github.io/courses.html</loc>
-    <lastmod>2026-04-13T08:42:49.116Z</lastmod>
+    <lastmod>2026-04-22T15:18:49.102Z</lastmod>
   </url>
   <url>
     <loc>https://DeonRoos.github.io/cv-awards.html</loc>
-    <lastmod>2026-04-13T08:42:49.419Z</lastmod>
+    <lastmod>2026-04-22T15:18:49.405Z</lastmod>
   </url>
   <url>
     <loc>https://DeonRoos.github.io/cv-education.html</loc>
-    <lastmod>2026-04-13T08:42:49.726Z</lastmod>
+    <lastmod>2026-04-22T15:18:49.703Z</lastmod>
   </url>
   <url>
     <loc>https://DeonRoos.github.io/cv-employment.html</loc>
-    <lastmod>2026-04-13T08:42:50.020Z</lastmod>
+    <lastmod>2026-04-22T15:18:49.993Z</lastmod>
   </url>
   <url>
     <loc>https://DeonRoos.github.io/cv-phd.html</loc>
-    <lastmod>2026-04-13T08:42:50.314Z</lastmod>
+    <lastmod>2026-04-22T15:18:50.282Z</lastmod>
   </url>
   <url>
     <loc>https://DeonRoos.github.io/cv-skills.html</loc>
-    <lastmod>2026-04-13T08:42:50.620Z</lastmod>
+    <lastmod>2026-04-22T15:18:50.576Z</lastmod>
   </url>
   <url>
     <loc>https://DeonRoos.github.io/cv.html</loc>
-    <lastmod>2026-04-13T08:42:50.958Z</lastmod>
+    <lastmod>2026-04-22T15:18:50.879Z</lastmod>
   </url>
   <url>
     <loc>https://DeonRoos.github.io/explainers.html</loc>
-    <lastmod>2026-04-13T08:42:52.266Z</lastmod>
+    <lastmod>2026-04-22T15:18:51.172Z</lastmod>
   </url>
   <url>
     <loc>https://DeonRoos.github.io/index.html</loc>
-    <lastmod>2026-04-13T08:42:52.581Z</lastmod>
+    <lastmod>2026-04-22T15:18:51.466Z</lastmod>
+  </url>
+  <url>
+    <loc>https://DeonRoos.github.io/people.html</loc>
+    <lastmod>2026-04-22T15:18:51.737Z</lastmod>
   </url>
   <url>
     <loc>https://DeonRoos.github.io/pgr-glm.html</loc>
-    <lastmod>2026-04-13T08:42:52.901Z</lastmod>
+    <lastmod>2026-04-22T15:18:52.057Z</lastmod>
   </url>
   <url>
     <loc>https://DeonRoos.github.io/publications.html</loc>
-    <lastmod>2026-04-13T08:42:56.195Z</lastmod>
+    <lastmod>2026-04-22T15:18:56.069Z</lastmod>
   </url>
   <url>
     <loc>https://DeonRoos.github.io/stm-explainer.html</loc>
-    <lastmod>2026-04-13T08:43:00.091Z</lastmod>
+    <lastmod>2026-04-22T15:18:59.915Z</lastmod>
   </url>
   <url>
     <loc>https://DeonRoos.github.io/theses.html</loc>
-    <lastmod>2026-04-13T08:43:00.423Z</lastmod>
+    <lastmod>2026-04-22T15:19:00.246Z</lastmod>
   </url>
 </urlset>

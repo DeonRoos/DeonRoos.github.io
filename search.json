@@ -1,31 +1,17 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "I am a lecturer in Applied Statistics at the University of Aberdeen where I teach and conduct research in medicine and biology. My academic interests include spatio-temporal modelling, Bayesian heirarchical modelling, hidden Markov models, amongst others.\n\n\n\nBI3010 – 3rd year statistics course covering, R, linear and generalised linear models, ggplot2, basics of causal inference.\nPGR-GLM - A PhD GLM course\n\n\n\n\nHere are a few interactive apps I’ve developed:\n\nDistributions App\nAberdeen House Prices\nAberdeen Rental Prices\n\n\n\n\nYou can reach me at deon[dot]roos4[at]abdn.ac.uk or visit my github page."
-  },
-  {
-    "objectID": "about.html#dr.-deon-roos",
-    "href": "about.html#dr.-deon-roos",
-    "title": "About",
-    "section": "",
-    "text": "I am a lecturer in Applied Statistics at the University of Aberdeen where I teach and conduct research in medicine and biology. My academic interests include spatio-temporal modelling, Bayesian heirarchical modelling, hidden Markov models, amongst others.\n\n\n\nBI3010 – 3rd year statistics course covering, R, linear and generalised linear models, ggplot2, basics of causal inference.\nPGR-GLM - A PhD GLM course\n\n\n\n\nHere are a few interactive apps I’ve developed:\n\nDistributions App\nAberdeen House Prices\nAberdeen Rental Prices\n\n\n\n\nYou can reach me at deon[dot]roos4[at]abdn.ac.uk or visit my github page."
-  },
-  {
     "objectID": "bi3010.html",
     "href": "bi3010.html",
     "title": "BI3010: Statistical Analysis of Biological Data",
     "section": "",
-    "text": "This 3rd year undergraduate course introduces students to key statistical theory and data analysis techniques in biological sciences. It makes strong use of R and ggplot2 but aims to give a strong fundamental and theoretical understanding of statistical modelling and associated topics.\n\n\n\n\n\nWhy do we need statistics?\n\nIntroduction to linear models (LM) and hidden assumptions\n\nThe theory of effective data visualisation\n\nR and ggplot2\n\nLMs with a continuous predictor\n\nInterpreting LMs with a continuous predictor\n\nAssessing assumptions of LMs with a continuous predictor\n\nLMs with a categorical predictor\n\nInterpreting LMs with a categorical predictor\n\nAssessing assumptions of LMs with a categorical predictor\n\nLMs with multiple predictors\n\nConfounding and causality\n\nNull Hypothesis Significance Testing and P-values\n\nAn Information Criterion (AIC)\n\nAn introduction to GLMs\n\nPoisson GLMs\n\n\n\n\n\n\n\n\n\nWhat students learn"
+    "text": "This 3rd year undergraduate course aims to give students a genuine understanding of statistical theory and modelling in biological sciences. The goal is for students to be able to translate statistical ideas to their own research questions, particularly when they reach their honours projects. R and ggplot2 are used throughout.\n\n\n\n\n\nWhy do we need statistics?\n\nIntroduction to linear models (LM) and hidden assumptions\n\nThe theory of effective data visualisation\n\nR and ggplot2\n\nLMs with a continuous predictor\n\nInterpreting LMs with a continuous predictor\n\nAssessing assumptions of LMs with a continuous predictor\n\nLMs with a categorical predictor\n\nInterpreting LMs with a categorical predictor\n\nAssessing assumptions of LMs with a categorical predictor\n\nLMs with multiple predictors\n\nConfounding and causality\n\nNull Hypothesis Significance Testing and P-values\n\nAn Information Criterion (AIC)\n\nAn introduction to GLMs\n\nPoisson GLMs\n\n\n\n\n\n\n\n\n\nWhat students learn"
   },
   {
     "objectID": "bi3010.html#overview",
     "href": "bi3010.html#overview",
     "title": "BI3010: Statistical Analysis of Biological Data",
     "section": "",
-    "text": "This 3rd year undergraduate course introduces students to key statistical theory and data analysis techniques in biological sciences. It makes strong use of R and ggplot2 but aims to give a strong fundamental and theoretical understanding of statistical modelling and associated topics.\n\n\n\n\n\nWhy do we need statistics?\n\nIntroduction to linear models (LM) and hidden assumptions\n\nThe theory of effective data visualisation\n\nR and ggplot2\n\nLMs with a continuous predictor\n\nInterpreting LMs with a continuous predictor\n\nAssessing assumptions of LMs with a continuous predictor\n\nLMs with a categorical predictor\n\nInterpreting LMs with a categorical predictor\n\nAssessing assumptions of LMs with a categorical predictor\n\nLMs with multiple predictors\n\nConfounding and causality\n\nNull Hypothesis Significance Testing and P-values\n\nAn Information Criterion (AIC)\n\nAn introduction to GLMs\n\nPoisson GLMs\n\n\n\n\n\n\n\n\n\nWhat students learn"
+    "text": "This 3rd year undergraduate course aims to give students a genuine understanding of statistical theory and modelling in biological sciences. The goal is for students to be able to translate statistical ideas to their own research questions, particularly when they reach their honours projects. R and ggplot2 are used throughout.\n\n\n\n\n\nWhy do we need statistics?\n\nIntroduction to linear models (LM) and hidden assumptions\n\nThe theory of effective data visualisation\n\nR and ggplot2\n\nLMs with a continuous predictor\n\nInterpreting LMs with a continuous predictor\n\nAssessing assumptions of LMs with a continuous predictor\n\nLMs with a categorical predictor\n\nInterpreting LMs with a categorical predictor\n\nAssessing assumptions of LMs with a categorical predictor\n\nLMs with multiple predictors\n\nConfounding and causality\n\nNull Hypothesis Significance Testing and P-values\n\nAn Information Criterion (AIC)\n\nAn introduction to GLMs\n\nPoisson GLMs\n\n\n\n\n\n\n\n\n\nWhat students learn"
   },
   {
     "objectID": "bi3010.html#tools-software",
@@ -35,32 +21,25 @@
     "text": "Tools & Software\n\nR\nRStudio\nggplot2\n\n\n\\(\\leftarrow\\) Back to all courses"
   },
   {
-    "objectID": "blog/2024-04-27-ucas-analysis.html",
-    "href": "blog/2024-04-27-ucas-analysis.html",
-    "title": "Undergraduate UCAS Applications and Acceptances Analysis",
-    "section": "",
-    "text": "Universities across the UK are in a pretty precarious position right now. After a host of issues, post 2020 has seen the number of students fall. The well seems to be drying up.\nAnd in some cases dramatically. Coventry University made a £54 million loss in 2023-24. Dundee was talking about having to fire ca. 600 employees because apparently the previous senior management team weren’t too good at maths.\nNow, possibly in combination with inflation and the “cost-of-living-crisis”, the long term viability of some universities is looking… Grim.\nThis got me thinking over the weekend as to why. What’s going on with high-school students that makes it less attractive to go to uni? I don’t know and I can’t answer this. I’d need to do a survey of school kids and universities would never pay to get evidence to make a decision. There’s no money remember? Unless it’s for an external consultancy team to tell you if you were fire red or earth green.\nWhat I can do is look at some larger scale patterns with some crude data. It’s something, I guess. I think most people would point to faltering university recruitment and see a clear line between Brexit (and latterly, the Tories not being the most welcoming to foreigners) and the loss of the pool of European applicants.\nBut if that’s the case, then we shouldn’t see any similar kinds of trends in UK students applying to UK universities, right? Their numbers should be relatively stable. If you’re in Englandshire, why would you care that you can’t go to Europe if you were planning to go to Englandshire University regardless?\nSo that’s the idea and my question. Is there something a bit more gloabl going on than just little Britain? If UK students are relatively stable, while EU applicants fall, then it’s probably mostly because of Brexit (and associated policies) that uni recruitment is falling. And strategies to target non-EU international students may well work. But if not? Well, that’s the more “global thing”, right?\n\n\nI’ll be skipping the data processing and going straight into the analysis. As such, I will only be using a few packages:\n\n\nCode\nlibrary(ggplot2)\nlibrary(mgcv)\n\n# DT is just for including data in the blog\nlibrary(DT)\n\n\nTo look into this I pulled some data off of the UCAS website. The UCAS site is a bit of a nightmare to navigate and an even bigger cluster fuck to figure out which of the seemingly gajillions of .csvs they’ve thrown into a zip file contain relevant information I want.\nRest assured, I have been through the valley of cluster fuckery and have emerged with a dataset. I won’t subject you to the Olympic levels of gymnastics I went through to get this but if you want a visual summary, watch The Book of Eli.\nHere’s the data. All clean ’n nice like.\n\n\nCode\nucas &lt;- read.csv(\"data/UCAS.csv\", stringsAsFactors = TRUE, header = TRUE)\ndatatable(ucas, options = list(pageLength = 10, scrollX = TRUE))"
-  },
-  {
-    "objectID": "blog/2024-04-27-ucas-analysis.html#deets",
-    "href": "blog/2024-04-27-ucas-analysis.html#deets",
-    "title": "Undergraduate UCAS Applications and Acceptances Analysis",
-    "section": "",
-    "text": "I’ll be skipping the data processing and going straight into the analysis. As such, I will only be using a few packages:\n\n\nCode\nlibrary(ggplot2)\nlibrary(mgcv)\n\n# DT is just for including data in the blog\nlibrary(DT)\n\n\nTo look into this I pulled some data off of the UCAS website. The UCAS site is a bit of a nightmare to navigate and an even bigger cluster fuck to figure out which of the seemingly gajillions of .csvs they’ve thrown into a zip file contain relevant information I want.\nRest assured, I have been through the valley of cluster fuckery and have emerged with a dataset. I won’t subject you to the Olympic levels of gymnastics I went through to get this but if you want a visual summary, watch The Book of Eli.\nHere’s the data. All clean ’n nice like.\n\n\nCode\nucas &lt;- read.csv(\"data/UCAS.csv\", stringsAsFactors = TRUE, header = TRUE)\ndatatable(ucas, options = list(pageLength = 10, scrollX = TRUE))"
-  },
-  {
-    "objectID": "blog/index.html",
-    "href": "blog/index.html",
-    "title": "Blog",
-    "section": "",
-    "text": "My graveyard of ideas.\n\n\n\n\n\n\n\n\n\n\n\n\n\nUndergraduate UCAS Applications and Acceptances Analysis\n\n\n\n\n\n\n`Apr 27, 2024`{=html}\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "courses.html",
     "href": "courses.html",
-    "title": "Deon Roos",
+    "title": "Teaching",
     "section": "",
-    "text": "Undergraduate\n    \n      BI3010: Statistical Analysis of Biological Data\n      This course covers key statistical concepts and theory for biological data using R.\n      Learn more\n    \n  \n\n  \n    Postgraduate\n    \n      PGR Course: Generalised Linear Models\n      An advanced course on GLMs designed for postgrads across disciplines using R.\n      Learn more\n    \n    \n      PU5058: Introduction to Health Data Science\n      Lecture on the theory underlying effective data visualisation."
+    "text": "Statistics courses at undergraduate and postgraduate level, focused on applied methods and building genuine understanding rather than recipe-following."
+  },
+  {
+    "objectID": "courses.html#courses",
+    "href": "courses.html#courses",
+    "title": "Teaching",
+    "section": "Courses",
+    "text": "Courses\n\n\n  \n\n      \n        3rd Year Undergraduate\n      \n      BI3010: Statistical Analysis of Biological Data\n      A 3rd year course focused on building genuine statistical understanding in biological sciences, from linear models through to GLMs. The goal is for students to understand the theory well enough to apply it to their own questions, particularly when they reach their honours projects. R and ggplot2 are used throughout.\n      \n        R\n        ggplot2\n        Linear Models\n        GLMs\n        Data Visualisation\n        Causal Inference\n      \n      Course details →\n    \n  \n\n  \n\n      \n        Postgraduate / PhD\n      \n      PGR Course: Generalised Linear Models\n      A free course for PhD students on the theory and application of GLMs. Open to students from any university and any discipline, it forms part of a wider series that also covers R and linear models.\n      \n        R\n        Poisson GLM\n        Binomial GLM\n        Bernoulli GLM\n      \n      Course details →"
+  },
+  {
+    "objectID": "courses.html#guest-lectures",
+    "href": "courses.html#guest-lectures",
+    "title": "Teaching",
+    "section": "Guest Lectures",
+    "text": "Guest Lectures\n\n  \n    PU5058\n    \n      Introduction to Health Data Science\n      The theory underlying effective data visualisation.\n    \n    Postgraduate"
   },
   {
     "objectID": "cv-awards.html",
@@ -100,23 +79,51 @@
   {
     "objectID": "cv.html",
     "href": "cv.html",
-    "title": "\nDeon Roos\n",
+    "title": "Deon Roos",
     "section": "",
-    "text": "Deon Roos\n\n\nLecturer in Applied Statistics\n\n\nUniversity of Aberdeen\n\n\n\n Email   ORCID   GitHub \n\n\n\n\n\n\n\n  Career at a Glance\n  \n    \n  \n\n\n\n\n  \n    Employment\n    Work history across academia and statistical roles.\n  \n\n  \n    Education\n    Formal degrees and institutions attended.\n  \n\n  \n    PhD Students\n    Supervision roles and ongoing projects.\n  \n\n  \n    Awards & Funding\n    Recognition and research funding received.\n  \n\n  \n    Skills\n    Technical, statistical, and communication expertise."
+    "text": "Career at a Glance\n  \n    \n  \n\n\n\n\n  \n    Employment\n    Work history across academia and statistical roles.\n  \n\n  \n    Education\n    Formal degrees and institutions attended.\n  \n\n  \n    Awards & Funding\n    Recognition and research funding received.\n  \n\n  \n    Skills\n    Technical, statistical, and communication expertise."
+  },
+  {
+    "objectID": "explainers.html",
+    "href": "explainers.html",
+    "title": "Explainers",
+    "section": "",
+    "text": "Detailed walkthroughs of statistical models and methods, primarily written for students doing their honours projects, but available to anyone who wants them."
   },
   {
     "objectID": "explainers.html#models-concepts",
     "href": "explainers.html#models-concepts",
-    "title": "Deon Roos",
+    "title": "Explainers",
     "section": "Models & Concepts",
-    "text": "Models & Concepts\n\n\n\nIntroduction to GLMs\n\n \n\nBayesian Occupancy Models\n\n \n\nStructural Topic Models\n\n \n\nRobust Design Mark-Recapture"
+    "text": "Models & Concepts\n\n\n  \n    \n      \n    \n    \n      Introduction to GLMs\n      Course materials covering the theory and application of Generalised Linear Models, from model structure through to interpretation. Part of the PGR course series.\n    \n  \n\n  \n    \n      \n    \n    \n      Bayesian Occupancy Models\n      A walkthrough of occupancy modelling for ecologists working with presence/absence data where detection is imperfect. Covers the theory and implementation in R.\n    \n  \n\n  \n    \n      \n    \n    \n      Structural Topic Models\n      A detailed explainer covering the theory and R implementation of Structural Topic Models for text analysis. Written to be accessible to researchers without a machine learning background.\n    \n  \n\n  \n    \n      \n    \n    \n      Robust Design Mark-Recapture\n      An introduction to robust design mark-recapture for estimating population size and demographic parameters from capture history data."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "\nI’m Deon Roos. I do stuff.\n",
+    "objectID": "explainers.html#teaching-aids",
+    "href": "explainers.html#teaching-aids",
+    "title": "Explainers",
+    "section": "Teaching Aids",
+    "text": "Teaching Aids\n\n\n\n  \n    \n      \n    \n    \n      Statistical Distributions\n      An interactive explorer for common statistical distributions with adjustable parameters, built to help students build intuition for how distributions behave.\n    \n  \n\n  \n    \n      \n    \n    \n      Predicting House Prices\n      A Shiny app for exploring house price prediction in Aberdeen using regression models. Used in BI3010 to make modelling tangible with real local data.\n    \n  \n\n  \n    \n      \n    \n    \n      Predicting Rent Prices\n      A companion app to BI3010 for exploring rent price prediction, giving students a second worked example to consolidate their understanding of regression."
+  },
+  {
+    "objectID": "people.html",
+    "href": "people.html",
+    "title": "People",
     "section": "",
-    "text": "I’m Deon Roos. I do stuff.\n\n\nCheck out my stuff to see what.\n\n\nLecturer | Scientist | Statistician\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\mu_i = f(\\rho_{0,i}) + f(\\rho_{1,i}) + f(\\rho_{2,i})\n\\]\n\\[\n\\rho_{j,i} = T + \\left(\\frac{1}{\\zeta_{j,i}}\\right) \\times D_{j,i}\n\\quad \\text{for } j \\in \\{0, 1, 2\\}\n\\]\n\\[\nD_{j,i} = -\\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}\n\\]\n\\[\n\\zeta_{j,i} = \\beta_0 + \\beta_1 \\times z_i\n\\]"
+    "text": "PhD students I supervise and undergraduate theses I have supervised."
+  },
+  {
+    "objectID": "people.html#phd-students",
+    "href": "people.html#phd-students",
+    "title": "People",
+    "section": "PhD Students",
+    "text": "PhD Students\n\n\n  \n    Seungyeon Lee\n    University of Aberdeen\n    2024 – Present\n    Integrated population models of tawny owls.\n  \n\n  \n    James Owen\n    Queen's University Belfast\n    2025 – Present\n    Geoprofiling methodology development.\n  \n\n  \n    Joe Davidson\n    University of Aberdeen\n    2026 – Present\n    Predicting vole population cycles using raptor data.\n  \n\n  \n    Sam Durston\n    University of St Andrews\n    2026 – Present\n    Refining spatial methodology for marine environments."
+  },
+  {
+    "objectID": "people.html#undergraduate-theses",
+    "href": "people.html#undergraduate-theses",
+    "title": "People",
+    "section": "Undergraduate Theses",
+    "text": "Undergraduate Theses\nClick a card to download the thesis.\n\n\n  \n    Deon Roos\n    2015\n    Water vole ecosystem engineering\n    Data not yet available\n  \n\n  \n    Shanan Davies\n    2024\n    Roe deer occupancy and habitat preferences\n    Data not yet available\n  \n\n  \n    Alice Semple\n    2024\n    Predicting vole population growth and cycles\n    Data not yet available\n  \n\n  \n    Joe Davidson\n    2025\n    Post-release pheasant distribution\n    Data not yet available\n  \n\n  \n    Grace Sommerville\n    2025\n    Media coverage of illegal lynx reintroduction\n    Data not yet available\n  \n\n  \n    Zitong Lui\n    2025\n    Roe deer and road collision risk\n    Data not yet available"
   },
   {
     "objectID": "pgr-glm.html",
@@ -147,25 +154,25 @@
     "text": "Course Website\n🔗 Visit the course website\n\n\\(\\leftarrow\\) Back to all courses"
   },
   {
-    "objectID": "publications.html#web-applications",
-    "href": "publications.html#web-applications",
-    "title": "Deon Roos",
-    "section": "Web Applications",
-    "text": "Web Applications\n\n\n\nStatistical Distributions\n\n \n\nPredicting House Prices\n\n \n\nPredicting Rent Prices"
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Publications",
+    "section": "",
+    "text": "Research spanning statistical ecology, medicine, and methodology. Papers are pulled automatically from ORCID; the textbook is open-access."
   },
   {
     "objectID": "publications.html#peer-reviewed-papers",
     "href": "publications.html#peer-reviewed-papers",
-    "title": "Deon Roos",
+    "title": "Publications",
     "section": "Peer-reviewed papers",
     "text": "Peer-reviewed papers\nSara Sharaf, Timothy Lawes, Deon Roos, Ijeoma Okoliegbe, Susanth Alapati, Antonio Ribeiro, Istifanus Nkene, Daniele Ghezzi, Stuart J Reid, Victoria Austin, Dolapo Ayansina, Becky Wilson, Tanzeel Rehman, Benjamin J Parcell, Ian Mellor, Charis A Marwick, Marco Oggioni, Karolin Hijazi (2025). Universal versus targeted chlorhexidine and mupirocin decolonisation and clinical and molecular epidemiology of Staphylococcus epidermidis bloodstream infections in patients in intensive care in Scotland, UK, The Lancet Microbe.Cristiano Tiberi, Sarah Beatham, Julia Coats, Izzy Rochester, Deon Roos, Riccardo Primi, Andrea Vitali, Giovanna Massei (2025). An assessment of whether age, sex, and reproductive status affect bait uptake by grey squirrels, Journal of Wildlife Management.Tiago Crispim-Mendes, Deon Roos, Clara Mendes Ferreira, Joana Paupério, João Paulo Silva, Sérgio Godinho, Paulo Célio Alves, António Mira, Pedro Beja, Xavier Lambin, Ricardo Pita (2024). Patch spatial attributes and time to disturbance affect the emergence of source local populations within ephemeral habitats, Ecological Modelling.Ijeoma Nnenna Okoliegbe, Sara Aly Abdelfatah Sharaf, Susanth Alapati, Deon Roos, Antonio Ribeiro, Istifanus Nkene, Daniele Ghezzi, Stuart Reid, Victoria Austin, Dolapo Ayansina, Rebecca Wilson, Tanzeel Ur-Rehman, Benjamin J Parcell, Ian Mellor, Charis A. Marwick, Marco Oggioni, Karolin Hijazi (2024). Effects of universal versus targeted chlorhexidine skin decolonisation on the clinical and molecular epidemiology of Staphylococcus epidermidis bloodstream infections in intensive care, SSRN Preprints with The Lancet.J. Colomer, G. Massei, D. Roos, C. Rosell, J. D. Rodríguez-Teijeiro (2024). What drives wild boar density and population growth in Mediterranean environments?, Science of the Total Environment.Deon Roos, Constantino Caminero‐Saldaña, David Elston, François Mougeot, María Carmen García‐Ariza, Beatriz Arroyo, Juan José Luque‐Larena, Francisco Javier Rojo Revilla, Xavier Lambin (2022). From pattern to process? Dual travelling waves, with contrasting propagation speeds, best describe a self‐organised spatio‐temporal pattern in population growth of a cyclic rodent, Ecology Letters.James Slingsby, Beth E. Scott, Louise Kregting, Jason McIlvenny, Jared Wilson, Ana Couto, Deon Roos, Marion Yanez, Benjamin J. Williamson (2021). Surface Characterisation of Kolk-Boils within Tidal Stream Environments Using UAV Imagery, Journal of Marine Science and Engineering.Roos, D., Caminero Saldaña, C., Arroyo, B., Mougeot, F., Luque-Larena, J.J., Lambin, X. (2019). Unintentional effects of environmentally-friendly farming practices: Arising conflicts between zero-tillage and a crop pest, the common vole (Microtus arvalis), Agriculture, Ecosystems and Environment."
   },
   {
     "objectID": "publications.html#textbooks",
     "href": "publications.html#textbooks",
-    "title": "Deon Roos",
+    "title": "Publications",
     "section": "Textbooks",
-    "text": "Textbooks\nA Douglas, D Roos, F Mancini, A Couto, D Lusseau. An introduction to R."
+    "text": "Textbooks\n\n  A Douglas, D Roos, F Mancini, A Couto, D Lusseau. An introduction to R."
   },
   {
     "objectID": "stm-explainer.html",

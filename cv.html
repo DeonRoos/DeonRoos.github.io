@@ -84,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./publications.html" rel="" target="">
- <span class="menu-text">Portfolio</span></a>
+ <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./courses.html" rel="" target="">
@@ -95,8 +95,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Explainers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./theses.html" rel="" target="">
- <span class="menu-text">Theses</span></a>
+    <a class="nav-link" href="./people.html" rel="" target="">
+ <span class="menu-text">People</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./cv.html" rel="" target="" aria-current="page">
@@ -119,25 +119,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="cv-header">
-<h1>
-Deon Roos
-</h1>
-<p class="cv-subtitle">
-Lecturer in Applied Statistics
-</p>
-<p class="cv-subtitle">
-University of Aberdeen
-</p>
-</div>
-<div class="cv-contact">
-<p><a class="cv-contact-item" href="mailto:deon.roos4@abdn.ac.uk"> <i class="fas fa-envelope"></i><span>Email</span> </a> <a class="cv-contact-item" href="https://orcid.org/0000-0003-4866-7472"> <i class="fab fa-orcid"></i><span>ORCID</span> </a> <a class="cv-contact-item" href="https://github.com/DeonRoos"> <i class="fab fa-github"></i><span>GitHub</span> </a></p>
-</div>
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({ once: true, duration: 600 });
-</script>
 <style>
 /* ── Timeline card ─────────────────────────────────── */
 .cv-timeline-card {
@@ -325,7 +306,7 @@ hr.cv-tl-mdivider { border: none; border-top: 1px solid #2a2c2f; margin: 0.9rem 
 .cv-tl-mbullets a:hover { text-decoration: underline; }
 </style>
 
-<div class="cv-timeline-card" data-aos="fade-up">
+<div class="cv-timeline-card">
   <p class="cv-tl-heading">Career at a Glance</p>
   <div class="cv-tl-scroll">
     <div class="cv-tl-inner" id="cvTlInner"></div>
@@ -361,24 +342,10 @@ hr.cv-tl-mdivider { border: none; border-top: 1px solid #2a2c2f; margin: 0.9rem 
 
     /* Employment */
     { id:2, type:'emp',
-      label:'Teaching Fellow', title:'Teaching Fellow',
+      label:'Research & Teaching', title:'Research & Teaching Fellow',
       org:'University of Aberdeen', loc:'Aberdeen, Scotland',
-      start:yr(2020,12), end:yr(2021,5),
-      dateStr:'December 2020 – May 2021',
-      bullets:[] },
-
-    { id:3, type:'emp',
-      label:'Research Fellow', title:'Research Fellow',
-      org:'University of Aberdeen', loc:'Aberdeen, Scotland',
-      start:yr(2021,6), end:yr(2022,2),
-      dateStr:'June 2021 – February 2022',
-      bullets:[] },
-
-    { id:6, type:'emp',
-      label:'Teaching Fellow', title:'Teaching Fellow',
-      org:'University of Aberdeen', loc:'Aberdeen, Scotland',
-      start:yr(2021,12), end:yr(2022,5),
-      dateStr:'December 2021 – May 2022',
+      start:yr(2020,12), end:yr(2022,5),
+      dateStr:'December 2020 – May 2022',
       bullets:[] },
 
     { id:4, type:'emp',
@@ -563,27 +530,22 @@ hr.cv-tl-mdivider { border: none; border-top: 1px solid #2a2c2f; margin: 0.9rem 
 })();
 </script>
 <section class="cv-sections-grid">
-  <a href="./cv-employment.html" class="course-card" data-aos="fade-up" data-aos-delay="0">
+  <a href="./cv-employment.html" class="course-card">
     <h3 class="anchored">Employment</h3>
     <p>Work history across academia and statistical roles.</p>
   </a>
 
-  <a href="./cv-education.html" class="course-card" data-aos="fade-up" data-aos-delay="100">
+  <a href="./cv-education.html" class="course-card">
     <h3 class="anchored">Education</h3>
     <p>Formal degrees and institutions attended.</p>
   </a>
 
-  <a href="./cv-phd.html" class="course-card" data-aos="fade-up" data-aos-delay="200">
-    <h3 class="anchored">PhD Students</h3>
-    <p>Supervision roles and ongoing projects.</p>
-  </a>
-
-  <a href="./cv-awards.html" class="course-card" data-aos="fade-up" data-aos-delay="300">
+  <a href="./cv-awards.html" class="course-card">
     <h3 class="anchored">Awards &amp; Funding</h3>
     <p>Recognition and research funding received.</p>
   </a>
 
-  <a href="./cv-skills.html" class="course-card" data-aos="fade-up" data-aos-delay="400">
+  <a href="./cv-skills.html" class="course-card">
     <h3 class="anchored">Skills</h3>
     <p>Technical, statistical, and communication expertise.</p>
   </a>
@@ -826,6 +788,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">&nbsp;</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   var c = document.querySelector('.nav-footer-center');
