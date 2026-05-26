@@ -14,7 +14,7 @@ format:
 </div>
 ```
 
-This page covers the full pipeline for the camera trap monitoring project. It is written for students who will be deploying cameras, processing images, or analysing the resulting data. The 45 sites (CT_001 to CT_045) sit across north-east Scotland and are revisited each season during the summer, with each camera deployed for 14-day in each site.
+This page covers the full pipeline for the camera trap monitoring project. It is written for students who will be deploying cameras, processing images, or analysing the resulting data. The 45 sites (Site_001 to Site_045) sit across north-east Scotland and are revisited each season during the summer, with each camera deployed for 14-day in each site.
 
 The pipeline runs in three phases: field data collection, image processing, and data processing. Each is described below.
 
@@ -65,7 +65,7 @@ There are two forms:
 | Field                    | What to record                                                                                                                                         |
 |---------------|---------------------------------------------------------|
 | GPS location             | Recorded automatically: let it get a good fix before saving                                                                                            |
-| Site ID                  | Select from the dropdown (CT_001 to CT_045, or Deon_House)                                                                                             |
+| Site ID                  | Select from the dropdown (Site_001 to Site_045, or Deon_House)                                                                                             |
 | Name                     | Your name                                                                                                                                              |
 | Date of deployment       | Today's date                                                                                                                                           |
 | Camera set up            | Confirm the camera settings match the standard protocol: Trigger (passive infrared), 8MP, 30s delay, 4 images per trigger, Normal speed, date/time set |
@@ -116,29 +116,29 @@ All 45 sites are shown on the map below. Click a marker to see the site ID and c
   }).addTo(map);
 
   var sites = [
-    ["CT_001", 57.302115, -2.170037], ["CT_002", 57.302865, -2.163891],
-    ["CT_003", 57.299376, -2.16411],  ["CT_004", 57.292423, -2.156834],
-    ["CT_005", 57.292916, -2.16219],  ["CT_006", 57.35817,  -2.01788],
-    ["CT_007", 57.359752, -2.022286], ["CT_008", 57.36131,  -2.034476],
-    ["CT_009", 57.361891, -2.039425], ["CT_010", 57.361686, -2.043735],
-    ["CT_011", 57.353647, -2.067179], ["CT_012", 57.356048, -2.05984],
-    ["CT_013", 57.355389, -2.054751], ["CT_014", 57.361548, -2.052801],
-    ["CT_015", 57.362621, -2.061132], ["CT_016", 57.362299, -2.06309],
-    ["CT_017", 57.362239, -2.061249], ["CT_018", 57.098812, -2.92457],
-    ["CT_019", 57.096373, -2.923376], ["CT_020", 57.090778, -2.911365],
-    ["CT_021", 57.089235, -2.907415], ["CT_022", 57.088851, -2.903536],
-    ["CT_023", 57.087163, -2.906667], ["CT_024", 57.088208, -2.909903],
-    ["CT_025", 57.307495, -2.025525], ["CT_026", 57.352489, -1.945295],
-    ["CT_027", 57.328035, -2.002247], ["CT_028", 57.309965, -2.01641],
-    ["CT_029", 57.220973, -2.112795], ["CT_030", 57.226194, -2.114696],
-    ["CT_031", 57.217369, -2.085525], ["CT_032", 57.358544, -2.020795],
-    ["CT_033", 57.360971, -2.01433],  ["CT_034", 57.362745, -2.023346],
-    ["CT_035", 57.364279, -2.032264], ["CT_036", 57.291456, -2.174736],
-    ["CT_037", 57.295653, -2.164915], ["CT_038", 57.350863, -1.943568],
-    ["CT_039", 57.305083, -2.156403], ["CT_040", 57.303154, -2.159821],
-    ["CT_041", 57.21517,  -2.103174], ["CT_042", 57.204936, -2.090853],
-    ["CT_043", 57.218586, -2.089153], ["CT_044", 57.207607, -2.07155],
-    ["CT_045", 57.203316, -2.079293]
+    ["Site_001", 57.203316, -2.079293], ["Site_002", 57.207607, -2.07155],
+    ["Site_003", 57.218586, -2.089153], ["Site_004", 57.204936, -2.090853],
+    ["Site_005", 57.21517,  -2.103174], ["Site_006", 57.303154, -2.159821],
+    ["Site_007", 57.305083, -2.156403], ["Site_008", 57.350863, -1.943568],
+    ["Site_009", 57.295653, -2.164915], ["Site_010", 57.291456, -2.174736],
+    ["Site_011", 57.364279, -2.032264], ["Site_012", 57.362745, -2.023346],
+    ["Site_013", 57.360971, -2.01433],  ["Site_014", 57.358544, -2.020795],
+    ["Site_015", 57.217369, -2.085525], ["Site_016", 57.226194, -2.114696],
+    ["Site_017", 57.220973, -2.112795], ["Site_018", 57.309965, -2.01641],
+    ["Site_019", 57.328035, -2.002247], ["Site_020", 57.352489, -1.945295],
+    ["Site_021", 57.307495, -2.025525], ["Site_022", 57.088208, -2.909903],
+    ["Site_023", 57.087163, -2.906667], ["Site_024", 57.088851, -2.903536],
+    ["Site_025", 57.089235, -2.907415], ["Site_026", 57.090778, -2.911365],
+    ["Site_027", 57.096373, -2.923376], ["Site_028", 57.098812, -2.92457],
+    ["Site_029", 57.362239, -2.061249], ["Site_030", 57.362299, -2.06309],
+    ["Site_031", 57.362621, -2.061132], ["Site_032", 57.361548, -2.052801],
+    ["Site_033", 57.355389, -2.054751], ["Site_034", 57.356048, -2.05984],
+    ["Site_035", 57.353647, -2.067179], ["Site_036", 57.361686, -2.043735],
+    ["Site_037", 57.361891, -2.039425], ["Site_038", 57.36131,  -2.034476],
+    ["Site_039", 57.359752, -2.022286], ["Site_040", 57.35817,  -2.01788],
+    ["Site_041", 57.292916, -2.16219],  ["Site_042", 57.292423, -2.156834],
+    ["Site_043", 57.299376, -2.16411],  ["Site_044", 57.302865, -2.163891],
+    ["Site_045", 57.302115, -2.170037]
   ];
 
   sites.forEach(function(s) {
@@ -177,9 +177,9 @@ For example:
 
 ```         
 2025/
-├── CT_001/
-├── CT_002/
-└── CT_003/
+├── Site_001/
+├── Site_002/
+└── Site_003/
 ```
 
 Make sure the site folder exists transferring from the SD card.
@@ -302,9 +302,9 @@ A detection history for a single focal species looks something like this, with e
 
 | Station | Day 1 | Day 2 | Day 3 | ··· | Day 14 |
 |---------|-------|-------|-------|-----|--------|
-| CT_001  | 0     | 1     | 0     | ··· | 0      |
-| CT_002  | NA    | 0     | 0     | ··· | 1      |
-| CT_003  | 0     | 0     | 0     | ··· | 0      |
+| Site_001 | 0     | 1     | 0     | ··· | 0      |
+| Site_002 | NA    | 0     | 0     | ··· | 1      |
+| Site_003 | 0     | 0     | 0     | ··· | 0      |
 
 `1` means the species was detected on that day. `0` means the camera was operating but the species was not detected. `NA` means the camera was not operating, so that occasion contributes no information to the model.
 
@@ -321,7 +321,7 @@ Export both CSVs from the [Epicollect5 website](https://five.epicollect.net/proj
 | CSV        | Column                 | Contents                       |
 |------------|------------------------|--------------------------------|
 | Deployment | `ec5_uuid`             | Unique ID for the deployment   |
-| Deployment | `2_Site_ID`            | Site label (e.g. CT_001)       |
+| Deployment | `2_Site_ID`            | Site label (e.g. Site_001)     |
 | Deployment | `4_Date_of_deployment` | Start date                     |
 | Deployment | `lat_1_Location`       | Latitude                       |
 | Deployment | `long_1_Location`      | Longitude                      |
@@ -342,9 +342,9 @@ Once detection histories are generated, save outputs to a `Detection_histories/`
 
 ```         
 Year/
-├── CT_001/
+├── Site_001/
 │   └── ...
-├── CT_002/
+├── Site_002/
 │   └── ...
 └── Detection_histories/
     ├── classifications.csv
