@@ -14,6 +14,8 @@ project:
     - media/glm_binomial_illustration.png
     - favicon.svg
     - theses/**
+    - scripts/**
+    - media/sites/**
 
 website:
   title: "Deon Roos"
@@ -43,6 +45,8 @@ format:
     highlight-style: atom-one-dark
     code-fold: true
     toc: false
+    mermaid:
+      theme: dark
     include-in-header:
       - text: |
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">

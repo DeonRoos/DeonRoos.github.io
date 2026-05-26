@@ -14,7 +14,7 @@ format:
     <div class="home-items">
       <div class="home-item">
         <span class="home-item-label">Data</span>
-        <p class="home-item-text">Messy, real-world observations that rarely measure what you actually care about directly.</p>
+        <p class="home-item-text">Messy, real-world data: collected, scraped, or simulated, and rarely measuring what you actually care about directly.</p>
       </div>
       <div class="home-item">
         <span class="home-item-label">Fields</span>

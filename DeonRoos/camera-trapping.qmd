@@ -1,0 +1,388 @@
+---
+title: ""
+pagetitle: "Camera Trap Pipeline | Deon Roos"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+---
+
+```{=html}
+<div class="page-header">
+  <h1 class="page-header-title">Camera Trap Pipeline</h1>
+  <p class="page-header-intro">This page is intended as a sort of checklist/step-by-step guide to the camera trapping workflow: from deploying cameras in the field through to detection histories ready for occupancy modelling.</p>
+</div>
+```
+
+This page covers the full pipeline for the camera trap monitoring project. It is written for students who will be deploying cameras, processing images, or analysing the resulting data. The 45 sites (CT_001 to CT_045) sit across north-east Scotland and are revisited each season during the summer, with each camera deployed for 14-day in each site.
+
+The pipeline runs in three phases: field data collection, image processing, and data processing. Each is described below.
+
+------------------------------------------------------------------------
+
+## Pipeline Overview
+
+```{mermaid}
+%%{init: {'themeVariables': {'lineColor': '#00a68a', 'primaryBorderColor': '#00a68a'}}}%%
+flowchart LR
+  A([Deploy camera\nEpicollect5]) --> B([Retrieve camera\nEpicollect5])
+  B --> C([Copy images\nto laptop])
+  C --> D([Run AddaxAI\nDeepFaune v1.4])
+  D --> E([Delete human\nimages])
+  E --> F([Upload to\nOneDrive])
+  F --> G([Verify in\nShiny app])
+  G --> H([Create detection\histories])
+  H --> I([Upload outputs\nto OneDrive])
+```
+
+------------------------------------------------------------------------
+
+## Pre-fieldwork Checklist
+
+Download and complete the checklist before every deployment trip. Fieldwork cannot proceed without my (Deon) signature on the risk assessment and my acceptance of the calendar invite.
+
+```{=html}
+<a href="scripts/pre_fieldwork_checklist.docx" download style="display:inline-flex; align-items:center; gap:0.5rem; background:#2a2b2d; border:1px solid rgba(0,166,138,0.4); color:#00a68a; font-family:'Ubuntu',sans-serif; font-size:0.88rem; padding:0.55rem 1.2rem; border-radius:6px; text-decoration:none !important; transition:background 0.2s ease;">
+  <i class="fas fa-download" style="font-size:0.8rem;"></i>&nbsp; pre_fieldwork_checklist.docx
+</a>
+```
+
+------------------------------------------------------------------------
+
+## Phase 1: Field Data Collection
+
+### Epicollect5
+
+All deployment and retrieval data is recorded in the Epicollect5 project [**North East Scotland Camera Trapping**](https://five.epicollect.net/project/north-east-scotland-bat-surveys). Install the Epicollect5 app on your phone and confirm you have access to the project before heading out.
+
+There are two forms:
+
+-   Camera Trap Deployment: filled in when you put a camera up
+-   Retrieval: a child form filled in when you collect the camera, linked back to its deployment record
+
+#### Deployment form
+
+| Field                    | What to record                                                                                                                                         |
+|---------------|---------------------------------------------------------|
+| GPS location             | Recorded automatically: let it get a good fix before saving                                                                                            |
+| Site ID                  | Select from the dropdown (CT_001 to CT_045, or Deon_House)                                                                                             |
+| Name                     | Your name                                                                                                                                              |
+| Date of deployment       | Today's date                                                                                                                                           |
+| Camera set up            | Confirm the camera settings match the standard protocol: Trigger (passive infrared), 8MP, 30s delay, 4 images per trigger, Normal speed, date/time set |
+| Camera type              | Select from the dropdown (Browning BTC-8A or other model as labelled on the camera)                                                                    |
+| Camera ID                | The ID label on the camera body                                                                                                                        |
+| SD card size             | Select 8 GB, 16 GB, or 128 GB to match the card installed                                                                                              |
+| Dominant habitat         | Best match from the 10 habitat categories                                                                                                              |
+| Field of view            | 1-5 scale: 1 = heavily obstructed, 5 = clear and unobstructed                                                                                          |
+| Deployment issues        | Any problems, e.g. difficult placement, camera wouldn't trigger                                                                                        |
+| Photo of camera location | Take a photo showing the camera position in context                                                                                                    |
+
+::: callout-important
+**Set Site ID, Date, and Name correctly.** Epicollect5 builds the entry title from these three fields. If they are missing or wrong the record is nearly impossible to identify later without opening the full entry.
+:::
+
+::: callout-tip
+**Field of view scoring:** Stand at approximately the point where an animal would cross through the camera's frame. Score 5 means a clear, unobstructed view to at least 5 m. Score 1 means branches, tall grass, or other material obscures more than half the frame.
+:::
+
+#### Retrieval form
+
+The retrieval form is opened from within the existing deployment entry. Find the deployment in Epicollect5, open it, and add a child entry. This links the retrieval record to the correct deployment automatically.
+
+| Field             | What to record                                                                                             |
+|---------------|---------------------------------------------------------|
+| Date              | Today's date                                                                                               |
+| Camera status     | Functioning / Faulty / Missing                                                                             |
+| Deployment issues | None / Minor (data useable) / Major (data compromised): your assessment of data quality for the deployment |
+| Retrieval issues  | Any problems, e.g. battery failure, vandalism, camera moved                                                |
+| SD card removed?  | Confirm Yes before leaving the site                                                                        |
+
+------------------------------------------------------------------------
+
+### Site locations
+
+All 45 sites are shown on the map below. Click a marker to see the site ID and coordinates. A [shared Google My Maps](https://www.google.com/maps/d/u/0/edit?mid=1nqJzVEh3D5hh7D-ROS-JmX5Kg6DbrEU&ll=57.225520508163%2C-2.434068999999992&z=11) is also available for use in the field.
+
+```{=html}
+<div id="ct-map" style="height:480px; border-radius:8px; border:1px solid #333; margin:1rem 0 1.5rem;"></div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  var map = L.map('ct-map', { center: [57.26, -2.08], zoom: 9 });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+    maxZoom: 19
+  }).addTo(map);
+
+  var sites = [
+    ["CT_001", 57.302115, -2.170037], ["CT_002", 57.302865, -2.163891],
+    ["CT_003", 57.299376, -2.16411],  ["CT_004", 57.292423, -2.156834],
+    ["CT_005", 57.292916, -2.16219],  ["CT_006", 57.35817,  -2.01788],
+    ["CT_007", 57.359752, -2.022286], ["CT_008", 57.36131,  -2.034476],
+    ["CT_009", 57.361891, -2.039425], ["CT_010", 57.361686, -2.043735],
+    ["CT_011", 57.353647, -2.067179], ["CT_012", 57.356048, -2.05984],
+    ["CT_013", 57.355389, -2.054751], ["CT_014", 57.361548, -2.052801],
+    ["CT_015", 57.362621, -2.061132], ["CT_016", 57.362299, -2.06309],
+    ["CT_017", 57.362239, -2.061249], ["CT_018", 57.098812, -2.92457],
+    ["CT_019", 57.096373, -2.923376], ["CT_020", 57.090778, -2.911365],
+    ["CT_021", 57.089235, -2.907415], ["CT_022", 57.088851, -2.903536],
+    ["CT_023", 57.087163, -2.906667], ["CT_024", 57.088208, -2.909903],
+    ["CT_025", 57.307495, -2.025525], ["CT_026", 57.352489, -1.945295],
+    ["CT_027", 57.328035, -2.002247], ["CT_028", 57.309965, -2.01641],
+    ["CT_029", 57.220973, -2.112795], ["CT_030", 57.226194, -2.114696],
+    ["CT_031", 57.217369, -2.085525], ["CT_032", 57.358544, -2.020795],
+    ["CT_033", 57.360971, -2.01433],  ["CT_034", 57.362745, -2.023346],
+    ["CT_035", 57.364279, -2.032264], ["CT_036", 57.291456, -2.174736],
+    ["CT_037", 57.295653, -2.164915], ["CT_038", 57.350863, -1.943568],
+    ["CT_039", 57.305083, -2.156403], ["CT_040", 57.303154, -2.159821],
+    ["CT_041", 57.21517,  -2.103174], ["CT_042", 57.204936, -2.090853],
+    ["CT_043", 57.218586, -2.089153], ["CT_044", 57.207607, -2.07155],
+    ["CT_045", 57.203316, -2.079293]
+  ];
+
+  sites.forEach(function(s) {
+    var popup =
+      '<div style="min-width:180px;">' +
+      '<img src="media/sites/' + s[0] + '.jpg" ' +
+           'onerror="this.style.display=\'none\'" ' +
+           'style="width:100%;border-radius:4px;margin-bottom:6px;display:block;">' +
+      '<span style="font-family:monospace;font-size:13px;color:#00a68a;font-weight:700;">' + s[0] + '</span>' +
+      '<br><span style="font-size:11px;color:#888;">' + s[1].toFixed(5) + ', ' + s[2].toFixed(5) + '</span>' +
+      '</div>';
+    L.circleMarker([s[1], s[2]], {
+      radius: 7, color: '#00a68a', fillColor: '#00a68a',
+      fillOpacity: 0.75, weight: 1.5
+    }).bindPopup(popup, { maxWidth: 220 }).addTo(map);
+  });
+})();
+</script>
+```
+
+------------------------------------------------------------------------
+
+## Phase 2: Image Processing
+
+### Folder structure
+
+Before copying any images, create the correct folder structure on your local machine. All images for a season go into:
+
+```         
+Year/
+└── Site_ID/
+    └── [images]
+```
+
+For example:
+
+```         
+2025/
+├── CT_001/
+├── CT_002/
+└── CT_003/
+```
+
+Make sure the site folder exists transferring from the SD card.
+
+### Copying images from the SD card
+
+1.  Insert the SD card from the retrieved camera.
+2.  Copy all images into the correct `Year/Site_ID/` folder on your laptop.
+3.  Spot-check that files transferred correctly, open a few at random and confirm they are not corrupted.
+4.  Leave the images on the SD card. Delete them only once the full pipeline is complete and the images have been confirmed on OneDrive.
+
+### Running AddaxAI with DeepFaune v1.4
+
+[AddaxAI](https://addaxdatascience.com/addaxai/) is a local desktop application that runs species detection and classification on camera trap images. The project uses the **DeepFaune v1.4** model, which is trained on European mammals and birds. [Download AddaxAI](https://addaxdatascience.com/addaxai/)
+
+1.  Open AddaxAI.
+
+2.  Set the input folder to `Year/Site_ID/`.
+
+3.  Select the **DeepFaune v1.4** model.
+
+4.  In the species filter, enable only the following 18 categories and deselect everything else:
+
+    `badger` `beaver` `bird` `cat` `cow` `dog` `fallow deer` `fox` `hedgehog` `lagomorph` `micromammal` `mustelid` `otter` `red deer` `roe deer` `sheep` `squirrel` `wild boar`
+
+5.  Run the classifier.
+
+When it finishes, AddaxAI writes an Excel file into the folder. This file lists each image, its predicted species label, and the associated confidence score. Keep this file: it is uploaded to OneDrive alongside the images and is read by the Shiny app.
+
+::: callout-note
+AddaxAI runs entirely on your local machine. No images are sent to a server or any external service.
+:::
+
+### Handling human images
+
+AddaxAI flags images containing people as **Human**. Before uploading anything:
+
+1.  Open the AddaxAI Excel output and filter to rows where the prediction is `Human`.
+2.  Delete those image files from your local machine.
+3.  Do not upload human images to OneDrive or any shared storage.
+
+The Shiny app in Phase 3 also has a built-in confirmation modal for deleting any human images that were missed at this stage.
+
+------------------------------------------------------------------------
+
+## Phase 3: Verification and Analysis
+
+### Uploading to OneDrive
+
+Once human images have been removed, upload the remaining images and the AddaxAI Excel file to OneDrive. The OneDrive folder structure mirrors your local structure:
+
+```         
+Year/
+└── Site_ID/
+    ├── [species images]
+    └── addaxai_output.xlsx
+```
+
+Do not run any analysis scripts until the images are on OneDrive and you have verified them in the Shiny app.
+
+------------------------------------------------------------------------
+
+### Species verification: the Shiny app
+
+The Shiny app (`classify_app.R`) provides an interface for reviewing AddaxAI's predictions, correcting misclassifications, and exporting a clean classifications CSV for use in camtrapR.
+
+#### How to use it
+
+1.  Open RStudio and run `classify_app.R`.
+2.  Click **Browse** to select the image folder (`Year/Site_ID/`), then **Browse** again to select the AddaxAI `results.xlsx`. Click **Load**.
+3.  The app works label by label. Each AddaxAI label (e.g. "roe deer", "bird") is processed in sequence, with person detections handled first.
+4.  For each image, the species dropdown is pre-set to AddaxAI's suggestion. Confirm it, or select a different species, then click **Confirm**.
+5.  Select **Nothing present** if the detection was a false positive. This skips the image without writing anything to the output.
+6.  If the image contains a person, the delete button turns red. Click it to permanently remove the image from disk (GDPR compliance).
+7.  Once all images for a label are reviewed, click **Next label** to continue.
+8.  Repeat from step 2 for each site folder by clicking **Change folder**.
+
+Progress is saved to `classifications.csv` in the image folder after every confirmation. Reloading the same folder resumes where you left off.
+
+#### Species list
+
+The app uses a fixed species list. You can only assign one of these labels to each image.
+
+Several labels mirror DeepFaune's resolution rather than species-level identification: **Mustelid** covers stoat, weasel, pine marten, and mink; **Lagomorph** covers rabbit and brown hare; **Bird** covers all bird species. These can be refined in a later pass by cross-referencing the classifications CSV with the original images on OneDrive.
+
+| Deer        | Wild mammals | Domestic / other |
+|-------------|--------------|------------------|
+| Fallow deer | Badger       | Bird             |
+| Red deer    | Beaver       | Cat              |
+| Roe deer    | Fox          | Cow              |
+|             | Hedgehog     | Dog              |
+|             | Lagomorph    | Other mammal     |
+|             | Micromammal  | Sheep            |
+|             | Mustelid     | Vehicle          |
+|             | Otter        | Unknown          |
+|             | Squirrel     |                  |
+|             | Wild boar    |                  |
+
+::: callout-note
+**Human images are never written to the classifications CSV.** They are removed from disk via the deletion modal. This is intentional as the project does not retain any record of human presence in its data files.
+:::
+
+#### Download
+
+```{=html}
+<a href="scripts/classify_app.R" download style="display:inline-flex; align-items:center; gap:0.5rem; background:#2a2b2d; border:1px solid rgba(0,166,138,0.4); color:#00a68a; font-family:'Ubuntu',sans-serif; font-size:0.88rem; padding:0.55rem 1.2rem; border-radius:6px; text-decoration:none !important; transition:background 0.2s ease;">
+  <i class="fas fa-download" style="font-size:0.8rem;"></i>&nbsp; classify_app.R
+</a>
+```
+
+------------------------------------------------------------------------
+
+### From classifications to detection histories
+
+The classifier app produces `classifications.csv`; one row per image, with station, filename, datetime, species, count, and burst ID. The next task is to turn this into a **detection history**: the site-by-occasion matrix that occupancy models require.
+
+#### What you are aiming for
+
+A detection history for a single focal species looks something like this, with each row a station and each column a sampling occasion (typically one day):
+
+| Station | Day 1 | Day 2 | Day 3 | ··· | Day 14 |
+|---------|-------|-------|-------|-----|--------|
+| CT_001  | 0     | 1     | 0     | ··· | 0      |
+| CT_002  | NA    | 0     | 0     | ··· | 1      |
+| CT_003  | 0     | 0     | 0     | ··· | 0      |
+
+`1` means the species was detected on that day. `0` means the camera was operating but the species was not detected. `NA` means the camera was not operating, so that occasion contributes no information to the model.
+
+#### What you need
+
+To build the detection history you need three things:
+
+1.  `classifications.csv` from the classifier app
+2.  The **deployment CSV** exported from Epicollect5
+3.  The **retrieval CSV** exported from Epicollect5
+
+Export both CSVs from the [Epicollect5 website](https://five.epicollect.net/project/north-east-scotland-bat-surveys). The columns you will use to link deployment dates to detection records are:
+
+| CSV        | Column                 | Contents                       |
+|------------|------------------------|--------------------------------|
+| Deployment | `ec5_uuid`             | Unique ID for the deployment   |
+| Deployment | `2_Site_ID`            | Site label (e.g. CT_001)       |
+| Deployment | `4_Date_of_deployment` | Start date                     |
+| Deployment | `lat_1_Location`       | Latitude                       |
+| Deployment | `long_1_Location`      | Longitude                      |
+| Retrieval  | `ec5_parent_uuid`      | Links back to the deployment   |
+| Retrieval  | `13_Date`              | Retrieval date                 |
+| Retrieval  | `14_Camera_status`     | Camera condition at collection |
+| Retrieval  | `16_Retrieval_issues`  | Free-text retrieval notes      |
+
+#### Building it in R
+
+The **camtrapR** package is designed for this. The two key functions are `cameraOperation()`, which builds an effort matrix from deployment and retrieval dates, and `detectionHistory()`, which maps detection records onto that matrix to produce the site-by-occasion output. Package documentation and worked vignettes are at [cran.r-project.org/package=camtrapR](https://cran.r-project.org/package=camtrapR).
+
+------------------------------------------------------------------------
+
+### Uploading final outputs to OneDrive
+
+Once detection histories are generated, save outputs to a `Detection_histories/` subfolder under the year:
+
+```         
+Year/
+├── CT_001/
+│   └── ...
+├── CT_002/
+│   └── ...
+└── Detection_histories/
+    ├── classifications.csv
+    ├── record_table.csv
+    ├── <Species>_detection_history.csv
+    └── <Species>_effort.csv
+```
+
+------------------------------------------------------------------------
+
+## Quick-reference checklist
+
+```{=html}
+<div style="background:#2a2b2d; border-left:3px solid #00a68a; border-radius:0 8px 8px 0; padding:1.2rem 1.8rem; max-width:620px; font-family:'Ubuntu',sans-serif; font-size:0.88rem; color:#b8b8b8; margin:1rem 0 2rem;">
+  <p style="color:#00a68a; font-weight:700; margin:0 0 1rem; font-family:'Raleway',sans-serif; font-size:0.95rem; letter-spacing:0.04em;">Full pipeline checklist</p>
+
+  <p style="color:#cccccc; font-weight:600; margin:0 0 0.4rem;">Field</p>
+  <ul style="margin:0 0 1rem; padding-left:1.3rem; line-height:1.8;">
+    <li>Complete risk assessment (HS014) and send calendar invite (HS022) before departure</li>
+    <li>Record deployment in Epicollect5 (Camera Trap Deployment form)</li>
+    <li>Record retrieval in Epicollect5 (Retrieval child form, linked to the deployment)</li>
+  </ul>
+
+  <p style="color:#cccccc; font-weight:600; margin:0 0 0.4rem;">Processing</p>
+  <ul style="margin:0 0 1rem; padding-left:1.3rem; line-height:1.8;">
+    <li>Copy images to <code style="color:#00a68a; background:#202123; padding:1px 4px; border-radius:3px;">Year/Site_ID/</code> on laptop</li>
+    <li>Run AddaxAI with DeepFaune v1.4</li>
+    <li>Delete human images from local machine</li>
+    <li>Upload images and AddaxAI Excel to OneDrive</li>
+    <li>Delete images from SD card only after pipeline is complete and images are confirmed on OneDrive</li>
+  </ul>
+
+  <p style="color:#cccccc; font-weight:600; margin:0 0 0.4rem;">Analysis</p>
+  <ul style="margin:0; padding-left:1.3rem; line-height:1.8;">
+    <li>Run Shiny app: verify predictions, export classifications CSV</li>
+    <li>Export Epicollect5 deployment and retrieval CSVs</li>
+    <li>Build detection histories using camtrapR</li>
+    <li>Upload classifications CSV and detection histories to OneDrive</li>
+  </ul>
+</div>
+```

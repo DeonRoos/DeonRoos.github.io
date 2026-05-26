@@ -32,6 +32,7 @@ format: html
         <span class="skill-chip">Causal Inference</span>
       </div>
       <a href="bi3010.html" class="course-link">Course details →</a>
+      <a href="https://deonroos.github.io/stats-for-biologists/" class="course-link" target="_blank">Workshop materials →</a>
     </div>
   </div>
 

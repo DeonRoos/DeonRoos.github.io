@@ -1465,3 +1465,34 @@ a.course-card:focus {
 }
 a.course-card h3 { color: #00a68a; }
 a.course-card p  { color: #cccccc; }
+
+/* ── Callout boxes — dark theme override ─────────────────── */
+div.callout {
+  background: #2a2b2d !important;
+  border-radius: 6px !important;
+  border: 1px solid #333 !important;
+  margin: 1.2rem 0 !important;
+}
+div.callout-important { border-left: 4px solid #c0392b !important; }
+div.callout-warning   { border-left: 4px solid #e67e22 !important; }
+div.callout-tip       { border-left: 4px solid #00a68a !important; }
+div.callout-note      { border-left: 4px solid #3498db !important; }
+
+div.callout .callout-header {
+  background: transparent !important;
+  padding: 0.55rem 0.9rem 0 !important;
+}
+div.callout-important .callout-title { color: #e07070 !important; font-size: 0.8rem !important; font-weight: 700 !important; letter-spacing: 0.06em; text-transform: uppercase; }
+div.callout-warning   .callout-title { color: #e67e22 !important; font-size: 0.8rem !important; font-weight: 700 !important; letter-spacing: 0.06em; text-transform: uppercase; }
+div.callout-tip       .callout-title { color: #00a68a !important; font-size: 0.8rem !important; font-weight: 700 !important; letter-spacing: 0.06em; text-transform: uppercase; }
+div.callout-note      .callout-title { color: #5dade2 !important; font-size: 0.8rem !important; font-weight: 700 !important; letter-spacing: 0.06em; text-transform: uppercase; }
+
+div.callout .callout-body,
+div.callout .callout-body-container { background: transparent !important; padding: 0.5rem 0.9rem 0.7rem !important; }
+div.callout .callout-body p,
+div.callout .callout-body-container p { color: #b8b8b8 !important; font-size: 0.9rem !important; margin: 0 !important; }
+div.callout .callout-body strong,
+div.callout .callout-body-container strong { color: #cccccc !important; }
+
+/* Hide callout icons */
+div.callout .callout-icon-container { display: none !important; }

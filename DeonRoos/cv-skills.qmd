@@ -43,10 +43,21 @@ format: html
   </div>
 
   <div class="skills-group">
-    <div class="skills-group-label">Text Analysis</div>
+    <div class="skills-group-label">NLP &amp; Text Analysis</div>
     <div class="skills-chips">
       <span class="skill-chip">Structural topic models</span>
       <span class="skill-chip">Natural language processing</span>
+    </div>
+  </div>
+
+  <div class="skills-group">
+    <div class="skills-group-label">Data Infrastructure</div>
+    <div class="skills-chips">
+      <span class="skill-chip">Production Shiny deployment</span>
+      <span class="skill-chip">Automated data pipelines (R)</span>
+      <span class="skill-chip">Scheduled task automation</span>
+      <span class="skill-chip">SQLite data storage</span>
+      <span class="skill-chip">AWS EC2</span>
     </div>
   </div>
 
