@@ -70,13 +70,6 @@
     "text": "Models & Concepts\n\n\n  \n    \n      \n    \n    \n      Introduction to GLMs\n      Course materials covering the theory and application of Generalised Linear Models, from model structure through to interpretation. Part of the PGR course series.\n    \n  \n\n  \n    \n      \n    \n    \n      Bayesian Occupancy Models\n      A walkthrough of occupancy modelling for ecologists working with presence/absence data where detection is imperfect. Covers the theory and implementation in R.\n    \n  \n\n  \n    \n      \n    \n    \n      Structural Topic Models\n      A detailed explainer covering the theory and R implementation of Structural Topic Models for text analysis. Written to be accessible to researchers without a machine learning background.\n    \n  \n\n  \n    \n      \n    \n    \n      Robust Design Mark-Recapture\n      An introduction to robust design mark-recapture for estimating population size and demographic parameters from capture history data."
   },
   {
-    "objectID": "explainers.html#applied-data-products",
-    "href": "explainers.html#applied-data-products",
-    "title": "Explainers",
-    "section": "Applied Data Products",
-    "text": "Applied Data Products\n\n\n  \n    \n      \n    \n    \n      Predicting House Prices\n      A production Shiny application backed by an automated data pipeline. Property listings are scraped on a scheduled basis, cleaned, and stored in a SQLite database. The application serves live predictions from a fitted regression model without re-querying the source on demand. Built to give students a locally relevant end-to-end modelling example, from raw data ingestion through to a live interactive front-end."
-  },
-  {
     "objectID": "explainers.html#research-protocols",
     "href": "explainers.html#research-protocols",
     "title": "Explainers",
@@ -88,7 +81,7 @@
     "href": "explainers.html#teaching-aids",
     "title": "Explainers",
     "section": "Teaching Aids",
-    "text": "Teaching Aids\n\n\n  \n    \n      \n    \n    \n      Statistical Distributions\n      An interactive explorer for common statistical distributions with adjustable parameters, built to help students build intuition for how distributions behave.\n    \n  \n\n  \n    \n      \n    \n    \n      Predicting Rent Prices\n      A companion app to BI3010 for exploring rent price prediction, giving students a second worked example to consolidate their understanding of regression."
+    "text": "Teaching Aids\n\n\n  \n    \n      \n    \n    \n      Statistical Distributions\n      An interactive explorer for common statistical distributions with adjustable parameters, built to help students build intuition for how distributions behave."
   },
   {
     "objectID": "cv-skills.html",
