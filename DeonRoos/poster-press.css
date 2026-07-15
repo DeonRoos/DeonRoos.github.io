@@ -824,6 +824,18 @@ a { color: inherit; text-decoration: none; }
   padding: 1px 5px;
   border: 1px solid var(--ink-rule-2);
 }
+/* Inline code specifically. Bootstrap ships
+   `p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode)`
+   with a light-grey background at specificity (0,1,2), which outranks the rule
+   above (0,1,1) — leaving amber text on near-white. This wins at (0,2,2), and
+   the `:not(pre) >` keeps it away from code inside blocks. */
+.page-layout-article :not(pre) > code:not(.sourceCode) {
+  color: var(--amber);
+  background: var(--ink-2);
+  border: 1px solid var(--ink-rule-2);
+  border-radius: 0;
+  padding: 1px 5px;
+}
 .page-layout-article pre {
   background: var(--ink-2) !important;
   border: 1px solid var(--ink-rule);
@@ -840,6 +852,11 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.6;
 }
 .page-layout-article div.sourceCode { background: none !important; border: none; margin: 1.4em 0; }
+/* atom-one-dark's comment grey (#5c6370) is only 3.05:1 on ink — below AA,
+   and this is a teaching page full of commented code. Warm muted instead. */
+.page-layout-article pre code span.co,
+.page-layout-article pre code span.cm,
+.page-layout-article pre code span.do { color: var(--ink-muted); font-style: italic; }
 .page-layout-article .cell-output pre,
 .page-layout-article .cell-output-stdout pre {
   border-left: 2px solid var(--ink-rule);
