@@ -1,0 +1,247 @@
+<footer class="pp-footer">
+  <div class="pp-footer__inner">
+    <span class="pp-footer__name">Deon Roos &middot; University of Aberdeen</span>
+    <div class="pp-footer__links">
+      <a href="mailto:deon.roos4@abdn.ac.uk" class="pp-footer__link">Email</a>
+      <a href="https://orcid.org/0000-0003-4866-7472" target="_blank" rel="noopener" class="pp-footer__link">ORCID &#8599;</a>
+      <a href="https://github.com/DeonRoos" target="_blank" rel="noopener" class="pp-footer__link">GitHub &#8599;</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  /* ---------- Publications: expand / collapse earlier work ---------- */
+  function initPubToggle() {
+    var btn = document.getElementById('pubs-toggle');
+    var older = document.getElementById('pubs-older');
+    if (!btn || !older) return;
+    btn.addEventListener('click', function () {
+      var open = older.style.display !== 'none';
+      older.style.display = open ? 'none' : 'block';
+      var sign = btn.querySelector('[data-sign]');
+      var label = btn.querySelector('[data-label]');
+      if (sign) sign.textContent = open ? '+' : '−';
+      if (label) label.textContent = open ? btn.getAttribute('data-label-show') : 'Hide earlier work';
+    });
+  }
+
+  /* ---------- Hero: travelling waves over an fBm habitat ----------
+     Port of TW_animation.R. Three sources emit waves whose speed depends
+     on an underlying habitat layer z:
+
+       zeta_j = b0 + b1 * z
+       D_j    = -sqrt((xj - x)^2 + (yj - y)^2)
+       rho_j  = t + (1 / zeta_j) * D_j
+       mu     = (2 + sin r0)^2 - (2 - sin r1)^2 + (1.5 + sin r2) * sin(0.7 r2)
+
+     D_j and zeta_j are independent of t, so c_j = D_j / zeta_j is
+     precomputed per cell and each frame only needs sin(t + c_j).
+  ------------------------------------------------------------------ */
+  var CELL = 7;                 // tile size in CSS px
+  var SPEED = 1.6;              // radians of t per second
+  var SEED = 1988;
+  var SOURCES = [               // positions as fractions of the field
+    { fx: 0.25, fy: 0.60, b0: 0.4, b1: 5 },
+    { fx: 0.40, fy: 0.15, b0: 0.3, b1: 6 },
+    { fx: 0.78, fy: 0.48, b0: 0.4, b1: 4 }
+  ];
+  // ink -> amber-deep -> amber, matching the Poster Press ramp
+  var STOPS = [[0, 27, 27, 20], [0.55, 109, 85, 24], [1, 209, 149, 39]];
+
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function makeLattice(rand, gw, gh) {
+    var g = new Float32Array((gw + 1) * (gh + 1));
+    for (var i = 0; i < g.length; i++) g[i] = rand();
+    return function (x, y) {
+      var x0 = Math.floor(x), y0 = Math.floor(y);
+      var fx = x - x0, fy = y - y0;
+      if (x0 >= gw) { x0 = gw - 1; fx = 1; }
+      if (y0 >= gh) { y0 = gh - 1; fy = 1; }
+      if (x0 < 0) { x0 = 0; fx = 0; }
+      if (y0 < 0) { y0 = 0; fy = 0; }
+      var sx = fx * fx * (3 - 2 * fx), sy = fy * fy * (3 - 2 * fy);
+      var i00 = y0 * (gw + 1) + x0, i10 = i00 + 1;
+      var i01 = i00 + (gw + 1), i11 = i01 + 1;
+      var a = g[i00] + (g[i10] - g[i00]) * sx;
+      var b = g[i01] + (g[i11] - g[i01]) * sx;
+      return a + (b - a) * sy;
+    };
+  }
+
+  // fractional Brownian motion: summed octaves of value noise
+  function makeHabitat(cols, rows, seed) {
+    var rand = mulberry32(seed);
+    var z = new Float32Array(cols * rows);
+    var amp = 1, baseGX = 3, octaves = 5;
+    for (var o = 0; o < octaves; o++) {
+      var gx = baseGX * Math.pow(2, o);
+      var gy = Math.max(1, Math.round(gx * rows / cols));
+      var n = makeLattice(rand, gx, gy);
+      for (var j = 0; j < rows; j++) {
+        for (var i = 0; i < cols; i++) {
+          z[j * cols + i] += amp * n(i / (cols - 1) * gx, j / (rows - 1) * gy);
+        }
+      }
+      amp *= 0.5;
+    }
+    var mn = Infinity, mx = -Infinity, k;
+    for (k = 0; k < z.length; k++) { if (z[k] < mn) mn = z[k]; if (z[k] > mx) mx = z[k]; }
+    var span = (mx - mn) || 1;
+    for (k = 0; k < z.length; k++) z[k] = (z[k] - mn) / span;
+    return z;
+  }
+
+  function buildLut() {
+    var lut = new Uint8Array(256 * 3);
+    for (var i = 0; i < 256; i++) {
+      var t = i / 255, s = 0;
+      while (s < STOPS.length - 2 && t > STOPS[s + 1][0]) s++;
+      var a = STOPS[s], b = STOPS[s + 1];
+      var u = (t - a[0]) / ((b[0] - a[0]) || 1);
+      if (u < 0) u = 0; if (u > 1) u = 1;
+      lut[i * 3] = a[1] + (b[1] - a[1]) * u;
+      lut[i * 3 + 1] = a[2] + (b[2] - a[2]) * u;
+      lut[i * 3 + 2] = a[3] + (b[3] - a[3]) * u;
+    }
+    return lut;
+  }
+
+  function initWave() {
+    var cv = document.getElementById('pp-wave');
+    if (!cv || !cv.getContext) return;
+    var ctx = cv.getContext('2d');
+    var off = document.createElement('canvas');
+    var offCtx = off.getContext('2d');
+    var lut = buildLut();
+    var cols = 0, rows = 0, c0, c1, c2, img, muMin = 0, muMax = 1;
+    var ready = false, visible = true, raf = null, lastW = -1, lastH = -1;
+
+    function muAt(t, k) {
+      var s0 = Math.sin(t + c0[k]);
+      var s1 = Math.sin(t + c1[k]);
+      var r2 = t + c2[k];
+      var s2 = Math.sin(r2);
+      return (2 + s0) * (2 + s0) - (2 - s1) * (2 - s1) + (1.5 + s2) * Math.sin(0.7 * r2);
+    }
+
+    function build() {
+      var w = cv.clientWidth, h = cv.clientHeight;
+      if (!w || !h) return false;
+      if (w === lastW && h === lastH) return ready;
+      lastW = w; lastH = h;
+
+      cols = Math.max(8, Math.round(w / CELL));
+      rows = Math.max(8, Math.round(h / CELL));
+      off.width = cols; off.height = rows;
+      img = offCtx.createImageData(cols, rows);
+
+      var z = makeHabitat(cols, rows, SEED);
+      var n = cols * rows, arrs = [new Float32Array(n), new Float32Array(n), new Float32Array(n)];
+      for (var s = 0; s < 3; s++) {
+        var S = SOURCES[s], sx = S.fx * (cols - 1), sy = S.fy * (rows - 1), arr = arrs[s];
+        for (var j = 0; j < rows; j++) {
+          for (var i = 0; i < cols; i++) {
+            var k = j * cols + i;
+            var dx = sx - i, dy = sy - j;
+            var d = -Math.sqrt(dx * dx + dy * dy);
+            arr[k] = d / (S.b0 + S.b1 * z[k]);
+          }
+        }
+      }
+      c0 = arrs[0]; c1 = arrs[1]; c2 = arrs[2];
+
+      // fix the colour scale once, across a few phases (gganimate scales globally)
+      muMin = Infinity; muMax = -Infinity;
+      for (var ti = 0; ti < 4; ti++) {
+        var t = ti * 1.7;
+        for (var k2 = 0; k2 < n; k2++) {
+          var m = muAt(t, k2);
+          if (m < muMin) muMin = m;
+          if (m > muMax) muMax = m;
+        }
+      }
+
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cv.width = Math.max(1, Math.round(w * dpr));
+      cv.height = Math.max(1, Math.round(h * dpr));
+      ready = true;
+      return true;
+    }
+
+    function draw(t) {
+      if (!ready) return;
+      var d = img.data, n = cols * rows, span = (muMax - muMin) || 1;
+      for (var k = 0; k < n; k++) {
+        var v = (muAt(t, k) - muMin) / span;
+        v = v < 0 ? 0 : (v > 1 ? 1 : v);
+        var p = ((v * 255) | 0) * 3, o = k * 4;
+        d[o] = lut[p]; d[o + 1] = lut[p + 1]; d[o + 2] = lut[p + 2]; d[o + 3] = 255;
+      }
+      offCtx.putImageData(img, 0, 0);
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(off, 0, 0, cv.width, cv.height);
+    }
+
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var start = null;
+    function frame(ts) {
+      raf = null;
+      if (start === null) start = ts;
+      draw(((ts - start) / 1000) * SPEED);
+      if (visible && !reduce) raf = requestAnimationFrame(frame);
+    }
+    function play() {
+      if (raf === null && visible && !reduce && ready) raf = requestAnimationFrame(frame);
+    }
+
+    // The canvas has no layout size until the page is actually rendered, which
+    // never happens while the tab is in the background. Keep retrying rather
+    // than giving up, or a background-tab load leaves the hero blank forever.
+    function tryStart() {
+      if (!build()) return false;
+      draw(0);
+      play();
+      return true;
+    }
+
+    var io = null;
+    if ('IntersectionObserver' in window) {
+      io = new IntersectionObserver(function (entries) {
+        visible = entries[0].isIntersecting;
+        if (visible) play();
+        else if (raf !== null) { cancelAnimationFrame(raf); raf = null; }
+      }, { threshold: 0 });
+      io.observe(cv);
+    }
+
+    if (!tryStart()) {
+      var tries = 0;
+      var iv = setInterval(function () {
+        if (tryStart() || ++tries > 80) clearInterval(iv);
+      }, 250);
+    }
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) tryStart();
+    });
+
+    var rt = null;
+    window.addEventListener('resize', function () {
+      clearTimeout(rt);
+      rt = setTimeout(function () { if (build()) draw(0); }, 200);
+    });
+  }
+
+  function init() { initPubToggle(); initWave(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>

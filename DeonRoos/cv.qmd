@@ -1,445 +1,243 @@
 ---
 title: ""
-pagetitle: "CV | Deon Roos"
+pagetitle: "CV"
 format:
   html:
-    toc: false
+    page-layout: custom
 ---
 
-
 ```{=html}
-<style>
-/* ── Timeline card ─────────────────────────────────── */
-.cv-timeline-card {
-  background: #2a2b2d;
-  border-radius: 12px;
-  padding: 1.75rem 1.5rem 1.5rem;
-  margin-bottom: 2rem;
-  border: 1px solid #3a3b3d;
-}
-.cv-tl-heading {
-  color: #aaa;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin: 0 0 1.4rem;
-}
-/* ── Scroll wrapper ─────────────────────────────────── */
-.cv-tl-scroll { overflow-x: auto; padding-bottom: 0.5rem; }
-.cv-tl-inner  { min-width: 700px; }
-
-/* ── Rows ───────────────────────────────────────────── */
-.cv-tl-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 3px;
-}
-.cv-tl-row-label {
-  width: 88px;
-  flex-shrink: 0;
-  font-size: 0.62rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #555;
-  text-align: right;
-  padding-right: 14px;
-  user-select: none;
-}
-
-/* ── Bar track ──────────────────────────────────────── */
-.cv-tl-track {
-  flex: 1;
-  position: relative;
-}
-
-/* ── Bars ───────────────────────────────────────────── */
-.cv-tl-bar {
-  position: absolute;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  font-weight: 600;
-  color: rgba(255,255,255,0.9);
-  white-space: nowrap;
-  box-sizing: border-box;
-  transition: filter 0.15s ease, transform 0.15s ease;
-}
-.cv-tl-bar:hover {
-  filter: brightness(1.22);
-  transform: scaleY(1.08);
-  z-index: 5;
-}
-.cv-tl-bar-text  { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-.cv-tl-bar-arrow { flex-shrink: 0; margin-left: 5px; opacity: 0.7; }
-
-.cv-tl-bar-edu  { background: #a06a0c; }
-.cv-tl-bar-emp  { background: #00a68a; }
-.cv-tl-bar-pres { background: linear-gradient(to right, #00a68a 70%, #006e5c); }
-
-/* ── Axis ───────────────────────────────────────────── */
-.cv-tl-axis-row { margin: 1px 0 1px; }
-.cv-tl-axis-track {
-  flex: 1;
-  position: relative;
-  height: 28px;
-}
-.cv-tl-axis-line {
-  position: absolute;
-  top: 50%;
-  left: 0; right: 0;
-  height: 1px;
-  background: #404244;
-  transform: translateY(-50%);
-}
-.cv-tl-tick {
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.cv-tl-tick-mark { width: 1px; height: 8px; background: #484a4d; }
-.cv-tl-tick-lbl  { font-size: 0.58rem; color: #555; margin-top: 2px; white-space: nowrap; }
-.cv-tl-tick-now .cv-tl-tick-mark { background: #00a68a; height: 10px; }
-.cv-tl-tick-now .cv-tl-tick-lbl  { color: #00a68a; font-weight: 700; }
-
-/* ── Modal backdrop ─────────────────────────────────── */
-.cv-tl-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.62);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(3px);
-}
-/* ── Modal box ──────────────────────────────────────── */
-.cv-tl-modal {
-  background: #1e1f21;
-  border-radius: 14px;
-  padding: 1.75rem 2rem 1.5rem;
-  max-width: 420px;
-  width: 90vw;
-  position: relative;
-  border: 1px solid #333;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.65);
-  animation: cvTlIn 0.18s ease;
-}
-@keyframes cvTlIn {
-  from { opacity:0; transform: scale(0.93) translateY(10px); }
-  to   { opacity:1; transform: scale(1)    translateY(0);    }
-}
-.cv-tl-mclose {
-  position: absolute;
-  top: 0.9rem; right: 0.9rem;
-  background: none; border: none;
-  color: #555; font-size: 1.4rem;
-  cursor: pointer; line-height: 1;
-  padding: 3px 7px; border-radius: 4px;
-  transition: color 0.15s, background 0.15s;
-}
-.cv-tl-mclose:hover { color: #ccc; background: #2a2b2d; }
-
-/* ── Modal content ──────────────────────────────────── */
-.cv-tl-badge {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 20px;
-  font-size: 0.62rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.7rem;
-}
-.cv-tl-badge-edu {
-  background: rgba(160,106,12,0.2);
-  color: #c48010;
-  border: 1px solid rgba(160,106,12,0.38);
-}
-.cv-tl-badge-emp {
-  background: rgba(0,166,138,0.15);
-  color: #00a68a;
-  border: 1px solid rgba(0,166,138,0.3);
-}
-.cv-tl-modal h3 {
-  color: #f0f0f0; font-size: 1.08rem; font-weight: 700;
-  margin: 0 0 0.25rem; line-height: 1.3;
-}
-.cv-tl-morg   { color: #888; font-size: 0.8rem; margin-bottom: 0.2rem; }
-.cv-tl-mdates { color: #555; font-size: 0.76rem; font-style: italic; }
-hr.cv-tl-mdivider { border: none; border-top: 1px solid #2a2c2f; margin: 0.9rem 0; }
-.cv-tl-mbullets {
-  list-style: none; padding: 0; margin: 0;
-}
-.cv-tl-mbullets li {
-  padding: 0.35rem 0 0.35rem 1.1rem;
-  position: relative;
-  color: #b8b8b8;
-  font-size: 0.82rem;
-  line-height: 1.55;
-}
-.cv-tl-mbullets li + li { border-top: 1px solid #282929; }
-.cv-tl-mbullets li::before {
-  content: '';
-  position: absolute; left: 0; top: 0.72rem;
-  width: 5px; height: 5px; border-radius: 50%;
-}
-.cv-tl-mbullets-edu li::before { background: #a06a0c; }
-.cv-tl-mbullets a { color: #00a68a; text-decoration: none; }
-.cv-tl-mbullets a:hover { text-decoration: underline; }
-</style>
-
-<div class="cv-timeline-card">
-  <p class="cv-tl-heading">Career at a Glance</p>
-  <div class="cv-tl-scroll">
-    <div class="cv-tl-inner" id="cvTlInner"></div>
+<!-- ============ HEADER (ink) ============ -->
+<section class="band band--ink">
+  <div class="band__inner">
+    <div class="eyebrow">Curriculum Vitae</div>
+    <h1 class="pp-display pp-display--xl" style="color:var(--cream);margin:18px 0 0;">Deon Roos</h1>
+    <p class="lead-serif" style="font-size:clamp(17px,2.1vw,23px);color:var(--cream-body);margin:20px 0 0;max-width:46ch;">Lecturer in Applied Statistics, University of Aberdeen. Zoology to ecology to applied statistics, by way of a lot of messy data.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;">
+      <a href="mailto:deon.roos4@abdn.ac.uk" class="btn btn--solid">Email me</a>
+      <a href="https://orcid.org/0000-0003-4866-7472" target="_blank" rel="noopener" class="btn btn--ghost">ORCID &#8599;</a>
+    </div>
   </div>
-</div>
+</section>
 
-<script>
-(function () {
-  var VS = 2012.0;
-  var VE = 2026 + 3 / 12;  /* ~Apr 2026 */
-  var SP = VE - VS;
+<!-- ============ 01 EMPLOYMENT (oat) ============ -->
+<section class="band band--oat">
+  <div class="band__inner">
+    <div class="sec-head">
+      <span class="sec-head__num">01</span>
+      <span class="sec-head__label">Employment</span>
+    </div>
 
-  function yr(y, m) { return y + (m - 1) / 12; }
-  function pct(d)   { return ((d - VS) / SP * 100).toFixed(3); }
-  function wpct(s, e) { return ((e - s) / SP * 100).toFixed(3); }
+    <div class="cv-block cv-block--first">
+      <div class="cv-block__meta">
+        <div>
+          <div class="cv-block__role">Lecturer in Applied Statistics</div>
+          <div class="cv-block__org">University of Aberdeen &middot; Aberdeen, Scotland</div>
+        </div>
+        <span class="cv-block__date">Jan 2024 &ndash; Present</span>
+      </div>
+      <ul class="cv-bullets">
+        <li>Leading and collaborating on interdisciplinary research in applied statistics with real-world impact.</li>
+        <li>Teaching statistical theory and methods across undergraduate to PhD levels.</li>
+        <li>Assisting research projects through the application of collaborator-specified statistical approaches.</li>
+      </ul>
+    </div>
 
-  /* ── Data ─────────────────────────────────────────── */
-  var items = [
-    /* Education */
-    { id:0, type:'edu',
-      label:'BSc Zoology', title:'BSc (Hons) Zoology',
-      org:'University of Aberdeen', loc:'Aberdeen, Scotland',
-      start:yr(2012,9), end:yr(2016,6),
-      dateStr:'September 2012 – June 2016',
-      bullets:['Thesis: <a href="./theses/DeonRoos_2015.pdf" target="_blank">Water vole ecosystem engineering</a>.'] },
+    <div class="cv-block">
+      <div class="cv-block__meta">
+        <div>
+          <div class="cv-block__role">Senior Statistical Ecologist</div>
+          <div class="cv-block__org">Animal &amp; Plant Health Agency &middot; Sand Hutton, England</div>
+        </div>
+        <span class="cv-block__date">May 2022 &ndash; Jan 2024</span>
+      </div>
+      <ul class="cv-bullets">
+        <li>Developed bespoke statistical pipelines for policy-driven research, translating model outputs into recommendations for non-specialist stakeholders across government.</li>
+        <li>Ran computationally intensive model jobs on AWS EC2 within a secure government data environment.</li>
+        <li>Mentored analysts across multidisciplinary teams and led statistical direction on projects spanning ecology, disease surveillance, and regulatory policy.</li>
+      </ul>
+    </div>
 
-    { id:1, type:'edu',
-      label:'PhD Ecology', title:'PhD Ecology',
-      org:'University of Aberdeen', loc:'Aberdeen, Scotland',
-      start:yr(2016,9), end:yr(2021,6),
-      dateStr:'September 2016 – June 2021',
-      bullets:['Publications: <a href="https://doi.org/10.1016/j.agee.2018.11.013" target="_blank">Roos et al. (2019)</a> and <a href="https://doi.org/10.1111/ele.14074" target="_blank">Roos et al. (2022)</a>.'] },
+    <div class="cv-block">
+      <div class="cv-block__meta">
+        <div>
+          <div class="cv-block__role">Teaching Fellow</div>
+          <div class="cv-block__org">University of Aberdeen &middot; Aberdeen, Scotland</div>
+        </div>
+        <span class="cv-block__date">Dec 2021 &ndash; May 2022</span>
+      </div>
+      <ul class="cv-bullets">
+        <li>Coordinated and delivered a highly rated, fully online undergraduate statistics course with strong student engagement.</li>
+      </ul>
+    </div>
 
-    /* Employment */
-    { id:2, type:'emp',
-      label:'Research & Teaching', title:'Research & Teaching Fellow',
-      org:'University of Aberdeen', loc:'Aberdeen, Scotland',
-      start:yr(2020,12), end:yr(2022,5),
-      dateStr:'December 2020 – May 2022',
-      bullets:[] },
+    <div class="cv-block">
+      <div class="cv-block__meta">
+        <div>
+          <div class="cv-block__role">Research Fellow</div>
+          <div class="cv-block__org">University of Aberdeen &middot; Aberdeen, Scotland</div>
+        </div>
+        <span class="cv-block__date">Jun 2021 &ndash; Feb 2022</span>
+      </div>
+      <ul class="cv-bullets">
+        <li>Conducted international ecological research, including study design and simulation modelling for species management.</li>
+      </ul>
+    </div>
 
-    { id:4, type:'emp',
-      label:'Sr. Stat. Ecologist', title:'Senior Statistical Ecologist',
-      org:'Animal & Plant Health Agency', loc:'Sand Hutton, England',
-      start:yr(2022,5), end:yr(2024,1),
-      dateStr:'May 2022 – January 2024',
-      bullets:[] },
+    <div class="cv-block">
+      <div class="cv-block__meta">
+        <div>
+          <div class="cv-block__role">Teaching Fellow</div>
+          <div class="cv-block__org">University of Aberdeen &middot; Aberdeen, Scotland</div>
+        </div>
+        <span class="cv-block__date">Dec 2020 &ndash; May 2021</span>
+      </div>
+      <ul class="cv-bullets">
+        <li>Course coordinator for an undergraduate statistics course.</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    { id:5, type:'emp', present:true,
-      label:'Lecturer', title:'Lecturer in Applied Statistics',
-      org:'University of Aberdeen', loc:'Aberdeen, Scotland',
-      start:yr(2024,1), end:null,
-      dateStr:'January 2024 – Present',
-      bullets:[] }
-  ];
+<!-- ============ 02 EDUCATION (ink) ============ -->
+<section class="band band--ink">
+  <div class="band__inner">
+    <div class="sec-head">
+      <span class="sec-head__num">02</span>
+      <span class="sec-head__label">Education</span>
+    </div>
+    <div class="cv-block cv-block--first">
+      <div class="cv-block__meta">
+        <div>
+          <div class="cv-block__role">PhD Ecology</div>
+          <div class="cv-block__org">University of Aberdeen &middot; Aberdeen, Scotland</div>
+        </div>
+        <span class="cv-block__date">2016 &ndash; 2021</span>
+      </div>
+      <ul class="cv-bullets">
+        <li>Thesis: rodent pest population dynamics.</li>
+        <li>Publications: <a href="https://doi.org/10.1016/j.agee.2018.11.013" target="_blank" rel="noopener">Roos et al. (2019)</a> and <a href="https://doi.org/10.1111/ele.14074" target="_blank" rel="noopener">Roos et al. (2022)</a>.</li>
+      </ul>
+    </div>
+    <div class="cv-block">
+      <div class="cv-block__meta">
+        <div>
+          <div class="cv-block__role">BSc (Hons) Zoology</div>
+          <div class="cv-block__org">University of Aberdeen &middot; Aberdeen, Scotland</div>
+        </div>
+        <span class="cv-block__date">2012 &ndash; 2016</span>
+      </div>
+      <ul class="cv-bullets">
+        <li>Graduated First Class.</li>
+        <li>Thesis: <a href="theses/DeonRoos_2015.pdf" target="_blank" rel="noopener">Water vole ecosystem engineering</a>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  var TICKS = [2012, 2014, 2016, 2018, 2020, 2022, 2024];
+<!-- ============ 03 SKILLS (oat) ============ -->
+<section class="band band--oat">
+  <div class="band__inner">
+    <div class="sec-head">
+      <span class="sec-head__num">03</span>
+      <span class="sec-head__label">Skills</span>
+    </div>
+    <div class="cv-skills-grid">
+      <div>
+        <div class="cv-skills-group__label">Programming</div>
+        <div class="chip-row"><span class="chip">R</span><span class="chip">RShiny</span><span class="chip">Python</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div>
+      </div>
+      <div>
+        <div class="cv-skills-group__label">Statistical Methods</div>
+        <div class="chip-row"><span class="chip">Causal inference</span><span class="chip">Bayesian inference</span><span class="chip">Spatio-temporal modelling</span><span class="chip">Hierarchical modelling</span><span class="chip">Hidden Markov models</span><span class="chip">Non-linear modelling</span><span class="chip">Simulation-based inference</span><span class="chip">Study design</span></div>
+      </div>
+      <div>
+        <div class="cv-skills-group__label">Ecological Modelling</div>
+        <div class="chip-row"><span class="chip">Population dynamics</span><span class="chip">Occupancy modelling</span><span class="chip">Mark-recapture</span><span class="chip">Integrated population models</span></div>
+      </div>
+      <div>
+        <div class="cv-skills-group__label">NLP &amp; Text Analysis</div>
+        <div class="chip-row"><span class="chip">Structural topic models</span><span class="chip">Natural language processing</span></div>
+      </div>
+      <div>
+        <div class="cv-skills-group__label">Data Infrastructure</div>
+        <div class="chip-row"><span class="chip">Production Shiny deployment</span><span class="chip">Automated pipelines (R)</span><span class="chip">Scheduled task automation</span><span class="chip">SQLite</span><span class="chip">AWS EC2</span></div>
+      </div>
+      <div>
+        <div class="cv-skills-group__label">Data Visualisation &amp; Wrangling</div>
+        <div class="chip-row"><span class="chip">ggplot2</span><span class="chip">gganimate</span><span class="chip">plotly</span><span class="chip">leaflet</span><span class="chip">tidyverse</span><span class="chip">base R</span></div>
+      </div>
+      <div>
+        <div class="cv-skills-group__label">Reproducible Research</div>
+        <div class="chip-row"><span class="chip">RMarkdown</span><span class="chip">Quarto</span><span class="chip">LaTeX</span><span class="chip">Git</span><span class="chip">GitHub Pages</span></div>
+      </div>
+      <div>
+        <div class="cv-skills-group__label">Teaching &amp; Communication</div>
+        <div class="chip-row"><span class="chip">Course coordination (~150 students)</span><span class="chip">Accessible teaching of complex methods</span><span class="chip">PhD supervision</span><span class="chip">Grant writing</span><span class="chip">Textbook authorship</span></div>
+      </div>
+      <div>
+        <div class="cv-skills-group__label">Languages</div>
+        <div class="chip-row"><span class="chip">English (Fluent)</span><span class="chip">Afrikaans (Fluent)</span><span class="chip">Spanish (Basic)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  /* ── Slot assignment (greedy interval colouring) ──── */
-  function assignSlots(group) {
-    var sorted = group.slice().sort(function(a, b) { return a.start - b.start; });
-    var slotEnds = [];
-    sorted.forEach(function(item) {
-      var end = item.end !== null ? item.end : VE;
-      var slot = 0;
-      while (slotEnds[slot] !== undefined && slotEnds[slot] > item.start + 0.001) {
-        slot++;
-      }
-      item._slot = slot;
-      slotEnds[slot] = end;
-    });
-    return slotEnds.length;
-  }
-
-  /* ── Bar geometry ─────────────────────────────────── */
-  var SINGLE = { trackH: 46, barH: 32, baseTop: 7, gap: 0,  fs: '0.68rem', pad: '0 9px' };
-  var DOUBLE = { trackH: 54, barH: 21, baseTop: 4, gap: 4,  fs: '0.60rem', pad: '0 6px' };
-
-  function barHtml(item, cfg) {
-    var l = pct(item.start);
-    var isPresent = item.end === null;
-    var slot = item._slot || 0;
-    var top  = cfg.baseTop + slot * (cfg.barH + cfg.gap);
-    var commonStyle = 'top:' + top + 'px;height:' + cfg.barH + 'px;padding:' + cfg.pad + ';font-size:' + cfg.fs + ';';
-    var style, barCls;
-
-    if (isPresent) {
-      style  = 'left:' + l + '%;right:0;' + commonStyle;
-      barCls = 'cv-tl-bar cv-tl-bar-pres';
-    } else {
-      var w = wpct(item.start, item.end);
-      style  = 'left:' + l + '%;width:' + w + '%;' + commonStyle;
-      barCls = 'cv-tl-bar ' + (item.type === 'edu' ? 'cv-tl-bar-edu' : 'cv-tl-bar-emp');
-    }
-
-    var wNum = isPresent
-      ? (VE - item.start) / SP * 100
-      : parseFloat(wpct(item.start, item.end));
-    var textSpan = wNum > 4
-      ? '<span class="cv-tl-bar-text">' + item.label + '</span>'
-      : '';
-    var arrow = isPresent
-      ? '<span class="cv-tl-bar-arrow" style="font-size:' + (parseFloat(cfg.fs) * 1.2) + 'rem">&#8594;</span>'
-      : '';
-
-    return '<div class="' + barCls + '" style="' + style + '" ' +
-           'title="' + item.title + '" data-tl="' + item.id + '">' +
-           textSpan + arrow + '</div>';
-  }
-
-  function trackHtml(group, cfg) {
-    return '<div class="cv-tl-track" style="height:' + cfg.trackH + 'px;">' +
-      group.map(function(item) { return barHtml(item, cfg); }).join('') +
-    '</div>';
-  }
-
-  function rowHtml(label, group, cfg) {
-    return '<div class="cv-tl-row">' +
-      '<div class="cv-tl-row-label">' + label + '</div>' +
-      trackHtml(group, cfg) +
-    '</div>';
-  }
-
-  function axisHtml() {
-    var ticks = TICKS.map(function(y) {
-      return '<div class="cv-tl-tick" style="left:' + pct(y) + '%">' +
-        '<div class="cv-tl-tick-mark"></div>' +
-        '<div class="cv-tl-tick-lbl">' + y + '</div>' +
-      '</div>';
-    }).join('');
-    var nowTick =
-      '<div class="cv-tl-tick cv-tl-tick-now" style="left:99%;transform:translate(-100%,-50%)">' +
-        '<div class="cv-tl-tick-mark"></div>' +
-        '<div class="cv-tl-tick-lbl">Now</div>' +
-      '</div>';
-    return '<div class="cv-tl-row cv-tl-axis-row">' +
-      '<div class="cv-tl-row-label"></div>' +
-      '<div class="cv-tl-axis-track">' +
-        '<div class="cv-tl-axis-line"></div>' +
-        ticks + nowTick +
-      '</div>' +
-    '</div>';
-  }
-
-  /* ── Render ───────────────────────────────────────── */
-  var inner = document.getElementById('cvTlInner');
-  if (!inner) return;
-
-  var edu = items.filter(function(i) { return i.type === 'edu'; });
-  var emp = items.filter(function(i) { return i.type === 'emp'; });
-
-  var eduSlots = assignSlots(edu);
-  var empSlots = assignSlots(emp);
-  var eduCfg   = eduSlots > 1 ? DOUBLE : SINGLE;
-  var empCfg   = empSlots > 1 ? DOUBLE : SINGLE;
-
-  inner.innerHTML =
-    rowHtml('Education', edu, eduCfg) +
-    axisHtml() +
-    rowHtml('Employment', emp, empCfg);
-
-  /* ── Modal ────────────────────────────────────────── */
-  var bd = document.createElement('div');
-  bd.className     = 'cv-tl-backdrop';
-  bd.style.display = 'none';
-  bd.innerHTML =
-    '<div class="cv-tl-modal">' +
-      '<button class="cv-tl-mclose" aria-label="Close">&times;</button>' +
-      '<div id="cvTlMBody"></div>' +
-    '</div>';
-  document.body.appendChild(bd);
-
-  var mbody  = bd.querySelector('#cvTlMBody');
-  var mclose = bd.querySelector('.cv-tl-mclose');
-
-  function openModal(item) {
-    var isEdu = item.type === 'edu';
-    var bCls  = isEdu ? 'cv-tl-badge-edu' : 'cv-tl-badge-emp';
-    var bText = isEdu ? 'Education'        : 'Employment';
-    var ulCls = isEdu ? 'cv-tl-mbullets-edu' : 'cv-tl-mbullets-emp';
-
-    var bulletHtml = '';
-    if (item.bullets && item.bullets.length > 0) {
-      var lis = item.bullets.map(function(b) { return '<li>' + b + '</li>'; }).join('');
-      bulletHtml = '<hr class="cv-tl-mdivider"><ul class="cv-tl-mbullets ' + ulCls + '">' + lis + '</ul>';
-    }
-
-    mbody.innerHTML =
-      '<span class="cv-tl-badge ' + bCls + '">' + bText + '</span>' +
-      '<h3>' + item.title + '</h3>' +
-      '<div class="cv-tl-morg">' + item.org + ' &middot; ' + item.loc + '</div>' +
-      '<div class="cv-tl-mdates">' + item.dateStr + '</div>' +
-      bulletHtml;
-
-    bd.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeModal() {
-    bd.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-
-  mclose.addEventListener('click', closeModal);
-  bd.addEventListener('click', function(e) { if (e.target === bd) closeModal(); });
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
-
-  inner.addEventListener('click', function(e) {
-    var el = e.target;
-    while (el && el !== inner) {
-      if (el.dataset && el.dataset.tl !== undefined) {
-        var id   = parseInt(el.dataset.tl, 10);
-        var item = items.filter(function(i) { return i.id === id; })[0];
-        if (item) openModal(item);
-        return;
-      }
-      el = el.parentElement;
-    }
-  });
-
-})();
-</script>
-```
-
-```{=html}
-<section class="cv-sections-grid">
-  <a href="cv-employment.qmd" class="course-card">
-    <h3>Employment</h3>
-    <p>Work history across academia and statistical roles.</p>
-  </a>
-
-  <a href="cv-education.qmd" class="course-card">
-    <h3>Education</h3>
-    <p>Formal degrees and institutions attended.</p>
-  </a>
-
-  <a href="cv-awards.qmd" class="course-card">
-    <h3>Awards &amp; Funding</h3>
-    <p>Recognition and research funding received.</p>
-  </a>
-
-  <a href="cv-skills.qmd" class="course-card">
-    <h3>Skills</h3>
-    <p>Technical, statistical, and communication expertise.</p>
-  </a>
+<!-- ============ 04 AWARDS (ink) ============ -->
+<section class="band band--ink">
+  <div class="band__inner">
+    <div class="sec-head">
+      <span class="sec-head__num">04</span>
+      <span class="sec-head__label">Awards &amp; funding</span>
+    </div>
+    <div style="margin-top:8px;">
+      <div class="award">
+        <span class="award__year">2019</span>
+        <div>
+          <div class="award__title">Best Student Presentation</div>
+          <div class="award__venue">University of Aberdeen</div>
+          <div class="award__desc">Travelling waves as a form of spatio-temporal asynchrony.</div>
+        </div>
+      </div>
+      <div class="award">
+        <span class="award__year">2019</span>
+        <div>
+          <div class="award__title">Best Presentation</div>
+          <div class="award__venue">Iberian Vole Workshop, Porto</div>
+          <div class="award__desc">Spatio-temporal asynchrony in a cyclic vole species.</div>
+        </div>
+      </div>
+      <div class="award">
+        <span class="award__year">2017</span>
+        <div>
+          <div class="award__title">Sir Maitland Mackie Scholarship</div>
+          <div class="award__venue">University of Aberdeen</div>
+          <div class="award__desc">Funding for agricultural research.</div>
+        </div>
+      </div>
+      <div class="award">
+        <span class="award__year">2016</span>
+        <div>
+          <div class="award__title">Outstanding BSc Zoology Student</div>
+          <div class="award__venue">University of Aberdeen</div>
+        </div>
+      </div>
+      <div class="award">
+        <span class="award__year">2016</span>
+        <div>
+          <div class="award__title">People&rsquo;s Trust Internship</div>
+          <div class="award__venue">PTES</div>
+          <div class="award__desc">Funded research position following BSc thesis.</div>
+        </div>
+      </div>
+      <div class="award">
+        <span class="award__year">2015</span>
+        <div>
+          <div class="award__title">Carnegie Summer Scholarship</div>
+          <div class="award__desc">Supported BSc data collection.</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 ```

@@ -1,5 +1,6 @@
 project:
   type: website
+  post-render: remove-polyfill.R
   resources:
     - media/mu_wave.mp4
     - media/distributions.png
@@ -21,46 +22,29 @@ website:
   title: "Deon Roos"
   favicon: favicon.svg
   description: "Lecturer in Applied Statistics | Data Visualisation | Statistics Course | Statistical Distributions"
-  page-footer:
-    background: "#2d2e30"
-    border: true
-    center: "&nbsp;"
-  navbar:
-    left:
-      - text: "Publications"
-        file: publications.qmd
-      - text: "Teaching"
-        file: courses.qmd
-      - text: "Explainers"
-        file: explainers.qmd
-      - text: "People"
-        file: people.qmd
-      - text: "CV"
-        file: cv.qmd
 
 format:
   html:
     theme: default
-    css: styles.css
+    css:
+      - styles.css
+      - poster-press.css
     highlight-style: atom-one-dark
     code-fold: true
     toc: false
+    anchor-sections: false
     mermaid:
       theme: dark
     include-in-header:
       - text: |
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Anton&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+    include-before-body:
+      - _pp-nav.html
     include-after-body:
-      - text: |
-          <script>
-          document.addEventListener('DOMContentLoaded', function() {
-            var c = document.querySelector('.nav-footer-center');
-            if (c) {
-              c.innerHTML = '<div class="footer-contents"><div class="site-footer-inner"><span class="footer-name">Deon Roos \u00b7 University of Aberdeen<\/span><span class="footer-links"><a href="mailto:deon.roos4@abdn.ac.uk" class="footer-link" title="Email"><i class="fas fa-envelope"><\/i><\/a><a href="https://orcid.org/0000-0003-4866-7472" class="footer-link" title="ORCID"><i class="fab fa-orcid"><\/i><\/a><a href="https://github.com/DeonRoos" class="footer-link" title="GitHub"><i class="fab fa-github"><\/i><\/a><\/span><\/div><\/div>';
-            }
-          });
-          </script>
+      - _pp-footer.html
 
 publish:
   provider: gh-pages
