@@ -1,77 +1,20 @@
 ---
-title: "Employment"
-format: html
+title: ""
+pagetitle: "Employment | Deon Roos"
+format:
+  html:
+    page-layout: custom
+    include-in-header:
+      text: |
+        <meta http-equiv="refresh" content="0; url=cv.html">
+        <link rel="canonical" href="cv.html">
 ---
 
 ```{=html}
-<div class="cv-entry">
-  <div class="cv-entry-meta">
-    <div>
-      <div class="cv-entry-title">Lecturer in Applied Statistics</div>
-      <div class="cv-entry-org">University of Aberdeen &middot; Aberdeen, Scotland</div>
-    </div>
-    <span class="cv-entry-badge">Jan 2024 – Present</span>
+<section class="band band--ink">
+  <div class="band__inner">
+    <div class="eyebrow">This page has moved</div>
+    <p class="body-copy" style="margin-top:16px;">Employment now lives on the CV. Redirecting you to <a href="cv.html" class="redirect-link">CV &rarr;</a></p>
   </div>
-  <ul class="cv-entry-list">
-    <li>Leading and collaborating on interdisciplinary research in applied statistics with real-world impact.</li>
-    <li>Teaching statistical theory and methods across undergraduate to PhD levels.</li>
-    <li>Assisting in research projects through the application of collaborator-specified statistical approaches.</li>
-  </ul>
-</div>
-
-<div class="cv-entry">
-  <div class="cv-entry-meta">
-    <div>
-      <div class="cv-entry-title">Senior Statistical Ecologist</div>
-      <div class="cv-entry-org">Animal &amp; Plant Health Agency &middot; Sand Hutton, England</div>
-    </div>
-    <span class="cv-entry-badge">May 2022 – Jan 2024</span>
-  </div>
-  <ul class="cv-entry-list">
-    <li>Developed bespoke statistical pipelines for policy-driven research programmes, translating model outputs into recommendations for non-specialist stakeholders across government.</li>
-    <li>Ran computationally intensive model jobs on AWS EC2 within a secure government data environment.</li>
-    <li>Mentored analysts across multidisciplinary teams and led statistical direction on projects spanning ecology, disease surveillance, and regulatory policy.</li>
-  </ul>
-</div>
-
-<div class="cv-entry">
-  <div class="cv-entry-meta">
-    <div>
-      <div class="cv-entry-title">Teaching Fellow</div>
-      <div class="cv-entry-org">University of Aberdeen &middot; Aberdeen, Scotland</div>
-    </div>
-    <span class="cv-entry-badge">Dec 2021 – May 2022</span>
-  </div>
-  <ul class="cv-entry-list">
-    <li>Coordinated and delivered a highly rated, fully online undergraduate statistics course with strong student engagement.</li>
-  </ul>
-</div>
-
-<div class="cv-entry">
-  <div class="cv-entry-meta">
-    <div>
-      <div class="cv-entry-title">Research Fellow</div>
-      <div class="cv-entry-org">University of Aberdeen &middot; Aberdeen, Scotland</div>
-    </div>
-    <span class="cv-entry-badge">Jun 2021 – Feb 2022</span>
-  </div>
-  <ul class="cv-entry-list">
-    <li>Conducted international ecological research, including study design and simulation modelling for species management.</li>
-  </ul>
-</div>
-
-<div class="cv-entry">
-  <div class="cv-entry-meta">
-    <div>
-      <div class="cv-entry-title">Teaching Fellow</div>
-      <div class="cv-entry-org">University of Aberdeen &middot; Aberdeen, Scotland</div>
-    </div>
-    <span class="cv-entry-badge">Dec 2020 – May 2021</span>
-  </div>
-  <ul class="cv-entry-list">
-    <li>Course coordinator for undergraduate statistical course.</li>
-  </ul>
-</div>
+</section>
 ```
-
-[$\leftarrow$ Back to CV Overview](cv.qmd)

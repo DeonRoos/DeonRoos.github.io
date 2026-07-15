@@ -69,13 +69,15 @@ body {
 
 a { color: inherit; text-decoration: none; }
 
-/* Neutralise Quarto / Bootstrap page chrome so bands go full-bleed */
-#quarto-content,
-main.content,
-.page-columns,
-.column-page,
-.column-body,
-#quarto-document-content {
+/* Neutralise Quarto / Bootstrap page chrome so bands go full-bleed.
+   Scoped to the banded pages only — article pages need their grid, their
+   margins and their title block intact. */
+.page-layout-custom,
+.page-layout-custom main.content,
+.page-layout-custom .page-columns,
+.page-layout-custom .column-page,
+.page-layout-custom .column-body,
+.page-layout-custom #quarto-document-content {
   max-width: none !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -83,11 +85,11 @@ main.content,
   display: block !important;
   grid-template-columns: none !important;
 }
-body .page-columns { gap: 0 !important; }
-header#title-block-header,
-.quarto-title-block,
-#title-block-header { display: none !important; }
-main > p:empty { display: none; }
+.page-layout-custom .page-columns { gap: 0 !important; }
+.page-layout-custom header#title-block-header,
+.page-layout-custom .quarto-title-block,
+.page-layout-custom #title-block-header { display: none !important; }
+.page-layout-custom main > p:empty { display: none; }
 
 /* ============================================================
    Sticky navigation
@@ -696,43 +698,257 @@ main > p:empty { display: none; }
 }
 
 /* ============================================================
-   Overrides — defeat legacy styles.css !important rules on the
-   banded (page-layout: custom) pages. Scoped so the article
-   pages that still rely on styles.css are untouched.
+   ARTICLE PAGES (page-layout: article)
+   stm-explainer, camera-trapping, bi3010, pgr-glm. These keep
+   Quarto's grid and title block; only the skin changes.
    ============================================================ */
-body.fullcontent { background: var(--ink) !important; color: var(--cream); }
-
-.page-layout-custom button,
-.page-layout-custom .btn {
-  background: transparent !important;
-  color: inherit !important;
-  border: none !important;
-  border-radius: 0 !important;
+.page-layout-article {
+  color: var(--cream-body);
+  font-family: var(--f-body);
 }
-.page-layout-custom .btn--solid { background: var(--amber) !important; color: var(--ink) !important; }
-.page-layout-custom .btn--solid:hover { background: var(--cream) !important; }
-.page-layout-custom .btn--ghost { color: var(--amber) !important; border: 1px solid var(--amber) !important; }
+.page-layout-article main.content { padding-top: 8px; }
 
-.page-layout-custom .pub-toggle {
-  background: none !important;
-  color: inherit !important;
-  border: none !important;
-  border-bottom: 1px solid var(--ink-rule-2) !important;
-  border-radius: 0 !important;
-}
-.page-layout-custom .tbook__cta { color: var(--ink) !important; }
-
-/* legacy anchor underline-on-hover shouldn't touch band links */
-.page-layout-custom a:hover { text-decoration: none; }
-
-/* legacy h2 { font-size:1.1rem !important; border-bottom } mangles display headings */
-.page-layout-custom h2 {
-  color: inherit !important;
-  font-weight: 400 !important;
-  border-bottom: none !important;
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
+/* Title block */
+.page-layout-article #title-block-header { margin-bottom: 34px; }
+.page-layout-article .title {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(38px, 6vw, 76px);
+  line-height: .92;
   letter-spacing: -.01em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin: 0 0 10px;
 }
-.page-layout-custom .pp-display--hero { font-size: clamp(64px, 13vw, 176px) !important; }
-.page-layout-custom .pp-display--xl { font-size: clamp(52px, 10vw, 132px) !important; }
+.page-layout-article .subtitle,
+.page-layout-article .quarto-title-meta {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-muted-2);
+}
+.page-layout-article .quarto-title-meta-heading { color: var(--amber); }
+.page-layout-article #title-block-header::after {
+  content: "";
+  display: block;
+  border-bottom: 2px solid var(--ink-rule);
+  margin-top: 18px;
+}
+
+/* Page header (hand-rolled, used by camera-trapping) */
+.page-header { margin: 0 0 34px; border-bottom: 2px solid var(--ink-rule); padding-bottom: 18px; }
+.page-header-title {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(38px, 6vw, 76px);
+  line-height: .92;
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin: 0;
+}
+.page-header-intro {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: clamp(16px, 1.9vw, 21px);
+  line-height: 1.45;
+  color: var(--cream-body);
+  margin: 14px 0 0;
+  max-width: 62ch;
+}
+
+/* Headings */
+.page-layout-article h1,
+.page-layout-article h2 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -.005em;
+  line-height: 1.02;
+  color: var(--cream);
+  margin: 2.2em 0 .6em;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--ink-rule);
+}
+.page-layout-article h1 { font-size: clamp(28px, 3.4vw, 42px); }
+.page-layout-article h2 { font-size: clamp(23px, 2.7vw, 32px); }
+.page-layout-article h3,
+.page-layout-article h4,
+.page-layout-article h5 {
+  font-family: var(--f-body);
+  font-weight: 700;
+  color: var(--cream);
+  margin: 1.9em 0 .5em;
+  letter-spacing: .01em;
+}
+.page-layout-article h3 { font-size: 19px; }
+.page-layout-article h4 { font-size: 16px; }
+.page-layout-article h5 { font-size: 14px; text-transform: uppercase; letter-spacing: .1em; color: var(--amber); }
+
+/* Body copy */
+.page-layout-article p,
+.page-layout-article li {
+  font-size: 15.5px;
+  line-height: 1.72;
+  color: var(--cream-body);
+}
+.page-layout-article strong { color: var(--cream); font-weight: 700; }
+.page-layout-article a {
+  color: var(--amber);
+  border-bottom: 1px solid var(--amber-deep);
+  transition: color .15s ease, border-color .15s ease;
+}
+.page-layout-article a:hover { color: var(--cream); border-bottom-color: var(--cream); }
+.page-layout-article hr {
+  border: none;
+  border-top: 1px solid var(--ink-rule);
+  margin: 2.4em 0;
+  opacity: 1;
+}
+.page-layout-article blockquote {
+  border-left: 2px solid var(--amber);
+  background: var(--ink-2);
+  padding: 14px 20px;
+  margin: 1.6em 0;
+  color: var(--cream-body);
+}
+.page-layout-article blockquote p:last-child { margin-bottom: 0; }
+
+/* Code */
+.page-layout-article code {
+  font-family: var(--f-mono);
+  font-size: .88em;
+  color: var(--amber);
+  background: var(--ink-2);
+  padding: 1px 5px;
+  border: 1px solid var(--ink-rule-2);
+}
+.page-layout-article pre {
+  background: var(--ink-2) !important;
+  border: 1px solid var(--ink-rule);
+  border-left: 2px solid var(--amber-deep);
+  padding: 14px 16px !important;
+  border-radius: 0 !important;
+}
+.page-layout-article pre code {
+  border: none;
+  padding: 0;
+  background: none;
+  color: var(--cream-body);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.page-layout-article div.sourceCode { background: none !important; border: none; margin: 1.4em 0; }
+.page-layout-article .cell-output pre,
+.page-layout-article .cell-output-stdout pre {
+  border-left: 2px solid var(--ink-rule);
+  color: var(--ink-muted);
+}
+.page-layout-article .code-fold-btn,
+.page-layout-article details > summary {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  cursor: pointer;
+}
+.page-layout-article details > summary:hover { color: var(--amber); }
+
+/* Tables */
+.page-layout-article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.6em 0;
+  font-size: 13.5px;
+  background: none;
+}
+.page-layout-article thead th {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  text-align: left;
+  border-bottom: 2px solid var(--ink-rule);
+  padding: 9px 10px;
+  background: none;
+}
+.page-layout-article tbody td {
+  border-bottom: 1px solid var(--ink-rule-2);
+  padding: 9px 10px;
+  color: var(--cream-body);
+  vertical-align: top;
+}
+.page-layout-article tbody tr:hover td { background: var(--ink-card); }
+
+/* Figures */
+.page-layout-article figure,
+.page-layout-article .cell-output-display { margin: 1.8em 0; }
+.page-layout-article figure img,
+.page-layout-article .cell-output-display img { max-width: 100%; height: auto; display: block; }
+.page-layout-article figcaption,
+.page-layout-article .figure-caption {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-muted-2);
+  margin-top: 8px;
+}
+
+/* Table of contents */
+.page-layout-article #quarto-margin-sidebar { padding-top: 10px; }
+.page-layout-article nav[role="doc-toc"] > h2,
+.page-layout-article .sidebar-title {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  border: none;
+  padding: 0 0 10px;
+  margin: 0;
+}
+.page-layout-article nav[role="doc-toc"] ul { list-style: none; padding-left: 0; border-left: 1px solid var(--ink-rule); }
+.page-layout-article nav[role="doc-toc"] ul ul { padding-left: 12px; border-left: none; }
+.page-layout-article nav[role="doc-toc"] li { font-size: 12.5px; line-height: 1.45; }
+.page-layout-article nav[role="doc-toc"] a {
+  color: var(--ink-muted);
+  border-bottom: none;
+  display: block;
+  padding: 5px 0 5px 12px;
+  border-left: 2px solid transparent;
+  margin-left: -1px;
+}
+.page-layout-article nav[role="doc-toc"] a:hover { color: var(--amber); border-bottom: none; }
+.page-layout-article nav[role="doc-toc"] a.active {
+  color: var(--amber);
+  border-left-color: var(--amber);
+  font-weight: 600;
+}
+
+/* Interactive DT tables */
+.page-layout-article .dataTables_wrapper,
+.page-layout-article .dataTables_wrapper .dataTables_info,
+.page-layout-article .dataTables_wrapper .dataTables_length,
+.page-layout-article .dataTables_wrapper .dataTables_filter { color: var(--ink-muted); font-family: var(--f-mono); font-size: 11px; }
+.page-layout-article .dataTables_wrapper input,
+.page-layout-article .dataTables_wrapper select {
+  background: var(--ink-2);
+  color: var(--cream-body);
+  border: 1px solid var(--ink-rule);
+}
+.page-layout-article .paginate_button { color: var(--ink-muted) !important; }
+.page-layout-article .paginate_button.current { color: var(--amber) !important; border: 1px solid var(--amber) !important; }
+
+/* Redirect stubs */
+.redirect-link { color: var(--amber); border-bottom: 1px solid var(--amber-deep); }
+.redirect-link:hover { color: var(--cream); }
+
+/* ============================================================
+   Overrides for the banded (page-layout: custom) pages
+   ============================================================ */
+.page-layout-custom .pp-display--hero { font-size: clamp(64px, 13vw, 176px); }
+.page-layout-custom .pp-display--xl { font-size: clamp(52px, 10vw, 132px); }

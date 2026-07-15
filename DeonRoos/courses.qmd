@@ -1,72 +1,20 @@
 ---
 title: ""
 pagetitle: "Teaching | Deon Roos"
-format: html
+format:
+  html:
+    page-layout: custom
+    include-in-header:
+      text: |
+        <meta http-equiv="refresh" content="0; url=index.html#teaching">
+        <link rel="canonical" href="index.html#teaching">
 ---
 
 ```{=html}
-<div class="page-header">
-  <h1 class="page-header-title">Teaching</h1>
-  <p class="page-header-intro">Statistics courses at undergraduate and postgraduate level, focused on applied methods and building genuine understanding rather than recipe-following.</p>
-</div>
-```
-
-## Courses
-
-```{=html}
-<div class="course-list">
-
-  <div class="course-card-h">
-<div class="course-card-body">
-      <div class="course-card-meta">
-        <span class="course-badge">3rd Year Undergraduate</span>
-      </div>
-      <h3>BI3010: Statistical Analysis of Biological Data</h3>
-      <p>A 3rd year course focused on building genuine statistical understanding in biological sciences, from linear models through to GLMs. The goal is for students to understand the theory well enough to apply it to their own questions, particularly when they reach their honours projects. R and ggplot2 are used throughout.</p>
-      <div class="course-chips">
-        <span class="skill-chip">R</span>
-        <span class="skill-chip">ggplot2</span>
-        <span class="skill-chip">Linear Models</span>
-        <span class="skill-chip">GLMs</span>
-        <span class="skill-chip">Data Visualisation</span>
-        <span class="skill-chip">Causal Inference</span>
-      </div>
-      <a href="bi3010.html" class="course-link">Course details →</a>
-      <a href="https://deonroos.github.io/stats-for-biologists/" class="course-link" target="_blank">Workshop materials →</a>
-    </div>
+<section class="band band--ink">
+  <div class="band__inner">
+    <div class="eyebrow">This page has moved</div>
+    <p class="body-copy" style="margin-top:16px;">Courses now live on the home page. Redirecting you to <a href="index.html#teaching" class="redirect-link">Teaching &rarr;</a></p>
   </div>
-
-  <div class="course-card-h">
-<div class="course-card-body">
-      <div class="course-card-meta">
-        <span class="course-badge">Postgraduate / PhD</span>
-      </div>
-      <h3>PGR Course: Generalised Linear Models</h3>
-      <p>A free course for PhD students on the theory and application of GLMs. Open to students from any university and any discipline, it forms part of a wider series that also covers R and linear models.</p>
-      <div class="course-chips">
-        <span class="skill-chip">R</span>
-        <span class="skill-chip">Poisson GLM</span>
-        <span class="skill-chip">Binomial GLM</span>
-        <span class="skill-chip">Bernoulli GLM</span>
-      </div>
-      <a href="pgr-glm.html" class="course-link">Course details →</a>
-    </div>
-  </div>
-
-</div>
-```
-
-## Guest Lectures
-
-```{=html}
-<div class="guest-lecture-list">
-  <div class="guest-lecture">
-    <span class="guest-lecture-code">PU5058</span>
-    <div class="guest-lecture-body">
-      <span class="guest-lecture-title">Introduction to Health Data Science</span>
-      <span class="guest-lecture-desc">The theory underlying effective data visualisation.</span>
-    </div>
-    <span class="course-badge">Postgraduate</span>
-  </div>
-</div>
+</section>
 ```

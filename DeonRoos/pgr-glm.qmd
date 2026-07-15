@@ -49,4 +49,4 @@ This advanced course focuses on the theory and application of Generalised Linear
 
 ---
 
-[$\leftarrow$ Back to all courses](courses.qmd)
+[&larr; Back to teaching](index.html#teaching)

@@ -1,126 +1,20 @@
 ---
-title: "Skills"
-format: html
+title: ""
+pagetitle: "Skills | Deon Roos"
+format:
+  html:
+    page-layout: custom
+    include-in-header:
+      text: |
+        <meta http-equiv="refresh" content="0; url=cv.html">
+        <link rel="canonical" href="cv.html">
 ---
 
 ```{=html}
-<div class="skills-section">
-
-  <div class="skills-group">
-    <div class="skills-group-label">Programming</div>
-    <div class="skills-chips">
-      <span class="skill-chip">R</span>
-      <span class="skill-chip">RShiny</span>
-      <span class="skill-chip">Python</span>
-      <span class="skill-chip">HTML</span>
-      <span class="skill-chip">CSS</span>
-      <span class="skill-chip">JavaScript</span>
-    </div>
+<section class="band band--ink">
+  <div class="band__inner">
+    <div class="eyebrow">This page has moved</div>
+    <p class="body-copy" style="margin-top:16px;">Skills now live on the CV. Redirecting you to <a href="cv.html" class="redirect-link">CV &rarr;</a></p>
   </div>
-
-  <div class="skills-group">
-    <div class="skills-group-label">Statistical Methods</div>
-    <div class="skills-chips">
-      <span class="skill-chip">Causal inference</span>
-      <span class="skill-chip">Bayesian inference</span>
-      <span class="skill-chip">Spatio-temporal modelling</span>
-      <span class="skill-chip">Hierarchical modelling</span>
-      <span class="skill-chip">Hidden Markov models</span>
-      <span class="skill-chip">Non-linear modelling</span>
-      <span class="skill-chip">Simulation-based inference</span>
-      <span class="skill-chip">Study design</span>
-    </div>
-  </div>
-
-  <div class="skills-group">
-    <div class="skills-group-label">Ecological Modelling</div>
-    <div class="skills-chips">
-      <span class="skill-chip">Population dynamics</span>
-      <span class="skill-chip">Occupancy modelling</span>
-      <span class="skill-chip">Mark-recapture</span>
-      <span class="skill-chip">Integrated population models</span>
-    </div>
-  </div>
-
-  <div class="skills-group">
-    <div class="skills-group-label">NLP &amp; Text Analysis</div>
-    <div class="skills-chips">
-      <span class="skill-chip">Structural topic models</span>
-      <span class="skill-chip">Natural language processing</span>
-    </div>
-  </div>
-
-  <div class="skills-group">
-    <div class="skills-group-label">Data Infrastructure</div>
-    <div class="skills-chips">
-      <span class="skill-chip">Production Shiny deployment</span>
-      <span class="skill-chip">Automated data pipelines (R)</span>
-      <span class="skill-chip">Scheduled task automation</span>
-      <span class="skill-chip">SQLite data storage</span>
-      <span class="skill-chip">AWS EC2</span>
-    </div>
-  </div>
-
-  <div class="skills-group">
-    <div class="skills-group-label">Data Visualisation</div>
-    <div class="skills-chips">
-      <span class="skill-chip">ggplot2</span>
-      <span class="skill-chip">gganimate</span>
-      <span class="skill-chip">plotly</span>
-      <span class="skill-chip">leaflet</span>
-    </div>
-  </div>
-
-  <div class="skills-group">
-    <div class="skills-group-label">Data Wrangling</div>
-    <div class="skills-chips">
-      <span class="skill-chip">tidyverse</span>
-      <span class="skill-chip">base R</span>
-      <span class="skill-chip">SQL (SQLite via R)</span>
-    </div>
-  </div>
-
-  <div class="skills-group">
-    <div class="skills-group-label">Teaching &amp; Communication</div>
-    <div class="skills-chips">
-      <span class="skill-chip">In-person &amp; online delivery</span>
-      <span class="skill-chip">Course coordination (~150 students)</span>
-      <span class="skill-chip">Accessible teaching of complex methods</span>
-      <span class="skill-chip">Postgraduate &amp; PhD supervision</span>
-    </div>
-  </div>
-
-  <div class="skills-group">
-    <div class="skills-group-label">Scientific Communication</div>
-    <div class="skills-chips">
-      <span class="skill-chip">Peer-reviewed publications</span>
-      <span class="skill-chip">Textbook authorship</span>
-      <span class="skill-chip">Grant writing</span>
-    </div>
-  </div>
-
-  <div class="skills-group">
-    <div class="skills-group-label">Reproducible Research</div>
-    <div class="skills-chips">
-      <span class="skill-chip">RMarkdown</span>
-      <span class="skill-chip">Quarto</span>
-      <span class="skill-chip">LaTeX</span>
-      <span class="skill-chip">Git</span>
-      <span class="skill-chip">GitHub Pages</span>
-      <span class="skill-chip">Simulation workflows</span>
-    </div>
-  </div>
-
-  <div class="skills-group">
-    <div class="skills-group-label">Languages</div>
-    <div class="skills-chips">
-      <span class="skill-chip">English (Fluent)</span>
-      <span class="skill-chip">Afrikaans (Fluent)</span>
-      <span class="skill-chip">Spanish (Basic)</span>
-    </div>
-  </div>
-
-</div>
+</section>
 ```
-
-[$\leftarrow$ Back to CV Overview](cv.qmd)

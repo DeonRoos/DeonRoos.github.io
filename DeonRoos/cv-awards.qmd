@@ -1,60 +1,20 @@
 ---
-title: "Awards & Funding"
-format: html
+title: ""
+pagetitle: "Awards | Deon Roos"
+format:
+  html:
+    page-layout: custom
+    include-in-header:
+      text: |
+        <meta http-equiv="refresh" content="0; url=cv.html">
+        <link rel="canonical" href="cv.html">
 ---
 
 ```{=html}
-<div class="award-entry">
-  <div class="award-year">2019</div>
-  <div class="award-body">
-    <div class="award-title">Best Student Presentation</div>
-    <div class="award-venue">University of Aberdeen</div>
-    <div class="award-desc">Travelling waves as a form of spatio-temporal asynchrony</div>
+<section class="band band--ink">
+  <div class="band__inner">
+    <div class="eyebrow">This page has moved</div>
+    <p class="body-copy" style="margin-top:16px;">Awards now live on the CV. Redirecting you to <a href="cv.html" class="redirect-link">CV &rarr;</a></p>
   </div>
-</div>
-
-<div class="award-entry">
-  <div class="award-year">2019</div>
-  <div class="award-body">
-    <div class="award-title">Best Presentation</div>
-    <div class="award-venue">Iberian Vole Workshop, Porto</div>
-    <div class="award-desc">Spatio-temporal asynchrony in a cyclic vole species</div>
-  </div>
-</div>
-
-<div class="award-entry">
-  <div class="award-year">2017</div>
-  <div class="award-body">
-    <div class="award-title">Sir Maitland Mackie Scholarship</div>
-    <div class="award-venue">University of Aberdeen</div>
-    <div class="award-desc">Funding for agricultural research</div>
-  </div>
-</div>
-
-<div class="award-entry">
-  <div class="award-year">2016</div>
-  <div class="award-body">
-    <div class="award-title">Outstanding BSc Zoology Student</div>
-    <div class="award-venue">University of Aberdeen</div>
-  </div>
-</div>
-
-<div class="award-entry">
-  <div class="award-year">2016</div>
-  <div class="award-body">
-    <div class="award-title">People's Trust Internship</div>
-    <div class="award-venue">PTES</div>
-    <div class="award-desc">Funded research position following BSc thesis</div>
-  </div>
-</div>
-
-<div class="award-entry">
-  <div class="award-year">2015</div>
-  <div class="award-body">
-    <div class="award-title">Carnegie Summer Scholarship</div>
-    <div class="award-desc">Supported BSc data collection</div>
-  </div>
-</div>
+</section>
 ```
-
-[$\leftarrow$ Back to CV Overview](cv.qmd)

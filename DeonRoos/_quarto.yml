@@ -27,7 +27,6 @@ format:
   html:
     theme: default
     css:
-      - styles.css
       - poster-press.css
     highlight-style: atom-one-dark
     code-fold: true

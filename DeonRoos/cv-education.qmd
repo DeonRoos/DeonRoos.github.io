@@ -1,36 +1,20 @@
 ---
-title: "Education"
-format: html
+title: ""
+pagetitle: "Education | Deon Roos"
+format:
+  html:
+    page-layout: custom
+    include-in-header:
+      text: |
+        <meta http-equiv="refresh" content="0; url=cv.html">
+        <link rel="canonical" href="cv.html">
 ---
 
 ```{=html}
-<div class="cv-entry cv-entry-edu">
-  <div class="cv-entry-meta">
-    <div>
-      <div class="cv-entry-title">PhD Ecology</div>
-      <div class="cv-entry-org">University of Aberdeen &middot; Aberdeen, Scotland</div>
-    </div>
-    <span class="cv-entry-badge">2016 – 2021</span>
+<section class="band band--ink">
+  <div class="band__inner">
+    <div class="eyebrow">This page has moved</div>
+    <p class="body-copy" style="margin-top:16px;">Education now lives on the CV. Redirecting you to <a href="cv.html" class="redirect-link">CV &rarr;</a></p>
   </div>
-  <ul class="cv-entry-list">
-    <li>Rodent pest population dynamics.</li>
-    <li>Publications: <a href="https://doi.org/10.1016/j.agee.2018.11.013" target="_blank">Roos et al. (2019)</a> and <a href="https://doi.org/10.1111/ele.14074" target="_blank">Roos et al. (2022)</a>.</li>
-  </ul>
-</div>
-
-<div class="cv-entry cv-entry-edu">
-  <div class="cv-entry-meta">
-    <div>
-      <div class="cv-entry-title">BSc (Hons) Zoology</div>
-      <div class="cv-entry-org">University of Aberdeen &middot; Aberdeen, Scotland</div>
-    </div>
-    <span class="cv-entry-badge">2012 – 2016</span>
-  </div>
-  <ul class="cv-entry-list">
-    <li>Graduated First Class.</li>
-    <li>Thesis: <a href="./theses/DeonRoos_2015.pdf" target="_blank">Water vole ecosystem engineering</a>.</li>
-  </ul>
-</div>
+</section>
 ```
-
-[$\leftarrow$ Back to CV Overview](cv.qmd)

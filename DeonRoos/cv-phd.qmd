@@ -1,37 +1,20 @@
 ---
-title: "PhD Students"
-format: html
+title: ""
+pagetitle: "PhD | Deon Roos"
+format:
+  html:
+    page-layout: custom
+    include-in-header:
+      text: |
+        <meta http-equiv="refresh" content="0; url=cv.html">
+        <link rel="canonical" href="cv.html">
 ---
 
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>AOS.init({ once: true, duration: 600 });</script>
-
 ```{=html}
-<div class="phd-grid">
-
-  <div class="phd-card" data-aos="fade-up" data-aos-delay="0">
-    <div class="phd-name">Seungyeon Lee</div>
-    <div class="phd-uni">University of Aberdeen</div>
-    <div class="phd-dates">2024 – Present</div>
-    <div class="phd-topic">Integrated population models of tawny owls.</div>
+<section class="band band--ink">
+  <div class="band__inner">
+    <div class="eyebrow">This page has moved</div>
+    <p class="body-copy" style="margin-top:16px;">This now lives on the CV. Redirecting you to <a href="cv.html" class="redirect-link">CV &rarr;</a></p>
   </div>
-
-  <div class="phd-card" data-aos="fade-up" data-aos-delay="100">
-    <div class="phd-name">James Owen</div>
-    <div class="phd-uni">Queen's University Belfast</div>
-    <div class="phd-dates">2025 – Present</div>
-    <div class="phd-topic">Geoprofiling methodology development.</div>
-  </div>
-
-  <div class="phd-card" data-aos="fade-up" data-aos-delay="200">
-    <div class="phd-name">Sam Durston</div>
-    <div class="phd-uni">University of St Andrews</div>
-    <div class="phd-dates">2026 – Present</div>
-    <div class="phd-topic">Refining spatial methodology for marine environments.</div>
-  </div>
-
-</div>
+</section>
 ```
-
-[$\leftarrow$ Back to CV Overview](cv.qmd)

@@ -63,4 +63,4 @@ This 3^rd^ year undergraduate course aims to give students a genuine understandi
 
 ---
 
-[$\leftarrow$ Back to all courses](courses.qmd)
+[&larr; Back to teaching](index.html#teaching)

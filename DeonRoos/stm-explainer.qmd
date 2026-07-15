@@ -13,24 +13,35 @@ execute:
 library(knitr)
 opts_chunk$set(echo = TRUE)
 
+# Poster Press palette, matching poster-press.css so plots sit flush on the
+# page background rather than in a lighter rectangle.
+pp_ink       <- "#1b1b14"
+pp_ink_card  <- "#211f16"
+pp_rule      <- "#2c2c20"
+pp_cream     <- "#ece3cc"
+pp_body      <- "#c9c0a6"
+pp_muted     <- "#9a927b"
+pp_muted_2   <- "#7a745e"
+pp_amber     <- "#d19527"
+
 theme_dark_site <- function(...) {
   ggplot2::theme_minimal(...) +
   ggplot2::theme(
-    plot.background   = ggplot2::element_rect(fill = "#202123", colour = NA),
-    panel.background  = ggplot2::element_rect(fill = "#202123", colour = NA),
-    panel.grid.major  = ggplot2::element_line(colour = "#333333"),
-    panel.grid.minor  = ggplot2::element_line(colour = "#2d2e30"),
-    text              = ggplot2::element_text(colour = "#cccccc"),
-    axis.text         = ggplot2::element_text(colour = "#999999"),
-    plot.title        = ggplot2::element_text(colour = "#ffffff", face = "bold"),
-    plot.subtitle     = ggplot2::element_text(colour = "#999999"),
-    plot.caption      = ggplot2::element_text(colour = "#666666"),
-    legend.background = ggplot2::element_rect(fill = "#202123", colour = NA),
-    legend.key        = ggplot2::element_rect(fill = "#202123", colour = NA),
-    legend.text       = ggplot2::element_text(colour = "#cccccc"),
-    legend.title      = ggplot2::element_text(colour = "#cccccc"),
-    strip.background  = ggplot2::element_rect(fill = "#2d2e30", colour = NA),
-    strip.text        = ggplot2::element_text(colour = "#cccccc")
+    plot.background   = ggplot2::element_rect(fill = pp_ink, colour = NA),
+    panel.background  = ggplot2::element_rect(fill = pp_ink, colour = NA),
+    panel.grid.major  = ggplot2::element_line(colour = pp_rule),
+    panel.grid.minor  = ggplot2::element_line(colour = pp_ink_card),
+    text              = ggplot2::element_text(colour = pp_body),
+    axis.text         = ggplot2::element_text(colour = pp_muted),
+    plot.title        = ggplot2::element_text(colour = pp_cream, face = "bold"),
+    plot.subtitle     = ggplot2::element_text(colour = pp_muted),
+    plot.caption      = ggplot2::element_text(colour = pp_muted_2),
+    legend.background = ggplot2::element_rect(fill = pp_ink, colour = NA),
+    legend.key        = ggplot2::element_rect(fill = pp_ink, colour = NA),
+    legend.text       = ggplot2::element_text(colour = pp_body),
+    legend.title      = ggplot2::element_text(colour = pp_body),
+    strip.background  = ggplot2::element_rect(fill = pp_ink_card, colour = NA),
+    strip.text        = ggplot2::element_text(colour = pp_body)
   )
 }
 ```
@@ -721,8 +732,8 @@ topic_labels <- apply(top_frex, 1, function(words) paste(words, collapse = ", ")
 topic_df$Label <- paste0("T", topic_df$Topic, ": ", topic_labels)
 
 ggplot(topic_df, aes(x = Label, y = Mean)) +
-  geom_col(fill = "#00A68A") +
-  geom_errorbar(aes(ymin = Mean - SD, ymax = Mean + SD), width = 0.2, color = "white") +
+  geom_col(fill = pp_amber) +
+  geom_errorbar(aes(ymin = Mean - SD, ymax = Mean + SD), width = 0.2, color = pp_cream) +
   labs(x = "Topic",
        y = "Expected %\nof Corpus") +
   scale_y_continuous(labels = scales::percent) +
@@ -759,7 +770,7 @@ df <- data.frame(
 
 library(ggwordcloud)
 ggplot(df, aes(label = word, size = prob)) +
-  geom_text_wordcloud(area_corr = TRUE, color = "#00A68A") +
+  geom_text_wordcloud(area_corr = TRUE, color = pp_amber) +
   scale_size_area(max_size = 50) +
   theme_dark_site()
 ```
@@ -880,8 +891,8 @@ topic_labels <- apply(top_frex, 1, function(words) paste(words, collapse = ", ")
 topic_df$Label <- paste0("T", topic_df$Topic, ": ", topic_labels)
 
 ggplot(topic_df, aes(x = Label, y = Mean)) +
-  geom_col(fill = "#00A68A") +
-  geom_errorbar(aes(ymin = Mean - SD, ymax = Mean + SD), width = 0.2, color = "white") +
+  geom_col(fill = pp_amber) +
+  geom_errorbar(aes(ymin = Mean - SD, ymax = Mean + SD), width = 0.2, color = pp_cream) +
   labs(x = "Topic", y = "Expected %\nof Corpus") +
   scale_y_continuous(labels = scales::percent) +
   theme_dark_site(base_size = 12) +
@@ -910,7 +921,7 @@ df <- data.frame(
   filter(word %in% top_words)
 
 ggplot(df, aes(label = word, size = prob)) +
-  geom_text_wordcloud(area_corr = TRUE, color = "#00A68A") +
+  geom_text_wordcloud(area_corr = TRUE, color = pp_amber) +
   scale_size_area(max_size = 50) +
   theme_dark_site()
 ```
