@@ -52,6 +52,18 @@
   // ink -> amber-deep -> amber, matching the Poster Press ramp
   var STOPS = [[0, 27, 27, 20], [0.55, 109, 85, 24], [1, 209, 149, 39]];
 
+  // Pointer deforms the habitat z, not mu directly: raising z locally raises
+  // zeta = b0 + b1*z, so the waves run faster there. That keeps the displayed
+  // model true (z is already in it) instead of bolting on a 4th source.
+  // Phase shift scales with D/zeta, so keep the bump small and smooth or the
+  // far field jumps whole cycles and shimmers.
+  // Response is very uneven by nature (dphi/dz scales with 1/zeta^2): ~0.2
+  // cycles in good habitat vs several in poor. That is the model being honest,
+  // and the poor-habitat cells are already near one wavelength per 4 cells.
+  var AMP_MAX = 0.18;           // max delta-z under the pointer
+  var SIGMA = 10;               // bump width, model units (field is 100 across)
+  var EASE = 7;                 // amplitude easing, per second
+
   function mulberry32(a) {
     return function () {
       a |= 0; a = (a + 0x6D2B79F5) | 0;
@@ -125,8 +137,10 @@
     var off = document.createElement('canvas');
     var offCtx = off.getContext('2d');
     var lut = buildLut();
-    var cols = 0, rows = 0, c0, c1, c2, img, muMin = 0, muMax = 1;
+    var cols = 0, rows = 0, unit = 1, domainH = 1;
+    var Z, D0, D1, D2, c0, c1, c2, img, muMin = 0, muMax = 1;
     var ready = false, visible = true, raf = null, lastW = -1, lastH = -1;
+    var amp = 0, ampTarget = 0, px = 0, py = 0, pointerMoved = false;
 
     function muAt(t, k) {
       var s0 = Math.sin(t + c0[k]);
@@ -147,25 +161,32 @@
       off.width = cols; off.height = rows;
       img = offCtx.createImageData(cols, rows);
 
-      var z = makeHabitat(cols, rows, SEED);
-      var n = cols * rows, arrs = [new Float32Array(n), new Float32Array(n), new Float32Array(n)];
+      var n = cols * rows;
       // Distances are measured in model units rather than cells, so the wave
       // keeps the same visual scale whatever the plate's pixel size.
-      var unit = UNITS_W / cols, domainH = rows * unit;
+      unit = UNITS_W / cols; domainH = rows * unit;
+      Z = makeHabitat(cols, rows, SEED);
+
+      // D_j never changes, so the sqrt is paid once here; only zeta moves when
+      // the pointer deforms z, and that is a divide per cell.
+      D0 = new Float32Array(n); D1 = new Float32Array(n); D2 = new Float32Array(n);
+      var Ds = [D0, D1, D2];
       for (var s = 0; s < 3; s++) {
-        var S = SOURCES[s], sx = S.fx * UNITS_W, sy = S.fy * domainH, arr = arrs[s];
+        var S = SOURCES[s], sx = S.fx * UNITS_W, sy = S.fy * domainH, arr = Ds[s];
         for (var j = 0; j < rows; j++) {
           for (var i = 0; i < cols; i++) {
-            var k = j * cols + i;
             var dx = sx - i * unit, dy = sy - j * unit;
-            var d = -Math.sqrt(dx * dx + dy * dy);
-            arr[k] = d / (S.b0 + S.b1 * z[k]);
+            arr[j * cols + i] = -Math.sqrt(dx * dx + dy * dy);
           }
         }
       }
-      c0 = arrs[0]; c1 = arrs[1]; c2 = arrs[2];
+      c0 = new Float32Array(n); c1 = new Float32Array(n); c2 = new Float32Array(n);
+      amp = 0; ampTarget = 0; pointerMoved = false;
+      recomputeField();
 
-      // fix the colour scale once, across a few phases (gganimate scales globally)
+      // Fix the colour scale once, across a few phases (gganimate scales
+      // globally). mu is bounded by its sines regardless of zeta, so the
+      // pointer bump can never push it outside this range.
       muMin = Infinity; muMax = -Infinity;
       for (var ti = 0; ti < 4; ti++) {
         var t = ti * 1.7;
@@ -183,6 +204,40 @@
       return true;
     }
 
+    // c_j = D_j / zeta_j, with a Gaussian bump in z under the pointer.
+    // Only positive bumps: zeta must stay well clear of zero.
+    function recomputeField() {
+      var S0 = SOURCES[0], S1 = SOURCES[1], S2 = SOURCES[2];
+      var a = amp, inv2s2 = 1 / (2 * SIGMA * SIGMA), cut = (3 * SIGMA) * (3 * SIGMA);
+      for (var j = 0; j < rows; j++) {
+        var y = j * unit;
+        for (var i = 0; i < cols; i++) {
+          var k = j * cols + i, ze = Z[k];
+          if (a > 0) {
+            var dx = px - i * unit, dy = py - y, r2 = dx * dx + dy * dy;
+            if (r2 < cut) ze += a * Math.exp(-r2 * inv2s2);
+          }
+          c0[k] = D0[k] / (S0.b0 + S0.b1 * ze);
+          c1[k] = D1[k] / (S1.b0 + S1.b1 * ze);
+          c2[k] = D2[k] / (S2.b0 + S2.b1 * ze);
+        }
+      }
+    }
+
+    // Ease the bump in/out so the phase shift never snaps.
+    function updateField(dt) {
+      if (!ready) return;
+      var prev = amp;
+      if (amp !== ampTarget) {
+        amp += (ampTarget - amp) * Math.min(1, dt * EASE);
+        if (Math.abs(ampTarget - amp) < 0.0015) amp = ampTarget;
+      }
+      if (amp !== prev || (pointerMoved && amp > 0)) {
+        recomputeField();
+        pointerMoved = false;
+      }
+    }
+
     function draw(t) {
       if (!ready) return;
       var d = img.data, n = cols * rows, span = (muMax - muMin) || 1;
@@ -198,15 +253,39 @@
     }
 
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var start = null;
+    var start = null, lastTs = null;
     function frame(ts) {
       raf = null;
-      if (start === null) start = ts;
+      if (start === null) { start = ts; lastTs = ts; }
+      var dt = Math.min(0.05, (ts - lastTs) / 1000);
+      lastTs = ts;
+      updateField(dt);
       draw(((ts - start) / 1000) * SPEED);
       if (visible && !reduce) raf = requestAnimationFrame(frame);
     }
     function play() {
       if (raf === null && visible && !reduce && ready) raf = requestAnimationFrame(frame);
+    }
+
+    // Pointer raises z locally; the waves speed up under the cursor. Skipped
+    // entirely under reduced-motion, and absent on touch-only devices, where
+    // it degrades to the plain animation.
+    if (!reduce) {
+      var onMove = function (e) {
+        var r = cv.getBoundingClientRect();
+        if (!r.width || !r.height) return;
+        px = (e.clientX - r.left) / r.width * UNITS_W;
+        py = (e.clientY - r.top) / r.height * domainH;
+        ampTarget = AMP_MAX;
+        pointerMoved = true;
+        play();
+      };
+      var onLeave = function () { ampTarget = 0; play(); };
+      cv.addEventListener('pointerenter', onMove);
+      cv.addEventListener('pointermove', onMove);
+      cv.addEventListener('pointerleave', onLeave);
+      cv.addEventListener('pointercancel', onLeave);
+      cv.addEventListener('pointerup', onLeave);
     }
 
     // The canvas has no layout size until the page is actually rendered, which

@@ -327,6 +327,11 @@ main > p:empty { display: none; }
   display: block;
   background: var(--ink);
   image-rendering: pixelated;
+  cursor: crosshair;
+  touch-action: pan-y;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__canvas { cursor: default; }
 }
 .hero__scroll {
   display: flex;
