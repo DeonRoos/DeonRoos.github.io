@@ -38,10 +38,13 @@
      D_j and zeta_j are independent of t, so c_j = D_j / zeta_j is
      precomputed per cell and each frame only needs sin(t + c_j).
   ------------------------------------------------------------------ */
-  var CELL = 7;                 // tile size in CSS px
+  var CELL = 6;                 // tile size in CSS px; a 600px square gives a 100x100 grid
+  var UNITS_W = 100;            // model units across the field, whatever its pixel size
   var SPEED = 1.6;              // radians of t per second
   var SEED = 1988;
-  var SOURCES = [               // positions as fractions of the field
+  // Fractions of the field. On the square these resolve to the original
+  // TW_animation.R coordinates: (25,60), (40,15), (78,48) over a 100x100 domain.
+  var SOURCES = [
     { fx: 0.25, fy: 0.60, b0: 0.4, b1: 5 },
     { fx: 0.40, fy: 0.15, b0: 0.3, b1: 6 },
     { fx: 0.78, fy: 0.48, b0: 0.4, b1: 4 }
@@ -146,12 +149,15 @@
 
       var z = makeHabitat(cols, rows, SEED);
       var n = cols * rows, arrs = [new Float32Array(n), new Float32Array(n), new Float32Array(n)];
+      // Distances are measured in model units rather than cells, so the wave
+      // keeps the same visual scale whatever the plate's pixel size.
+      var unit = UNITS_W / cols, domainH = rows * unit;
       for (var s = 0; s < 3; s++) {
-        var S = SOURCES[s], sx = S.fx * (cols - 1), sy = S.fy * (rows - 1), arr = arrs[s];
+        var S = SOURCES[s], sx = S.fx * UNITS_W, sy = S.fy * domainH, arr = arrs[s];
         for (var j = 0; j < rows; j++) {
           for (var i = 0; i < cols; i++) {
             var k = j * cols + i;
-            var dx = sx - i, dy = sy - j;
+            var dx = sx - i * unit, dy = sy - j * unit;
             var d = -Math.sqrt(dx * dx + dy * dy);
             arr[k] = d / (S.b0 + S.b1 * z[k]);
           }
@@ -233,11 +239,19 @@
       if (!document.hidden) tryStart();
     });
 
-    var rt = null;
-    window.addEventListener('resize', function () {
+    // Watch the canvas box itself, not just the window: the plate's clamp()
+    // height can change without a window resize (e.g. late font layout).
+    var rt = null, ro = null;
+    function scheduleRebuild() {
       clearTimeout(rt);
-      rt = setTimeout(function () { if (build()) draw(0); }, 200);
-    });
+      rt = setTimeout(function () { if (build()) { draw(0); play(); } }, 200);
+    }
+    if ('ResizeObserver' in window) {
+      ro = new ResizeObserver(scheduleRebuild);
+      ro.observe(cv);
+    } else {
+      window.addEventListener('resize', scheduleRebuild);
+    }
   }
 
   function init() { initPubToggle(); initWave(); }

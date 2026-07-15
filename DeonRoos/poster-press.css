@@ -263,47 +263,68 @@ main > p:empty { display: none; }
    ============================================================ */
 .hero__eyebrow { margin-bottom: 0; }
 .hero__title { margin: 26px 0 0; }
-.hero__meta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 24px;
-  margin-top: 38px;
-}
-.hero__quote { font-size: clamp(17px, 2.2vw, 24px); max-width: 30ch; }
+.hero__deck { font-size: clamp(17px, 2.2vw, 24px); max-width: 34ch; margin: 34px 0 0; }
 
-/* Equation block (MathJax). Sits opposite the pull-quote in the hero meta row. */
-.hero__eq {
-  text-align: right;
-  color: var(--cream-body);
-  flex-shrink: 0;
+/* ---- The plate: sits inside the measure, aligned with the other material -- */
+.hero__plate {
+  max-width: var(--measure);
+  margin: 44px auto 0;
+  padding: 0 var(--band-pad-x);
 }
-.hero__eq mjx-container[display="true"] {
+
+/* Callout: the question and the model it's answered with, side by side */
+.hero__callout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(20px, 4vw, 56px);
+  align-items: center;
+  background: var(--ink-2);
+  border: 1px solid var(--ink-rule);
+  border-left: 2px solid var(--amber);
+  padding: clamp(20px, 3vw, 30px) clamp(20px, 3vw, 34px);
+}
+.hero__question {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(20px, 2.4vw, 32px);
+  line-height: 1.02;
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin: 0;
+}
+.hero__model mjx-container[display="true"] {
   margin: .3em 0 !important;
-  text-align: right !important;
+  text-align: left !important;
   display: block !important;
 }
-.hero__eq mjx-container {
-  font-size: clamp(70%, 1.15vw, 88%) !important;
+.hero__model mjx-container {
+  font-size: clamp(60%, 1.05vw, 80%) !important;
   color: var(--cream-body);
 }
-.hero__eq mjx-container[display="true"] + br { display: none; }
-.hero__fig { max-width: var(--measure); margin: 44px auto 0; padding: 0 var(--band-pad-x); }
-.hero__fig-head {
-  border-top: 1px solid var(--ink-rule);
-  padding-top: 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+/* beta_1 — the inference target the question actually asks about */
+.hero__model .eq-hi { color: var(--amber) !important; }
+
+/* The square field. At 600px with 6px cells this is a 100x100 grid over a
+   100x100 model domain — the same geometry as TW_animation.R. */
+.hero__figure {
+  width: min(100%, 600px);
+  margin: clamp(28px, 4vw, 44px) auto 0;
 }
-.hero__fig-cap { font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .14em; color: var(--ink-muted-2); }
-/* Travelling-wave canvas: mu over an fBm habitat, rendered as chunky tiles */
+.hero__fig-cap {
+  display: block;
+  text-align: right;
+  margin-bottom: 8px;
+  font-family: var(--f-mono);
+  font-size: 9.5px;
+  letter-spacing: .14em;
+  color: var(--ink-muted-2);
+}
 .hero__canvas {
   width: 100%;
-  height: clamp(200px, 24vw, 320px);
+  aspect-ratio: 1 / 1;
+  height: auto;
   display: block;
-  margin-top: 6px;
   background: var(--ink);
   image-rendering: pixelated;
 }
@@ -649,6 +670,8 @@ main > p:empty { display: none; }
    Responsive
    ============================================================ */
 @media (max-width: 860px) {
+  /* Stack the question above the model rather than squeezing two columns */
+  .hero__callout { grid-template-columns: 1fr; gap: 18px; }
   .col3 { grid-template-columns: 1fr; gap: 26px; }
   .col3 > div { padding: 0 0 26px; border-right: none; border-bottom: 1px solid var(--oat-rule-2); }
   .col3 > div:last-child { border-bottom: none; padding-bottom: 0; }

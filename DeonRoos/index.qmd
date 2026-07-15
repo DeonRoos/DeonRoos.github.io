@@ -12,9 +12,12 @@ format:
   <div class="band__inner band__inner--tight">
     <div class="eyebrow hero__eyebrow">Lecturer in Applied Statistics, University of Aberdeen</div>
     <h1 class="pp-display pp-display--hero hero__title">I answer<br>questions<br>with <span class="accent">data.</span></h1>
-    <div class="hero__meta">
-      <p class="lead-serif hero__quote">Most of the job is working out what the data can&rsquo;t tell you.</p>
-      <div class="hero__eq">
+    <p class="lead-serif hero__deck">Most of the job is working out what the data can&rsquo;t tell you.</p>
+  </div>
+  <div class="hero__plate">
+    <div class="hero__callout">
+      <p class="hero__question">Does the landscape change how fast it spreads?</p>
+      <div class="hero__model">
 ```
 
 $$\mu_i = f(\rho_{0,i}) + f(\rho_{1,i}) + f(\rho_{2,i})$$
@@ -23,18 +26,15 @@ $$\rho_{j,i} = T + \left(\frac{1}{\zeta_{j,i}}\right) \times D_{j,i} \quad \text
 
 $$D_{j,i} = -\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2}$$
 
-$$\zeta_{j,i} = \beta_0 + \beta_1 \times z_i$$
+$$\zeta_{j,i} = \beta_0 + \class{eq-hi}{\beta_1} \times z_i$$
 
 ```{=html}
       </div>
     </div>
-  </div>
-  <div class="hero__fig">
-    <div class="hero__fig-head">
-      <span class="hero__fig-cap">FIG., TRAVELLING WAVES ACROSS A SIMULATED HABITAT</span>
-      <span class="hero__fig-cap">z &#8764; fBm &middot; 3 SOURCES</span>
-    </div>
-    <canvas id="pp-wave" class="hero__canvas" aria-label="Animated travelling waves radiating from three sources across a simulated habitat layer"></canvas>
+    <figure class="hero__figure">
+      <figcaption class="hero__fig-cap">z &#8764; fBm &middot; 3 SOURCES</figcaption>
+      <canvas id="pp-wave" class="hero__canvas" aria-label="Animated travelling waves radiating from three sources across a simulated habitat layer"></canvas>
+    </figure>
     <div class="hero__scroll"><span>&#8595;&nbsp;&nbsp;SCROLL</span></div>
   </div>
 </section>
