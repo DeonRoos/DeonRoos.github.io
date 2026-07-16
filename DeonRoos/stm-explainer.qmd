@@ -600,6 +600,7 @@ We're trying to balance multiple criteria:
 #| cache: true
 #| message: false
 #| warning: false
+#| results: hide
 res_K <- searchK(docs, vocab, K = c(10, 15, 20, 25), data = meta)
 ```
 
