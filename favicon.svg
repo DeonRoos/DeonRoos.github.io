@@ -1,5 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <rect width="64" height="64" rx="12" fill="#202123"/>
-  <text x="32" y="44" font-family="Georgia, serif" font-size="28" font-weight="700"
-        text-anchor="middle" fill="#00a68a">DR</text>
+  <rect width="64" height="64" fill="#1b1b14"/>
+  <rect x="0" y="56" width="64" height="8" fill="#6d5518"/>
+  <text x="32" y="45" font-family="Anton, Impact, Haettenschweiler, 'Arial Narrow', sans-serif"
+        font-size="38" font-weight="700" text-anchor="middle" fill="#d19527"
+        textLength="46" lengthAdjust="spacingAndGlyphs">DR</text>
 </svg>
