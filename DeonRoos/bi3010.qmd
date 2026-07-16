@@ -63,4 +63,4 @@ This 3^rd^ year undergraduate course aims to give students a genuine understandi
 
 ---
 
-[&larr; Back to teaching](index.html#teaching)
+[Back to teaching](index.html#teaching)

@@ -16,7 +16,7 @@ format:
   </div>
   <div class="hero__plate">
     <div class="hero__callout">
-      <p class="hero__question">Does the landscape change how fast it spreads?</p>
+      <p class="hero__question">&ldquo;Does the landscape change how fast it spreads?&rdquo;</p>
       <div class="hero__model">
 ```
 
@@ -35,7 +35,7 @@ $$\zeta_{j,i} = \beta_0 + \class{eq-hi}{\beta_1} \times z_i$$
       <figcaption class="hero__fig-cap">z &#8764; fBm &middot; 3 SOURCES</figcaption>
       <canvas id="pp-wave" class="hero__canvas" aria-label="Animated travelling waves radiating from three sources across a simulated habitat layer"></canvas>
     </figure>
-    <div class="hero__scroll"><span>&#8595;&nbsp;&nbsp;SCROLL</span></div>
+    <div class="hero__scroll"><span>SCROLL</span></div>
   </div>
 </section>
 
@@ -70,7 +70,7 @@ $$\zeta_{j,i} = \beta_0 + \class{eq-hi}{\beta_1} \times z_i$$
     <div class="sec-head sec-head--split">
       <div class="sec-head__group">
         <span class="sec-head__num">02</span>
-        <span class="sec-head__label">Selected work</span>
+        <span class="sec-head__label">Most recent work</span>
       </div>
       <span class="mono-cap">SYNCED FROM ORCID &middot; 0000-0003-4866-7472</span>
     </div>
@@ -88,8 +88,7 @@ render_row <- function(year, citation, link) {
   yr <- if (is.null(year) || is.na(year)) "" else year
   inner <- glue(
     '<span class="pub-row__year">{yr}</span>',
-    '<span class="pub-row__cite">{citation}</span>',
-    '<span class="pub-row__arrow">&#8599;</span>'
+    '<span class="pub-row__cite">{citation}</span>'
   )
   if (!is.null(link)) {
     glue('<a href="{link}" class="pub-row" target="_blank" rel="noopener">{inner}</a>')
@@ -189,7 +188,7 @@ if (!is.null(res) && res$status_code == 200) {
         <div class="tbook__label">Open-access textbook</div>
         <div class="tbook__title">An Introduction to R. Free, online, and available to anyone.</div>
       </div>
-      <a href="https://intro2r.com" target="_blank" rel="noopener" class="tbook__cta">Read it &#8599;</a>
+      <a href="https://intro2r.com" target="_blank" rel="noopener" class="tbook__cta">Read it</a>
     </div>
     <div class="footnote-mono">Most recent output shown; the full list is pulled automatically from ORCID.</div>
   </div>
@@ -212,8 +211,8 @@ if (!is.null(res) && res$status_code == 200) {
           <span class="chip">R</span><span class="chip">ggplot2</span><span class="chip">Linear Models</span><span class="chip">GLMs</span><span class="chip">Causal Inference</span>
         </div>
         <div>
-          <a href="bi3010.html" class="teach-card__link">Course details &rarr;</a>
-          <a href="https://deonroos.github.io/stats-for-biologists/" target="_blank" rel="noopener" class="teach-card__link">Workshop materials &rarr;</a>
+          <a href="bi3010.html" class="teach-card__link">Course details</a>
+          <a href="https://deonroos.github.io/stats-for-biologists/" target="_blank" rel="noopener" class="teach-card__link">Workshop materials</a>
         </div>
       </div>
       <div class="teach-card">
@@ -224,7 +223,7 @@ if (!is.null(res) && res$status_code == 200) {
           <span class="chip">R</span><span class="chip">Poisson GLM</span><span class="chip">Binomial GLM</span><span class="chip">Bernoulli GLM</span>
         </div>
         <div>
-          <a href="pgr-glm.html" class="teach-card__link">Course details &rarr;</a>
+          <a href="pgr-glm.html" class="teach-card__link">Course details</a>
         </div>
       </div>
     </div>
@@ -336,32 +335,32 @@ if (!is.null(res) && res$status_code == 200) {
     <a href="theses/DeonRoos_2015.pdf" class="thesis-row">
       <span class="thesis-row__year">2015</span>
       <span class="thesis-row__title"><strong>Deon Roos</strong>, Water vole ecosystem engineering</span>
-      <span class="thesis-row__ext">PDF &#8595;</span>
+      <span class="thesis-row__ext">PDF</span>
     </a>
     <a href="theses/ShananDavies_2024.pdf" class="thesis-row">
       <span class="thesis-row__year">2024</span>
       <span class="thesis-row__title"><strong>Shanan Davies</strong>, Roe deer occupancy and habitat preferences</span>
-      <span class="thesis-row__ext">PDF &#8595;</span>
+      <span class="thesis-row__ext">PDF</span>
     </a>
     <a href="theses/AliceSemple_2024.pdf" class="thesis-row">
       <span class="thesis-row__year">2024</span>
       <span class="thesis-row__title"><strong>Alice Semple</strong>, Predicting vole population growth and cycles</span>
-      <span class="thesis-row__ext">PDF &#8595;</span>
+      <span class="thesis-row__ext">PDF</span>
     </a>
     <a href="theses/JoeDavidson_2025.pdf" class="thesis-row">
       <span class="thesis-row__year">2025</span>
       <span class="thesis-row__title"><strong>Joe Davidson</strong>, Post-release pheasant distribution</span>
-      <span class="thesis-row__ext">PDF &#8595;</span>
+      <span class="thesis-row__ext">PDF</span>
     </a>
     <a href="theses/GraceSommerville_2025.pdf" class="thesis-row">
       <span class="thesis-row__year">2025</span>
       <span class="thesis-row__title"><strong>Grace Sommerville</strong>, Media coverage of illegal lynx reintroduction</span>
-      <span class="thesis-row__ext">PDF &#8595;</span>
+      <span class="thesis-row__ext">PDF</span>
     </a>
     <a href="theses/ZitongLui_2025.docx" class="thesis-row">
       <span class="thesis-row__year">2025</span>
       <span class="thesis-row__title"><strong>Zitong Lui</strong>, Roe deer and road collision risk</span>
-      <span class="thesis-row__ext">DOCX &#8595;</span>
+      <span class="thesis-row__ext">DOCX</span>
     </a>
   </div>
 </section>
@@ -374,22 +373,37 @@ if (!is.null(res) && res$status_code == 200) {
         <span class="sec-head__num">06</span>
         <span class="sec-head__label">Career</span>
       </div>
-      <span class="mono-cap">ZOOLOGY &rarr; ECOLOGY &rarr; APPLIED STATISTICS</span>
+      <span class="mono-cap">ZOOLOGY &middot; ECOLOGY &middot; APPLIED STATISTICS</span>
     </div>
     <div class="tl">
       <div class="tl__row">
         <span class="tl__label">Education</span>
         <div class="tl__track">
-          <div class="tl__bar tl__bar--edu" style="left:0%;width:28.6%;">BSc Zoology</div>
-          <div class="tl__bar tl__bar--edu2" style="left:29.6%;width:34.7%;">PhD Ecology</div>
+          <div class="tl__bar tl__bar--edu" style="left:0%;width:28.6%;" tabindex="0">
+            <span class="tl__bar-txt">BSc Zoology</span>
+            <span class="tl__tip" role="tooltip">BSc (Hons) Zoology, First Class. University of Aberdeen, 2012 to 2016.</span>
+          </div>
+          <div class="tl__bar tl__bar--edu2" style="left:29.6%;width:34.7%;" tabindex="0">
+            <span class="tl__bar-txt">PhD Ecology</span>
+            <span class="tl__tip" role="tooltip">PhD Ecology: rodent pest population dynamics. University of Aberdeen, 2016 to 2021.</span>
+          </div>
         </div>
       </div>
       <div class="tl__row">
         <span class="tl__label">Employment</span>
         <div class="tl__track">
-          <div class="tl__bar tl__bar--emp" style="left:57.1%;width:14.3%;">Fellowships</div>
-          <div class="tl__bar tl__bar--emp" style="left:72.4%;width:13.3%;">APHA</div>
-          <div class="tl__bar tl__bar--now" style="left:86.7%;right:0;">Lecturer</div>
+          <div class="tl__bar tl__bar--emp" style="left:57.1%;width:14.3%;" tabindex="0">
+            <span class="tl__bar-txt">Fellowships</span>
+            <span class="tl__tip" role="tooltip">Teaching and Research Fellow, University of Aberdeen, 2020 to 2022.</span>
+          </div>
+          <div class="tl__bar tl__bar--emp" style="left:72.4%;width:13.3%;" tabindex="0">
+            <span class="tl__bar-txt">APHA</span>
+            <span class="tl__tip" role="tooltip">Senior Statistical Ecologist, Animal and Plant Health Agency, 2022 to 2024.</span>
+          </div>
+          <div class="tl__bar tl__bar--now" style="left:86.7%;right:0;" tabindex="0">
+            <span class="tl__bar-txt">Lecturer</span>
+            <span class="tl__tip tl__tip--right" role="tooltip">Lecturer in Applied Statistics, University of Aberdeen. Current role, from 2024.</span>
+          </div>
         </div>
       </div>
       <div class="tl__row">
@@ -404,11 +418,16 @@ if (!is.null(res) && res$status_code == 200) {
       </div>
     </div>
     <p class="body-copy" style="font-size:12.5px;line-height:1.7;color:var(--ink-muted);margin-top:20px;max-width:80ch;">Currently <span style="color:var(--amber);font-weight:600;">Lecturer in Applied Statistics, University of Aberdeen</span>, previously Senior Statistical Ecologist at the Animal &amp; Plant Health Agency, and Teaching / Research Fellow at Aberdeen. PhD Ecology (rodent pest population dynamics) and a First-Class BSc Zoology, both Aberdeen.</p>
-    <div class="chip-row" style="margin-top:26px;">
-      <span class="chip">R</span><span class="chip">Bayesian inference</span><span class="chip">Spatio-temporal modelling</span><span class="chip">Hierarchical models</span><span class="chip">Occupancy modelling</span><span class="chip">Simulation-based inference</span><span class="chip">Causal inference</span><span class="chip">RShiny</span><span class="chip">Quarto</span>
+    <div class="chip-stack" style="margin-top:26px;">
+      <div class="chip-row">
+        <span class="chip">Spatio-temporal modelling</span><span class="chip">Simulation-based inference</span><span class="chip">Observation processes</span><span class="chip">Hierarchical models</span><span class="chip">Density estimation</span>
+      </div>
+      <div class="chip-row">
+        <span class="chip">Bayesian inference</span><span class="chip">Occupancy modelling</span><span class="chip">Data visualisation</span><span class="chip">Causal inference</span><span class="chip">Machine learning</span><span class="chip">R</span><span class="chip">RShiny</span><span class="chip">Quarto</span>
+      </div>
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;">
-      <a href="cv.html" class="btn btn--solid">Full CV &rarr;</a>
+      <a href="cv.html" class="btn btn--solid">Full CV</a>
     </div>
   </div>
 </section>
@@ -423,9 +442,9 @@ if (!is.null(res) && res$status_code == 200) {
     <h2 class="pp-display pp-display--xl contact__title" style="color:var(--oat-ink);">Questions<br><span class="accent">welcome.</span></h2>
     <div class="contact__links">
       <a href="mailto:deon.roos4@abdn.ac.uk" class="contact__link is-primary">deon.roos4@abdn.ac.uk</a>
-      <a href="https://orcid.org/0000-0003-4866-7472" target="_blank" rel="noopener" class="contact__link">ORCID &#8599;</a>
-      <a href="https://github.com/DeonRoos" target="_blank" rel="noopener" class="contact__link">GitHub &#8599;</a>
-      <a href="cv.html" class="contact__link">Full CV &rarr;</a>
+      <a href="https://orcid.org/0000-0003-4866-7472" target="_blank" rel="noopener" class="contact__link">ORCID</a>
+      <a href="https://github.com/DeonRoos" target="_blank" rel="noopener" class="contact__link">GitHub</a>
+      <a href="cv.html" class="contact__link">Full CV</a>
     </div>
   </div>
 </section>

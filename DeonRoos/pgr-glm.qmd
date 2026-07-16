@@ -49,4 +49,4 @@ This advanced course focuses on the theory and application of Generalised Linear
 
 ---
 
-[&larr; Back to teaching](index.html#teaching)
+[Back to teaching](index.html#teaching)

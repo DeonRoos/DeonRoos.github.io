@@ -14,7 +14,7 @@ format:
 <section class="band band--ink">
   <div class="band__inner">
     <div class="eyebrow">This page has moved</div>
-    <p class="body-copy" style="margin-top:16px;">Skills now live on the CV. Redirecting you to <a href="cv.html" class="redirect-link">CV &rarr;</a></p>
+    <p class="body-copy" style="margin-top:16px;">Skills now live on the CV. Redirecting you to <a href="cv.html" class="redirect-link">CV</a></p>
   </div>
 </section>
 ```

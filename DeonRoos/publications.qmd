@@ -14,7 +14,7 @@ format:
 <section class="band band--ink">
   <div class="band__inner">
     <div class="eyebrow">This page has moved</div>
-    <p class="body-copy" style="margin-top:16px;">Publications now live on the home page. Redirecting you to <a href="index.html#work" class="redirect-link">Selected work &rarr;</a></p>
+    <p class="body-copy" style="margin-top:16px;">Publications now live on the home page. Redirecting you to <a href="index.html#work" class="redirect-link">Most recent work</a></p>
   </div>
 </section>
 ```

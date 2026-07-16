@@ -14,7 +14,7 @@ format:
 <section class="band band--ink">
   <div class="band__inner">
     <div class="eyebrow">This page has moved</div>
-    <p class="body-copy" style="margin-top:16px;">Explainers now live on the home page. Redirecting you to <a href="index.html#explainers" class="redirect-link">Explainers &rarr;</a></p>
+    <p class="body-copy" style="margin-top:16px;">Explainers now live on the home page. Redirecting you to <a href="index.html#explainers" class="redirect-link">Explainers</a></p>
   </div>
 </section>
 ```

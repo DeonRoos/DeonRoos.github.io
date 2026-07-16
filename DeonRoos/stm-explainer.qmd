@@ -378,7 +378,7 @@ $$
 
 For $\theta$, it's a document-topic matrix of dimension $D \times K$. For example, if we have 5 documents ($D = 5$) and 10 topics ($K = 10$), then $\theta$ would be a matrix with 5 rows and 10 columns.
 
-Each row $\theta_d$ is a probability distribution over topics for that document — i.e., which topics are present, and to what degree. In the Document-Topic Model above, we were estimating each row! And as a result of $\text{softmax}$ each row sums to 1.
+Each row $\theta_d$ is a probability distribution over topics for that document, i.e., which topics are present, and to what degree. In the Document-Topic Model above, we were estimating each row! And as a result of $\text{softmax}$ each row sums to 1.
 
 For example, $\theta$ might look like:
 
@@ -588,8 +588,8 @@ We're trying to balance multiple criteria:
 
 | If you see…                              | It means…                                           | What to do                                  |
 |------------------------------------------|-----------------------------------------------------|----------------------------------------------|
-| *Coherence ↑ but Exclusivity ↓*        | Topics are interpretable but overlapping            | Try slightly lower `K`                        |
-| *Exclusivity ↑ but Coherence ↓*        | Topics are distinct but fragmented or incoherent    | Try slightly lower or slightly higher `K`     |
+| *Coherence up but Exclusivity down*    | Topics are interpretable but overlapping            | Try slightly lower `K`                        |
+| *Exclusivity up but Coherence down*    | Topics are distinct but fragmented or incoherent    | Try slightly lower or slightly higher `K`     |
 | *Held-out Likelihood levels off*       | Predictive gains are saturated                      | Good point to stop increasing `K`             |
 | *Residuals flatten*                    | Model has explained most of the structure           | Increasing `K` adds noise, not insight        |
 
@@ -860,7 +860,7 @@ And we can check the top words per topic for our new model:
 labelTopics(model2, n = 5)
 ```
 
-And, as before, we can extract text that exemplifies each topic — a helpful way to figure out what a topic might mean.
+And, as before, we can extract text that exemplifies each topic, a helpful way to figure out what a topic might mean.
 
 ```{r}
 #| message: false
@@ -1019,7 +1019,7 @@ To recap the essentials:
 
 - Each document is treated as a mix of topics, and each topic is a mix of words. That’s the heart of it.
 
-- Metadata (like time or political leaning) can be used to explain why certain topics appear more in some documents than others — which turns STM from an exploratory tool into an analytical one.
+- Metadata (like time or political leaning) can be used to explain why certain topics appear more in some documents than others, which turns STM from an exploratory tool into an analytical one.
 
 - The model is hierarchical and probabilistic, but you don’t need to master every equation to use it well.
 
