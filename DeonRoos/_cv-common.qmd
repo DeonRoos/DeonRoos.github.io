@@ -1,0 +1,130 @@
+```{=typst}
+// ============================================================
+//  Shared design system + header + timeline for both CVs.
+//  Included by cv-pdf.qmd (academic) and cv-pdf-nonacademic.qmd.
+//  Edit fonts / colours / helpers here once; both CVs update.
+// ============================================================
+
+#let body = ("Public Sans", "Arial")
+
+#let ACCENT = rgb("#a9761a")   // amber, section rules
+#let INK    = rgb("#1a1a17")   // primary text
+#let GREY   = rgb("#54524a")   // secondary text
+#let FAINT  = rgb("#8a8676")   // dates, meta
+
+#set text(font: body, size: 10pt, fill: INK)
+#set par(justify: false, leading: 0.6em, spacing: 0.62em)
+#show link: it => text(fill: GREY)[#it]
+
+// ---- section heading + amber hairline ----
+#let sec(title) = block(above: 1.55em, below: 0.75em, breakable: false)[
+  #text(size: 11pt, weight: 700, fill: INK)[#title]
+  #v(2.5pt)
+  #line(length: 100%, stroke: 0.7pt + ACCENT)
+]
+
+// ---- experience / education entry ----
+#let job(title, org, date, ..bul) = {
+  block(above: 0.8em, below: 0pt, breakable: false)[
+    #grid(columns: (1fr, auto), gutter: 1em, align: (left + top, right + top),
+      text(size: 10.5pt, weight: 600, fill: INK)[#title],
+      text(size: 9pt, fill: FAINT)[#date],
+    )
+    #if org != "" [ #v(1.5pt) #text(size: 9.5pt, fill: GREY, style: "italic")[#org] ]
+  ]
+  if bul.pos().len() > 0 {
+    v(3pt)
+    set list(marker: text(fill: GREY)[•], body-indent: 6pt, indent: 1pt, spacing: 0.5em)
+    set text(size: 9.75pt)
+    list(..bul.pos())
+  }
+  v(2pt)
+}
+
+// ---- publication row (own name bolded, not coloured) ----
+#let pubrow(year: "", authors: (), title: "", journal: "", doi: none) = {
+  let al = authors.map(a => if lower(a).contains("roos") {
+      text(weight: 700)[#a]
+    } else { [#a] })
+  block(above: 0.45em, below: 0.45em, breakable: false)[
+    #grid(columns: (2.6em, 1fr), gutter: 0.8em, align: (right + top, left + top),
+      text(size: 9pt, fill: FAINT)[#year],
+      text(size: 9.5pt)[#al.join(", "). #title.#if journal != "" [ #text(style: "italic", fill: GREY)[#journal].]#if doi != none [ #text(size: 8.5pt, fill: FAINT)[#link("https://doi.org/" + doi)[doi:#doi]]]],
+    )
+  ]
+}
+
+// ---- skills: label + comma-separated items, no pills ----
+#let skillrow(label, items) = block(above: 0pt, below: 0.42em, breakable: false)[
+  #grid(columns: (11em, 1fr), gutter: 1em, align: (left + top, left + top),
+    text(size: 9.75pt, weight: 600, fill: INK)[#label],
+    text(size: 9.75pt, fill: GREY)[#items],
+  )
+]
+
+// ---- award ----
+#let award(year, title, venue, desc) = block(above: 0pt, below: 0.5em, breakable: false)[
+  #grid(columns: (2.6em, 1fr), gutter: 0.8em, align: (right + top, left + top),
+    text(size: 9pt, fill: FAINT)[#year],
+    [#text(size: 10pt, weight: 600)[#title]#if venue != "" [, #text(size: 9.5pt, fill: GREY, style: "italic")[#venue]]#if desc != "" [ \ #text(size: 9.25pt, fill: GREY)[#desc]]],
+  )
+]
+
+// ---- timeline bar, positioned by percentage ----
+#let tlbar(dx, w, fill, txt, label, bold: false) = place(top + left, dx: dx,
+  box(width: w, height: 1.4em, fill: fill, inset: (x: 4pt), radius: 1.5pt,
+    align(horizon)[#text(size: 8pt, fill: txt, weight: if bold {700} else {400})[#label]]))
+
+// ============================================================
+//  HEADER (name, role, contact)
+// ============================================================
+#let header() = [
+  #text(size: 27pt, weight: 800, fill: INK)[Deon Roos]
+  #v(4pt)
+  #text(size: 11.5pt, fill: GREY)[Lecturer in Applied Statistics, University of Aberdeen]
+  #v(7pt)
+  #text(size: 9pt, fill: GREY)[
+    #link("mailto:deon.roos4@abdn.ac.uk")[deon.roos4\@abdn.ac.uk] #h(5pt)·#h(5pt)
+    #link("https://orcid.org/0000-0003-4866-7472")[orcid.org/0000-0003-4866-7472] #h(5pt)·#h(5pt)
+    #link("https://deonroos.github.io")[deonroos.github.io] #h(5pt)·#h(5pt)
+    Aberdeen, Scotland
+  ]
+  #v(9pt)
+  #line(length: 100%, stroke: 1pt + INK)
+]
+
+// ============================================================
+//  CAREER TIMELINE  (2016 → now)
+// ============================================================
+#let timeline() = [
+  #grid(columns: (5.5em, 1fr), gutter: 0.8em, align: horizon,
+    text(size: 8pt, fill: FAINT, tracking: 0.08em)[EDUCATION],
+    box(width: 100%, height: 1.4em)[
+      #tlbar(0%, 50%, rgb("#8a6a14"), rgb("#f0e6cf"), "PhD Ecology")
+    ],
+  )
+  #v(5pt)
+  #grid(columns: (5.5em, 1fr), gutter: 0.8em, align: horizon,
+    text(size: 8pt, fill: FAINT, tracking: 0.08em)[EMPLOYMENT],
+    box(width: 100%, height: 1.4em)[
+      #tlbar(40%, 9.4%,  rgb("#454236"), rgb("#e3dcc8"), "Teaching")
+      #tlbar(50%, 9.4%,  rgb("#5c5847"), rgb("#e3dcc8"), "Research")
+      #tlbar(60%, 19.4%, rgb("#454236"), rgb("#e3dcc8"), "APHA")
+      #tlbar(80%, 20%,   rgb("#d19527"), INK, "Lecturer", bold: true)
+    ],
+  )
+  #v(4pt)
+  #grid(columns: (5.5em, 1fr), gutter: 0.8em,
+    [],
+    box(width: 100%, height: 1.05em)[
+      #line(length: 100%, stroke: 0.5pt + rgb("#cabf9f"))
+      #place(top + left, dx: 0%,  dy: 2pt)[#text(size: 7.5pt, fill: FAINT)[2016]]
+      #place(top + left, dx: 20%, dy: 2pt)[#text(size: 7.5pt, fill: FAINT)[2018]]
+      #place(top + left, dx: 40%, dy: 2pt)[#text(size: 7.5pt, fill: FAINT)[2020]]
+      #place(top + left, dx: 60%, dy: 2pt)[#text(size: 7.5pt, fill: FAINT)[2022]]
+      #place(top + left, dx: 80%, dy: 2pt)[#text(size: 7.5pt, fill: FAINT)[2024]]
+      #place(top + right, dy: 2pt)[#text(size: 7.5pt, fill: ACCENT, weight: 700)[NOW]]
+    ],
+  )
+]
+```

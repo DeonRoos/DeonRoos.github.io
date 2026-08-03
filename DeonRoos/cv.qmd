@@ -14,7 +14,9 @@ format:
     <h1 class="pp-display pp-display--xl" style="color:var(--cream);margin:18px 0 0;">Deon Roos</h1>
     <p class="lead-serif" style="font-size:clamp(17px,2.1vw,23px);color:var(--cream-body);margin:20px 0 0;max-width:46ch;">Lecturer in Applied Statistics, University of Aberdeen. Zoology to ecology to applied statistics, by way of a lot of messy data.</p>
     <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;">
-      <a href="mailto:deon.roos4@abdn.ac.uk" class="btn btn--solid">Email me</a>
+      <a href="cv-deon-roos-academic.pdf" class="btn btn--solid" download>Academic CV (PDF)</a>
+      <a href="cv-deon-roos-nonacademic.pdf" class="btn btn--ghost" download>Non-academic CV (PDF)</a>
+      <a href="mailto:deon.roos4@abdn.ac.uk" class="btn btn--ghost">Email me</a>
       <a href="https://orcid.org/0000-0003-4866-7472" target="_blank" rel="noopener" class="btn btn--ghost">ORCID</a>
     </div>
   </div>

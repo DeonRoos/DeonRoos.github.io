@@ -1,0 +1,225 @@
+---
+format:
+  typst:
+    keep-typ: false
+    papersize: a4
+    font-paths: [fonts]
+    margin:
+      x: 1.9cm
+      top: 1.6cm
+      bottom: 1.5cm
+    output-file: "cv-deon-roos-academic.pdf"
+engine: knitr
+---
+
+{{< include _cv-common.qmd >}}
+
+```{=typst}
+#header()
+
+// ---- profile ----
+#v(11pt)
+#block(width: 100%)[
+  #set par(leading: 0.62em)
+  #text(size: 10pt, fill: rgb("#33322c"))[Lecturer in Applied Statistics at the University of Aberdeen, with a path into statistics that ran through zoology and ecology. My research builds statistical models for messy, real-world data, spanning population dynamics, spatio-temporal ecology, and disease surveillance in government and policy settings. I teach statistics from undergraduate to PhD level and write free, open resources for biologists, with a focus on understanding methods rather than following recipes.]
+]
+
+#v(15pt)
+#timeline()
+
+// ============================================================
+//  EMPLOYMENT
+// ============================================================
+#sec("Employment")
+
+#job("Lecturer in Applied Statistics", "University of Aberdeen, Aberdeen, Scotland", "Jan 2024 – Present",
+  [Leading and collaborating on interdisciplinary research in applied statistics with real-world impact.],
+  [Teaching statistical theory and methods across undergraduate to PhD levels.],
+  [Assisting research projects through the application of collaborator-specified statistical approaches.])
+
+#job("Senior Statistical Ecologist", "Animal & Plant Health Agency, Sand Hutton, England", "May 2022 – Jan 2024",
+  [Developed bespoke statistical pipelines for policy-driven research, translating model outputs into recommendations for non-specialist stakeholders across government.],
+  [Ran computationally intensive model jobs on AWS EC2 within a secure government data environment.],
+  [Mentored analysts across multidisciplinary teams and led statistical direction on projects spanning ecology, disease surveillance, and regulatory policy.])
+
+#job("Teaching Fellow", "University of Aberdeen, Aberdeen, Scotland", "Dec 2021 – May 2022",
+  [Coordinated and delivered a highly rated, fully online undergraduate statistics course with strong student engagement.])
+
+#job("Research Fellow", "University of Aberdeen, Aberdeen, Scotland", "Jun 2021 – Feb 2022",
+  [Conducted international ecological research, including study design and simulation modelling for species management.])
+
+#job("Teaching Fellow", "University of Aberdeen, Aberdeen, Scotland", "Dec 2020 – May 2021",
+  [Course coordinator for an undergraduate statistics course.])
+
+// ============================================================
+//  EDUCATION
+// ============================================================
+#sec("Education")
+
+#job("PhD Ecology", "University of Aberdeen, Aberdeen, Scotland", "2016 – 2021",
+  [Thesis: rodent pest population dynamics.],
+  [Publications: #link("https://doi.org/10.1016/j.agee.2018.11.013")[Roos et al. (2019)] and #link("https://doi.org/10.1111/ele.14074")[Roos et al. (2022)].])
+
+#job("BSc (Hons) Zoology", "University of Aberdeen, Aberdeen, Scotland", "2012 – 2016",
+  [Graduated First Class.],
+  [Thesis: water vole ecosystem engineering.])
+```
+
+```{=typst}
+#sec("Publications")
+```
+
+```{r}
+#| echo: false
+#| results: asis
+#| message: false
+#| warning: false
+suppressPackageStartupMessages({
+  library(httr); library(jsonlite); library(glue); library(purrr)
+})
+
+orcid_id <- "0000-0003-4866-7472"
+
+# escape a plain string into a Typst string literal
+tstr <- function(x) {
+  if (is.null(x) || length(x) == 0 || is.na(x)) x <- ""
+  x <- gsub("\\\\", "\\\\\\\\", x)
+  x <- gsub('"', '\\\\"', x)
+  paste0('"', x, '"')
+}
+tarr <- function(v) paste0("(", paste0(vapply(v, tstr, ""), collapse = ", "), ",)")
+
+emit_fallback <- function() {
+  cat("```{=typst}\n")
+  cat("#text(fill: rgb(\"#54524a\"), size: 9.5pt)[Full publication list is maintained on ",
+      "#link(\"https://orcid.org/0000-0003-4866-7472\")[ORCID].]\n", sep = "")
+  cat("\n```\n")
+}
+
+res <- tryCatch(
+  GET(glue("https://pub.orcid.org/v3.0/{orcid_id}/works"), accept("application/json"),
+      timeout(20)),
+  error = function(e) NULL
+)
+
+if (!is.null(res) && res$status_code == 200) {
+  data  <- content(res, as = "parsed", type = "application/json")
+  works <- list()
+
+  for (work in data$group) {
+    summary  <- work$`work-summary`[[1]]
+    put_code <- summary$`put-code`
+
+    detail_res <- tryCatch(
+      GET(glue("https://pub.orcid.org/v3.0/{orcid_id}/work/{put_code}"),
+          accept("application/json"), timeout(20)),
+      error = function(e) NULL
+    )
+    if (is.null(detail_res) || detail_res$status_code != 200) next
+
+    wd      <- content(detail_res, as = "parsed", type = "application/json")
+    title   <- wd$title$title$value %||% ""
+    journal <- wd$`journal-title`$value %||% ""
+    year    <- wd$`publication-date`$year$value %||% NA
+
+    contributors <- wd$contributors$contributor
+    authors <- if (!is.null(contributors)) {
+      raw <- map_chr(contributors, \(a) a$`credit-name`$value %||% "")
+      raw[raw != ""]
+    } else character(0)
+
+    doi <- NA_character_
+    ext <- wd$`external-ids`$`external-id`
+    if (!is.null(ext)) for (id in ext) {
+      if (tolower(id$`external-id-type`) == "doi") { doi <- id$`external-id-value`; break }
+    }
+
+    works[[length(works) + 1]] <- list(
+      year = year, authors = authors, title = title, journal = journal, doi = doi,
+      yr_num = suppressWarnings(as.integer(year))
+    )
+  }
+
+  # ---- dedupe preprint/published pairs by normalised title ----
+  # sort journal-published entries first so the kept copy is the published one
+  if (length(works) > 0) {
+    has_j <- vapply(works, \(w) nzchar(w$journal), logical(1))
+    works <- works[order(!has_j)]
+    seen  <- character(0); keep <- list()
+    for (w in works) {
+      key <- gsub("[^a-z0-9]", "", tolower(w$title))
+      if (nzchar(key) && key %in% seen) next
+      if (nzchar(key)) seen <- c(seen, key)
+      keep[[length(keep) + 1]] <- w
+    }
+    works <- keep
+  }
+
+  if (length(works) > 0) {
+    ord   <- order(map_dbl(works, \(w) ifelse(is.na(w$yr_num), -Inf, w$yr_num)), decreasing = TRUE)
+    works <- works[ord]
+
+    cat("```{=typst}\n")
+    for (w in works) {
+      doi_arg <- if (is.na(w$doi)) "none" else tstr(w$doi)
+      cat(glue(
+        '#pubrow(year: {tstr(ifelse(is.na(w$year), "", w$year))}, ',
+        'authors: {tarr(w$authors)}, ',
+        'title: {tstr(w$title)}, ',
+        'journal: {tstr(w$journal)}, ',
+        'doi: {doi_arg})'
+      ), "\n", sep = "")
+    }
+    cat("\n```\n")
+  } else {
+    emit_fallback()
+  }
+} else {
+  emit_fallback()
+}
+```
+
+```{=typst}
+// ============================================================
+//  TEACHING
+// ============================================================
+#sec("Teaching")
+
+#job("BI3010: Statistical Analysis of Biological Data", "University of Aberdeen. Third-year undergraduate; course coordinator, around 150 students.", "2020 – Present",
+  [From linear models through to generalised linear models, taught for genuine understanding rather than recipe-following, with R and ggplot2 throughout.])
+
+#job("PGR: Generalised Linear Models", "University of Aberdeen. Postgraduate and PhD; free and open to any institution.", "2021 – Present",
+  [A free course on the theory and application of GLMs, open to students from any university and discipline; part of a wider series covering R and linear models.])
+
+#job("PU5058: Introduction to Health Data Science", "University of Aberdeen. Postgraduate; guest lecturer.", "",
+  [The theory underlying effective data visualisation.])
+
+#job("An Introduction to R", [Open-access textbook, author. Free and online at #link("https://intro2r.com")[intro2r.com].], "")
+
+// ============================================================
+//  SKILLS
+// ============================================================
+#sec("Skills")
+
+#skillrow("Programming", "R, RShiny, Python, HTML, CSS, JavaScript")
+#skillrow("Statistical methods", "Causal inference, Bayesian inference, spatio-temporal modelling, hierarchical modelling, hidden Markov models, non-linear modelling, simulation-based inference, study design")
+#skillrow("Ecological modelling", "Population dynamics, occupancy modelling, mark-recapture, integrated population models")
+#skillrow("NLP & text analysis", "Structural topic models, natural language processing")
+#skillrow("Data infrastructure", "Production Shiny deployment, automated pipelines in R, scheduled task automation, SQLite, AWS EC2")
+#skillrow("Data visualisation", "ggplot2, gganimate, plotly, leaflet, tidyverse, base R")
+#skillrow("Reproducible research", "RMarkdown, Quarto, LaTeX, Git, GitHub Pages")
+#skillrow("Teaching & communication", "Course coordination, accessible teaching of complex methods, PhD supervision, grant writing, textbook authorship")
+#skillrow("Languages", "English (fluent), Afrikaans (fluent), Spanish (basic)")
+
+// ============================================================
+//  AWARDS & FUNDING
+// ============================================================
+#sec("Awards & funding")
+
+#award("2019", "Best Student Presentation", "University of Aberdeen", "Travelling waves as a form of spatio-temporal asynchrony.")
+#award("2019", "Best Presentation", "Iberian Vole Workshop, Porto", "Spatio-temporal asynchrony in a cyclic vole species.")
+#award("2017", "Sir Maitland Mackie Scholarship", "University of Aberdeen", "Funding for agricultural research.")
+#award("2016", "Outstanding BSc Zoology Student", "University of Aberdeen", "")
+#award("2016", "People's Trust Internship", "PTES", "Funded research position following BSc thesis.")
+#award("2015", "Carnegie Summer Scholarship", "", "Supported BSc data collection.")
+```

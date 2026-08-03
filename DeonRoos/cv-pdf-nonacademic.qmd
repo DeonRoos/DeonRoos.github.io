@@ -1,0 +1,124 @@
+---
+format:
+  typst:
+    keep-typ: false
+    papersize: a4
+    font-paths: [fonts]
+    margin:
+      x: 1.9cm
+      top: 1.6cm
+      bottom: 1.5cm
+    output-file: "cv-deon-roos-nonacademic.pdf"
+engine: knitr
+---
+
+{{< include _cv-common.qmd >}}
+
+```{=typst}
+#header()
+
+// ---- profile ----
+#v(11pt)
+#block(width: 100%)[
+  #set par(leading: 0.62em)
+  #text(size: 10pt, fill: rgb("#33322c"))[Applied statistician working across government, research, and higher education. At the Animal and Plant Health Agency I translated statistical analysis into recommendations for non-specialist decision-makers across government, spanning disease surveillance, environment, and agriculture; I now lead applied-statistics teaching and research at the University of Aberdeen. My focus is making statistics understood and usable by the people who act on them, through clear communication, open teaching resources, and close work with the teams that own the data.]
+]
+
+#v(15pt)
+#timeline()
+
+// ============================================================
+//  EXPERIENCE
+// ============================================================
+#sec("Experience")
+
+#job("Lecturer in Applied Statistics", "University of Aberdeen, Aberdeen, Scotland", "Jan 2024 – Present",
+  [Lead applied-statistics teaching from undergraduate to PhD level, and collaborate on interdisciplinary research that puts statistical methods to work on real-world questions.],
+  [Advise colleagues and external partners on study design, modelling, and the interpretation of results for non-specialist audiences.])
+
+#job("Senior Statistical Ecologist", "Animal & Plant Health Agency, Sand Hutton, England", "May 2022 – Jan 2024",
+  [Translated statistical analysis into recommendations for non-specialist decision-makers across government, on projects spanning disease surveillance, environment, agriculture, and regulatory policy.],
+  [Built bespoke statistical pipelines and ran computationally intensive jobs on AWS EC2 within a secure government data environment.],
+  [Set statistical direction and mentored analysts across multidisciplinary teams.])
+
+#job("Teaching & Research Fellowships", "University of Aberdeen, Aberdeen, Scotland", "Dec 2020 – May 2022",
+  [Coordinated and delivered a highly rated, fully online undergraduate statistics course.],
+  [Conducted international ecological research, including study design and simulation modelling for species management.])
+
+// ============================================================
+//  EDUCATION
+// ============================================================
+#sec("Education")
+
+#job("PhD Ecology", "University of Aberdeen, Aberdeen, Scotland", "2016 – 2021",
+  [Thesis: rodent pest population dynamics.])
+
+#job("BSc (Hons) Zoology, First Class", "University of Aberdeen, Aberdeen, Scotland", "2012 – 2016")
+
+// ============================================================
+//  CORE CAPABILITIES
+// ============================================================
+#sec("Core capabilities")
+
+#skillrow("Statistics & modelling", "Causal inference, Bayesian inference, spatio-temporal and hierarchical modelling, hidden Markov models, simulation-based inference, study design, population and disease dynamics")
+#skillrow("Communicating statistics", "Translating analysis for non-specialist decision-makers, teaching complex methods, data visualisation, open educational resources, textbook authorship")
+#skillrow("Tools & infrastructure", "R, RShiny, Python, SQLite, AWS EC2, automated pipelines, reproducible workflows (Quarto, Git, LaTeX)")
+#skillrow("Domain knowledge", "Public health and disease surveillance, environment and agriculture, ecology, government and policy analytics")
+#skillrow("Languages", "English (fluent), Afrikaans (fluent), Spanish (basic)")
+
+// ============================================================
+//  SELECTED PUBLICATIONS
+// ============================================================
+#sec("Selected publications")
+
+#block(below: 0.6em)[#text(size: 8.5pt, fill: FAINT)[Selected from peer-reviewed output; full list at #link("https://orcid.org/0000-0003-4866-7472")[orcid.org/0000-0003-4866-7472].]]
+
+#pubrow(
+  year: "2025",
+  authors: ("Sara Sharaf", "Timothy Lawes", "Deon Roos", "et al",),
+  title: "Universal versus targeted chlorhexidine and mupirocin decolonisation and clinical and molecular epidemiology of Staphylococcus epidermidis bloodstream infections in patients in intensive care in Scotland, UK",
+  journal: "The Lancet Microbe",
+  doi: "10.1016/j.lanmic.2025.101118")
+
+#pubrow(
+  year: "2024",
+  authors: ("J. Colomer", "G. Massei", "D. Roos", "C. Rosell", "J. D. Rodríguez-Teijeiro",),
+  title: "What drives wild boar density and population growth in Mediterranean environments?",
+  journal: "Science of the Total Environment",
+  doi: "10.1016/j.scitotenv.2024.172739")
+
+#pubrow(
+  year: "2022",
+  authors: ("Deon Roos", "Constantino Caminero-Saldaña", "David Elston", "François Mougeot", "María Carmen García-Ariza", "Beatriz Arroyo", "Juan José Luque-Larena", "Francisco Javier Rojo Revilla", "Xavier Lambin",),
+  title: "From pattern to process? Dual travelling waves, with contrasting propagation speeds, best describe a self-organised spatio-temporal pattern in population growth of a cyclic rodent",
+  journal: "Ecology Letters",
+  doi: "10.1111/ele.14074")
+
+#pubrow(
+  year: "2019",
+  authors: ("Deon Roos", "Constantino Caminero-Saldaña", "Beatriz Arroyo", "François Mougeot", "Juan José Luque-Larena", "Xavier Lambin",),
+  title: "Unintentional effects of environmentally-friendly farming practices: arising conflicts between zero-tillage and a crop pest, the common vole (Microtus arvalis)",
+  journal: "Agriculture, Ecosystems and Environment",
+  doi: "10.1016/j.agee.2018.11.013")
+
+// ============================================================
+//  TEACHING & PUBLIC ENGAGEMENT
+// ============================================================
+#sec("Teaching & public engagement")
+
+#job("Statistics teaching, University of Aberdeen", "Undergraduate to PhD level; coordinator of BI3010 (around 150 students), a course built for genuine understanding rather than recipe-following.", "2020 – Present")
+
+#job("Open educational resources", [Author of the free online textbook #text(style: "italic")[An Introduction to R] (#link("https://intro2r.com")[intro2r.com]); creator of a free, open course on generalised linear models for students at any institution.], "")
+
+#job("Guest lecturer, Introduction to Health Data Science (PU5058)", "University of Aberdeen. Postgraduate; the theory underlying effective data visualisation.", "")
+
+// ============================================================
+//  AWARDS & FUNDING
+// ============================================================
+#sec("Awards & funding")
+
+#award("2019", "Best Student Presentation", "University of Aberdeen", "")
+#award("2019", "Best Presentation", "Iberian Vole Workshop, Porto", "")
+#award("2017", "Sir Maitland Mackie Scholarship", "University of Aberdeen", "Funding for agricultural research.")
+#award("2016", "Outstanding BSc Zoology Student", "University of Aberdeen", "")
+```
