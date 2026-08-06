@@ -21,7 +21,7 @@ engine: knitr
 #v(11pt)
 #block(width: 100%)[
   #set par(leading: 0.62em)
-  #text(size: 10pt, fill: rgb("#33322c"))[Applied statistician working across government, research, and higher education. At the Animal and Plant Health Agency I translated statistical analysis into recommendations for non-specialist decision-makers across government, spanning disease surveillance, environment, and agriculture; I now lead applied-statistics teaching and research at the University of Aberdeen. My focus is making statistics understood and usable by the people who act on them, through clear communication, open teaching resources, and close work with the teams that own the data.]
+  #text(size: 10pt, fill: rgb("#33322c"))[Lecturer in Applied Statistics at the University of Aberdeen. I carry out research across a range of fields, teach statistics from undergraduate to PhD level, and work with people from other disciplines to design and analyse their studies. Before this I spent nearly two years as a statistician at the Animal and Plant Health Agency, producing analysis within government. Across all of it, what I care about most is that the data and the model can actually answer the question being asked; only then does it matter that the results are made clear to the people who rely on them.]
 ]
 
 #v(15pt)
@@ -33,8 +33,9 @@ engine: knitr
 #sec("Experience")
 
 #job("Lecturer in Applied Statistics", "University of Aberdeen, Aberdeen, Scotland", "Jan 2024 – Present",
-  [Lead applied-statistics teaching from undergraduate to PhD level, and collaborate on interdisciplinary research that puts statistical methods to work on real-world questions.],
-  [Advise colleagues and external partners on study design, modelling, and the interpretation of results for non-specialist audiences.])
+  [Carry out and collaborate on research across several fields, developing and applying statistical models to real-world questions.],
+  [Work with people from other disciplines to design their studies and analyse their data, and to interpret the results for non-specialist audiences.],
+  [Teach applied statistics from undergraduate to PhD level.])
 
 #job("Senior Statistical Ecologist", "Animal & Plant Health Agency, Sand Hutton, England", "May 2022 – Jan 2024",
   [Translated statistical analysis into recommendations for non-specialist decision-makers across government, on projects spanning disease surveillance, environment, agriculture, and regulatory policy.],

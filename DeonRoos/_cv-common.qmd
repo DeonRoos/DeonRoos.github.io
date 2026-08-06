@@ -79,7 +79,7 @@
 //  HEADER (name, role, contact)
 // ============================================================
 #let header() = [
-  #text(size: 27pt, weight: 800, fill: INK)[Deon Roos]
+  #text(size: 27pt, weight: 800, fill: INK)[Dr Deon Roos]
   #v(4pt)
   #text(size: 11.5pt, fill: GREY)[Lecturer in Applied Statistics, University of Aberdeen]
   #v(7pt)
@@ -107,8 +107,7 @@
   #grid(columns: (5.5em, 1fr), gutter: 0.8em, align: horizon,
     text(size: 8pt, fill: FAINT, tracking: 0.08em)[EMPLOYMENT],
     box(width: 100%, height: 1.4em)[
-      #tlbar(40%, 9.4%,  rgb("#454236"), rgb("#e3dcc8"), "Teaching")
-      #tlbar(50%, 9.4%,  rgb("#5c5847"), rgb("#e3dcc8"), "Research")
+      #tlbar(40%, 19.4%, rgb("#454236"), rgb("#e3dcc8"), "Fellowships")
       #tlbar(60%, 19.4%, rgb("#454236"), rgb("#e3dcc8"), "APHA")
       #tlbar(80%, 20%,   rgb("#d19527"), INK, "Lecturer", bold: true)
     ],
