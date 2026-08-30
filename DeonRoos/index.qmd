@@ -212,7 +212,6 @@ if (!is.null(res) && res$status_code == 200) {
         </div>
         <div>
           <a href="bi3010.html" class="teach-card__link">Course details</a>
-          <a href="https://deonroos.github.io/stats-for-biologists/" target="_blank" rel="noopener" class="teach-card__link">Workshop materials</a>
         </div>
       </div>
       <div class="teach-card">
@@ -240,19 +239,19 @@ if (!is.null(res) && res$status_code == 200) {
 </section>
 
 <!-- ============ 04 EXPLAINERS (ink) ============ -->
-<section id="explainers" class="band band--ink">
+<section id="resources" class="band band--ink">
   <div class="band__inner">
     <div class="sec-head">
       <span class="sec-head__num">04</span>
-      <span class="sec-head__label">Explainers</span>
+      <span class="sec-head__label">Resources</span>
     </div>
-    <p class="body-copy" style="max-width:60ch;margin-top:26px;">Detailed walkthroughs of statistical models, methods, protocols, and concepts, mostly written for students working with me during their honours projects, but available to anyone who wants them.</p>
+    <p class="body-copy" style="max-width:60ch;margin-top:26px;">A mix of explainers, protocols, and tools: statistical walkthroughs, field guides, and software, mostly built for students working with me during their honours projects, but available to anyone who wants them.</p>
     <div class="xp-grid">
-      <a href="https://alexd106.github.io/PGR-GLM/" target="_blank" rel="noopener" class="xp-card">
+      <a href="https://deonroos.github.io/stats-for-biologists/" target="_blank" rel="noopener" class="xp-card">
         <div class="xp-card__head"><img class="xp-card__img" src="media/glm_binomial_illustration.png" alt=""><span class="xp-card__tag">MODELS</span></div>
         <div class="xp-card__body">
-          <h4 class="xp-card__title">Introduction to GLMs</h4>
-          <p class="xp-card__desc">Theory and application of GLMs, from model structure to interpretation. Part of the PGR series.</p>
+          <h4 class="xp-card__title">Stats for Biologists</h4>
+          <p class="xp-card__desc">A practical route from linear models through to GLMs, built for biologists working in R.</p>
         </div>
       </a>
       <a href="https://deonroos.github.io/Occupancy_Modelling/" target="_blank" rel="noopener" class="xp-card">
@@ -281,6 +280,16 @@ if (!is.null(res) && res$status_code == 200) {
         <div class="xp-card__body">
           <h4 class="xp-card__title">Camera Trap Pipeline</h4>
           <p class="xp-card__desc">End-to-end protocol for the NE Scotland project: field recording to camtrapR detection histories.</p>
+        </div>
+      </a>
+      <a href="https://sutherlandecology.com/software.html" target="_blank" rel="noopener" class="xp-card">
+        <div class="xp-card__head" style="background:#1b4332;">
+          <img class="xp-card__img" src="media/wildtag.png" alt="wildtag.ai logo" style="object-fit:contain; box-sizing:border-box; padding:16px 20px; filter:none;">
+          <span class="xp-card__tag is-software">SOFTWARE</span>
+        </div>
+        <div class="xp-card__body">
+          <h4 class="xp-card__title">wildtag.ai</h4>
+          <p class="xp-card__desc">Desktop app for AI camera-trap image classification allowing the use of a variety of classification models (e.g. DeepFaune). Everything runs locally, work can be shared easily with colleagues, and no coding is required (amongst a host of other useful features). Co-authored with Chris Sutherland.</p>
         </div>
       </a>
       <a href="https://deonroos.shinyapps.io/Distributions/" target="_blank" rel="noopener" class="xp-card">

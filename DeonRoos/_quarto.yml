@@ -13,6 +13,7 @@ project:
     - media/wordcloud_stm.png
     - media/warbler.png
     - media/glm_binomial_illustration.png
+    - media/wildtag.png
     - favicon.svg
     - theses/**
     - scripts/**
