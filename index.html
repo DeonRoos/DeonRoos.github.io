@@ -121,7 +121,7 @@ window.Quarto = {
     <div class="pp-nav__links">
       <a href="index.html#work">Publications</a>
       <a href="index.html#teaching">Teaching</a>
-      <a href="index.html#explainers">Explainers</a>
+      <a href="index.html#resources">Resources</a>
       <a href="index.html#people">People</a>
       <a href="cv.html">CV</a>
       <a href="index.html#contact" class="is-accent">Contact</a>
@@ -252,13 +252,13 @@ window.Quarto = {
 </section>
 
 <!-- ============ 04 EXPLAINERS (ink) ============ -->
-<section id="explainers" class="band band--ink">
+<section id="resources" class="band band--ink">
   <div class="band__inner">
     <div class="sec-head">
       <span class="sec-head__num">04</span>
-      <span class="sec-head__label">Explainers</span>
+      <span class="sec-head__label">Resources</span>
     </div>
-    <p class="body-copy" style="max-width:60ch;margin-top:26px;">Detailed walkthroughs of statistical models, methods, protocols, and concepts, mostly written for students working with me during their honours projects, but available to anyone who wants them.</p>
+    <p class="body-copy" style="max-width:60ch;margin-top:26px;">A mix of explainers, protocols, and tools: statistical walkthroughs, field guides, and software, mostly built for students working with me during their honours projects, but available to anyone who wants them.</p>
     <div class="xp-grid">
       <a href="https://deonroos.github.io/stats-for-biologists/" target="_blank" rel="noopener" class="xp-card">
         <div class="xp-card__head"><img class="xp-card__img" src="media/glm_binomial_illustration.png" alt=""><span class="xp-card__tag">MODELS</span></div>
@@ -293,6 +293,16 @@ window.Quarto = {
         <div class="xp-card__body">
           <h4 class="xp-card__title">Camera Trap Pipeline</h4>
           <p class="xp-card__desc">End-to-end protocol for the NE Scotland project: field recording to camtrapR detection histories.</p>
+        </div>
+      </a>
+      <a href="https://sutherlandecology.com/software.html" target="_blank" rel="noopener" class="xp-card">
+        <div class="xp-card__head" style="background:#1b4332;">
+          <img class="xp-card__img" src="media/wildtag.png" alt="wildtag.ai logo" style="object-fit:contain; box-sizing:border-box; padding:16px 20px; filter:none;">
+          <span class="xp-card__tag is-software">SOFTWARE</span>
+        </div>
+        <div class="xp-card__body">
+          <h4 class="xp-card__title">wildtag.ai</h4>
+          <p class="xp-card__desc">Desktop app for AI camera-trap image classification allowing the use of a variety of classification models (e.g. DeepFaune). Everything runs locally, work can be shared easily with colleagues, and no coding is required (amongst a host of other useful features). Co-authored with Chris Sutherland.</p>
         </div>
       </a>
       <a href="https://deonroos.shinyapps.io/Distributions/" target="_blank" rel="noopener" class="xp-card">
@@ -870,7 +880,7 @@ window.Quarto = {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/DeonRoos\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

@@ -38,6 +38,7 @@
   /* Category accents (explainer tags) */
   --tag-protocol: #8a9a5a;
   --tag-teaching: #c98a86;
+  --tag-software: #5fc493;
 
   /* Type */
   --f-display: 'Anton', 'Public Sans', system-ui, sans-serif;
@@ -497,6 +498,7 @@ a { color: inherit; text-decoration: none; }
 }
 .xp-card__tag.is-protocol { color: var(--tag-protocol); }
 .xp-card__tag.is-teaching { color: var(--tag-teaching); }
+.xp-card__tag.is-software { color: var(--tag-software); }
 .xp-card__body { padding: 15px 17px; }
 .xp-card__title {
   font-family: var(--f-display);

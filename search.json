@@ -4,7 +4,7 @@
     "href": "camera-trapping.html",
     "title": "Camera Trap Pipeline",
     "section": "",
-    "text": "DEON ROOS\n    \n      Publications\n      Teaching\n      Explainers\n      People\n      CV\n      Contact\nThis page covers the full pipeline for the camera trap monitoring project. It is written for students who will be deploying cameras, processing images, or analysing the resulting data. The 45 sites (Site_001 to Site_045) sit across north-east Scotland and are revisited each season during the summer, with each camera deployed for 14-day in each site.\nThe pipeline runs in three phases: field data collection, image processing, and data processing. Each is described below."
+    "text": "DEON ROOS\n    \n      Publications\n      Teaching\n      Resources\n      People\n      CV\n      Contact\nThis page covers the full pipeline for the camera trap monitoring project. It is written for students who will be deploying cameras, processing images, or analysing the resulting data. The 45 sites (Site_001 to Site_045) sit across north-east Scotland and are revisited each season during the summer, with each camera deployed for 14-day in each site.\nThe pipeline runs in three phases: field data collection, image processing, and data processing. Each is described below."
   },
   {
     "objectID": "camera-trapping.html#pipeline-overview",
@@ -53,7 +53,7 @@
     "href": "bi3010.html",
     "title": "BI3010: Statistical Analysis of Biological Data",
     "section": "",
-    "text": "DEON ROOS\n    \n      Publications\n      Teaching\n      Explainers\n      People\n      CV\n      Contact"
+    "text": "DEON ROOS\n    \n      Publications\n      Teaching\n      Resources\n      People\n      CV\n      Contact"
   },
   {
     "objectID": "bi3010.html#overview",
@@ -74,7 +74,7 @@
     "href": "pgr-glm.html",
     "title": "PGR Course: Generalised Linear Models",
     "section": "",
-    "text": "DEON ROOS\n    \n      Publications\n      Teaching\n      Explainers\n      People\n      CV\n      Contact"
+    "text": "DEON ROOS\n    \n      Publications\n      Teaching\n      Resources\n      People\n      CV\n      Contact"
   },
   {
     "objectID": "pgr-glm.html#overview",
@@ -102,7 +102,7 @@
     "href": "stm-explainer.html",
     "title": "Structural Topic Models",
     "section": "",
-    "text": "DEON ROOS\n    \n      Publications\n      Teaching\n      Explainers\n      People\n      CV\n      Contact\nHey Grace,\nI’ve written this page for you and your honours project. I’ve aimed to keep it accessible, covering both the core theory behind the stats you’ll use (Structural Topic Models, STMs) but also how to actually implement them. That said, the theory can get complex at times, and I’m still learning it myself! (It’s also surprisingly hard to find good, clear explanations online.) It took me a while to make sense of the stats, so don’t worry if it also takes you some time. Be patient with when learning this material.\nTo be clear, this page isn’t meant to replace our meetings or turn me into a hands-off “supervisor.” It’s a resource you can return to whenever you need a refresher or some help getting unstuck.\nHopefully, this helps you get a handle on the method, but let me know if anything is confusing. It probably won’t answer every question, and I won’t be offended if you want to toss it in a bonfire. Just flag anything that’s unclear, and we’ll work through it together."
+    "text": "DEON ROOS\n    \n      Publications\n      Teaching\n      Resources\n      People\n      CV\n      Contact\nHey Grace,\nI’ve written this page for you and your honours project. I’ve aimed to keep it accessible, covering both the core theory behind the stats you’ll use (Structural Topic Models, STMs) but also how to actually implement them. That said, the theory can get complex at times, and I’m still learning it myself! (It’s also surprisingly hard to find good, clear explanations online.) It took me a while to make sense of the stats, so don’t worry if it also takes you some time. Be patient with when learning this material.\nTo be clear, this page isn’t meant to replace our meetings or turn me into a hands-off “supervisor.” It’s a resource you can return to whenever you need a refresher or some help getting unstuck.\nHopefully, this helps you get a handle on the method, but let me know if anything is confusing. It probably won’t answer every question, and I won’t be offended if you want to toss it in a bonfire. Just flag anything that’s unclear, and we’ll work through it together."
   },
   {
     "objectID": "stm-explainer.html#what-is-a-structural-topic-model",

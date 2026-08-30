@@ -94,7 +94,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="pp-nav__links">
       <a href="index.html#work">Publications</a>
       <a href="index.html#teaching">Teaching</a>
-      <a href="index.html#explainers">Explainers</a>
+      <a href="index.html#resources">Resources</a>
       <a href="index.html#people">People</a>
       <a href="cv.html">CV</a>
       <a href="index.html#contact" class="is-accent">Contact</a>
@@ -599,7 +599,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/DeonRoos\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
